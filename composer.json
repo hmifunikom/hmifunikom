@@ -38,7 +38,7 @@
 		],
 		"psr-0": {
             "HMIF\\": "app",
-            "Felixkiss\\SlugRoutes\\": "vendor/felixkiss/slug-routes/src"
+            "Felixkiss\\SlugRoutes\\": "app/felixkiss/slug-routes/src"
         }
 	},
 	"scripts": {
