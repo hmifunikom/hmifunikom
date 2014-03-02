@@ -5,6 +5,8 @@
         <div class="col-xs-8">
             <h2>{{ $anggota->nama }}</h2>
         </div>
+
+        {{ Hash::make('password') }}
         <div class="col-xs-4 header-toolbar right">
             {{ Button::primary_link(action('panel.keanggotaan.kas.create', $anggota->id_anggota), Helper::fa('plus').' Tambah Kas') }}
         </div>
