@@ -29,10 +29,11 @@ Untuk berkontribusi, silahkan install terlebih dahulu Git di dalam komputer :
 
 1. Install [composer](https://getcomposer.org/Composer-Setup.exe).
 2. Clone repo dari bitbucket.
-3. Import database DATABASE.sql ke mysql, bisa melalui phpmyadmin.
-4. Set settingan database pada file : `app/config/database.php` pada line 55.
-5. Buka web melalui localhost `http://localhost/folderwebhmif/public` dan untuk panel `http://localhost/folderwebhmif/public/panel`.
-6. Login dengan menggunakan username `admin` dan password `password`.
+3. Jalankan perintah `composer install` lalu `composer update`.
+4. Import database DATABASE.sql ke mysql, bisa melalui phpmyadmin.
+5. Set settingan database pada file : `app/config/database.php` pada line 55.
+6. Buka web melalui localhost `http://localhost/folderwebhmif/public` dan untuk panel `http://localhost/folderwebhmif/public/panel`.
+7. Login dengan menggunakan username `admin` dan password `password`.
 
 **Requirements: PHP 5.37, Apache(mod-rewrite enabled)**
 
