@@ -1,6 +1,6 @@
 # Website Sistem Informasi HMIF
 
-### Overview
+## Overview
 
 Website ini menggunakan framework [Laravel](http://laravel.com/docs/quick) untuk mempermudah agar tidak membuat corenya dari awal. Sengaja tidak menggunakan wordpress/joomla agar bisa dicustom secara menyeluruh. Karena github tidak ada free private repo, maka terpaksa menggunakan bitbucket.
 
@@ -23,7 +23,7 @@ Backend :
     - Waktu acara
     - Peserta acara
 
-### Contribute
+## Contribute
 
 Untuk berkontribusi, silahkan install terlebih dahulu Git di dalam komputer : 
 
@@ -36,7 +36,7 @@ Untuk berkontribusi, silahkan install terlebih dahulu Git di dalam komputer :
 
 **Requirements: PHP 5.37, Apache(mod-rewrite enabled)**
 
-### Library
+## Library
 
 Selain Laravel, website ini juga menggunakan beberapa library package dari [Packagist](http://packagist.org) : 
 
@@ -55,7 +55,7 @@ Selain Laravel, website ini juga menggunakan beberapa library package dari [Pack
 - [PHP QRCode Generator](https://github.com/endroid/QrCode)
 - [vCard Manipulator (Belum diimplementasi untuk generate kontak keanggotaan ke file .vcf)](https://github.com/fruux/sabre-vobject)
 
-### Todos
+## Todos
 
 - Fix tiket acara versi print
 - Profile keanggotaan
