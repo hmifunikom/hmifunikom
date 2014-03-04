@@ -32,6 +32,7 @@ class EloquentAcaraRepo implements AcaraRepo {
     public function findUpcoming()
     {
         return Acara::with($this->relations)
+               ->whereRaw("MONTH(tgl) = MONTH(CURRENT_DATE) AND YEAR(tgl) = YEAR(CURRENT_DATE)")
                ->orderBy('tgl', 'asc')
                ->take(1)
                ->get()
