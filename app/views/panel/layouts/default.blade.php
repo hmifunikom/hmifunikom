@@ -18,7 +18,10 @@
                     <a href="{{action('panel.keanggotaan.index')}}">{{Helper::fa('users')}} <span class="title">Keanggotaan</span></a>
                 </li>
                 <li class="{{ Helper::active('panel.event.index', false) }}">
-                    <a href="{{action('panel.event.index')}}">{{Helper::fa('home')}} <span class="title">Acara</span></a>
+                    <a href="{{action('panel.event.index')}}">{{Helper::fa('calendar')}} <span class="title">Acara</span></a>
+                </li>
+                <li class="{{ Helper::active('panel.arsip.index', false) }}">
+                    <a href="{{action('panel.arsip.index')}}">{{Helper::fa('copy')}} <span class="title">Arsip</span></a>
                 </li>
                 <li class=" ">
                     <a href="{{action('panel.index')}}">{{Helper::fa('book')}} <span class="title">Perpustakaan</span></a>

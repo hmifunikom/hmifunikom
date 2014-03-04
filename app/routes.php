@@ -85,6 +85,8 @@ Route::group(array('prefix' => 'panel', 'before' => 'auth|norole:publik'), funct
     Route::resource('event.panitia', 'PanelEventPanitiaController');
     Route::resource('event.peserta', 'PanelEventPesertaController');
 
+    Route::resource('arsip', 'PanelArsipController');
+
     Route::get('shut/the/application/down', function() 
     {
         touch(storage_path().'/meta/my.down');

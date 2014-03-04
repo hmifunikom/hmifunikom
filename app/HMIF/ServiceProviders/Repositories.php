@@ -16,7 +16,12 @@ class Repositories extends ServiceProvider {
 
     private function register_arsip()
     {
+        $namespace = 'HMIF\\Repositories\\Arsip\\';
+        $list = array(
+            'DokumenRepo'      =>  'EloquentDokumenRepo',
+        );
 
+        $this->_register($list, $namespace);
     }
 
     private function register_event()
