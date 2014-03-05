@@ -92,7 +92,7 @@ class PanelEventPanitiaController extends BaseController {
 	public function destroy($acara, $panitia)
 	{
 		$panitia->delete();
-		return Redirect::action('panel.event.panitia.index', $acara->kd_acara)->with('message', 'Panitia berhasil dihapus!');
+		return Redirect::action('panel.event.panitia.index', $acara->kd_acara)->with('success', 'Panitia berhasil dihapus!');
 	}
 
 }

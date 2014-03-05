@@ -86,7 +86,7 @@ class PanelKeanggotaanHpController extends BaseController {
 	public function destroy($anggota, $hp)
 	{
 		$hp->delete();
-		return Redirect::action('panel.keanggotaan.hp.index', $anggota->id_anggota)->with('message', 'No. Handphone berhasil dihapus!');
+		return Redirect::action('panel.keanggotaan.hp.index', $anggota->id_anggota)->with('success', 'No. Handphone berhasil dihapus!');
 	}
 
 }

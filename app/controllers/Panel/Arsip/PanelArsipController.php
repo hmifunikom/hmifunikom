@@ -94,7 +94,7 @@ class PanelArsipController extends BaseController {
 	public function destroy($dokumen)
 	{
 		$dokumen->delete();
-		return Redirect::action('panel.arsip.index')->with('message', 'dokumen berhasil dihapus!');
+		return Redirect::action('panel.arsip.index')->with('success', 'dokumen berhasil dihapus!');
 	}
 
 }

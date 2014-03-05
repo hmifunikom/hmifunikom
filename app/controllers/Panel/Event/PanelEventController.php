@@ -94,7 +94,7 @@ class PanelEventController extends BaseController {
 	public function destroy($acara)
 	{
 		$acara->delete();
-		return Redirect::action('panel.event.index')->with('message', 'Acara berhasil dihapus!');
+		return Redirect::action('panel.event.index')->with('success', 'Acara berhasil dihapus!');
 	}
 
 }

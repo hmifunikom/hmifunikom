@@ -27,13 +27,13 @@
         {{ Former::text('nama_peserta') }}
         {{ Former::text('alamat') }}
         <?php
-            $clients = array(
+            $kategori = array(
                 'unikom' => 'Unikom',
                 'luar'   => 'Umum',
             )
         ?>
         {{ 
-            Former::select('kategori')->options($clients)
+            Former::select('kategori')->options($kategori)
         }}
         {{
             ($method == 'edit')

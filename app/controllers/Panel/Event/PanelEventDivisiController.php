@@ -92,7 +92,7 @@ class PanelEventDivisiController extends BaseController {
 	public function destroy($acara, $div)
 	{
 		$div->delete();
-		return Redirect::action('panel.event.div.index', $acara->kd_acara)->with('message', 'Divisi berhasil dihapus!');
+		return Redirect::action('panel.event.div.index', $acara->kd_acara)->with('success', 'Divisi berhasil dihapus!');
 	}
 
 }

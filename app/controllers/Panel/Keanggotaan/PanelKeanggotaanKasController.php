@@ -86,7 +86,7 @@ class PanelKeanggotaanKasController extends BaseController {
 	public function destroy($anggota, $kas)
 	{
 		$kas->delete();
-		return Redirect::action('panel.keanggotaan.kas.index', $anggota->id_anggota)->with('message', 'Kas berhasil dihapus!');
+		return Redirect::action('panel.keanggotaan.kas.index', $anggota->id_anggota)->with('success', 'Kas berhasil dihapus!');
 	}
 
 }

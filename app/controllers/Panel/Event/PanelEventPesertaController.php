@@ -96,7 +96,7 @@ class PanelEventPesertaController extends BaseController {
 	public function destroy($acara, $peserta)
 	{
 		$peserta->delete();
-		return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('message', 'Peserta berhasil dihapus!');
+		return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('success', 'Peserta berhasil dihapus!');
 	}
 
 }

@@ -20,12 +20,11 @@
 
     @if($listpeserta->count())
         {{ Table::striped_open(array('class' => 'table-hover')) }}
-        {{ Table::headers('#', 'Nama', 'Kategori', 'Tgl. Daftar', 'No.Hp', '') }}
+        {{ Table::headers('Kode', 'Nama', 'NIM', 'Tgl. Daftar', 'No.Hp', '') }}
         <tbody>
-        <?php $i = $listpeserta->getFrom(); ?>
         @foreach($listpeserta as $peserta)
             <tr>
-                <td>{{ $i++ }}</td>
+                <td>{{ Helper::code($peserta->kode) }}</td>
                 <td>{{ $peserta->nama_peserta }}</td>
                 <td>{{ Lang::get('messages.event.'.$peserta->kategori) }}</td>
                 <td>{{ $peserta->tgl_daftar->formatLocalized('%d-%b-%Y') }}</td>

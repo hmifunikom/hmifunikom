@@ -32,6 +32,11 @@ class Helper {
         return ($striptags) ? strip_tags($parsedown->parse($text)) : $parsedown->parse($text);
     }
 
+    public static function code($number, $digit = 3)
+    {
+        return str_pad($number, $digit, 0, STR_PAD_LEFT);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Date Helper

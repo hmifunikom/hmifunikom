@@ -92,7 +92,7 @@ class PanelEventWaktuController extends BaseController {
 	public function destroy($acara, $waktu)
 	{
 		$waktu->delete();
-		return Redirect::action('panel.event.waktu.index', $acara->kd_acara)->with('message', 'Waktu berhasil dihapus!');
+		return Redirect::action('panel.event.waktu.index', $acara->kd_acara)->with('success', 'Waktu berhasil dihapus!');
 	}
 
 }

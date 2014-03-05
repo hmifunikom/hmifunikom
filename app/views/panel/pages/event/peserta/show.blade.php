@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col-md-3 qr-col">
                 <img src="{{ asset('media/qr/'.$peserta->ticket.'.jpg') }}" width="100%" />
+                <div class="center">{{ Helper::code($peserta->kode) }}</div>
             </div>
             <div class="col-md-9">
                 <div class="big-title">{{ $acara->nama_acara }}</div>
