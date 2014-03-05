@@ -86,6 +86,14 @@ class Helper {
         }
     }
 
+    public static function active_qs($field, $value, $class = true)
+    {   
+        if(\Input::has($field) && \Input::get($field) == $value)
+        {
+            return ($class) ? 'class="active"' : 'active';
+        }
+    }    
+
     /*
     |--------------------------------------------------------------------------
     | Former Helper

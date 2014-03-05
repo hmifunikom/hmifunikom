@@ -25,6 +25,30 @@ class EloquentPesertaRepo implements PesertaRepo {
                ->paginate($this->per_page);
     }
 
+    public function findByAcaraSearch($kd_acara, $search)
+    {
+        return Peserta::where('kd_acara', '=', $kd_acara)
+               ->where('nama_peserta', 'LIKE', '%'.$search.'%')
+               ->orwhere('kode', '=', $search)
+               ->orwhere('nim', 'LIKE', '%'.$search.'%')
+               ->orderBy('id_peserta', 'desc')
+               ->paginate($this->per_page);
+    }
+
+    public function findByAcaraKategori($kd_acara, $kategori)
+    {
+        return Peserta::where('kd_acara', '=', $kd_acara)
+               ->where('kategori', '=', $kategori)
+               ->paginate($this->per_page);
+    }
+
+    public function findByAcaraBayar($kd_acara, $pay)
+    {
+        return Peserta::where('kd_acara', '=', $kd_acara)
+               ->where('bayar', '=', $pay)
+               ->paginate($this->per_page);
+    }
+
     public function findByAcara($kd_acara)
     {
         return Peserta::where('kd_acara', '=', $kd_acara)

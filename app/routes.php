@@ -85,6 +85,7 @@ Route::group(array('prefix' => 'panel', 'before' => 'auth|norole:publik'), funct
     Route::resource('event.div', 'PanelEventDivisiController');
     Route::resource('event.panitia', 'PanelEventPanitiaController');
     Route::resource('event.peserta', 'PanelEventPesertaController');
+    Route::get('event/{event}/peserta/{peserta}/pay', array('uses' => 'PanelEventPesertaController@pay', 'as' => 'panel.event.peserta.pay'));
 
     Route::resource('arsip', 'PanelArsipController');
 

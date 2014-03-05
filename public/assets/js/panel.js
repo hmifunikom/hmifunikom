@@ -7,4 +7,5 @@ $(function(){
         if(conf) return true;
         e.preventDefault();
     });
+    $('.js-tooltip').tooltip();
 });

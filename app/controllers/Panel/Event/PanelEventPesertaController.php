@@ -16,7 +16,15 @@ class PanelEventPesertaController extends BaseController {
 	 */
 	public function index($acara)
 	{
-		$peserta = $this->peserta->findByAcara($acara->kd_acara);
+		if(Input::has('s'))
+			$peserta = $this->peserta->findByAcaraSearch($acara->kd_acara, Input::get('s'));
+		else if(Input::has('pay'))
+			$peserta = $this->peserta->findByAcaraBayar($acara->kd_acara, Input::get('pay'));
+		else if(Input::has('cat'))
+			$peserta = $this->peserta->findByAcaraKategori($acara->kd_acara, Input::get('cat'));
+		else
+			$peserta = $this->peserta->findByAcara($acara->kd_acara);
+
 		return View::make('panel.pages.event.peserta.index')->with(array('acara' => $acara, 'listpeserta' => $peserta));
 	}
 
@@ -28,7 +36,7 @@ class PanelEventPesertaController extends BaseController {
 	public function create($acara)
 	{
 		$peserta = new Peserta;
-		$html = View::make('panel.pages.event.peserta.form')->with(array('method' => 'create', 'acara' => $acara, 'peserta' => $peserta))->render();
+		return View::make('panel.pages.event.peserta.form')->with(array('method' => 'create', 'acara' => $acara, 'peserta' => $peserta));
 	}
 
 	/**
@@ -137,4 +145,23 @@ class PanelEventPesertaController extends BaseController {
 		return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('success', 'Peserta berhasil dihapus!');
 	}
 
+	public function pay($acara, $peserta)
+	{
+		if($peserta->bayar == 0)
+		{
+			$peserta->bayar = 1;
+			$status = "sudah";
+		}
+		else
+		{
+			$peserta->bayar = 0;
+			$status = "belum";
+		}
+
+		if ($peserta->save()) {
+            return Redirect::back()->with('success', 'Peserta '.$status.' membayar!');
+        } else {
+            return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
+        }
+	}
 }
