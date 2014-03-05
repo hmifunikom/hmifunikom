@@ -36,10 +36,29 @@ class EventBookController extends BaseController {
 		$peserta = new Peserta();
 		$peserta->tgl_daftar = Carbon::now()->toDateString();
 		$peserta->ticket = str_random(rand(40,50));
+
+		switch(Input::get('kategori'))
+		{
+			case 'unikom':
+				if($acara->sisa_kuota_unikom() <= 0)
+					return Redirect::action('event.book.create', $acara->slug)->withErrors($peserta->errors())->with('danger', 'Maaf, kuota untuk kategori unikom telah habis')->withInput();
+				break;
+
+			case 'luar':
+				if($acara->sisa_kuota_umum() <= 0)
+					return Redirect::action('event.book.create', $acara->slug)->withErrors($peserta->errors())->with('danger', 'Maaf, kuota untuk kategori umum telah habis')->withInput();
+
+				break;
+
+			default:
+				return Redirect::action('event.book.create', $acara->slug)->withErrors($peserta->errors())->with('danger', 'Kategori peserta tidak valid!')->withInput();
+				break;
+		}
+
 		if ($acara->peserta()->save($peserta)) {
-            return Redirect::action('event.book.show', array($acara->kd_acara, $peserta->ticket))->with('success', 'Berhasil! Silahkan cetak tiket di bawah ini.');
+            return Redirect::action('event.book.show', array($acara->slug, $peserta->ticket))->with('success', 'Berhasil! Silahkan cetak tiket di bawah ini.');
         } else {
-            return Redirect::action('event.book.create', $acara->kd_acara)->withErrors($peserta->errors())->with('alert', 'Harap perbaiki kesalahan di bawah!');
+            return Redirect::action('event.book.create', $acara->slug)->withErrors($peserta->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
         }
 	}
 }

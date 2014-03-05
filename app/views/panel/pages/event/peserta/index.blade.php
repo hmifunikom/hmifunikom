@@ -18,6 +18,9 @@
     
     @include('includes.alert')
 
+    {{ $acara->sisa_kuota_unikom() }}
+                {{ $acara->sisa_kuota_umum() }}
+
     @if($listpeserta->count())
         {{ Table::striped_open(array('class' => 'table-hover')) }}
         {{ Table::headers('Kode', 'Nama', 'NIM', 'Tgl. Daftar', 'No.Hp', '') }}

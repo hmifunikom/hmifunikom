@@ -28,7 +28,6 @@ class PanelEventPesertaController extends BaseController {
 	public function create($acara)
 	{
 		$peserta = new Peserta;
-		$peserta->ticket = str_random(rand(40,50));
 		return View::make('panel.pages.event.peserta.form')->with(array('method' => 'create', 'acara' => $acara, 'peserta' => $peserta));
 	}
 
@@ -41,10 +40,28 @@ class PanelEventPesertaController extends BaseController {
 	{
 		$peserta = new Peserta();
 		$peserta->ticket = str_random(rand(40,50));
+
+		switch(Input::get('kategori'))
+		{
+			case 'unikom':
+				if($acara->sisa_kuota_unikom() <= 0)
+					return Redirect::action('panel.event.peserta.create', $acara->kd_acara)->withErrors($peserta->errors())->with('danger', 'Maaf, kuota untuk kategori unikom telah habis')->withInput();
+				break;
+
+			case 'luar':
+				if($acara->sisa_kuota_umum() <= 0)
+					return Redirect::action('panel.event.peserta.create', $acara->kd_acara)->withErrors($peserta->errors())->with('danger', 'Maaf, kuota untuk kategori umum telah habis')->withInput();
+
+				break;
+
+			default:
+				return Redirect::action('panel.event.peserta.create', $acara->kd_acara)->withErrors($peserta->errors())->with('danger', 'Kategori peserta tidak valid!')->withInput();
+				break;
+		}
+
 		if ($acara->peserta()->save($peserta)) {
             return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('success', 'Peserta berhasil ditambah!');
         } else {
-        	//die($peserta->errors());
             return Redirect::action('panel.event.peserta.create', $acara->kd_acara)->withErrors($peserta->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
         }
 	}
@@ -80,6 +97,27 @@ class PanelEventPesertaController extends BaseController {
 	 */
 	public function update($acara, $peserta)
 	{
+		if($peserta->kategori != Input::get('kategori'))
+		{
+			switch(Input::get('kategori'))
+			{
+				case 'unikom':
+					if($acara->sisa_kuota_unikom() <= 0)
+						return Redirect::action('panel.event.peserta.edit', array($acara->kd_acara, $peserta->id_peserta))->withErrors($peserta->errors())->with('danger', 'Maaf, kuota untuk kategori unikom telah habis')->withInput();
+					break;
+
+				case 'luar':
+					if($acara->sisa_kuota_umum() <= 0)
+						return Redirect::action('panel.event.peserta.edit', array($acara->kd_acara, $peserta->id_peserta))->withErrors($peserta->errors())->with('danger', 'Maaf, kuota untuk kategori umum telah habis')->withInput();
+
+					break;
+
+				default:
+					return Redirect::action('panel.event.peserta.edit', array($acara->kd_acara, $peserta->id_peserta))->withErrors($peserta->errors())->with('danger', 'Kategori peserta tidak valid!')->withInput();
+					break;
+			}
+		}
+
 		if ($peserta->save()) {
             return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('success', 'Peserta berhasil diubah!');
         } else {

@@ -14,35 +14,39 @@
     }}
 
 
-    @include('includes.alert')
-    
-    {{
-        ($method == 'edit')
-        ?   Former::open()
-            ->route('panel.event.peserta.update', array($acara->kd_acara, $peserta->id_peserta))
-        :   Former::open()
-            ->route('panel.event.peserta.store', $acara->kd_acara)
-    }}
-    {{ ($method == 'edit') ? Former::populate( $peserta ) : false}}
-        {{ Former::text('nama_peserta') }}
-        {{ Former::text('alamat') }}
-        <?php
-            $kategori = array(
-                'unikom' => 'Unikom',
-                'luar'   => 'Umum',
-            )
-        ?>
-        {{ 
-            Former::select('kategori')->options($kategori)
-        }}
+    @if(($acara->sisa_kuota_unikom() > 0 OR $acara->sisa_kuota_umum() > 0) OR $method == 'edit')
+        @include('includes.alert')
+        
         {{
             ($method == 'edit')
-            ?   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($acara->tgl->toDateString()) 
-            :   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->value(Carbon::now()->toDateString())
+            ?   Former::open()
+                ->route('panel.event.peserta.update', array($acara->kd_acara, $peserta->id_peserta))
+            :   Former::open()
+                ->route('panel.event.peserta.store', $acara->kd_acara)
         }}
-        {{ Former::text('nim')}}
-        {{ Former::text('no_hp')}}
-        {{ Former::text('email')}}
-        {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
-    {{ Former::close() }}
+        {{ ($method == 'edit') ? Former::populate( $peserta ) : false}}
+            {{ Former::text('nama_peserta') }}
+            {{ Former::text('alamat') }}
+            <?php
+                $kategori = array(
+                    'unikom' => 'Unikom (sisa '. $acara->sisa_kuota_unikom().')',
+                    'luar'   => 'Umum (sisa '. $acara->sisa_kuota_umum() .')',
+                )
+            ?>
+            {{ 
+                Former::select('kategori')->options($kategori)
+            }}
+            {{
+                ($method == 'edit')
+                ?   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($acara->tgl->toDateString()) 
+                :   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->value(Carbon::now()->toDateString())
+            }}
+            {{ Former::text('nim')}}
+            {{ Former::text('no_hp')}}
+            {{ Former::text('email')}}
+            {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
+        {{ Former::close() }}
+    @else
+        <div class="big-title center">Maaf, tiket sudah habis.</div>
+    @endif
 @stop

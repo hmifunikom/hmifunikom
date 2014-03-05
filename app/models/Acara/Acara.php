@@ -61,4 +61,14 @@ class Acara extends Ardent implements SluggableInterface {
     {
         return 'slug';
     }
+
+    public function sisa_kuota_unikom()
+    {
+        return $this->kuota_unikom - $this->peserta()->where('kategori', '=', 'unikom')->count();
+    }
+
+    public function sisa_kuota_umum()
+    {
+        return $this->kuota_umum - $this->peserta()->where('kategori', '=', 'luar')->count();
+    }
 }

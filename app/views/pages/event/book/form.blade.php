@@ -18,35 +18,38 @@
 
             <h2>Pesan tiket</h2>
 
-            @if(Session::has('alert'))
-                {{ Alert::danger(Session::get('alert')) }}
-            @endif
-            {{
-                Former::open()
-                    ->route('event.book.store', $acara->kd_acara)
-            }}
-                <div class="form-group">
-                    <label class="control-label col-lg-2 col-sm-4">Acara</label>
-                    <div class="col-lg-10 col-sm-8">
-                        <p class="form-control-static">{{ $acara->nama_acara }}</p>
-                    </div>
-                </div>
-                {{ Former::text('nama_peserta') }}
-                {{ Former::text('alamat') }}
-                <?php
-                    $clients = array(
-                        'unikom' => 'Unikom',
-                        'luar'   => 'Umum',
-                    )
-                ?>
-                {{ 
-                    Former::select('kategori')->options($clients)
+            @if($acara->sisa_kuota_unikom() > 0 OR $acara->sisa_kuota_umum() > 0)
+                @include('includes.alert')
+
+                {{
+                    Former::open()
+                        ->route('event.book.store', $acara->kd_acara)
                 }}
-                {{ Former::text('nim')}}
-                {{ Former::text('no_hp')}}
-                {{ Former::text('email')}}
-                {{ Former::actions( Button::primary_submit('Pesan'), Button::reset('Reset') ) }}
-            {{ Former::close() }}
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 col-sm-4">Acara</label>
+                        <div class="col-lg-10 col-sm-8">
+                            <p class="form-control-static">{{ $acara->nama_acara }}</p>
+                        </div>
+                    </div>
+                    {{ Former::text('nama_peserta') }}
+                    {{ Former::text('alamat') }}
+                    <?php
+                        $kategori = array(
+                            'unikom' => 'Unikom (sisa '. $acara->sisa_kuota_unikom().')',
+                            'luar'   => 'Umum (sisa '. $acara->sisa_kuota_umum() .')',
+                        )
+                    ?>
+                    {{ 
+                        Former::select('kategori')->options($kategori)
+                    }}
+                    {{ Former::text('nim')}}
+                    {{ Former::text('no_hp')}}
+                    {{ Former::text('email')}}
+                    {{ Former::actions( Button::primary_submit('Pesan'), Button::reset('Reset') ) }}
+                {{ Former::close() }}
+            @else
+                <div class="big-title center">Maaf, tiket sudah habis.</div>
+            @endif
         </div>
     </div>
 @stop
