@@ -1,7 +1,7 @@
 <html>
 <head>
     
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/ticket.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container">
