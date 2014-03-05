@@ -14,15 +14,23 @@
         <div class="container">
             @include('includes.alert')
 
-            {{
-                Button::lg_link(URL::route('event.show', $acara->slug), '&laquo Kembali')
-            }}
-
+            <div class="row">
+                <div class="col-md-6">
+                    {{
+                        Button::lg_link(URL::route('event.show', $acara->slug), '&laquo Kembali')
+                    }}
+                </div>
+                <div class="col-md-6 right">
+                    {{
+                        Button::lg_primary_link(URL::route('event.book.download', array($acara->slug, $ticket->ticket)), Helper::fa('download').' Download Tiket')
+                    }}
+                </div>
+            </div>
             <div class="ticket">
                 <div class="row">
                     <div class="col-md-3 qr-col">
                         <img src="{{ asset('media/qr/'.$ticket->ticket.'.jpg') }}" width="100%" />
-                        <div class="center">{{ Helper::code($ticket->kode) }}</div>
+                        <div class="center"><strong>{{ Helper::code($ticket->kode) }}</strong></div>
                     </div>
                     <div class="col-md-9">
                         <div class="big-title">{{ $acara->nama_acara }}</div>

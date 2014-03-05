@@ -47,6 +47,7 @@ Route::resource('event', 'EventController',
 Route::get('event/{event}/book', array('uses' => 'EventBookController@create', 'as' => 'event.book.create'));
 Route::post('event/{event}/book', array('uses' => 'EventBookController@store', 'as' => 'event.book.store'));
 Route::get('event/{event}/book/{ticket}', array('uses' => 'EventBookController@show', 'as' => 'event.book.show'));
+Route::get('event/{event}/book/{ticket}/download', array('uses' => 'EventBookController@download', 'as' => 'event.book.download'));
 
 Route::resource('keanggotaan', 'KeanggotaanController',
                 array('only' => array('index', 'show')));

@@ -24,7 +24,8 @@
 		"cviebrock/eloquent-sluggable": "dev-develop",
 		"erusev/parsedown": "dev-master",
 		"endroid/qrcode": "1.*@dev",
-		"sabre/vobject": "3.2.*@dev"
+		"sabre/vobject": "3.2.*@dev",
+		"thujohn/pdf": "dev-master"
 		
 	},
 	"autoload": {

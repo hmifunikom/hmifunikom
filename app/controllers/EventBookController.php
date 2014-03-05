@@ -20,6 +20,14 @@ class EventBookController extends BaseController {
 		return View::make('pages.event.book.show')->with(array('acara' => $acara, 'ticket' => $ticket));
 	}
 
+	public function download($acara, $ticket)
+	{
+		Helper::createQR($ticket->ticket);
+		$html =  View::make('pages.event.book.ticket')->with(array('acara' => $acara, 'ticket' => $ticket))->render();
+		$filename = Str::slug(Helper::code($ticket->kode).'_'.$acara->nama_acara.'_'.$ticket->nama_peserta);
+		return PDF::load($html, 'A4', 'portrait')->download($filename);
+	}
+
 	public function create($acara)
 	{
 		$peserta = new Peserta;

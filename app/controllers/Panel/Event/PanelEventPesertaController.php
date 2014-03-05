@@ -28,7 +28,7 @@ class PanelEventPesertaController extends BaseController {
 	public function create($acara)
 	{
 		$peserta = new Peserta;
-		return View::make('panel.pages.event.peserta.form')->with(array('method' => 'create', 'acara' => $acara, 'peserta' => $peserta));
+		$html = View::make('panel.pages.event.peserta.form')->with(array('method' => 'create', 'acara' => $acara, 'peserta' => $peserta))->render();
 	}
 
 	/**
