@@ -26,22 +26,17 @@
     }}
     {{ ($method == 'edit') ? Former::populate( $dokumen ) : false}}
         {{ Former::file('file') }}
-        {{
-            ($method == 'edit')
-            ?   Former::text('tgl')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($dokumen->tgl->toDateString()) 
-            :   Former::text('tgl')->class('form-control datepick')->data_date_format("yyyy-mm-dd") 
-        }}
-        {{ Former::text('tempat') }}
-        {{ Former::textarea('info')->data_provide('markdown')->data_iconlibrary("fa") }}
-
-        {{ Former::text('pj') }}
         
-        {{
-            ($method == 'edit')
-            ?   Former::text('tgl_selesai_LPJ')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($dokumen->tgl_selesai_LPJ->toDateString())
-            :   NULL
+        <?php
+            $kategori = array(
+                'lpj' => 'surat',
+                'luar'   => 'Umum',
+            )
+        ?>
+        {{ 
+            Former::select('kategori')->options($kategori)
         }}
-        {{ Former::text('tema') }}
+
         {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
     {{ Former::close() }}
 @stop

@@ -87,7 +87,7 @@ require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------
-| Former default framework
+| Validator file
 |--------------------------------------------------------------------------
 */
-Former::framework('TwitterBootstrap3');
+require app_path().'/validator.php';
