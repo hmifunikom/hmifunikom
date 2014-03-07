@@ -504,12 +504,9 @@ Sidebar toggler
             padding-top:10px !important;
             padding-bottom:10px !important;
 
-            .copyright {
-                margin-bottom: 30px;
-                @media (min-width:992px) {
-                    margin-bottom: 0;
-                }
-
+            .copyright, .sponsor {
+                margin-bottom: 0;
+                
                 img, span {
                     display:block;
                 }
@@ -520,15 +517,20 @@ Sidebar toggler
                 }
 
                 span {
-                    text-align: center;
+                    text-align: left;
                     text-transform: uppercase;
                     .bitter(12px);
-
-                    @media (min-width:992px) {
-                        text-align: left;
-                    }
-
                 }
+            }
+
+            .sponsor {
+              img {
+                    margin:0 0 0 15px;
+                    height: 36px;
+              }
+              span {
+                text-align: right;
+              }
             }
         }
     }

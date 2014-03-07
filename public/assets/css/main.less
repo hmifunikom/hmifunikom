@@ -664,12 +664,17 @@ footer {
             }
         }
 
-        .social {
+        .sponsor {
+            margin-bottom: 30px;
+            @media (min-width:992px) {
+                margin-bottom: 0;
+            }
+        }
+
+        .social, .sponsor {
             .title, .link {
                 text-align: center;
-                @media (min-width:992px) {
-                    text-align: right;
-                }
+                
             }
 
             .title {
@@ -684,7 +689,7 @@ footer {
                 div {
                     margin-bottom:5px;
                     a {
-                        .raleway(14px);
+                        .raleway(12px);
 
                         .name {
                             display: inline-block;

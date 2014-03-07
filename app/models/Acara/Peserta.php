@@ -37,15 +37,20 @@ class Peserta extends Ardent implements SluggableInterface {
 
     public function beforeValidate()
     {
-        $result = DB::select('SELECT kode FROM peserta WHERE kd_acara = ? ORDER BY kode DESC LIMIT 1', array($this->kd_acara));
+        $exist = $this->find($this->id_peserta);
 
-        if($result)
+        if(! $exist)
         {
-            $this->kode = $result[0]->kode + 1;
-        }
-        else
-        {
-            $this->kode = 1;
+            $result = DB::select('SELECT kode FROM peserta WHERE kd_acara = ? ORDER BY kode DESC LIMIT 1', array($this->kd_acara));
+
+            if($result)
+            {
+                $this->kode = $result[0]->kode + 1;
+            }
+            else
+            {
+                $this->kode = 1;
+            }
         }
     }
 }
