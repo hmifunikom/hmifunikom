@@ -81,6 +81,8 @@ Route::group(array('prefix' => 'panel', 'before' => 'auth|norole:publik'), funct
     Route::resource('keanggotaan/divisi', 'PanelKeanggotaanDivisiController');
 
     Route::resource('event', 'PanelEventController');
+    Route::post('event/{event}/poster', array('uses' => 'PanelEventController@posterStore', 'as' => 'panel.event.poster.store'));
+    Route::delete('event/{event}/poster', array('uses' => 'PanelEventController@posterDelete', 'as' => 'panel.event.poster.destroy'));
     Route::resource('event.waktu', 'PanelEventWaktuController');
     Route::resource('event.div', 'PanelEventDivisiController');
     Route::resource('event.panitia', 'PanelEventPanitiaController');

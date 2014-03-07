@@ -31,7 +31,7 @@ class EventController extends BaseController {
 		$acara = $this->acara->findByMonth($date);
 		$total = $this->acara->findByYear($date)->getTotal();
 
-		return View::make('pages.event.index')->with(array('date' => $date, 'listacara' => $acara, 'total' => $total));
+		return View::make('pages.event.index')->with(array('pagetitle' => 'Event' , 'date' => $date, 'listacara' => $acara, 'total' => $total));
 	}
 
 	/**
@@ -42,6 +42,6 @@ class EventController extends BaseController {
 	 */
 	public function show(Acara $acara)
 	{
-		return View::make('pages.event.item')->with(array('acara' => $acara));
+		return View::make('pages.event.item')->with(array('pagetitle' => $acara->nama_acara, 'acara' => $acara));
 	}
 }

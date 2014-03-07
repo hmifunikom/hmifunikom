@@ -5,7 +5,11 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="favicon.ico">
 
+@if(isset($pagetitle))
+<title>{{ $pagetitle }} - HMIF Unikom</title>
+@else
 <title>HMIF Unikom</title>
+@endif
 
 <!-- Bootstrap core CSS -->
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">

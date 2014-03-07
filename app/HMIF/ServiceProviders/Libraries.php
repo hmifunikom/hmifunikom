@@ -8,7 +8,8 @@ class Libraries extends ServiceProvider {
     {
         $namespace = 'HMIF\\Libraries\\';
         $list = array(
-            'Helper'
+            'Helper',
+            'ImageManipulation'
         );
 
         $this->app->booting(function() use ($namespace, $list)

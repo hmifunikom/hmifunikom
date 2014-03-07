@@ -11,7 +11,6 @@
 		"patricktalmadge/bootstrapper": "dev-develop",
 		"emberlabs/gravatarlib": "dev-master@dev",
 		"thomaswelton/laravel-gravatar": "dev-master",
-		"kriswallsmith/assetic": "1.1.*@dev",
 		"leafo/lessphp": "0.4.*@dev",
 		"ptachoire/cssembed": "dev-master",
 		"patchwork/jsqueeze": "dev-master",
@@ -25,7 +24,8 @@
 		"erusev/parsedown": "dev-master",
 		"endroid/qrcode": "1.*@dev",
 		"sabre/vobject": "3.2.*@dev",
-		"thujohn/pdf": "dev-master"
+		"thujohn/pdf": "dev-master",
+		"maatwebsite/excel": "dev-master"
 		
 	},
 	"autoload": {

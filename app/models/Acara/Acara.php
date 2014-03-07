@@ -10,6 +10,7 @@ class Acara extends Ardent implements SluggableInterface {
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
 
+    protected $fillable = array('nama_acara', 'tgl', 'tempat', 'info', 'pj', 'tgl_selesai_LPJ', 'tema', 'poster');
 	protected $guarded = array('kd_acara');
 
 	public static $rules = array(

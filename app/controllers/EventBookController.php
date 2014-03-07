@@ -17,7 +17,7 @@ class EventBookController extends BaseController {
 	public function show($acara, $ticket)
 	{
 		Helper::createQR($ticket->ticket);
-		return View::make('pages.event.book.show')->with(array('acara' => $acara, 'ticket' => $ticket));
+		return View::make('pages.event.book.show')->with(array('pagetitle' => 'Tiket - '.$acara->nama_acara, 'acara' => $acara, 'ticket' => $ticket));
 	}
 
 	public function download($acara, $ticket)
@@ -31,7 +31,7 @@ class EventBookController extends BaseController {
 	public function create($acara)
 	{
 		$peserta = new Peserta;
-		return View::make('pages.event.book.form')->with(array('acara' => $acara));
+		return View::make('pages.event.book.form')->with(array('pagetitle' => 'Pesan Tiket - '.$acara->nama_acara, 'acara' => $acara));
 	}
 
 	/**
@@ -44,6 +44,8 @@ class EventBookController extends BaseController {
 		$peserta = new Peserta();
 		$peserta->tgl_daftar = Carbon::now()->toDateString();
 		$peserta->ticket = str_random(rand(40,50));
+
+		$peserta->validate();
 
 		switch(Input::get('kategori'))
 		{

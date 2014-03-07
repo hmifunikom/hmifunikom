@@ -97,4 +97,43 @@ class PanelEventController extends BaseController {
 		return Redirect::action('panel.event.index')->with('success', 'Acara berhasil dihapus!');
 	}
 
+	public function posterStore($acara)
+	{
+		$filename = Str::slug($acara->nama_acara);
+		$img = new ImageManipulation('posterupload', $filename);
+		
+		if($img->isUploaded())
+		{
+			$img->resize();
+			$img->thumb();
+
+			if($acara->poster)
+			{
+				Helper::deleteMedia($acara->poster);
+			}
+
+			$acara->poster = $img->getFileName();
+
+			if ($acara->save()) {
+	            return Redirect::action('panel.event.show', $acara->kd_acara)->with('success', 'Poster berhasil disimpan!');
+	        } else {
+	            return Redirect::action('panel.event.show', $acara->kd_acara)->with('danger', 'Poster gagal disimpan!');
+	        }
+        } else {
+            return Redirect::action('panel.event.show', $acara->kd_acara)->with('danger', 'Poster gagal diunggah!');
+        }
+	}
+
+	public function posterDelete($acara)
+	{
+		Helper::deleteMedia($acara->poster);
+
+		$acara->poster = null;
+
+		if ($acara->save()) {
+            return Redirect::action('panel.event.show', $acara->kd_acara)->with('success', 'Poster berhasil dihapus!');
+        } else {
+            return Redirect::action('panel.event.show', $acara->kd_acara)->with('danger', 'Poster gagal dihapus!');
+        }
+	}
 }

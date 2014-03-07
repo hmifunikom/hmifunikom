@@ -40,8 +40,6 @@ $(function(){
         }
     });
 
-    makeCalendar();
-
     $('.js-event-toggle-type .btn').on('click', function(){
         var active_class = $(this).find('input').val();
         
@@ -50,4 +48,24 @@ $(function(){
         e_active.siblings().hide();
 
     });
+
+    setTimeout(function() {
+        var ic_h = $('.info-container').height();
+        var dc_h = $('.detail-container').height();
+
+        if(dc_h > ic_h) {
+            $('.js-affix').affix({
+                offset: {
+                    top: function () {
+                        return this.top = $('.js-affix-top').offset().top;
+                    },
+                    bottom: function () {
+                        return this.bottom = $("footer").outerHeight(!0) + $(".tagline-hmif").outerHeight(!0) + 100;
+                    }
+                }
+            });
+        }
+    }, 100);
+
+    makeCalendar();
 });

@@ -105,6 +105,12 @@ class Helper {
         \Config::set('former::'.$key, $value);
     }}
 
+    /*
+    |--------------------------------------------------------------------------
+    | Media Helper
+    |--------------------------------------------------------------------------
+    */
+
     public static function createQR($text)
     {
         $qrCode = new \Endroid\QrCode\QrCode();
@@ -112,5 +118,11 @@ class Helper {
         $qrCode->setSize(300);
         $qrCode->setPadding(10);
         $qrCode->render('media/qr/'.$text.'.jpg');
+    }
+
+    public static function deleteMedia($file)
+    {
+        \File::delete(public_path().'/media/images/'.$file);
+        \File::delete(public_path().'/media/thumbs/'.$file);
     }
 }
