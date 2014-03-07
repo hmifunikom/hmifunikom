@@ -53,7 +53,11 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+
+    if (!Config::get('app.debug')) {
+        return Response::view('pages.errors.500', array('pagetitle' => 'Terjadi kesalahan pada sistem'), 500);
+    }
 });
 
 /*
@@ -69,7 +73,7 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return Response::view('pages.errors.down', array('pagetitle' => 'Sedang dalam perbaikan'), 503);
 });
 
 /*
