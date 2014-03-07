@@ -52,23 +52,6 @@
 
             <div class="event-view">
                 <div id='calendar' class="calendar"></div>
-                <script>
-                    function makeCalendar() {
-                        $('#calendar').fullCalendar({
-                            header : false,
-                            month : {{{ $date->month-1 }}},                        
-                            events: [
-                                @foreach($listacara as $acara)
-                                {
-                                    title: '{{{$acara->nama_acara}}}',
-                                    start: new Date({{{$acara->tgl->year}}}, {{{$acara->tgl->month-1}}}, {{{$acara->tgl->day}}}),
-                                    url  : '{{ route('event.show', $acara->slug) }}'
-                                },
-                                @endforeach
-                            ]
-                        });
-                    }
-                </script>
 
                 <div class="event-list-container unvisible">
                 @foreach($listacara as $acara)
@@ -110,4 +93,22 @@
 
 @section('tagline')
     @include('includes.tagline', array('invert' => true))
+@stop
+
+@section('javascript')
+<script>
+$('#calendar').fullCalendar({
+    header : false,
+    month : {{{ $date->month-1 }}},                        
+    events: [
+        @foreach($listacara as $acara)
+        {
+            title: '{{{$acara->nama_acara}}}',
+            start: new Date({{{$acara->tgl->year}}}, {{{$acara->tgl->month-1}}}, {{{$acara->tgl->day}}}),
+            url  : '{{ route('event.show', $acara->slug) }}'
+        },
+        @endforeach
+    ]
+});
+</script>
 @stop
