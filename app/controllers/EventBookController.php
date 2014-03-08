@@ -27,6 +27,14 @@ class EventBookController extends BaseController {
 		$filename = Str::slug(Helper::code($ticket->kode).'_'.$acara->nama_acara.'_'.$ticket->nama_peserta);
 		return PDF::load($html, 'A4', 'portrait')->download($filename);
 	}
+	
+	public function email($acara, $peserta)
+	{
+	Mail::send('emails.event.ticket', array('acara' => $acara, 'ticket' => $peserta), function($message) use ($acara, $peserta){
+	    $message->to($peserta->email, $peserta->nama_peserta)->subject('[TIKET] '.$acara->nama_acara.' - HMIF Unikom');
+	});
+	return Redirect::action('event.book.show', array($acara->slug, $peserta->ticket))->with('success', 'Berhasil! Silahkan download dan cetak tiket dan bawa ketika melakukan pembayaran.');
+	}
 
 	public function create($acara)
 	{
@@ -66,7 +74,14 @@ class EventBookController extends BaseController {
 		}
 
 		if ($acara->peserta()->save($peserta)) {
-            return Redirect::action('event.book.show', array($acara->slug, $peserta->ticket))->with('success', 'Berhasil! Silahkan cetak tiket di bawah ini.');
+		
+		if($peserta->email) {
+			Mail::send('emails.event.ticket', array('acara' => $acara, 'ticket' => $peserta), function($message) use ($acara, $peserta){
+			    $message->to($peserta->email, $peserta->nama_peserta)->subject('[TIKET] '.$acara->nama_acara.' - HMIF Unikom');
+			});
+		}
+		
+            return Redirect::action('event.book.show', array($acara->slug, $peserta->ticket))->with('success', 'Berhasil! Silahkan download dan cetak tiket dan bawa ketika melakukan pembayaran.');
         } else {
             return Redirect::action('event.book.create', $acara->slug)->withErrors($peserta->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
         }

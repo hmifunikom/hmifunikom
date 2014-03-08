@@ -31,8 +31,8 @@ function route_resource($resource, $controller, $suffix_name = '')
     $urlitem = implode('/', $url).'/'.$path.'/{'.$path.'}';
 
     Route::get($urllist,                           array( 'as' => $suffix_name.$resource.'.index', 'uses' => $controller . '@index' ));
-    Route::get($urlitem,        array( 'as' => $suffix_name.$resource.'.show', 'uses' => $controller . '@show' ));
     Route::get($urllist.'/create',                 array( 'as' => $suffix_name.$resource.'.create', 'uses' => $controller . '@create' ));
+    Route::get($urlitem,        array( 'as' => $suffix_name.$resource.'.show', 'uses' => $controller . '@show' ));
     Route::post($urllist,                          array( 'as' => $suffix_name.$resource.'.store', 'uses' => $controller . '@store'));
     Route::get($urlitem.'/edit',   array( 'as' => $suffix_name.$resource.'.edit', 'uses' => $controller . '@edit' ));
     Route::put($urlitem,        array( 'as' => $suffix_name.$resource.'.update', 'uses' => $controller . '@update' ));
@@ -139,6 +139,10 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     {
         @unlink(storage_path().'/meta/my.down');
     });
+});
+Route::group(array('prefix' => 'panel', 'before' => 'auth|norole:publik'), function()
+{
+    Route::resource('event.waktu', 'PanelEventWaktuController');
 });
 
 Route::when('*', 'csrf', array('post', 'put', 'patch'));

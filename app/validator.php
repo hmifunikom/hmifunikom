@@ -1,6 +1,6 @@
 <?php
 
-class NimValidator extends \Illuminate\Validation\Validator {
+class HMIFValidator extends \Illuminate\Validation\Validator {
 
     public function validateNim($attribute, $value, $parameters)
     {
@@ -112,9 +112,35 @@ class NimValidator extends \Illuminate\Validation\Validator {
 
         return TRUE;
     }
+
+    public function validateUniqueIf($attribute, $value, $parameters)
+    {
+        $table = $parameters[0];
+        $field = $parameters[1];
+        $field_name = $parameters[2];
+        $field_value = $parameters[3];
+
+        if ($field_value == array_get($this->data, $field_name))
+        {
+            return TRUE;
+        }
+        else
+        {
+            $result = DB::select('SELECT * FROM '.$table.' WHERE '.$attribute.' = '.$value.' AND '.$field.' = \''.array_get($this->data, $field).'\'');
+
+            if($result)
+            {
+                return FALSE;
+            }
+            else
+            {
+                return TRUE;
+            }       
+        }
+    }
 }
 
 Validator::resolver(function($translator, $data, $rules, $messages)
 {
-    return new NimValidator($translator, $data, $rules, $messages);
+    return new HMIFValidator($translator, $data, $rules, $messages);
 });

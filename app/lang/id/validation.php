@@ -71,6 +71,7 @@ return array(
     "url"              => "Format isian :attribute tidak sah.",
     "nim"              => "Format NIM tidak valid.",
     "nim_if"              => "Format NIM tidak valid.",
+    "unique_if"           => "Isian :attribute sudah ada sebelumnya.",
 
     /*
     |--------------------------------------------------------------------------

@@ -20,7 +20,7 @@ class Peserta extends Ardent implements SluggableInterface {
         'kategori'     => 'required',
         'kd_acara'     => 'required',
         'tgl_daftar'   => 'required|date',
-        'nim'          => 'required_if:kategori,unikom|numeric|nim_if:kategori,unikom',
+        'nim'          => 'required_if:kategori,unikom|numeric|nim_if:kategori,unikom|unique_if:peserta,kd_acara,kategori,luar',
         'no_hp'        => 'required|numeric',
         'email'        => 'email',
     );
