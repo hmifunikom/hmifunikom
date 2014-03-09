@@ -11,7 +11,15 @@
 |
 */
 
-$domain = '.localhmifunikom.com';
+if(App::environment('production'))
+{
+    $domain = '.hmifunikom.org';
+}
+else
+{
+    $domain = '.localhmifunikom.com';   
+}
+
 
 function route_resource($resource, $controller, $suffix_name = '')
 {
