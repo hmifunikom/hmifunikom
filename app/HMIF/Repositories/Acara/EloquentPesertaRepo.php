@@ -39,6 +39,7 @@ class EloquentPesertaRepo implements PesertaRepo {
     {
         return Peserta::where('kd_acara', '=', $kd_acara)
                ->where('kategori', '=', $kategori)
+               ->orderBy('id_peserta', 'desc')
                ->paginate($this->per_page);
     }
 
@@ -46,6 +47,7 @@ class EloquentPesertaRepo implements PesertaRepo {
     {
         return Peserta::where('kd_acara', '=', $kd_acara)
                ->where('bayar', '=', $pay)
+               ->orderBy('id_peserta', 'desc')
                ->paginate($this->per_page);
     }
 

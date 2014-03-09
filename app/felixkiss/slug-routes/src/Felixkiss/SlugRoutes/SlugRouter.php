@@ -16,8 +16,6 @@ class SlugRouter extends Router
             // throw a not found exception otherwise we will return the instance.
             $model = new $class;
 
-            //if($value == 'create') return $model->find(1);
-
             if($forceId === false && $model instanceof SluggableInterface)
             {
                 $model = $model->where($model->getSlugIdentifier(), $value)->first();
