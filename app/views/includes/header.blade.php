@@ -12,8 +12,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li {{ Helper::active('event.index') }} ><a href="{{action('event.index')}}">Event</a></li>
-                <li {{ Helper::active('keanggotaan.index') }}><a href="{{action('keanggotaan.index')}}">Keanggotaan</a></li>
-                <li {{ Helper::active('perpustakaan.index') }}><a href="{{action('perpustakaan.index')}}">Perpustakaan</a></li>
+                <li {{ Helper::active('keanggotaan.index') }}><a href="#">Keanggotaan</a></li>
+                <li {{ Helper::active('perpustakaan.index') }}><a href="#">Perpustakaan</a></li>
             </ul>
         </div><!--/.navbar-collapse -->
     </div>

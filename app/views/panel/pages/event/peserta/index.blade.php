@@ -38,7 +38,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" value="{{ Input::get('s') }}" name="s">
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">{{ Helper::fa('search') }}</button>
+                    <button class="btn btn-primary" type="submit">{{ Helper::fa('search') }}</button>
                 </span>
             </div><!-- /input-group -->
             {{

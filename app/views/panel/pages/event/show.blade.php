@@ -30,6 +30,8 @@
                         'Program Kerja' => $acara->pj,
                         'Tanggal Selesai LPJ' => $acara->tgl_selesai_LPJ->formatLocalized('%d-%B-%Y'),
                         'Tema' => $acara->tema,
+                        'Kuota Unikom' => $acara->kuota_unikom,
+                        'Kuota Umum' => $acara->kuota_umum,
                     )
                 )
             }}

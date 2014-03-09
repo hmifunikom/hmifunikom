@@ -16,9 +16,12 @@
 <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/fullcalendar.css') }}" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link rel="stylesheet/less" type="text/css" href="{{ asset('assets/css/main.less') }}" />
-<script src="{{ asset('assets/js/less-1.6.2.min.js') }}"></script>
+@if(App::environment('production'))
+<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+@endif
+
+<link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.0') }}" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

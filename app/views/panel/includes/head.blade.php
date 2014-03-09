@@ -15,10 +15,8 @@
 <link href="{{ asset('assets/css/bootstrap-markdown.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/fullcalendar.css') }}" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link rel="stylesheet/less" type="text/css" href="{{ asset('assets/css/main.less') }}" />
-<link rel="stylesheet/less" type="text/css" href="{{ asset('assets/css/panel.less') }}" />
-<script src="{{ asset('assets/js/less-1.6.2.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.0') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/panel.min.css?v1.0') }}" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

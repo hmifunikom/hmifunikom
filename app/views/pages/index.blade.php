@@ -7,7 +7,14 @@
     <div class="big-container">
         <div class="container">
             <h2>Siapa Kita?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+            <p>Himpunan Mahasiswa Teknik Informatika atau yang biasa dikenal HMIF adalah organisasi dalam kampus Universitas Kompter Indonesia lingkup Program Studi Teknik Informatika. HMIF berperan sebagai penyalur aspirasi dan event organizer Program Studi Teknik Informatika.
+            <br><br>
+            Sekretariat HMIF: <br>
+            Kampus UNIKOM, Jl. Dipatiukur No.112 R.4416<br>
+            Facebook :<br>
+            <a href='http://www.facebook.com/hmifunikom'>Himpunan Mahasiswa Teknik Informatika Universitas Komputer Indonesia</a><br>
+            Twitter : <br>
+            <a href='http://www.twitter.com/hmifunikom'>@hmifunikom </a>  </p>
         </div>
     </div>
 
@@ -18,12 +25,17 @@
                     <div class="col-md-8 col-md-offset-4 right">
                         <h2>The Leader</h2>
                         <h3>Muhammad Iqbal Muhyiddin</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum</p>
+                        <p></p>
                         <p><span class="subtext-big">VISI</span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.</p>
+                            1. Menjadikan Teknik Informatika UNIKOM unggul dalam prestasi dan kewirausahaan.<br>
+                            2. Mengembangkan potensi mahasiswa/i Teknik Informatika dari segi keilmuan, kejasmanian, keagamaan dan sosial dengan cara mensinergikan keluarga besar Teknik Informatika.<br>
+                            </p>
 
                         <p><span class="subtext-big">MISI</span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.</p>
+                            1. Membentuk tim khusus untuk perlombaan - perlombaan.<br>
+                            2. Memfasilitasi mahasiswa/i Teknik Informatika untuk mengembangkan usaha.<br>
+                            3. Mengadakan kegiatan - kegiatan kejasmanian, keilmuan, sosial dan keagamaan.<br>
+                            4. Menjadikan Himpunan Mahasiswa Teknik Informatika sebagai wadah kegiatan dan penyaluran aspirasi, minat dan bakat mahasiswa Teknik Informatika.</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +88,7 @@
                 <h2>Perpustakaan</h2>
             </div>
 
-            <div class="row book-list jcarousel">
+            <!-- div class="row book-list jcarousel">
                 <div class="book-rail">
                     <div class="col-md-4 book-container">
                         <div class="cover">
@@ -120,10 +132,11 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            </div>
-            <p class="jcarousel-pagination"></p>
+            </div-->
+            <!-- p class="jcarousel-pagination"></p-->
 
-            <a href="#" role="button">Lihat Buku Lainnya &raquo;</a></p>
+            <!--a href="#" role="button">Lihat Buku Lainnya &raquo;</a></p-->
+            <div class="big-title center">Cooming Soon</div>
         </div>
     </div>
 

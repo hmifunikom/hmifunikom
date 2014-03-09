@@ -44,6 +44,8 @@
             :   NULL
         }}
         {{ Former::text('tema') }}
+        {{ Former::text('kuota_unikom') }}
+        {{ Former::text('kuota_umum') }}
         {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
     {{ Former::close() }}
 @stop
