@@ -67,6 +67,16 @@ Route::pattern('keanggotaan', '\d+');
 |--------------------------------------------------------------------------
 */
 
+Route::get('kok', function() 
+{
+    Excel::create('ExcelName')
+        ->sheet('SheetName')
+            ->with(array('data', 'data'))
+        ->sheet('SheetName')
+            ->with(array('data', 'data'))
+        ->export('xls');
+});
+
 Route::group(array('domain' => 'www'.$domain), function()
 {
     Route::get('/', array('uses' => 'HomeController@index', 'as' => 'index'));

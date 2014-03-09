@@ -7,7 +7,7 @@ composer.lock
 .DS_Store
 Thumbs.db
 /dump
-
+/public_html/media
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
