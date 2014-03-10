@@ -38,13 +38,15 @@ function route_resource($resource, $controller, $suffix_name = '')
     $urllist = implode('/', $url).'/'.$path;
     $urlitem = implode('/', $url).'/'.$path.'/{'.$path.'}';
 
-    Route::get($urllist,                           array( 'as' => $suffix_name.$resource.'.index', 'uses' => $controller . '@index' ));
-    Route::get($urllist.'/create',                 array( 'as' => $suffix_name.$resource.'.create', 'uses' => $controller . '@create' ));
-    Route::get($urlitem,        array( 'as' => $suffix_name.$resource.'.show', 'uses' => $controller . '@show' ));
-    Route::post($urllist,                          array( 'as' => $suffix_name.$resource.'.store', 'uses' => $controller . '@store'));
-    Route::get($urlitem.'/edit',   array( 'as' => $suffix_name.$resource.'.edit', 'uses' => $controller . '@edit' ));
-    Route::put($urlitem,        array( 'as' => $suffix_name.$resource.'.update', 'uses' => $controller . '@update' ));
-    Route::delete($urlitem,     array( 'as' => $suffix_name.$resource.'.destroy', 'uses' => $controller . '@destroy' ));
+    $routename = str_replace('/', '.', $resource);
+
+    Route::get($urllist,                           array( 'as' => $suffix_name.$routename.'.index', 'uses' => $controller . '@index' ));
+    Route::get($urllist.'/create',                 array( 'as' => $suffix_name.$routename.'.create', 'uses' => $controller . '@create' ));
+    Route::get($urlitem,        array( 'as' => $suffix_name.$routename.'.show', 'uses' => $controller . '@show' ));
+    Route::post($urllist,                          array( 'as' => $suffix_name.$routename.'.store', 'uses' => $controller . '@store'));
+    Route::get($urlitem.'/edit',   array( 'as' => $suffix_name.$routename.'.edit', 'uses' => $controller . '@edit' ));
+    Route::put($urlitem,        array( 'as' => $suffix_name.$routename.'.update', 'uses' => $controller . '@update' ));
+    Route::delete($urlitem,     array( 'as' => $suffix_name.$routename.'.destroy', 'uses' => $controller . '@destroy' ));
 }
 
 /*
