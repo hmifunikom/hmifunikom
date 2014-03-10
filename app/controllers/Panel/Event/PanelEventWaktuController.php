@@ -91,6 +91,8 @@ class PanelEventWaktuController extends BaseController {
 	 */
 	public function destroy($acara, $waktu)
 	{
+		if(! Input::get('safe-action')) return Redirect::back();
+
 		$waktu->delete();
 		return Redirect::action('panel.event.waktu.index', $acara->kd_acara)->with('success', 'Waktu berhasil dihapus!');
 	}

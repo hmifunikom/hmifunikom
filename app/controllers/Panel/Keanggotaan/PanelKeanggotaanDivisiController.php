@@ -85,6 +85,8 @@ class PanelKeanggotaanDivisiController extends BaseController {
 	 */
 	public function destroy($divisi)
 	{
+		if(! Input::get('safe-action')) return Redirect::back();
+
 		$divisi->delete();
 		return Redirect::action('panel.keanggotaan.divisi.index')->with('success', 'Divisi berhasil dihapus!');
 	}

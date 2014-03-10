@@ -92,6 +92,8 @@ class PanelKeanggotaanController extends BaseController {
 	 */
 	public function destroy($anggota)
 	{
+		if(! Input::get('safe-action')) return Redirect::back();
+
 		$anggota->delete();
 		return Redirect::action('panel.keanggotaan.index')->with('success', 'Anggota berhasil dihapus!');
 	}

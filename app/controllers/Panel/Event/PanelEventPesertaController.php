@@ -126,7 +126,7 @@ class PanelEventPesertaController extends BaseController {
 			}
 		}
 
-		if ($peserta->save()) {
+		if ($peserta->updateUniques()) {
             return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('success', 'Peserta berhasil diubah!');
         } else {
             return Redirect::action('panel.event.peserta.edit', array($acara->kd_acara, $peserta->id_peserta))->withErrors($peserta->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
@@ -141,6 +141,8 @@ class PanelEventPesertaController extends BaseController {
 	 */
 	public function destroy($acara, $peserta)
 	{
+		if(! Input::get('safe-action')) return Redirect::back();
+
 		$peserta->delete();
 		return Redirect::action('panel.event.peserta.index', $acara->kd_acara)->with('success', 'Peserta berhasil dihapus!');
 	}
@@ -158,9 +160,10 @@ class PanelEventPesertaController extends BaseController {
 			$status = "belum";
 		}
 
-		if ($peserta->save()) {
+		if ($peserta->updateUniques()) {
             return Redirect::back()->with('success', 'Peserta '.$status.' membayar!');
         } else {
+        	//dd($peserta->errors());
             return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
         }
 	}

@@ -91,6 +91,8 @@ class PanelEventPanitiaController extends BaseController {
 	 */
 	public function destroy($acara, $panitia)
 	{
+		if(! Input::get('safe-action')) return Redirect::back();
+
 		$panitia->delete();
 		return Redirect::action('panel.event.panitia.index', $acara->kd_acara)->with('success', 'Panitia berhasil dihapus!');
 	}

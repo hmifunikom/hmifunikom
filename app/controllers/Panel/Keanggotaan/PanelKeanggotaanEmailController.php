@@ -85,6 +85,8 @@ class PanelKeanggotaanEmailController extends BaseController {
 	 */
 	public function destroy($anggota, $email)
 	{
+		if(! Input::get('safe-action')) return Redirect::back();
+
 		$email->delete();
 		return Redirect::action('panel.keanggotaan.email.index', $anggota->id_anggota)->with('success', 'E-mail berhasil dihapus!');
 	}
