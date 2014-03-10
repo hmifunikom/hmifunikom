@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-3 sponsor center">
                 <div class="title">Hosted by</div>
-                <a href="http://imnanda.net/">
+                <a href="http://hostingbdg.com">
                     <img src="{{ asset('assets/images/logo-hosting.png') }}" height="75">
                 </a>
             </div>
