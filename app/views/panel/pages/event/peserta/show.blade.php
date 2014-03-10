@@ -34,14 +34,21 @@
                     Typography::horizontal_dl(
                         array(
                             'Nama Peserta'  => $peserta->nama_peserta,
+                            'Alamat'        => $peserta->alamat,
                             'Kategori'      => Lang::get('messages.event.'.$peserta->kategori),
-                            'NIM'           =>  $peserta->nim,
+                            'NIM'           =>  $peserta->nim.'&nbsp;',
                             'No. Handphone' =>  $peserta->no_hp,
                             'E-Mail'        =>  $peserta->email,
                         )
                     )
                 }}
+
             </div>
+        </div>
+        <div class="center">
+        {{
+            Button::primary_link(URL::route('event.book.download', array($acara->slug, $peserta->ticket)), Helper::fa('download').' Download Tiket')
+        }}
         </div>
     </div>
 @stop
