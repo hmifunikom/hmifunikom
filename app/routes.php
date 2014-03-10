@@ -150,19 +150,6 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
 
     route_resource('arsip', 'PanelArsipController', 'panel');
 
-    Route::get('shut/the/application/down', function() 
-    {
-        touch(storage_path().'/meta/my.down');
-    });
-
-    Route::get('bring/the/application/back/up', function() 
-    {
-        @unlink(storage_path().'/meta/my.down');
-    });
-});
-Route::group(array('prefix' => 'panel', 'before' => 'auth|norole:publik'), function()
-{
-    Route::resource('event.waktu', 'PanelEventWaktuController');
 });
 
 Route::when('*', 'csrf', array('post', 'put', 'patch'));
