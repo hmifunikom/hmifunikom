@@ -48,6 +48,7 @@
     </div><!-- /.row -->
 
     @if($listpeserta->count())
+        Menampilkan {{ $listpeserta->getFrom() }} - {{ $listpeserta->getTo() }} dari {{ $listpeserta->getTotal() }}
         {{ Table::striped_open(array('class' => 'table-hover')) }}
         {{ Table::headers('Kode', 'Nama', 'NIM', 'Tgl. Daftar', 'No.Hp', '') }}
         <tbody>
