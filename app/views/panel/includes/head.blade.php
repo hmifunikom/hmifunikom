@@ -5,7 +5,11 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="{{ asset('favicon.ico?v1.0') }}">
 
+@if(isset($pagetitle))
+<title>{{ $pagetitle }} - HMIF Unikom</title>
+@else
 <title>HMIF Unikom</title>
+@endif
 
 <!-- Bootstrap core CSS -->
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -14,6 +18,11 @@
 <link href="{{ asset('assets/css/datepicker.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/bootstrap-markdown.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/fullcalendar.css') }}" rel="stylesheet">
+
+@if(App::environment('production'))
+<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+@endif
 
 <link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.0') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/panel.min.css?v1.0') }}" />

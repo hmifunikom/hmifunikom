@@ -2,6 +2,7 @@
 <html lang="id">
     <head>
         @include('panel.includes.head')
+        @yield('head')
     </head>
     <body class="hmifpanel">
         @include('panel.includes.header')
@@ -52,6 +53,6 @@
 
         @include('panel.includes.footer')
         @include('panel.includes.javascript')
-        @yield('script')
+        @yield('javascript')
     </body>
 </html>
