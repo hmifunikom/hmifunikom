@@ -97,6 +97,11 @@ class EloquentPesertaRepo implements PesertaRepo {
         $this->relations = $relations;
     }
 
+    public function setPerPage($per_page)
+    {
+        $this->per_page = $per_page;
+    }
+
     public function getErrors()
     {
         return $this->errors;

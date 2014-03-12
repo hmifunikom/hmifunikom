@@ -79,8 +79,10 @@ Route::pattern('keanggotaan', '\d+');
 
 Route::get('kok', function() 
 {
+
     Excel::create('ExcelName')
         ->sheet('SheetName')
+            ->with(array('data', 'data'))
             ->with(array('data', 'data'))
         ->sheet('SheetName')
             ->with(array('data', 'data'))
@@ -145,6 +147,7 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     route_resource('event.waktu', 'PanelEventWaktuController', 'panel');
     route_resource('event.div', 'PanelEventDivisiController', 'panel');
     route_resource('event.panitia', 'PanelEventPanitiaController', 'panel');
+    Route::get('event/{event}/peserta/download', array('uses' => 'PanelEventPesertaController@xls', 'as' => 'panel.event.peserta.xls'));
     route_resource('event.peserta', 'PanelEventPesertaController', 'panel');
     Route::get('event/{event}/peserta/{peserta}/pay', array('uses' => 'PanelEventPesertaController@pay', 'as' => 'panel.event.peserta.pay'));
 

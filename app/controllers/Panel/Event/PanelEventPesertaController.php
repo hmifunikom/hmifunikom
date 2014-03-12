@@ -167,4 +167,37 @@ class PanelEventPesertaController extends BaseController {
             return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
         }
 	}
+
+	public function xls($acara)
+	{
+		$filename = Str::slug('Daftar Peserta '. $acara->nama_acara);
+
+		$peserta = $acara->peserta()->orderBy('kode', 'asc');
+
+		$all = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->get());
+		$bayar = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
+		$unikom = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'unikom')->get());
+		$umum = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
+
+		Excel::create($filename)
+        ->sheet('Semua Peserta')
+            ->with($all)
+        ->sheet('Sudah Bayar')
+            ->with($bayar)
+        ->sheet('Unikom')
+            ->with($unikom)
+        ->sheet('Umum')
+            ->with($umum)
+        ->export('xls');
+	}
+
+	private function _generateArray($data)
+	{
+		foreach($data as $p)
+		{
+			$list[] = array($p->kode, $p->nama_peserta, $p->kategori, $p->nim, $p->no_hp, $p->bayar);
+		}
+
+		return $list;
+	}
 }
