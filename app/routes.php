@@ -68,6 +68,8 @@ Route::model('panitia', 'Panitia');
 Route::model('peserta', 'Peserta');
 Route::model('ticket', 'Peserta');
 
+Route::model('ifgames', 'IFGCabang');
+
 Route::pattern('keanggotaan', '\d+');
 
 
@@ -148,8 +150,15 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     route_resource('event.div', 'PanelEventDivisiController', 'panel');
     route_resource('event.panitia', 'PanelEventPanitiaController', 'panel');
     Route::get('event/{event}/peserta/download', array('uses' => 'PanelEventPesertaController@xls', 'as' => 'panel.event.peserta.xls'));
+    Route::get('event/{event}/peserta/contact', array('uses' => 'PanelEventPesertaController@vcf', 'as' => 'panel.event.peserta.vcf'));
     route_resource('event.peserta', 'PanelEventPesertaController', 'panel');
     Route::get('event/{event}/peserta/{peserta}/pay', array('uses' => 'PanelEventPesertaController@pay', 'as' => 'panel.event.peserta.pay'));
+
+    route_resource('ifgames', 'PanelIFGamesCabangController', 'panel');
+    route_resource('ifgames.jabatan', 'PanelIFGamesJabatanController', 'panel');
+    route_resource('ifgames.tim', 'PanelIFGamesTimController', 'panel');
+    route_resource('ifgames.tim.anggota', 'PanelIFGamesAnggotaController', 'panel');
+
 
     route_resource('arsip', 'PanelArsipController', 'panel');
 

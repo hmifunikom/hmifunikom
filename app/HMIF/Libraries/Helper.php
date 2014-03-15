@@ -37,6 +37,11 @@ class Helper {
         return str_pad($number, $digit, 0, STR_PAD_LEFT);
     }
 
+    public static function rp($nominal)
+    {
+        return 'Rp. '.number_format($nominal,2,',','.');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Date Helper

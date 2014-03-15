@@ -8,6 +8,7 @@ class Repositories extends ServiceProvider {
     {
         $this->register_arsip();
         $this->register_event();
+        $this->register_ifgames();
         $this->register_keanggotaan();
         $this->register_user();
         $this->register_perpustakaan();
@@ -33,6 +34,17 @@ class Repositories extends ServiceProvider {
             'DivAcaraRepo'   =>  'EloquentDivAcaraRepo',
             'PanitiaRepo'    =>  'EloquentPanitiaRepo',
             'PesertaRepo'    =>  'EloquentPesertaRepo',
+        );
+
+        $this->_register($list, $namespace);
+    }
+
+    private function register_ifgames()
+    {
+        $namespace = 'HMIF\\Repositories\\IFGames\\';
+        $list = array(
+            'CabangRepo'      =>  'EloquentCabangRepo',
+             'TimRepo'      =>  'EloquentTimRepo',
         );
 
         $this->_register($list, $namespace);

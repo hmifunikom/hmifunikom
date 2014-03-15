@@ -29,7 +29,8 @@
                 <a class="btn btn-default {{ Helper::active_qs('cat', 'unikom', false) }}" href="{{ action('panel.event.peserta.index', array($acara->kd_acara, 'cat' => 'unikom')) }}">Unikom</a>
                 <a class="btn btn-default {{ Helper::active_qs('cat', 'luar', false) }}" href="{{ action('panel.event.peserta.index', array($acara->kd_acara, 'cat' => 'luar')) }}">Umum</a>
             </div>
-            <a class="btn btn-default {{ Helper::active_qs('cat', 'unikom', false) }}" href="{{ action('panel.event.peserta.xls', array($acara->kd_acara)) }}">{{ Helper::fa('download') }} Download XLS</a>
+            <a class="btn btn-default" href="{{ action('panel.event.peserta.xls', array($acara->kd_acara)) }}">{{ Helper::fa('download') }} Unduh XLS</a>
+            <a class="btn btn-default" href="{{ action('panel.event.peserta.vcf', array($acara->kd_acara)) }}">{{ Helper::fa('phone') }} Unduh Kontak</a>
         </div>
         <div class="col-lg-4">
             {{ 

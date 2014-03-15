@@ -1,9 +1,6 @@
 <?php
 
-use Sabre\VObject;
-use Alchemy\Zippy\Zippy;
-
-class PanelEventPesertaController extends BaseController {
+class PanelIFGamesAnggotaController extends BaseController {
 	
 	private $peserta;
 
@@ -192,35 +189,6 @@ class PanelEventPesertaController extends BaseController {
         ->sheet('Umum')
             ->with($umum)
         ->export('xls');
-	}
-
-	public function vcf($acara)
-	{
-		$dir = public_path().'/media/vcf/'.Str::slug($acara->nama_acara);
-
-		if(! File::isDirectory($dir))
-			File::makeDirectory($dir, 755, true);
-
-		foreach($acara->peserta()->get() as $p)
-		{
-			$vcard = new VObject\Component\VCard([
-			    'FN'  => $acara->nama_acara.''.$p->kode.''.$p->nama_peserta,
-			    'TEL' => $p->no_hp,
-			]);
-
-			$data =  $vcard->serialize();
-			File::put($dir.'/'.Str::slug($p->kode.''.$p->nama_peserta).'.vcf', $data);
-		}
-
-		if(! File::isDirectory($dir))
-			File::delete($dir.'-contact.zip');
-
-		$zipper = new \Chumper\Zipper\Zipper;
-		$zipper->make($dir.'-contact.zip')->add($dir)->close();
-
-		File::deleteDirectory($dir);
-
-		return Response::download($dir.'-contact.zip');
 	}
 
 	private function _generateArray($data)
