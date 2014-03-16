@@ -27,7 +27,8 @@
 		"thujohn/pdf": "dev-master",
 		"maatwebsite/excel": "dev-master",
 		"Chumper/Zipper": "dev-master",
-		"ollieread/multiauth": "dev-master"
+		"ollieread/multiauth": "dev-master",
+		"greggilbert/recaptcha": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

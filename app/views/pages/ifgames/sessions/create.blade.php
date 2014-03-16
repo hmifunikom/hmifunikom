@@ -30,10 +30,13 @@
                     : Former::password('password')
                 }}
 
+                {{ Form::captcha() }}
+
                 @if(isset($errors))
                 <div class="errors text-danger">
                 {{ $errors->first('username') }}
                 {{ $errors->first('password') }}
+                {{ $errors->first('recaptcha_response_field') }}
                 </div>
                 @endif
 

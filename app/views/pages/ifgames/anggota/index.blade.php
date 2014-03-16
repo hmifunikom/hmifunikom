@@ -133,7 +133,7 @@
                 @endif
             </div>
             @else
-                {{ Alert::warning('Silahkan untuk melakukan pembayaran tersebih dahulu untuk mengaktifkan formulir anggota.') }}
+                {{ Alert::warning('Silahkan untuk melakukan pembayaran tersebih dahulu ( '.Helper::rp($cabang->biaya).' ) untuk mengaktifkan formulir anggota.') }}
             @endif
         </div>
     </div>

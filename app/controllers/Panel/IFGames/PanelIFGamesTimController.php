@@ -76,13 +76,12 @@ class PanelIFGamesTimController extends BaseController {
 	            else
 	            	return Redirect::action('panel.ifgames.tim.index', $cabang->id_cabang)->with('success', 'Peserta berhasil ditambah!');
 	        } else {
-	            return Redirect::action('panel.ifgames.tim.create', $cabang->id_cabang)->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan dd bawah!');
+	            return Redirect::action('panel.ifgames.tim.create', $cabang->id_cabang)->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 	        }
 		}
 		else
 		{
-			dd($validator->errors());
-			return Redirect::action('panel.ifgames.tim.create', $cabang->id_cabang)->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan dd bawah!')->withInput();
+			return Redirect::action('panel.ifgames.tim.create', $cabang->id_cabang)->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 		}
 	}
 

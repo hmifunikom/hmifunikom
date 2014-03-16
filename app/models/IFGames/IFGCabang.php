@@ -52,8 +52,9 @@ class IFGCabang extends Ardent implements SluggableInterface {
         return 'slug';
     }
 
-    public function sisa_kuota()
+    public function sisa_kuota($cabang = null)
     {
-        return $this->kuota_unikom - $this->tim()->count();
+        $clause = ($cabang) ? $cabang : $this->id_cabang;
+        return $this->kuota - $this->tim()->where('id_cabang', '=', $clause)->count();
     }
 }

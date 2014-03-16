@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-6">
                     {{
-                        Button::primary_lg_link_block(URL::route('ifgames.create'), Helper::fa('clipboard').' Daftar')
+                        Button::primary_lg_link_block(URL::route('ifgames.cabang'), Helper::fa('clipboard').' Daftar')
                     }}
                 </div>
                 <div class="col-md-6">

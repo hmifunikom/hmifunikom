@@ -90,6 +90,8 @@ class IFGTim extends Ardent implements UserInterface, RemindableInterface {
 
     public function dokumen_lengkap()
     {
+        if($this->anggota_lengkap() == false) return false;
+        
         $result = DB::select('select *  from `tb_ifgames_anggota` where `tb_ifgames_anggota`.`id_tim` = '.$this->id_tim.' and (`ska` = 0 or `ktm` = 0)');
 
         return $result == false;

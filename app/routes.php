@@ -69,6 +69,7 @@ Route::model('peserta', 'Peserta');
 Route::model('ticket', 'Peserta');
 
 Route::model('ifgames', 'IFGCabang');
+Route::model('cabang', 'IFGCabang');
 Route::model('tim', 'IFGTim');
 Route::model('anggota', 'IFGAnggotaTim');
 
@@ -94,8 +95,9 @@ Route::group(array('domain' => 'event'.$domain), function()
         Route::get('pendaftaran', array('uses' => 'IFGamesController@pendaftaran', 'as' => 'ifgames.pendaftaran'));
         route_resource('anggota', 'IFGamesAnggota', 'ifgames');
 
-        Route::get('register', array('uses' => 'IFGamesController@create', 'as' => 'ifgames.create'));
-        Route::post('register', array('uses' => 'IFGamesController@store', 'as' => 'ifgames.store'));
+        Route::get('register', array('uses' => 'IFGamesController@cabang', 'as' => 'ifgames.cabang'));
+        Route::get('register/{cabang}', array('uses' => 'IFGamesController@create', 'as' => 'ifgames.create'));
+        Route::post('register/{cabang}', array('uses' => 'IFGamesController@store', 'as' => 'ifgames.store'));
 
         Route::get('login', array('uses' => 'IFGamesSessionsController@create', 'as' => 'ifgames.sessions.create'));
         Route::post('login', array('uses' => 'IFGamesSessionsController@store', 'as' => 'ifgames.sessions.store'));

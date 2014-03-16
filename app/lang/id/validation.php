@@ -72,6 +72,7 @@ return array(
     "nim"              => "Format NIM tidak valid.",
     "nim_if"              => "Format NIM tidak valid.",
     "unique_if"           => ":attribute sudah ada sebelumnya.",
+    "recaptcha" => ':attribute tidak valid.',
 
     /*
     |--------------------------------------------------------------------------
@@ -116,7 +117,8 @@ return array(
         'tgl_daftar'      => 'Tanggal Daftar',
         'nim'             => 'NIM',
         'no_hp'           => 'No. Handphone',
-        'email'           => 'E-mail'
+        'email'           => 'E-mail',
+        'recaptcha_response_field' => 'Kode verifikasi'
     ),
 
 );

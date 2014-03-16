@@ -37,11 +37,12 @@ class IFGamesSessionsController extends BaseController {
       // Declare the rules for the form validation.
       $rules = array(
           'username'  => 'Required',
-          'password'  => 'Required'
+          'password'  => 'Required',
+          'recaptcha_response_field' => 'required|recaptcha',
       );
 
       // Validate the inputs.
-      $validator = Validator::make($userdata, $rules);
+      $validator = Validator::make(Input::all(), $rules);
 
       // Check if the form validates with success.
       if ($validator->passes())

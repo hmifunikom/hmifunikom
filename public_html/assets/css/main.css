@@ -34,6 +34,10 @@ h6 {
     font-size: 64px;
   }
 }
+legend,
+.alert {
+  margin-top: 20px;
+}
 .unvisible {
   display: none;
 }
@@ -698,6 +702,36 @@ h6 {
 .team-member.big .team-member-tool {
   visibility: hidden;
 }
+.cabang {
+  margin-top: 50px;
+}
+.cabang > div {
+  margin-bottom: 20px;
+  -webkit-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  -ms-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.cabang > div:hover {
+  background: #f5f5f5 !important;
+}
+.cabang > div a {
+  display: block;
+  color: #fff;
+  padding: 30px;
+  -webkit-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  -ms-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.cabang > div a:hover {
+  text-decoration: none;
+  color: #333;
+}
+.cabang > div a .fa {
+  float: right;
+  margin-top: 15px;
+}
 .tagline-hmif {
   background: #ffffff;
 }
@@ -741,7 +775,7 @@ h6 {
   background: #ffffff;
 }
 .form-signin {
-  max-width: 330px;
+  max-width: 350px;
   padding: 15px;
   margin: 0 auto;
 }

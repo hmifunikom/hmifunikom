@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, h6 {
     .bitter(64px);
 }
 
+legend, .alert {
+    margin-top:20px;
+}
+
 .unvisible {
     display:none;
 }
@@ -581,73 +585,103 @@ h1, h2, h3, h4, h5, h6 {
     h3 {.bitter(36px)}
     h4 {.bitter(28px)}
 
-        .team-member-container {
-          margin-bottom:20px;
-          padding-top: 15px;
-          padding-bottom: 15px;
+    .team-member-container {
+      margin-bottom:20px;
+      padding-top: 15px;
+      padding-bottom: 15px;
 
-          &.blm-lengkap {
-            h4 {
-              background: #f2dede;
-            }
-          }
+      &.blm-lengkap {
+        h4 {
+          background: #f2dede;
+        }
+      }
 
-          &:hover {
-            background: #f5f5f5;
+      &:hover {
+        background: #f5f5f5;
 
-            .team-member-tool {
-              visibility: visible;
-            }
-
-            .team-member-identity {
-              form {
-                visibility:visible;
-              }
-            }
-          }
-
-          h4 {
-            position: absolute;
-            left: 0;
-            top: 0px;
-            color: #fff !important;
-            background: #FFF;
-            width: 30px;
-            height: 35px;
-            font-size: 18px;
-            line-height: 30px;
-            text-align: center;
-          }
+        .team-member-tool {
+          visibility: visible;
         }
 
         .team-member-identity {
-
-          &:hover {
-            
-          }
           form {
-            visibility : hidden;
-            position:absolute;
-            top: 10px;
-            right: 10px;
-          }
-          img {
-            
-          }
-
-          dl {
-            width:195px;
-
-            &.big {
-              width:335px;
-            }
+            visibility:visible;
           }
         }
+      }
 
-        .team-member-tool {
-          visibility: hidden;
+      h4 {
+        position: absolute;
+        left: 0;
+        top: 0px;
+        color: #fff !important;
+        background: #FFF;
+        width: 30px;
+        height: 35px;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+      }
+    }
+
+    .team-member-identity {
+
+      &:hover {
+        
+      }
+      form {
+        visibility : hidden;
+        position:absolute;
+        top: 10px;
+        right: 10px;
+      }
+      img {
+        
+      }
+
+      dl {
+        width:195px;
+
+        &.big {
+          width:335px;
+        }
+      }
+    }
+
+    .team-member-tool {
+      visibility: hidden;
+    }
+}
+
+.cabang {
+    margin-top: 50px;
+
+    > div {
+        margin-bottom:20px;
+        .transition(all);
+
+        &:hover {
+            background:#f5f5f5 !important;
+        }
+
+        a {
+            display:block;
+            color: #fff;
+            padding: 30px;
+            .transition(all);
+
+            &:hover {
+                text-decoration: none;
+                color: #333;
+            }
+
+            .fa {
+                float:right;
+                margin-top:15px;
+            }
         }
     }
+}
 
 // -------------------------------------------------------
 // Tagline
@@ -691,7 +725,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .form-signin {
-    max-width: 330px;
+    max-width: 350px;
     padding: 15px;
     margin: 0 auto;
 
