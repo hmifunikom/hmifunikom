@@ -17,7 +17,7 @@
     @include('includes.alert')
 
     {{ Table::striped_open(array('class' => 'table-hover')) }}
-    {{ Table::headers('#', 'Nama Cabang', 'Kuota', 'Biaya', 'Tim', '') }}
+    {{ Table::headers('#', 'Nama Cabang', 'Kuota', 'Biaya', 'Terdaftar', '') }}
     <tbody>
     <?php $i = $listcabang->getFrom(); ?>
     @foreach($listcabang as $cabang)
@@ -26,7 +26,7 @@
             <td>{{ $cabang->nama_cabang }}</td>
             <td>{{ $cabang->kuota }}</td>
             <td>{{ Helper::rp($cabang->biaya) }}</td>
-            <td>{{ Helper::rp($cabang->biaya) }}</td>
+            <td>{{ $cabang->tim->count() }}</td>
 
             <td class="right">
                 {{ Former::inline_open()->route('panel.ifgames.destroy', $cabang->id_cabang)->class('confirm-delete')->data_confirm('cabang') }}

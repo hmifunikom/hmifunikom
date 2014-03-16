@@ -1,10 +1,3 @@
-function generate_username() {
-    var angkatan = $('#angkatan').val();
-    var kelas = $('#kelas').val();
-
-    $('#username').text('ifgames'+''+angkatan+''+kelas);
-}
-
 $(function(){
     $('.datepick').datepicker();
     
@@ -20,16 +13,4 @@ $(function(){
     });
     
     $('.js-tooltip').tooltip();
-
-    var angkatan_slc = $('#angkatan');
-    var kelas_slc = $('#kelas');
-    if(angkatan_slc.length && kelas_slc.length) {
-        angkatan_slc.on("change", function() {
-            generate_username();
-        });
-
-        kelas_slc.on("change", function() {
-            generate_username();
-        });
-    }
 });

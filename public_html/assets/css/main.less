@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
         &.big {
             height:100px !important;
-            li {margin-top: 23px !important;}
+            .nav > li {margin-top: 23px !important;}
 
             .navbar-brand {
                 padding-top:15px;
@@ -90,6 +90,9 @@ h1, h2, h3, h4, h5, h6 {
 
     @media (min-width:768px){
         min-height: 500px;            
+        &.ifgames.form {
+            min-height: 215px;            
+        }
     }
 
     &.home {
@@ -98,6 +101,30 @@ h1, h2, h3, h4, h5, h6 {
 
     &.event {
         background: url('../images/event-banner.jpg') @grey center;    
+    }
+
+    &.ifgames {
+        background: @orange center;    
+
+        &.basket {
+            background: url('../images/ifgames-basket-banner.jpg') #b71524 center;    
+        }
+
+        &.bulu-tangkis-double {
+            background: url('../images/ifgames-bulu-tangkis-double-banner.jpg') #b71524 center;    
+        }
+
+        &.bulu-tangkis-single {
+            background: url('../images/ifgames-bulu-tangkis-single-banner.jpg') #b71524 center;    
+        }
+
+        &.catur {
+            background: url('../images/ifgames-catur-banner.jpg') #b71524 center;    
+        }
+
+        &.futsal {
+            background: url('../images/ifgames-futsal-banner.jpg') #b71524 center;    
+        }
     }
 
     &.keanggotaan {
@@ -119,6 +146,12 @@ h1, h2, h3, h4, h5, h6 {
 .photo-layer {
     background-size: cover;
     background-position: center;
+}
+
+.divider-layer {
+    background-position: top;
+    background-repeat: no-repeat;
+    padding-top: 100px;
 }
 
 .big-container {
@@ -532,6 +565,89 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
+
+// -------------------------------------------------------
+// IFGames
+// --------------------------------------------------------
+
+.team-member.big {
+    width:970px !important;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top:0 !important;
+        margin-bottom:20px !important;
+    }
+    h2 {.bitter(48px)}
+    h3 {.bitter(36px)}
+    h4 {.bitter(28px)}
+
+        .team-member-container {
+          margin-bottom:20px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+
+          &.blm-lengkap {
+            h4 {
+              background: #f2dede;
+            }
+          }
+
+          &:hover {
+            background: #f5f5f5;
+
+            .team-member-tool {
+              visibility: visible;
+            }
+
+            .team-member-identity {
+              form {
+                visibility:visible;
+              }
+            }
+          }
+
+          h4 {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            color: #fff !important;
+            background: #FFF;
+            width: 30px;
+            height: 35px;
+            font-size: 18px;
+            line-height: 30px;
+            text-align: center;
+          }
+        }
+
+        .team-member-identity {
+
+          &:hover {
+            
+          }
+          form {
+            visibility : hidden;
+            position:absolute;
+            top: 10px;
+            right: 10px;
+          }
+          img {
+            
+          }
+
+          dl {
+            width:195px;
+
+            &.big {
+              width:335px;
+            }
+          }
+        }
+
+        .team-member-tool {
+          visibility: hidden;
+        }
+    }
 
 // -------------------------------------------------------
 // Tagline

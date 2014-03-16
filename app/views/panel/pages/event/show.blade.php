@@ -52,7 +52,7 @@
             {{ Former::vertical_open_for_files()
                 ->route('panel.event.poster.store', $acara->kd_acara)
             }}
-                {{ Former::file('posterupload')->label(false)->accept('image')->helper('Maximal 2MB') }}
+                {{ Former::file('posterupload')->label(false)->accept('image')->inlineHelp('Maksimal 2MB') }}
                 {{ Former::actions( Button::primary_submit(Helper::fa('upload').' Upload') ) }}
             {{ Former::close() }}
         </div>

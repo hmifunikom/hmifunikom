@@ -2,16 +2,26 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-8">
-            <h2>{{ ($method == 'edit') ? 'Edit' : 'Tambah' }} Tim {{ $cabang->nama_cabang }}</h2>
-        </div>
-        <div class="col-xs-4 header-toolbar right">      
+        <div class="col-xs-12">
+            <h2>{{ ($method == 'edit') ? 'Edit' : 'Tambah' }} 
+                @if($cabang->anggota > 1)
+                Tim 
+                @else
+                Peserta
+                @endif
+                {{ $cabang->nama_cabang }}</h2>
         </div>
     </div>
 
+    @if($cabang->anggota > 1)
     {{
         Breadcrumb::create(array('Home' => action('panel.index'), 'IF Games' => action('panel.ifgames.index'), $cabang->nama_cabang => action('panel.ifgames.tim.index', $cabang->id_cabang), 'Tim' => action('panel.ifgames.tim.index', $cabang->id_cabang)))
     }}
+    @else
+    {{
+        Breadcrumb::create(array('Home' => action('panel.index'), 'IF Games' => action('panel.ifgames.index'), $cabang->nama_cabang => action('panel.ifgames.tim.index', $cabang->id_cabang), 'Peserta' => action('panel.ifgames.tim.index', $cabang->id_cabang)))
+    }}
+    @endif
 
 
     @include('includes.alert')
@@ -24,32 +34,26 @@
             ->route('panel.ifgames.tim.store', $cabang->id_cabang)
     }}
     {{ ($method == 'edit') ? Former::populate( $tim ) : false}}
+
+        @if($cabang->anggota > 1)
         {{ Former::legend('Identitas Tim') }}  
+        @else
+        {{ Former::legend('Identitas Peserta') }}  
+        @endif
 
-        <?php 
-            for($i = 2006; $i <= date('Y') - 1; $i++)
-            {
-                $angkatan[$i] = $i;
-            }
-        ?>
-        {{ Former::select('angkatan')->options($angkatan) }}
+        @if($cabang->anggota > 1)
+        {{ Former::text('nama_tim') }}
+        @else
+        {{ Former::text('nama_peserta') }}
+        @endif
 
-        <?php 
-            for($i = 1; $i <= 17; $i++)
-            {
-                $kelas[$i] = $i;
-            }
-        ?>
-        {{ Former::select('kelas')->options($kelas) }}
-
+        @if($cabang->anggota > 1)
         {{ Former::legend('Login Tim') }}
+        @else
+        {{ Former::legend('Login Peserta') }}
+        @endif        
 
-        <div class="form-group">
-            <label class="control-label col-lg-2 col-sm-4">Username</label>
-            <div class="col-lg-10 col-sm-8">
-                <p class="form-control-static" id="username">-</p>
-            </div>
-        </div>
+        {{ Former::text('username') }}
         {{ Former::password('password') }}
         {{ Former::password('password_confirmation') }}
 

@@ -1,12 +1,14 @@
 $(function(){
-    var navbar_offset = $('.jumbotron').offset().top + $('.jumbotron').height();
-    $(window).scroll(function(){
-        if ($(document).scrollTop() > navbar_offset) {
-            $('.navbar').removeClass("big");
-        } else {
-            $('.navbar').addClass("big");
-        }
-    });
+    if(! $('.js-navbar-small').length) {
+        var navbar_offset = $('.jumbotron').offset().top + $('.jumbotron').height();
+        $(window).scroll(function(){
+            if ($(document).scrollTop() > navbar_offset) {
+                $('.navbar').removeClass("big");
+            } else {
+                $('.navbar').addClass("big");
+            }
+        });
+    }
 
      var jcarousel = $('.jcarousel');
 
@@ -66,6 +68,17 @@ $(function(){
             });
         }
     }, 100);
+
+    $('.confirm-delete').submit(function(e) {
+        var data = $(this).data('confirm');
+        var message = ($(this).data('confirm-message')) ? $(this).data('confirm-message') : '';
+        var conf = confirm('Anda yakin ingin menghapus ' + data + ' ini? ' + message);
+        $('<input>').attr('type','hidden').attr("name", "safe-action").val("1").appendTo(this);
+        if(conf) {
+            return true;
+        }
+        e.preventDefault();
+    });
 
     makeCalendar();
 });

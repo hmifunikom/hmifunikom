@@ -25,9 +25,17 @@
             ->route('panel.ifgames.store')
     }}
     {{ ($method == 'edit') ? Former::populate( $cabang ) : false}}
+
+        {{ Former::legend('Identitas Cabang') }}
+
         {{ Former::text('nama_cabang') }}
-        {{ Former::text('kuota') }}
-        {{ Former::text('biaya')->prepend('Rp') }}
+        {{ Former::number('kuota') }}
+        {{ Former::number('biaya')->prepend('Rp') }}
+
+        {{ Former::legend('Jumlah jabatan') }}
+        {{ Former::number('manager') }}
+        {{ Former::number('official') }}
+        {{ Former::number('anggota') }}
 
         {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
     {{ Former::close() }}

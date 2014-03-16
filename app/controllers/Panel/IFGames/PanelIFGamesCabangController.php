@@ -43,7 +43,7 @@ class PanelIFGamesCabangController extends BaseController {
 		$cabang = new Cabang;
 
 		if ($cabang->save()) {
-            return Redirect::action('panel.ifgames.waktu.create', $cabang->kd_cabang)->with('success', 'Cabang berhasil ditambah!');
+            return Redirect::action('panel.ifgames.index')->with('success', 'Cabang berhasil ditambah!');
         } else {
             return Redirect::action('panel.ifgames.create')->withErrors($cabang->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
         }

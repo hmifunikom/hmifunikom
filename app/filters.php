@@ -35,13 +35,13 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if (Auth::panel()->guest()) return Redirect::guest('login');
 });
 
 
 Route::filter('auth.basic', function()
 {
-	return Auth::basic();
+	return Auth::panel()->basic();
 });
 
 /*
@@ -57,7 +57,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::panel()->check()) return Redirect::to('/');
 });
 
 /*
@@ -86,7 +86,7 @@ Route::filter('csrf', function()
 */
 Route::filter('norole', function($route, $request, $role)
 {
-    $user = Auth::user();
+    $user = Auth::panel()->user();
     if ($user->hasRole($role))
     {
         throw new HMIF\Exceptions\RoleException('User ID: '.$user->id_user.' has no access to '. Route::getCurrentRoute()->getPath());
@@ -95,7 +95,7 @@ Route::filter('norole', function($route, $request, $role)
 
 Route::filter('role', function($route, $request, $role)
 {
-    $user = Auth::user();
+    $user = Auth::panel()->user();
     if (!$user->hasRole($role))
     {
         throw new HMIF\Exceptions\RoleException('User ID: '.$user->id_user.' has no access to '. Route::getCurrentRoute()->getPath());

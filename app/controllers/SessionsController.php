@@ -10,7 +10,7 @@ class SessionsController extends BaseController {
   public function create()
   {
       // Check if we already logged in
-      if (Auth::check())
+      if (Auth::panel()->check())
       {
         // Redirect to homepage
         return Redirect::intended('panel')->with('success', 'You are already logged in');
@@ -47,7 +47,7 @@ class SessionsController extends BaseController {
       if ($validator->passes())
       {
           // Try to log the user in.
-          if (Auth::attempt($userdata))
+          if (Auth::panel()->attempt($userdata))
           {
               // Redirect to homepage
               return Redirect::intended('panel')->with('success', 'You have logged in successfully');
@@ -72,7 +72,7 @@ class SessionsController extends BaseController {
   public function destroy()
   {
       // Log out
-      Auth::logout();
+      Auth::panel()->logout();
 
       // Redirect to homepage
       return Redirect::to('')->with('success', 'You are logged out');

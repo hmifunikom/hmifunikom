@@ -43,8 +43,9 @@ class Repositories extends ServiceProvider {
     {
         $namespace = 'HMIF\\Repositories\\IFGames\\';
         $list = array(
-            'CabangRepo'      =>  'EloquentCabangRepo',
-             'TimRepo'      =>  'EloquentTimRepo',
+            'CabangRepo'     =>  'EloquentCabangRepo',
+            'TimRepo'        =>  'EloquentTimRepo',
+            'AnggotaTimRepo' =>  'EloquentAnggotaTimRepo',
         );
 
         $this->_register($list, $namespace);

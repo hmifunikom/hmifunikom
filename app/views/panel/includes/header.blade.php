@@ -12,7 +12,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li {{ Helper::active('event.index') }} >
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{Gravatar::src(Auth::user()->identitas->email. 30)}}" height="30" /> {{ Auth::user()->identitas->nama }} {{Helper::fa('angle-down')}}<div class="clearfix"></div></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{Gravatar::src(Auth::panel()->user()->identitas->email. 30)}}" height="30" /> {{ Auth::panel()->user()->identitas->nama }} {{Helper::fa('angle-down')}}<div class="clearfix"></div></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">{{Helper::fa('user')}} Profile</a></li>
                         <li><a href="#">{{Helper::fa('gear')}} Setting</a></li>

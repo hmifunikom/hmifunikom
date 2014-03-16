@@ -41,13 +41,21 @@ class ImageManipulation {
 
     public function resize($size = 1024)
     {
-        $img = Image::make($this->_source())->resize(null, 1024, true, false);
+        $img = Image::make($this->_source());
+        $this->_fix_orientation($img);
+        $img->resize(null, 1024, true, false);
         $img->save($this->_destination_orig());
     }
 
-    public function thumb($size = 300)
+    public function thumb($width = 300, $height = null)
     {
-        $img = Image::make($this->_source())->grab($size);
+        $img = Image::make($this->_source());
+        $this->_fix_orientation($img);
+        if($height)
+            $img->grab($width, $height);
+        else
+            $img->grab($width);
+
         $img->save($this->_destination_thumb());
     }
 
@@ -74,6 +82,27 @@ class ImageManipulation {
     private function _destination_thumb()
     {    
         return $this->thumb_path.'/'.$this->filename.$this->suffix.'.'.$this->file_object->getClientOriginalExtension();
+    }
+
+    private function _fix_orientation($img)
+    {
+        // http://forumsarchive.laravel.io/viewtopic.php?pid=59846#p59846
+        $orientation = $img->exif('Orientation');
+
+        if (!empty($orientation)) 
+        {
+            switch($orientation) {
+                case 8:
+                    $img->rotate(90);
+                    break;
+                case 3:
+                    $img->rotate(180);
+                    break;
+                case 6:
+                    $img->rotate(-90);
+                    break;
+            }
+        }
     }
 
     public function __destruct()

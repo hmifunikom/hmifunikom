@@ -37,6 +37,33 @@ h6 {
     font-size: 48px;
   }
 }
+h2 {
+  font-size: 27px;
+  font-family: 'Bitter', serif;
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 48px;
+  }
+}
+h3 {
+  font-size: 20px;
+  font-family: 'Bitter', serif;
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 36px;
+  }
+}
+h4 {
+  font-size: 16px;
+  font-family: 'Bitter', serif;
+}
+@media (min-width: 768px) {
+  h4 {
+    font-size: 28px;
+  }
+}
 .container {
   width: 970px !important;
 }
@@ -50,6 +77,9 @@ h6 {
 }
 .center {
   text-align: center;
+}
+.page-content .row {
+  margin-bottom: 20px;
 }
 .container.body .page-container {
   background: #fafafa;
@@ -477,6 +507,62 @@ Sidebar toggler
 }
 .hmifpanel .img-container:hover form {
   display: block;
+}
+.hmifpanel .team-member .team-member-container {
+  margin-bottom: 20px;
+}
+.hmifpanel .team-member .team-member-container.blm-lengkap h4 {
+  background: #f2dede;
+}
+.hmifpanel .team-member .team-member-container:hover {
+  background: #f5f5f5;
+}
+.hmifpanel .team-member .team-member-container:hover .team-member-tool {
+  visibility: visible;
+}
+.hmifpanel .team-member .team-member-container:hover .team-member-identity form {
+  visibility: visible;
+}
+.hmifpanel .team-member .team-member-container h4 {
+  position: absolute;
+  left: 0;
+  top: 0px;
+  color: #fff !important;
+  background: #FFF;
+  width: 30px;
+  height: 35px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+}
+.hmifpanel .team-member .team-member-identity {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.hmifpanel .team-member .team-member-identity form {
+  visibility: hidden;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.hmifpanel .team-member .team-member-identity dl {
+  width: 115px;
+}
+@media (min-width: 1200px) {
+  .hmifpanel .team-member .team-member-identity dl {
+    width: 180px;
+  }
+}
+.hmifpanel .team-member .team-member-identity dl.big {
+  width: 200px;
+}
+@media (min-width: 1200px) {
+  .hmifpanel .team-member .team-member-identity dl.big {
+    width: 300px;
+  }
+}
+.hmifpanel .team-member .team-member-tool {
+  visibility: hidden;
 }
 .hmifpanel footer .container {
   padding-top: 10px !important;

@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'eloquent',
+	//'driver' => 'eloquent',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+	//'model' => 'User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'table' => 'tb_user',
+	//'table' => 'tb_user',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -57,6 +57,17 @@ return array(
 	| they have less time to be guessed. You may change this as needed.
 	|
 	*/
+
+	'multi' => array(
+        'panel' => array(
+			'driver' => 'eloquent',
+			'model'  => 'User'
+        ),
+        'ifgames' => array(
+			'driver' => 'eloquent',
+			'model'  => 'IFGTim'
+        )
+    ),
 
 	'reminder' => array(
 

@@ -26,7 +26,8 @@
 		"sabre/vobject": "3.2.*@dev",
 		"thujohn/pdf": "dev-master",
 		"maatwebsite/excel": "dev-master",
-		"Chumper/Zipper": "dev-master"
+		"Chumper/Zipper": "dev-master",
+		"ollieread/multiauth": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

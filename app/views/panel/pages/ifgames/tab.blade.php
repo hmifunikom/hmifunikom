@@ -1,4 +1,4 @@
-{{
+{{--
     Navigation::tabs(
         Navigation::links(
             array(
@@ -7,4 +7,4 @@
             )
         )
     )
-}}
+--}}

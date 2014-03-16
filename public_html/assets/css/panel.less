@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom:20px;
 }
 
+h2 {.bitter(48px)}
+h3 {.bitter(36px)}
+h4 {.bitter(28px)}
+
 .container {
     width: 970px !important;
     @media (min-width: 1200px) {
@@ -27,6 +31,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .center {
     text-align:center;
+}
+
+.page-content .row {
+  margin-bottom: 20px;
 }
 
 .container.body {
@@ -493,6 +501,85 @@ Sidebar toggler
           display: block;
         }
       }
+    }
+
+    .team-member {
+        .team-member-container {
+          margin-bottom:20px;
+
+          &.blm-lengkap {
+            h4 {
+              background: #f2dede;
+            }
+          }
+
+          &:hover {
+            background: #f5f5f5;
+
+            .team-member-tool {
+              visibility: visible;
+            }
+
+            .team-member-identity {
+              form {
+                visibility:visible;
+              }
+            }
+          }
+
+          h4 {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            color: #fff !important;
+            background: #FFF;
+            width: 30px;
+            height: 35px;
+            font-size: 18px;
+            line-height: 30px;
+            text-align: center;
+          }
+        }
+
+        .team-member-identity {
+          padding-top: 15px;
+          padding-bottom: 15px;
+
+          &:hover {
+            
+          }
+          form {
+            visibility : hidden;
+            position:absolute;
+            top: 10px;
+            right: 10px;
+          }
+          img {
+            
+          }
+
+          dl {
+            width:115px;
+
+            @media (min-width: 1200px)
+            {
+              width:180px;              
+            }
+
+            &.big {
+              width:200px;
+
+              @media (min-width: 1200px)
+              {
+                width:300px;              
+              }
+            }
+          }
+        }
+
+        .team-member-tool {
+          visibility: hidden;
+        }
     }
 
     // -------------------------------------------------------
