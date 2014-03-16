@@ -21,13 +21,13 @@
                 </center>
                 {{
                     ($errors->first('username'))
-                    ? Former::text('username')->state('has-error')
-                    : Former::text('username')
+                    ? Former::text('username')->placeholder('Username')->state('has-error')
+                    : Former::text('username')->placeholder('Username')
                 }}
                 {{
                     ($errors->first('password'))
-                    ? Former::password('password')->state('has-error')
-                    : Former::password('password')
+                    ? Former::password('password')->placeholder('Password')->state('has-error')
+                    : Former::password('password')->placeholder('Password')
                 }}
 
                 {{ Form::captcha() }}
