@@ -24,8 +24,8 @@
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 @endif
 
-<link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.0') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/panel.min.css?v1.0') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.2') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/panel.min.css?v1.2') }}" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

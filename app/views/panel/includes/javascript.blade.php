@@ -4,4 +4,4 @@
 <script src="{{ asset('assets/js/bootstrap-markdown.js') }}"></script>
 <script src="{{ asset('assets/js/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('assets/js/markdown.js') }}"></script>
-<script src="{{ asset('assets/js/panel.js') }}"></script>
+<script src="{{ asset('assets/js/panel.js?v1.2') }}"></script>
