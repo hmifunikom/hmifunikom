@@ -12,7 +12,7 @@ class Peserta extends Ardent implements SluggableInterface {
 
 	protected $guarded = array('id_peserta', 'kd_acara');
 
-    protected $dates = array('tgl_daftar', 'bayar');
+    protected $dates = array('tgl_daftar');
 
 	public static $rules = array(
         'nama_peserta' => 'required',
