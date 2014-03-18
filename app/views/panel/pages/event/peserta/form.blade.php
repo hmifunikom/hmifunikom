@@ -41,7 +41,7 @@
                 ?   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($acara->tgl->toDateString()) 
                 :   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->value(Carbon::now()->toDateString())
             }}
-            {{ Former::text('nim')}}
+            {{ Former::text('nim')->inlineHelp('Kosongkan jika kategori umum') }}
             {{ Former::text('no_hp')}}
             {{ Former::text('email')}}
             {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}

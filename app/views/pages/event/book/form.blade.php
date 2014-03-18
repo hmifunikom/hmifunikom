@@ -42,7 +42,7 @@
                     {{ 
                         Former::select('kategori')->options($kategori)
                     }}
-                    {{ Former::text('nim')}}
+                    {{ Former::text('nim')->inlineHelp('Kosongkan jika kategori umum') }}
                     {{ Former::text('no_hp')}}
                     {{ Former::text('email')}}
                     {{ Former::actions( Button::primary_submit('Pesan'), Button::reset('Reset') ) }}
