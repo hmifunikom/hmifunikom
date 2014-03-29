@@ -209,6 +209,18 @@
         </div> 
     </div>   
     @endif
+
+    <div class="big-container white bg">
+        <div class="container">
+            @if($tim->anggota_lengkap() && $tim->dokumen_lengkap())
+            {{
+                Button::lg_primary_link_block(URL::route('ifgames.anggota.download'), Helper::fa('download').' Download kuitansi')
+            }}
+            @else
+            {{ Alert::warning('Silahkan lengkapi anggota tim dan melengkapi dokumen persyaratan untuk mendownload kuitansi.') }}
+            @endif
+        </div>
+    </div>
 @stop
 
 @section('tagline')

@@ -95,6 +95,8 @@ Route::group(array('domain' => 'event'.$domain), function()
         Route::get('pendaftaran', array('uses' => 'IFGamesController@pendaftaran', 'as' => 'ifgames.pendaftaran'));
         route_resource('anggota', 'IFGamesAnggota', 'ifgames');
 
+        Route::get('kuitansi', array('uses' => 'IFGamesAnggota@download', 'as' => 'ifgames.anggota.download'));
+
         Route::get('register', array('uses' => 'IFGamesController@cabang', 'as' => 'ifgames.cabang'));
         Route::get('register/{cabang}', array('uses' => 'IFGamesController@create', 'as' => 'ifgames.create'));
         Route::post('register/{cabang}', array('uses' => 'IFGamesController@store', 'as' => 'ifgames.store'));

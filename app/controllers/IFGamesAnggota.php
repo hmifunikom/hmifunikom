@@ -41,6 +41,23 @@ class IFGamesAnggota extends BaseController {
 		return View::make('pages.ifgames.anggota.index')->with(array('pagetitle' => 'Form Anggota - IF Games', 'cabang' => $cabang, 'tim' => $tim, 'manager' => $manager, 'official' => $official, 'listanggota' => $anggota));
 	}
 
+	public function download()
+	{
+		$cabang = Auth::ifgames()->user()->cabang;
+		$tim = Auth::ifgames()->user();
+
+		if(! $tim->anggota_lengkap() || ! $tim->dokumen_lengkap())
+		{
+			return Redirect::back()->with('danger', 'Tim belum melengkapi anggota dan dokumen persyaratan!');
+		}
+		
+
+		Helper::createQR($tim->id_tim.$tim->username.$tim->nama_tim);
+		$html =  View::make('pages.ifgames.anggota.kuitansi')->with(array('cabang' => $cabang, 'tim' => $tim))->render();
+		$filename = Str::slug('kuitansi_'.$tim->username.'_'.$tim->nama_tim);
+		return PDF::load($html, 'A4', 'portrait')->download($filename);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
