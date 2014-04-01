@@ -4,6 +4,7 @@
     <div class="big-container">
         <div class="container">
             <h2 class="center">Panduan Pendaftaran</h2>
+            {{ Alert::info('Pendaftaran sudah berakhir.') }}
             <div class="well well-lg">
                 <ol>
                     <li>Setiap peserta atau perwakilan (jika grup), mendaftarkan diri di bit.ly/IFGames2014</li>
