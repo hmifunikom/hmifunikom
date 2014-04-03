@@ -44,7 +44,6 @@ class ImageManipulation {
     public function resize($size = 1024)
     {
         $img = Image::make($this->_source());
-        $this->orientation = $img->exif('Orientation');
         $img->resize(null, 1024, true, false);
         $this->_fix_orientation($img);
         $img->save($this->_destination_orig());
@@ -53,7 +52,7 @@ class ImageManipulation {
     public function thumb($width = 300, $height = null)
     {
         $img = Image::make($this->_source());
-        $this->orientation = $img->exif('Orientation');
+        
         
         if($height)
             $img->grab($width, $height);
@@ -91,6 +90,8 @@ class ImageManipulation {
 
     private function _fix_orientation($img)
     {
+        if(! $this->_is_jpeg($img)) return;
+        $this->orientation = $img->exif('Orientation');
         // http://forumsarchive.laravel.io/viewtopic.php?pid=59846#p59846
         $orientation = $this->orientation;
 
@@ -108,6 +109,11 @@ class ImageManipulation {
                     break;
             }
         }
+    }
+
+    private function _is_jpeg($img)
+    {
+        return "image/jpeg" == $img->mime;
     }
 
     public function __destruct()
