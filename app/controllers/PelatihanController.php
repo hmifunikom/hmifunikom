@@ -17,7 +17,7 @@ class PelatihanController extends BaseController {
 
 	public function index()
 	{
-		return View::make('pages.pelatihan.index');
+		return View::make('pages.pelatihan.index')->with(array('pagetitle' => 'Formulir Pendaftaran - Pelatihan Kompetisi'));
 	}
 
 	public function store()
@@ -43,7 +43,7 @@ class PelatihanController extends BaseController {
 			$anggota = new PelatihanAnggota();
 
 			if ($anggota->save()) {
-			    return View::make('pages.pelatihan.thanks');
+			    return View::make('pages.pelatihan.thanks')->with(array('pagetitle' => 'Terimakasih - Pelatihan Kompetisi'));;
 	        } else {
 	            return Redirect::action('pelatihan.index')->withErrors($anggota->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 	        }
