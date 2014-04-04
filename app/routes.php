@@ -73,6 +73,8 @@ Route::model('cabang', 'IFGCabang');
 Route::model('tim', 'IFGTim');
 Route::model('anggota', 'IFGAnggotaTim');
 
+Route::model('pelatihananggota', 'PelatihanAnggota');
+
 Route::pattern('keanggotaan', '\d+');
 
 
@@ -170,9 +172,22 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     Route::get('ifgames/{ifgames}/tim/{tim}/anggota/{anggota}/ska', array('uses' => 'PanelIFGamesAnggotaTimController@ska', 'as' => 'panel.ifgames.tim.anggota.ska'));
     Route::get('ifgames/{ifgames}/tim/{tim}/anggota/{anggota}/ktm', array('uses' => 'PanelIFGamesAnggotaTimController@ktm', 'as' => 'panel.ifgames.tim.anggota.ktm'));
 
+    Route::get('pelatihan/anggota', array('uses' => 'PanelPelatihanAnggotaController@index', 'as' => 'panel.pelatihan.anggota.index'));
+    Route::get('pelatihan/anggota/create', array('uses' => 'PanelPelatihanAnggotaController@create', 'as' => 'panel.pelatihan.anggota.create'));
+    Route::get('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@show', 'as' => 'panel.pelatihan.anggota.show'));
+    Route::post('pelatihan/anggota', array('uses' => 'PanelPelatihanAnggotaController@store', 'as' => 'panel.pelatihan.anggota.store'));
+    Route::get('pelatihan/anggota/{pelatihananggota}/edit', array('uses' => 'PanelPelatihanAnggotaController@edit', 'as' => 'panel.pelatihan.anggota.edit'));
+    Route::put('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@update', 'as' => 'panel.pelatihan.anggota.update'));
+    Route::delete('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@destroy', 'as' => 'panel.pelatihan.anggota.destroy'));
 
     route_resource('arsip', 'PanelArsipController', 'panel');
 
+});
+
+Route::group(array('domain' => 'pelatihan'.$domain), function()
+{
+    Route::get('/', array('uses' => 'PelatihanController@index', 'as' => 'pelatihan.index'));
+    Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));
 });
 
 Route::when('*', 'csrf', array('post', 'put', 'patch'));

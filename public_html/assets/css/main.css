@@ -154,6 +154,9 @@ legend,
 .jumbotron.ifgames.futsal {
   background: url('../images/ifgames-futsal-banner.jpg') #b71524 center;
 }
+.jumbotron.pelatihan {
+  background: #03956e center;
+}
 .jumbotron.keanggotaan {
   background: url('../images/keanggotaan-banner.jpg') #252525 center;
 }

@@ -13,6 +13,7 @@ class Repositories extends ServiceProvider {
         $this->register_user();
         $this->register_perpustakaan();
         $this->register_if_center();
+        $this->register_pelatihan();
     }
 
     private function register_arsip()
@@ -56,6 +57,16 @@ class Repositories extends ServiceProvider {
         $namespace = 'HMIF\\Repositories\\Keanggotaan\\';
         $list = array(
             'AnggotaRepo'      =>  'EloquentAnggotaRepo',
+        );
+
+        $this->_register($list, $namespace);
+    }
+
+    private function register_pelatihan()
+    {
+        $namespace = 'HMIF\\Repositories\\Pelatihan\\';
+        $list = array(
+            'PelatihanAnggotaRepo'      =>  'EloquentPelatihanAnggotaRepo',
         );
 
         $this->_register($list, $namespace);

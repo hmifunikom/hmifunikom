@@ -24,6 +24,9 @@
                 <li class="{{ Helper::active('panel.ifgames.index', false) }}">
                     <a href="{{action('panel.ifgames.index')}}">{{Helper::fa('dribbble')}} <span class="title">IF Games</span></a>
                 </li>
+                <li class="{{ Helper::active('panel.pelatihan.anggota.index', false) }}">
+                    <a href="{{action('panel.pelatihan.anggota.index')}}">{{Helper::fa('keyboard-o')}} <span class="title">Pelatihan</span></a>
+                </li>
                 <li class="{{ Helper::active('panel.arsip.index', false) }}">
                     <a href="{{action('panel.arsip.index')}}">{{Helper::fa('copy')}} <span class="title">Arsip</span></a>
                 </li>
