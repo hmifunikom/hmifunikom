@@ -13,7 +13,7 @@ class SessionsController extends BaseController {
       if (Auth::panel()->check())
       {
         // Redirect to homepage
-        return Redirect::intended('panel')->with('success', 'You are already logged in');
+        return Redirect::intended('/')->with('success', 'Anda sudah masuk sebelumnya.');
       }
 
       // Show the login page
@@ -50,12 +50,12 @@ class SessionsController extends BaseController {
           if (Auth::panel()->attempt($userdata))
           {
               // Redirect to homepage
-              return Redirect::intended('panel')->with('success', 'You have logged in successfully');
+              return Redirect::intended('/')->with('success', 'Anda berhasil masuk!');
           }
           else
           {
               // Redirect to the login page.
-              return Redirect::route('sessions.create')->withErrors(array('password' => 'Password invalid'))->withInput(Input::except('password'));
+              return Redirect::route('sessions.create')->withErrors(array('password' => 'Password salah'))->withInput(Input::except('password'));
           }
       }
 
@@ -75,7 +75,7 @@ class SessionsController extends BaseController {
       Auth::panel()->logout();
 
       // Redirect to homepage
-      return Redirect::to('')->with('success', 'You are logged out');
+      return Redirect::to('/')->with('success', 'Anda telah keluar');
   }
 
 }
