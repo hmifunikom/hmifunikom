@@ -75,7 +75,7 @@ class SessionsController extends BaseController {
       Auth::panel()->logout();
 
       // Redirect to homepage
-      return Redirect::to('/')->with('success', 'Anda telah keluar');
+      return Redirect::to('/')->with('success', 'Anda telah keluar!');
   }
 
 }

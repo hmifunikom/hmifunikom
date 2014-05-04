@@ -13,7 +13,7 @@ class IFGamesSessionsController extends BaseController {
       if (Auth::ifgames()->check())
       {
         // Redirect to homepage
-        return Redirect::intended('ifgames/anggota')->with('success', 'Anda telah masuk!');
+        return Redirect::intended('ifgames/anggota')->with('success', 'Anda sudah masuk sebelumnya.');
       }
 
       // Show the login page
