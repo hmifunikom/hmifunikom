@@ -85,7 +85,7 @@ class Helper {
     // http://www.laravel-tricks.com/tricks/active-states-based-on-route-names
     public static function active($route, $class = true)
     {   
-        if(strpos(\Request::url(), route($route)) !== false)
+        if(Helper::is_active($route))
         {
             return ($class) ? 'class="active"' : 'active';
         }
@@ -98,6 +98,14 @@ class Helper {
             return ($class) ? 'class="active"' : 'active';
         }
     }    
+
+    public static function is_active($route)
+    {   
+        if(strpos(\Request::url(), route($route)) !== false)
+            return true;
+        else
+            return false;
+    }
 
     /*
     |--------------------------------------------------------------------------
