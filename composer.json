@@ -28,7 +28,11 @@
 		"maatwebsite/excel": "dev-master",
 		"Chumper/Zipper": "dev-master",
 		"ollieread/multiauth": "dev-master",
-		"greggilbert/recaptcha": "dev-master"
+		"greggilbert/recaptcha": "dev-master",
+		"diego1araujo/titleasy": "dev-master",
+		"fitztrev/laravel-html-minify": "dev-master",
+		"vinicius73/seotools": "dev-master",
+		"davejamesmiller/laravel-aliases": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
