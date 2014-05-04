@@ -66,6 +66,10 @@ return array(
         'ifgames' => array(
 			'driver' => 'eloquent',
 			'model'  => 'IFGTim'
+        ),
+        'cakrawala' => array(
+			'driver' => 'eloquent',
+			'model'  => 'CakrawalaUser'
         )
     ),
 

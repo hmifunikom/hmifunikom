@@ -8,6 +8,7 @@ class Repositories extends ServiceProvider {
     {
         $this->register_arsip();
         $this->register_event();
+        $this->register_cakrawala();
         $this->register_ifgames();
         $this->register_keanggotaan();
         $this->register_user();
@@ -35,6 +36,20 @@ class Repositories extends ServiceProvider {
             'DivAcaraRepo'   =>  'EloquentDivAcaraRepo',
             'PanitiaRepo'    =>  'EloquentPanitiaRepo',
             'PesertaRepo'    =>  'EloquentPesertaRepo',
+        );
+
+        $this->_register($list, $namespace);
+    }
+
+    private function register_cakrawala()
+    {
+        $namespace = 'HMIF\\Repositories\\Cakrawala\\';
+        $list = array(
+            'CakrawalaKompetisiAnggotaRepo'     =>  'EloquentCakrawalaKompetisiAnggotaRepo',
+            'CakrawalaKompetisiKaryaRepo'       =>  'EloquentCakrawalaKompetisiKaryaRepo',
+            'CakrawalaKompetisiTimRepo'         =>  'EloquentCakrawalaKompetisiTimRepo',
+            'CakrawalaKompetisiPersyaratanRepo' =>  'EloquentCakrawalaKompetisiPersyaratanRepo',
+            'CakrawalaUserRepo'                 =>  'EloquentCakrawalaUserRepo',
         );
 
         $this->_register($list, $namespace);

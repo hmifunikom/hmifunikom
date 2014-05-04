@@ -27,6 +27,15 @@
                 <li class="{{ Helper::active('panel.pelatihan.anggota.index', false) }}">
                     <a href="{{action('panel.pelatihan.anggota.index')}}">{{Helper::fa('keyboard-o')}} <span class="title">Pelatihan</span></a>
                 </li>
+                <li class="{{ Helper::active('panel.cakrawala.index', false) }}">
+                    <a href="{{action('panel.cakrawala.index')}}">
+                        @if(Helper::is_active('panel.cakrawala.index'))
+                        <i class='fa'><img src="{{asset('assets/images/icon-cakrawala-hover.png')}}"></i>
+                        @else
+                        <i class='fa'><img src="{{asset('assets/images/icon-cakrawala.png')}}"></i>
+                        @endif
+                        <span class="title">Cakrawala</span></a>
+                </li>
                 <li class="{{ Helper::active('panel.arsip.index', false) }}">
                     <a href="{{action('panel.arsip.index')}}">{{Helper::fa('copy')}} <span class="title">Arsip</span></a>
                 </li>

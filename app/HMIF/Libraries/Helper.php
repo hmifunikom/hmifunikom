@@ -99,6 +99,14 @@ class Helper {
         }
     }    
 
+    public static function is_active($route)
+    {   
+        if(strpos(\Request::url(), route($route)) !== false)
+            return true;
+        else
+            return false;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Former Helper

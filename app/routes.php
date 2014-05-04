@@ -51,35 +51,6 @@ function route_resource($resource, $controller, $suffix_name = '')
 
 /*
 |--------------------------------------------------------------------------
-| Model Binding
-|--------------------------------------------------------------------------
-*/
-
-Route::model('keanggotaan', 'Anggota');
-Route::model('divisi', 'Divisi');
-Route::model('kas', 'Kas');
-Route::model('hp', 'Hp');
-Route::model('email', 'Email');
-
-Route::model('event', 'Acara');
-Route::model('waktu', 'WaktuAcara');
-Route::model('div', 'DivAcara');
-Route::model('panitia', 'Panitia');
-Route::model('peserta', 'Peserta');
-Route::model('ticket', 'Peserta');
-
-Route::model('ifgames', 'IFGCabang');
-Route::model('cabang', 'IFGCabang');
-Route::model('tim', 'IFGTim');
-Route::model('anggota', 'IFGAnggotaTim');
-
-Route::model('pelatihananggota', 'PelatihanAnggota');
-
-Route::pattern('keanggotaan', '\d+');
-
-
-/*
-|--------------------------------------------------------------------------
 | Frontend Controller
 |--------------------------------------------------------------------------
 */
@@ -93,6 +64,9 @@ Route::group(array('domain' => 'event'.$domain), function()
 {
     Route::group(array('prefix' => 'ifgames'), function()
    {
+        Route::model('cabang', 'IFGCabang');
+        Route::model('anggota', 'IFGAnggotaTim');
+
         Route::get('/', array('uses' => 'IFGamesController@index', 'as' => 'ifgames.index'));    
         Route::get('pendaftaran', array('uses' => 'IFGamesController@pendaftaran', 'as' => 'ifgames.pendaftaran'));
         route_resource('anggota', 'IFGamesAnggota', 'ifgames');
@@ -107,6 +81,9 @@ Route::group(array('domain' => 'event'.$domain), function()
         Route::post('login', array('uses' => 'IFGamesSessionsController@store', 'as' => 'ifgames.sessions.store'));
         Route::get('logout', array('uses' => 'IFGamesSessionsController@destroy', 'as' => 'ifgames.sessions.destroy'));
     });
+
+    Route::model('event', 'Acara');
+    Route::model('ticket', 'Peserta');
 
     Route::get('/', array('uses' => 'EventController@index', 'as' => 'event.index'));
     Route::get('{event}', array('uses' => 'EventController@show', 'as' => 'event.show'));
@@ -140,6 +117,43 @@ Route::get('logout', array('uses' => 'SessionsController@destroy', 'as' => 'sess
 
 Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'), function()
 {
+    if (Request::is('keanggotaan/*'))
+    {     
+        Route::model('keanggotaan', 'Anggota');
+        Route::model('divisi', 'Divisi');
+        Route::model('kas', 'Kas');
+        Route::model('hp', 'Hp');
+        Route::model('email', 'Email');
+        Route::pattern('keanggotaan', '\d+');
+    }
+
+    if (Request::is('event/*'))
+    {
+        Route::model('event', 'Acara');
+        Route::model('waktu', 'WaktuAcara');
+        Route::model('div', 'DivAcara');
+        Route::model('panitia', 'Panitia');
+        Route::model('peserta', 'Peserta');
+    }
+
+    if (Request::is('ifgames/*'))
+    {
+        Route::model('ifgames', 'IFGCabang');
+        Route::model('cabang', 'IFGCabang');
+        Route::model('tim', 'IFGTim');
+        Route::model('anggota', 'IFGAnggotaTim');        
+    }
+
+    if (Request::is('pelatihan/*'))
+    {
+        Route::model('pelatihananggota', 'PelatihanAnggota');
+    }
+
+    if (Request::is('cakrawala/*'))
+    {
+        Route::model('tim', 'CakrawalaKompetisiTim');
+    }    
+
     Route::get('/', function()
     {
         return Redirect::route('panel.index');
@@ -147,12 +161,16 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
 
     Route::get('dashboard', array('uses' => 'PanelDashboardController@index', 'as' => 'panel.index'));
 
+    // Keanggotaan 
+    
     route_resource('keanggotaan', 'PanelKeanggotaanController', 'panel');
     route_resource('keanggotaan.kas', 'PanelKeanggotaanKasController', 'panel');
     route_resource('keanggotaan.hp', 'PanelKeanggotaanHpController', 'panel');
     route_resource('keanggotaan.email', 'PanelKeanggotaanEmailController', 'panel');
     route_resource('keanggotaan/divisi', 'PanelKeanggotaanDivisiController', 'panel');
 
+    // Event 
+    
     route_resource('event', 'PanelEventController', 'panel');
     Route::post('event/{event}/poster', array('uses' => 'PanelEventController@posterStore', 'as' => 'panel.event.poster.store'));
     Route::delete('event/{event}/poster', array('uses' => 'PanelEventController@posterDelete', 'as' => 'panel.event.poster.destroy'));
@@ -164,6 +182,8 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     route_resource('event.peserta', 'PanelEventPesertaController', 'panel');
     Route::get('event/{event}/peserta/{peserta}/pay', array('uses' => 'PanelEventPesertaController@pay', 'as' => 'panel.event.peserta.pay'));
 
+    // IF Games
+
     route_resource('ifgames', 'PanelIFGamesCabangController', 'panel');
     route_resource('ifgames.jabatan', 'PanelIFGamesJabatanController', 'panel');
     route_resource('ifgames.tim', 'PanelIFGamesTimController', 'panel');
@@ -171,6 +191,8 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     route_resource('ifgames.tim.anggota', 'PanelIFGamesAnggotaTimController', 'panel');
     Route::get('ifgames/{ifgames}/tim/{tim}/anggota/{anggota}/ska', array('uses' => 'PanelIFGamesAnggotaTimController@ska', 'as' => 'panel.ifgames.tim.anggota.ska'));
     Route::get('ifgames/{ifgames}/tim/{tim}/anggota/{anggota}/ktm', array('uses' => 'PanelIFGamesAnggotaTimController@ktm', 'as' => 'panel.ifgames.tim.anggota.ktm'));
+
+    // Pelatihan
 
     Route::get('pelatihan/anggota', array('uses' => 'PanelPelatihanAnggotaController@index', 'as' => 'panel.pelatihan.anggota.index'));
     Route::get('pelatihan/anggota/create', array('uses' => 'PanelPelatihanAnggotaController@create', 'as' => 'panel.pelatihan.anggota.create'));
@@ -180,11 +202,32 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     Route::put('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@update', 'as' => 'panel.pelatihan.anggota.update'));
     Route::delete('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@destroy', 'as' => 'panel.pelatihan.anggota.destroy'));
 
+    // Cakrawala
+
+    Route::group(array('prefix' => 'cakrawala'), function()
+    {
+        Route::get('/', array('uses' => 'PanelCakrawalaController@index', 'as' => 'panel.cakrawala.index'));
+
+        Route::get('kompetisi', array('uses' => 'PanelCakrawalaKompetisiController@index', 'as' => 'panel.cakrawala.kompetisi.index'));
+        route_resource('kompetisi.tim', 'PanelCakrawalaKompetisiTimController', 'panel.cakrawala');
+        Route::get('kompetisi/{kompetisi}/tim/{tim}/pay', array('uses' => 'PanelCakrawalaKompetisiTimController@pay', 'as' => 'panel.cakrawala.kompetisi.tim.pay'));
+        route_resource('kompetisi.tim.anggota', 'PanelCakrawalaKompetisiAnggotaController', 'panel.cakrawala');
+    });
+
+    // Arsip
+    
     route_resource('arsip', 'PanelArsipController', 'panel');
 
 });
 
 Route::group(array('domain' => 'pelatihan'.$domain), function()
+{
+    Route::get('/', array('uses' => 'PelatihanController@index', 'as' => 'pelatihan.index'));
+    Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));
+});
+
+
+Route::group(array('domain' => 'cakrawala'.$domain), function()
 {
     Route::get('/', array('uses' => 'PelatihanController@index', 'as' => 'pelatihan.index'));
     Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));

@@ -38,7 +38,7 @@ class IFGamesSessionsController extends BaseController {
       $rules = array(
           'username'  => 'Required',
           'password'  => 'Required',
-          'recaptcha_response_field' => 'required|recaptcha',
+          //'recaptcha_response_field' => 'required|recaptcha',
       );
 
       // Validate the inputs.

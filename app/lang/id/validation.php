@@ -99,6 +99,8 @@ return array(
     */
 
     'attributes' => array(
+        'password_confirmation' => 'Konfirmasi Password',
+
         'nama_acara'      => 'Nama Acara',
         'tgl'             => 'Tanggal Acara',
         'tempat'          => 'Tempat',
