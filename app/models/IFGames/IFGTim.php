@@ -12,9 +12,9 @@ class IFGTim extends Ardent implements UserInterface, RemindableInterface {
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
 
     protected $fillable = array('nama_tim', 'username');
-	protected $guarded = array('id_tim', 'password', 'bayar');
+    protected $guarded = array('id_tim', 'password', 'bayar');
 
-	public static $rules = array(
+    public static $rules = array(
         'nama_tim'              => 'required',
         'username'              => 'required',
     );
@@ -56,6 +56,21 @@ class IFGTim extends Ardent implements UserInterface, RemindableInterface {
     public function getReminderEmail()
     {
         return null;
+    }
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
     }
 
     public function cabang()
