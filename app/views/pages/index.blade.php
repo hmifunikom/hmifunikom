@@ -136,7 +136,7 @@
             <!-- p class="jcarousel-pagination"></p-->
 
             <!--a href="#" role="button">Lihat Buku Lainnya &raquo;</a></p-->
-            <div class="big-title center">Cooming Soon</div>
+            <div class="big-title center">Coming Soon</div>
         </div>
     </div>
 
