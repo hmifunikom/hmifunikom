@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Acara\WaktuAcara;
+
 class PanelEventWaktuController extends BaseController {
 
 	private $waktu;

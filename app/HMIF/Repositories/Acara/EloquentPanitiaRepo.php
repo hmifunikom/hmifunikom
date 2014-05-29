@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Acara;
 
-use Panitia;
+use HMIF\Model\Acara\Panitia;
 
 class EloquentPanitiaRepo implements PanitiaRepo {
 

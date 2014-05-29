@@ -1,9 +1,9 @@
-<?php
+<?php namespace HMIF\Model\Acara;
 
 use LaravelBook\Ardent\Ardent;
 
 class WaktuAcara extends Ardent {
-    protected $table = 'waktu_acara';
+    protected $table = 'tb_acara_waktu';
     protected $primaryKey = 'id_waktu';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation

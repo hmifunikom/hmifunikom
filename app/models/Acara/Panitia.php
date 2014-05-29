@@ -1,9 +1,9 @@
-<?php 
+<?php namespace HMIF\Model\Acara;
 
 use LaravelBook\Ardent\Ardent;
 
 class Panitia extends Ardent {
-    protected $table = 'tb_panitia';
+    protected $table = 'tb_acara_panitia';
     protected $primaryKey = 'id_panitia';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
@@ -18,18 +18,9 @@ class Panitia extends Ardent {
         'jabatan'    => 'required'
     );
 
-    public function identitas()
-    {
-        return $this->belongsTo('Anggota', 'id_anggota');
-    }
-
-    public function panitiaAcara()
-    {
-        return $this->belongsTo('Acara', 'kd_acara');
-    }
-
-    public function divisi()
-    {
-        return $this->belongsTo('DivAcara', 'id_div');
-    }
+    public static $relationsData = array(
+        'panitia' => array(self::BELONGS_TO, 'HMIF\Model\Keanggotaan\Anggota', 'foreignKey' => 'id_anggota'),
+        'acara'   => array(self::BELONGS_TO, 'HMIF\Model\Acara\Acara', 'foreignKey' => 'kd_acara'),
+        'divisi'  => array(self::BELONGS_TO, 'HMIF\Model\Acara\DivAcara', 'foreignKey' => 'id_div'),
+    );
 }

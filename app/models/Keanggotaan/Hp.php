@@ -1,9 +1,9 @@
-<?php 
+<?php namespace HMIF\Model\Keanggotaan;
 
 use LaravelBook\Ardent\Ardent;
 
 class Hp extends Ardent {
-    protected $table = 'tb_hp';
+    protected $table = 'tb_keanggotaan_hp';
     protected $primaryKey = 'kd_hp';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
@@ -16,8 +16,7 @@ class Hp extends Ardent {
         'no_hp'      => 'required|numeric',
     );
 
-    public function pemilik()
-    {
-        return $this->belongsTo('Anggota', 'id_anggota');
-    }
+    public static $relationsData = array(
+        'pemilik' => array(self::BELONGS_TO, 'HMIF\Model\Keanggotaan\Anggota', 'foreignKey' => 'id_anggota'),
+    );
 }

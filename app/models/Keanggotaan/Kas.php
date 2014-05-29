@@ -1,9 +1,9 @@
-<?php 
+<?php namespace HMIF\Model\Keanggotaan;
 
 use LaravelBook\Ardent\Ardent;
 
 class Kas extends Ardent {
-    protected $table = 'tb_kas';
+    protected $table = 'tb_keanggotaan_kas';
     protected $primaryKey = 'kd_kas';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
@@ -18,6 +18,10 @@ class Kas extends Ardent {
 
     protected $dates = array('bulan');
 
+    public static $relationsData = array(
+        'pemilik' => array(self::BELONGS_TO, 'HMIF\Model\Keanggotaan\Anggota', 'foreignKey' => 'id_anggota'),
+    );
+
     public function newQuery($excludeDeleted = true)
     {
         $query = parent::newQuery();
@@ -25,10 +29,5 @@ class Kas extends Ardent {
         $query->orderBy('bulan', 'desc');
 
         return $query;
-    }
-
-    public function pemilik()
-    {
-        return $this->belongsTo('Anggota', 'id_anggota');
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php namespace HMIF\Model\Acara;
 
 use LaravelBook\Ardent\Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
@@ -28,7 +28,14 @@ class Acara extends Ardent implements SluggableInterface {
     protected $dates = array('tgl', 'tgl_selesai_LPJ');
 
     public static $sluggable = array(
-        'build_from' => 'nama_acara',
+        'build_from' => 'nama_acara'
+    );
+
+    public static $relationsData = array(
+        'waktu'   => array(self::HAS_MANY, 'HMIF\Model\Acara\WaktuAcara', 'foreignKey' => 'kd_acara'),
+        'peserta' => array(self::HAS_MANY, 'HMIF\Model\Acara\Peserta', 'foreignKey' => 'kd_acara'),
+        'panitia' => array(self::HAS_MANY, 'HMIF\Model\Acara\Panitia', 'foreignKey' => 'kd_acara'),
+        'divisi'  => array(self::HAS_MANY, 'HMIF\Model\Acara\DivAcara', 'foreignKey' => 'kd_acara'),
     );
 
     public function newQuery($excludeDeleted = true)
@@ -38,26 +45,6 @@ class Acara extends Ardent implements SluggableInterface {
         $query->orderBy('tgl', 'asc');
 
         return $query;
-    }
-
-    public function waktu()
-    {
-        return $this->hasMany('WaktuAcara', 'kd_acara');
-    }
-
-    public function peserta()
-    {
-        return $this->hasMany('Peserta', 'kd_acara');
-    }
-
-    public function panitia()
-    {
-        return $this->hasMany('Panitia', 'kd_acara');
-    }
-
-    public function divisi()
-    {
-        return $this->hasMany('DivAcara', 'kd_acara');
     }
 
     public function getSlugIdentifier()

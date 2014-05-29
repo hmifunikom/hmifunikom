@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Pelatihan;
 
-use PelatihanAnggota as Anggota;
+use HMIF\Model\Pelatihan\Anggota as Anggota;
 
 class EloquentPelatihanAnggotaRepo implements PelatihanAnggotaRepo {
 

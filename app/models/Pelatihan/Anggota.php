@@ -1,8 +1,8 @@
-<?php
+<?php namespace HMIF\Model\Pelatihan;
 
 use LaravelBook\Ardent\Ardent;
 
-class PelatihanAnggota extends Ardent {
+class Anggota extends Ardent {
     protected $table = 'tb_pelatihan_anggota';
     protected $primaryKey = 'id_anggota';
 

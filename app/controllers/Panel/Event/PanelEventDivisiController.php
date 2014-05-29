@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Acara\DivAcara;
+
 class PanelEventDivisiController extends BaseController {
 
 	private $div;

@@ -9,14 +9,8 @@
 		"laravelbook/ardent": "dev-master",
 		"anahkiasen/former": "dev-master",
 		"patricktalmadge/bootstrapper": "dev-develop",
-		"emberlabs/gravatarlib": "dev-master@dev",
 		"thomaswelton/laravel-gravatar": "dev-master",
-		"leafo/lessphp": "0.4.*@dev",
-		"ptachoire/cssembed": "dev-master",
-		"patchwork/jsqueeze": "dev-master",
-		"slushie/laravel-assetic": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "dev-master",
-		"intervention/image": "dev-master",
 		"intervention/imagecache": "dev-master",
 		"kmd/logviewer": "1.1.*",
 		"machuga/authority-l4": "2.1.*@dev",
@@ -32,7 +26,8 @@
 		"diego1araujo/titleasy": "dev-master",
 		"fitztrev/laravel-html-minify": "dev-master",
 		"vinicius73/seotools": "dev-master",
-		"davejamesmiller/laravel-aliases": "dev-master"
+		"davejamesmiller/laravel-aliases": "dev-master",
+		"graham-campbell/throttle": "0.2.*@alpha"
 	},
 	"autoload": {
 		"classmap": [

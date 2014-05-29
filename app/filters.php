@@ -35,7 +35,11 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::panel()->guest()) return Redirect::guest('login');
+	if (Auth::panel()->guest())
+    {
+        Session::put('redirect_to', 'panel');
+        return Redirect::guest(route('sessions.create'));
+    } 
 });
 
 

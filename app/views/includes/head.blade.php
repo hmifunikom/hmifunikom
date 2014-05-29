@@ -13,18 +13,22 @@
 
 <!-- Bootstrap core CSS -->
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/fullcalendar.css') }}" rel="stylesheet">
 
 @if(App::environment('production'))
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="//cdn.jsdelivr.net/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+@else
+<link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/fullcalendar.css') }}" rel="stylesheet">
 @endif
+
 
 <link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.2.8') }}" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <![endif]-->

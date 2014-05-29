@@ -1,8 +1,8 @@
-<?php
+<?php namespace HMIF\Model\IFGames;
 
 use LaravelBook\Ardent\Ardent;
 
-class IFGAnggotaTim extends Ardent {
+class AnggotaTim extends Ardent {
     protected $table = 'tb_ifgames_anggota';
     protected $primaryKey = 'id_anggota';
 
@@ -19,6 +19,11 @@ class IFGAnggotaTim extends Ardent {
         'foto'  => 'required',
     );
 
+    public static $relationsData = array(
+        'cabang' => array(self::BELONGS_TO, 'HMIF\Model\IFGames\Cabang', 'foreignKey' => 'id_cabang'),
+        'tim'    => array(self::BELONGS_TO, 'HMIF\Model\IFGames\Tim', 'foreignKey' => 'id_tim'),
+    );
+
     public function newQuery($excludeDeleted = true)
     {
         $query = parent::newQuery();
@@ -26,16 +31,6 @@ class IFGAnggotaTim extends Ardent {
         $query->orderBy('id_anggota', 'asc');
 
         return $query;
-    }
-
-    public function cabang()
-    {
-        return $this->belongsTo('IFGCabang', 'id_cabang');
-    }
-
-    public function tim()
-    {
-        return $this->belongsTo('IFGTim', 'id_tim');
     }
 
     public function lengkap()

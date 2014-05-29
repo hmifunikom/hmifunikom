@@ -61,11 +61,11 @@ return array(
 	'multi' => array(
         'panel' => array(
 			'driver' => 'eloquent',
-			'model'  => 'User'
+			'model'  => 'HMIF\Model\User\User'
         ),
         'ifgames' => array(
 			'driver' => 'eloquent',
-			'model'  => 'IFGTim'
+			'model'  => 'HMIF\Model\User\User'
         ),
         'cakrawala' => array(
 			'driver' => 'eloquent',
@@ -74,13 +74,9 @@ return array(
     ),
 
 	'reminder' => array(
-
 		'email' => 'emails.auth.reminder',
-
 		'table' => 'password_reminders',
-
 		'expire' => 60,
-
 	),
 
 );

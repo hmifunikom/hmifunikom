@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Keanggotaan\Anggota;
+
 class PanelKeanggotaanController extends BaseController {
 
 	private $anggota;

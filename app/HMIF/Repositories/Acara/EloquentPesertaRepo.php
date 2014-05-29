@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Acara;
 
-use Peserta;
+use HMIF\Model\Acara\Peserta;
 
 class EloquentPesertaRepo implements PesertaRepo {
 

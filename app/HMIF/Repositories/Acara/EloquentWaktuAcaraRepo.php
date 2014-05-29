@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Acara;
 
-use WaktuAcara;
+use HMIF\Model\Acara\WaktuAcara;
 
 class EloquentWaktuAcaraRepo implements WaktuAcaraRepo {
 

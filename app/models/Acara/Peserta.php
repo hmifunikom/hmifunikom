@@ -1,10 +1,11 @@
-<?php 
+<?php namespace HMIF\Model\Acara;
 
 use LaravelBook\Ardent\Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
+use DB;
 
 class Peserta extends Ardent implements SluggableInterface {
-    protected $table = 'peserta';
+    protected $table = 'tb_acara_peserta';
     protected $primaryKey = 'id_peserta';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
@@ -25,10 +26,9 @@ class Peserta extends Ardent implements SluggableInterface {
         'email'        => 'email',
     );
 
-    public function acara()
-    {
-        return $this->belongsTo('Acara', 'kd_acara');
-    }
+    public static $relationsData = array(
+        'acara'   => array(self::BELONGS_TO, 'HMIF\Model\Acara\Acara', 'foreignKey' => 'kd_acara'),
+    );
 
     public function getSlugIdentifier()
     {

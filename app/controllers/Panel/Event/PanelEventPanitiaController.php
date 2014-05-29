@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Acara\Panitia;
+
 class PanelEventPanitiaController extends BaseController {
 
 	private $panitia;

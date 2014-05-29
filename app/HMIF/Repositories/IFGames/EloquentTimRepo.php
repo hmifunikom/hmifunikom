@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\IFGames;
 
-use IFGTim as Tim;
+use HMIF\Model\IFGames\Tim as Tim;
 
 class EloquentTimRepo implements TimRepo {
 

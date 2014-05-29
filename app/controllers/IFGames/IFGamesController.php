@@ -1,6 +1,6 @@
 <?php
 
-use IFGTim as Tim;
+use HMIF\Model\IFGames\Tim as Tim;
 
 class IFGamesController extends BaseController {
 
@@ -26,7 +26,7 @@ class IFGamesController extends BaseController {
 	
 	public function cabang()
 	{
-		return Redirect::back();
+		//return Redirect::back();
 		if(Auth::ifgames()->check())
 			return Redirect::action('ifgames.anggota.index');
 
@@ -36,7 +36,7 @@ class IFGamesController extends BaseController {
 
 	public function create($cabang)
 	{
-		return Redirect::back();
+		//return Redirect::back();
 		if(Auth::ifgames()->check())
 			return Redirect::action('ifgames.anggota.index');
 
@@ -49,7 +49,7 @@ class IFGamesController extends BaseController {
 
 	public function store($cabang)
 	{
-		return Redirect::back();
+		//return Redirect::back();
 		if(Auth::ifgames()->check())
 			return Redirect::action('ifgames.anggota.index');
 

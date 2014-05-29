@@ -1,6 +1,6 @@
 <?php
 
-class SessionsController extends BaseController {
+class IFGamesSessionsController extends BaseController {
 
   /**
    * Show the form for creating a new session.
@@ -10,14 +10,14 @@ class SessionsController extends BaseController {
   public function create()
   {
       // Check if we already logged in
-      if (Auth::panel()->check())
+      if (Auth::ifgames()->check())
       {
         // Redirect to homepage
-        return Redirect::intended('panel')->with('success', 'You are already logged in');
+        return Redirect::intended('ifgames/anggota')->with('success', 'Anda sudah masuk sebelumnya.');
       }
 
       // Show the login page
-      return View::make('pages.sessions.create');
+      return View::make('pages.ifgames.sessions.create')->with(array('pagetitle' => 'Login Peserta - IF Games'));
   }
 
   /**
@@ -37,30 +37,30 @@ class SessionsController extends BaseController {
       // Declare the rules for the form validation.
       $rules = array(
           'username'  => 'Required',
-          'password'  => 'Required'
+          'password'  => 'Required',
+          //'recaptcha_response_field' => 'required|recaptcha',
       );
 
       // Validate the inputs.
-      $validator = Validator::make($userdata, $rules);
+      $validator = Validator::make(Input::all(), $rules);
 
       // Check if the form validates with success.
       if ($validator->passes())
       {
           // Try to log the user in.
-          if (Auth::panel()->attempt($userdata))
+          if (Auth::ifgames()->attempt($userdata))
           {
-              // Redirect to homepage
-              return Redirect::intended('panel')->with('success', 'You have logged in successfully');
+              return Redirect::intended('ifgames/anggota')->with('success', 'Anda berhasil masuk!');
           }
           else
           {
               // Redirect to the login page.
-              return Redirect::route('sessions.create')->withErrors(array('password' => 'Password invalid'))->withInput(Input::except('password'));
+              return Redirect::route('ifgames.sessions.create')->withErrors(array('password' => 'Password salah'))->withInput(Input::except('password'));
           }
       }
 
       // Something went wrong.
-      return Redirect::route('sessions.create')->withErrors($validator)->withInput(Input::except('password'));
+      return Redirect::route('ifgames.sessions.create')->withErrors($validator)->withInput(Input::except('password'));
   }
 
   /**
@@ -72,10 +72,10 @@ class SessionsController extends BaseController {
   public function destroy()
   {
       // Log out
-      Auth::panel()->logout();
+      Auth::ifgames()->logout();
 
       // Redirect to homepage
-      return Redirect::to('')->with('success', 'You are logged out');
+      return Redirect::to('ifgames')->with('success', 'Anda telah keluar!');
   }
 
 }

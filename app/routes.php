@@ -40,13 +40,13 @@ function route_resource($resource, $controller, $suffix_name = '')
 
     $routename = str_replace('/', '.', $resource);
 
-    Route::get($urllist,                           array( 'as' => $suffix_name.$routename.'.index', 'uses' => $controller . '@index' ));
-    Route::get($urllist.'/create',                 array( 'as' => $suffix_name.$routename.'.create', 'uses' => $controller . '@create' ));
-    Route::get($urlitem,        array( 'as' => $suffix_name.$routename.'.show', 'uses' => $controller . '@show' ));
-    Route::post($urllist,                          array( 'as' => $suffix_name.$routename.'.store', 'uses' => $controller . '@store'));
-    Route::get($urlitem.'/edit',   array( 'as' => $suffix_name.$routename.'.edit', 'uses' => $controller . '@edit' ));
-    Route::put($urlitem,        array( 'as' => $suffix_name.$routename.'.update', 'uses' => $controller . '@update' ));
-    Route::delete($urlitem,     array( 'as' => $suffix_name.$routename.'.destroy', 'uses' => $controller . '@destroy' ));
+    Route::get($urllist,            array( 'as' => $suffix_name.$routename.'.index', 'uses' => $controller . '@index' ));
+    Route::get($urllist.'/create',  array( 'as' => $suffix_name.$routename.'.create', 'uses' => $controller . '@create' ));
+    Route::get($urlitem,            array( 'as' => $suffix_name.$routename.'.show', 'uses' => $controller . '@show' ));
+    Route::post($urllist,           array( 'as' => $suffix_name.$routename.'.store', 'uses' => $controller . '@store'));
+    Route::get($urlitem.'/edit',    array( 'as' => $suffix_name.$routename.'.edit', 'uses' => $controller . '@edit' ));
+    Route::put($urlitem,            array( 'as' => $suffix_name.$routename.'.update', 'uses' => $controller . '@update' ));
+    Route::delete($urlitem,         array( 'as' => $suffix_name.$routename.'.destroy', 'uses' => $controller . '@destroy' ));
 }
 
 /*
@@ -82,8 +82,8 @@ Route::group(array('domain' => 'event'.$domain), function()
         Route::get('logout', array('uses' => 'IFGamesSessionsController@destroy', 'as' => 'ifgames.sessions.destroy'));
     });
 
-    Route::model('event', 'Acara');
-    Route::model('ticket', 'Peserta');
+    Route::model('event', 'HMIF\Model\Acara\Acara');
+    Route::model('ticket', 'HMIF\Model\Acara\Peserta');
 
     Route::get('/', array('uses' => 'EventController@index', 'as' => 'event.index'));
     Route::get('{event}', array('uses' => 'EventController@show', 'as' => 'event.show'));
@@ -111,42 +111,56 @@ Route::group(array('domain' => 'library'.$domain), function()
 |--------------------------------------------------------------------------
 */
 
-Route::get('login', array('uses' => 'SessionsController@create', 'as' => 'sessions.create'));
-Route::post('login', array('uses' => 'SessionsController@store', 'as' => 'sessions.store'));
-Route::get('logout', array('uses' => 'SessionsController@destroy', 'as' => 'sessions.destroy'));
+Route::group(array('domain' => 'session'.$domain), function()
+{
+    Route::get('/', function()
+    {
+        return Redirect::route('index');
+    });
+
+    Route::get('login', array('uses' => 'SessionsController@create', 'as' => 'sessions.create'));
+    Route::post('login', array('uses' => 'SessionsController@store', 'as' => 'sessions.store'));
+    Route::get('logout', array('uses' => 'SessionsController@destroy', 'as' => 'sessions.destroy'));
+
+    Route::controller('password', 'RemindersController');
+    Route::get('password/remind', array('uses' => 'RemindersController@getRemind', 'as' => 'sessions.password.forget'));
+    Route::post('password/remind', array('uses' => 'RemindersController@postRemind', 'as' => 'sessions.password.send'));
+    Route::get('password/reset', array('uses' => 'RemindersController@getReset', 'as' => 'sessions.password.reset'));
+    Route::post('password/reset', array('uses' => 'RemindersController@postReset', 'as' => 'sessions.password.set'));
+});
 
 Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'), function()
 {
     if (Request::is('keanggotaan/*'))
     {     
-        Route::model('keanggotaan', 'Anggota');
-        Route::model('divisi', 'Divisi');
-        Route::model('kas', 'Kas');
-        Route::model('hp', 'Hp');
-        Route::model('email', 'Email');
+        Route::model('keanggotaan', 'HMIF\Model\Keanggotaan\Anggota');
+        Route::model('divisi', 'HMIF\Model\Keanggotaan\Divisi');
+        Route::model('kas', 'HMIF\Model\Keanggotaan\Kas');
+        Route::model('hp', 'HMIF\Model\Keanggotaan\Hp');
+        Route::model('email', 'HMIF\Model\Keanggotaan\Email');
         Route::pattern('keanggotaan', '\d+');
     }
 
     if (Request::is('event/*'))
     {
-        Route::model('event', 'Acara');
-        Route::model('waktu', 'WaktuAcara');
-        Route::model('div', 'DivAcara');
-        Route::model('panitia', 'Panitia');
-        Route::model('peserta', 'Peserta');
+        Route::model('event', 'HMIF\Model\Acara\Acara');
+        Route::model('waktu', 'HMIF\Model\Acara\WaktuAcara');
+        Route::model('div', 'HMIF\Model\Acara\DivAcara');
+        Route::model('panitia', 'HMIF\Model\Acara\Panitia');
+        Route::model('peserta', 'HMIF\Model\Acara\Peserta');
     }
 
     if (Request::is('ifgames/*'))
     {
-        Route::model('ifgames', 'IFGCabang');
-        Route::model('cabang', 'IFGCabang');
-        Route::model('tim', 'IFGTim');
-        Route::model('anggota', 'IFGAnggotaTim');        
+        Route::model('ifgames', 'HMIF\Model\IFGames\Cabang');
+        Route::model('cabang', 'HMIF\Model\IFGames\Cabang');
+        Route::model('tim', 'HMIF\Model\IFGames\Tim');
+        Route::model('anggota', 'HMIF\Model\IFGames\AnggotaTim');        
     }
 
     if (Request::is('pelatihan/*'))
     {
-        Route::model('pelatihananggota', 'PelatihanAnggota');
+        Route::model('pelatihananggota', 'HMIF\Model\Pelatihan\Anggota');
     }
 
     if (Request::is('cakrawala/*'))
@@ -217,6 +231,10 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     // Arsip
     
     route_resource('arsip', 'PanelArsipController', 'panel');
+
+    // User
+    
+    route_resource('user', 'PanelUserController', 'panel');
 
 });
 

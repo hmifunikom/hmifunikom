@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Acara\Acara;
+
 class PanelEventController extends BaseController {
 
 	private $acara;

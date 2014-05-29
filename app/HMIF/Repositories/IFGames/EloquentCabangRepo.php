@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\IFGames;
 
-use IFGCabang as Cabang;
+use HMIF\Model\IFGames\Cabang as Cabang;
 
 class EloquentCabangRepo implements CabangRepo {
 

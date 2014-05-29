@@ -13,12 +13,8 @@ return array(
     |
     */
 
-    "password"  => "Kata sandi harus minimal enam karakter dan cocok dengan konfirmasi.",
-
-    "user"      => "Kami tidak dapat menemukan pengguna dengan alamat surel tersebut.",
-
+    "password"  => "Kata sandi harus minimal delapan karakter dan cocok dengan konfirmasi.",
+    "user"      => "Akun dengan email tersebut tidak ditemukan.",
     "token"     => "Kata sandi token pengaturan ulang tidak sah.",
-
-    "sent"      => "Pengingat kata sandi dikirim!",
-
+    "sent"      => "Link pengaturan ulang password telah dikirim! Silahkan cek email anda.",
 );

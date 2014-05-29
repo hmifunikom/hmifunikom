@@ -27,7 +27,7 @@
             <td>{{ $i++ }}</td>
             <td>{{ $anggota->nama }}</td>
             <td>{{ $anggota->nim }}</td>
-            <td>{{ $anggota->divisi->divisi }}</td>
+            <td>{{ $anggota->divisi->first()->divisi }}</td>
             <td class="right">
                 {{ Former::inline_open()->route('panel.keanggotaan.destroy', $anggota->id_anggota)->class('confirm-delete')->data_confirm('anggota') }}
                     {{ Button::link(action('panel.keanggotaan.show', $anggota->id_anggota), Helper::fa('eye')) }}

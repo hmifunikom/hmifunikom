@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Acara\Peserta;
+
 class EventBookController extends BaseController {
 
 	private $acara;
@@ -30,10 +32,11 @@ class EventBookController extends BaseController {
 	
 	public function email($acara, $peserta)
 	{
-	Mail::send('emails.event.ticket', array('acara' => $acara, 'ticket' => $peserta), function($message) use ($acara, $peserta){
-	    $message->to($peserta->email, $peserta->nama_peserta)->subject('[TIKET] '.$acara->nama_acara.' - HMIF Unikom');
-	});
-	return Redirect::action('event.book.show', array($acara->slug, $peserta->ticket))->with('success', 'Berhasil! Silahkan download dan cetak tiket dan bawa ketika melakukan pembayaran.');
+		Mail::send('emails.event.ticket', array('acara' => $acara, 'ticket' => $peserta), function($message) use ($acara, $peserta){
+	    	$message->to($peserta->email, $peserta->nama_peserta)->subject('[TIKET] '.$acara->nama_acara.' - HMIF Unikom');
+		});
+		
+		return Redirect::action('event.book.show', array($acara->slug, $peserta->ticket))->with('success', 'Berhasil! Silahkan download dan cetak tiket dan bawa ketika melakukan pembayaran.');
 	}
 
 	public function create($acara)

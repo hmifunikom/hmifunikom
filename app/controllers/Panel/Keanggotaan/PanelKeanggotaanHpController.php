@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Keanggotaan\Hp;
+
 class PanelKeanggotaanHpController extends BaseController {
 
 	/**

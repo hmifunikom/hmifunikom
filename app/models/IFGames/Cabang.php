@@ -1,9 +1,9 @@
-<?php
+<?php namespace HMIF\Model\IFGames;
 
 use LaravelBook\Ardent\Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
 
-class IFGCabang extends Ardent implements SluggableInterface {
+class Cabang extends Ardent implements SluggableInterface {
     protected $table = 'tb_ifgames_cabang';
     protected $primaryKey = 'id_cabang';
 
@@ -28,6 +28,10 @@ class IFGCabang extends Ardent implements SluggableInterface {
         'build_from' => 'nama_cabang',
     );
 
+    public static $relationsData = array(
+        'tim'   => array(self::HAS_MANY, 'HMIF\Model\IFGames\Tim', 'foreignKey' => 'id_cabang'),
+    );
+
     public function newQuery($excludeDeleted = true)
     {
         $query = parent::newQuery();
@@ -35,16 +39,6 @@ class IFGCabang extends Ardent implements SluggableInterface {
         $query->orderBy('nama_cabang', 'asc');
 
         return $query;
-    }
-
-    public function jabatan()
-    {
-        return $this->hasMany('IFGJabatan', 'id_cabang');
-    }
-
-    public function tim()
-    {
-        return $this->hasMany('IFGTim', 'id_cabang');
     }
 
     public function getSlugIdentifier()
