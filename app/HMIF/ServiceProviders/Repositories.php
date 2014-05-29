@@ -74,7 +74,12 @@ class Repositories extends ServiceProvider {
 
     private function register_user()
     {
+        $namespace = 'HMIF\\Repositories\\User\\';
+        $list = array(
+            'UserRepoInterface'      =>  'Eloquent\\UserRepo',
+        );
 
+        $this->_register($list, $namespace);
     }
 
     private function register_perpustakaan()

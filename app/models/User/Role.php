@@ -1,4 +1,4 @@
-<?php
+<?php namespace HMIF\Model\User;
 
 use LaravelBook\Ardent\Ardent;
 

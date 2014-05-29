@@ -36,8 +36,8 @@
                 <li class=" ">
                     <a href="{{action('panel.index')}}">{{Helper::fa('bullhorn')}} <span class="title">IF Center</span></a>
                 </li>
-                <li class="last ">
-                    <a href="{{action('panel.index')}}">{{Helper::fa('user')}} <span class="title">User</span></a>
+                <li class="last {{ Helper::active('panel.user.index', false) }}">
+                    <a href="{{action('panel.user.index')}}">{{Helper::fa('user')}} <span class="title">User</span></a>
                 </li>
             </ul>
             <div class="clearfix"></div>

@@ -1,6 +1,6 @@
 <?php
 
-use IFGAnggotaTim as AnggotaTim;
+use HMIF\Model\IFGames\AnggotaTim as AnggotaTim;
 
 class IFGamesAnggota extends BaseController {
 

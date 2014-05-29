@@ -20,8 +20,9 @@ h4 {.bitter(28px)}
 
 .container {
     width: 970px !important;
-    @media (min-width: 1200px) {
-        width: 1170px !important;
+    @media (min-width: 1024px) {
+        width: 100% !important;
+        padding:0;
     }
 }
 
@@ -356,25 +357,8 @@ Sidebar toggler
     // Navbar
     // --------------------------------------------------------
     .navbar {
-        .transition(height);
-
-        .navbar-nav {
-            .transition(margin);
-        }
-
-        .navbar-brand {
-            padding-top:10px;
-            color: white;
-            text-transform: uppercase;
-            .bitter(26px);
-            font-weight: bold;
-            .transition(all);
-
-            img {
-                height: 30px;
-                margin-right:15px;
-                .transition(height);
-            }
+        .container {
+          padding : 0 15px;
         }
 
         .dropdown-toggle {
@@ -383,26 +367,6 @@ Sidebar toggler
                 margin-right: 10px;
                 float: left;
                 margin-top: -5px;
-            }
-        }
-
-         @media (min-width:768px){
-            height:50px !important;
-
-            &.big {
-                height:100px !important;
-                .navbar-nav {
-                    margin-top: 23px !important;
-                }
-
-                .navbar-brand {
-                    padding-top:15px;
-                    .bitter(36px);
-
-                    img {
-                        height: 70px;
-                    }
-                }      
             }
         }
     }
@@ -588,6 +552,10 @@ Sidebar toggler
 
     footer {
         .container {
+            .row {
+              margin:0;
+            }
+
             padding-top:10px !important;
             padding-bottom:10px !important;
 

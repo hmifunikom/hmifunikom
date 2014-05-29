@@ -1,4 +1,4 @@
-<?php
+<?php namespace HMIF\Model\IFCenter;
 
 use LaravelBook\Ardent\Ardent;
 
@@ -16,8 +16,7 @@ class UserUmum extends Ardent {
         'id_divisi' => 'required',
     );
 
-    public function credential()
-    {
-        return $this->hasOne('User', 'id_user');
-    }
+    public static $relationsData = array(
+        'credential'   => array(self::BELONGS_TO, 'HMIF\Model\User\User', 'foreignKey' => 'id_user'),
+    );
 }

@@ -1,9 +1,9 @@
-<?php
+<?php namespace HMIF\Model\Acara;
 
 use LaravelBook\Ardent\Ardent;
 
 class DivAcara extends Ardent {
-    protected $table = 'tb_div_acara';
+    protected $table = 'tb_acara_divisi';
     protected $primaryKey = 'id_div';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
@@ -16,8 +16,7 @@ class DivAcara extends Ardent {
         'kd_acara' => 'required',
     );
 
-    public function panitia()
-    {
-        return $this->hasMany('Panitia', 'id_div');
-    }
+    public static $relationsData = array(
+        'panitia'   => array(self::HAS_MANY, 'HMIF\Model\Acara\Panitia', 'foreignKey' => 'id_div'),
+    );
 }

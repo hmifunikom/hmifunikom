@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Keanggotaan\Email;
+
 class PanelKeanggotaanEmailController extends BaseController {
 
 	/**

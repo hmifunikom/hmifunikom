@@ -67,9 +67,10 @@ h4 {
 .container {
   width: 970px !important;
 }
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .container {
-    width: 1170px !important;
+    width: 100% !important;
+    padding: 0;
   }
 }
 .right {
@@ -365,42 +366,8 @@ Sidebar toggler
 .unvisible {
   display: none;
 }
-.hmifpanel .navbar {
-  -webkit-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -moz-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -ms-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -o-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-}
-.hmifpanel .navbar .navbar-nav {
-  -webkit-transition: margin 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -moz-transition: margin 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -ms-transition: margin 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -o-transition: margin 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-}
-.hmifpanel .navbar .navbar-brand {
-  padding-top: 10px;
-  color: white;
-  text-transform: uppercase;
-  font-size: 15px;
-  font-family: 'Bitter', serif;
-  font-weight: bold;
-  -webkit-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -moz-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -ms-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -o-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-}
-@media (min-width: 768px) {
-  .hmifpanel .navbar .navbar-brand {
-    font-size: 26px;
-  }
-}
-.hmifpanel .navbar .navbar-brand img {
-  height: 30px;
-  margin-right: 15px;
-  -webkit-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -moz-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -ms-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  -o-transition: height 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+.hmifpanel .navbar .container {
+  padding: 0 15px;
 }
 .hmifpanel .navbar .dropdown-toggle {
   height: 49px;
@@ -409,30 +376,6 @@ Sidebar toggler
   margin-right: 10px;
   float: left;
   margin-top: -5px;
-}
-@media (min-width: 768px) {
-  .hmifpanel .navbar {
-    height: 50px !important;
-  }
-  .hmifpanel .navbar.big {
-    height: 100px !important;
-  }
-  .hmifpanel .navbar.big .navbar-nav {
-    margin-top: 23px !important;
-  }
-  .hmifpanel .navbar.big .navbar-brand {
-    padding-top: 15px;
-    font-size: 20px;
-    font-family: 'Bitter', serif;
-  }
-  .hmifpanel .navbar.big .navbar-brand img {
-    height: 70px;
-  }
-}
-@media (min-width: 768px) and (min-width: 768px) {
-  .hmifpanel .navbar.big .navbar-brand {
-    font-size: 36px;
-  }
 }
 .hmifpanel .row .header-toolbar {
   padding-top: 10px;
@@ -567,6 +510,9 @@ Sidebar toggler
 .hmifpanel footer .container {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
+}
+.hmifpanel footer .container .row {
+  margin: 0;
 }
 .hmifpanel footer .container .copyright,
 .hmifpanel footer .container .sponsor {

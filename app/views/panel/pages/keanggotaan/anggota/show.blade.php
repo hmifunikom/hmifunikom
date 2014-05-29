@@ -25,7 +25,7 @@
                 'NIM' => $anggota->nim,
                 'Alamat' => $anggota->alamat,
                 'Asal' => $anggota->asal,
-                'Divisi' => $anggota->divisi->divisi,
+                'Divisi' => $anggota->divisi->first()->divisi,
             )
         )
     }}

@@ -53,13 +53,12 @@ class ImageManipulation {
     {
         $img = Image::make($this->_source());
         
-        
         if($height)
             $img->grab($width, $height);
         else
             $img->grab($width);
     
-    $this->_fix_orientation($img);
+        $this->_fix_orientation($img);
         $img->save($this->_destination_thumb());
     }
 

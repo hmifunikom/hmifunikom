@@ -1,6 +1,6 @@
 <?php
 
-use PelatihanAnggota as Anggota;
+use HMIF\Model\Pelatihan\Anggota as Anggota;
 
 class PanelPelatihanAnggotaController extends BaseController {
 

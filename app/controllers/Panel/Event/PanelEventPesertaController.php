@@ -1,5 +1,6 @@
 <?php
 
+use HMIF\Model\Acara\Peserta;
 use Sabre\VObject;
 use Alchemy\Zippy\Zippy;
 

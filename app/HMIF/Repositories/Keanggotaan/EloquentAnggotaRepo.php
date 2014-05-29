@@ -1,8 +1,8 @@
 <?php namespace HMIF\Repositories\Keanggotaan;
 
-use Anggota;
-use User;
-use Divisi;
+use HMIF\Model\Keanggotaan\Anggota as Anggota;
+use HMIF\Model\User\User as User;
+use HMIF\Model\Keanggotaan\Divisi as Divisi;
 
 class EloquentAnggotaRepo implements AnggotaRepo {
 

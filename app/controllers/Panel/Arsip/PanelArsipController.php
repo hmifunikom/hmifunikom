@@ -1,5 +1,7 @@
 <?php
 
+use HMIF\Model\Arsip\Dokumen;
+
 class PanelArsipController extends BaseController {
 
 	private $dokumen;

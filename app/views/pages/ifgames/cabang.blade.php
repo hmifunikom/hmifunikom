@@ -15,7 +15,7 @@
 
             @include('includes.alert')
             {{ Alert::info('Pendaftaran sudah berakhir.') }}
-            <!--div class="row cabang">
+            <div class="row cabang">
                 <div style="background:#b71524;" class="col-xs-12">
                     <a href="{{ URL::route('ifgames.create', 'futsal') }}">
                         <span class="big-title">Futsal (Sisa {{ $cabang::where('slug', '=', 'futsal')->get()->first()->sisa_kuota() }})</span>
@@ -51,7 +51,7 @@
                     </a>
                     <div class="clearfix"></div>
                 </div>
-            </div-->            
+            </div>            
         </div>
     </div>
 @stop

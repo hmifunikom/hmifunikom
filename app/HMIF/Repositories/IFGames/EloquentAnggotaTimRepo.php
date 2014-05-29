@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\IFGames;
 
-use IFGAnggotaTim as AnggotaTim;
+use HMIF\Model\IFGames\AnggotaTim as AnggotaTim;
 
 class EloquentAnggotaTimRepo implements AnggotaTimRepo {
 

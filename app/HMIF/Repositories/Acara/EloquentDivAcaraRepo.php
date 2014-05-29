@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Acara;
 
-use DivAcara;
+use HMIF\Model\Acara\DivAcara;
 
 class EloquentDivAcaraRepo implements DivAcaraRepo {
 

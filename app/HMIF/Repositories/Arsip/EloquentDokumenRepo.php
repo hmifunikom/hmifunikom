@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Arsip;
 
-use Dokumen;
+use HMIF\Model\Arsip\Dokumen;
 
 class EloquentDokumenRepo implements DokumenRepo {
 

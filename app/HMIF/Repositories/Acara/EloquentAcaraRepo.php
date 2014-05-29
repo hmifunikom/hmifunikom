@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Acara;
 
-use Acara;
+use HMIF\Model\Acara\Acara;
 
 class EloquentAcaraRepo implements AcaraRepo {
 

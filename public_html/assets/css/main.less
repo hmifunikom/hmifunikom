@@ -23,10 +23,10 @@ legend, .alert {
 // Navbar
 // --------------------------------------------------------
 .navbar {
-    .transition(height);
+    //.transition(height);
 
     li {
-        .transition(margin);
+        //.transition(margin);
     }
 
     .navbar-brand {
@@ -35,12 +35,12 @@ legend, .alert {
         text-transform: uppercase;
         .bitter(26px);
         font-weight: bold;
-        .transition(all);
+        //.transition(height font-size;);
 
         img {
             height: 30px;
             margin-right:15px;
-            .transition(height);
+            //.transition(height);
         }
     }
 
@@ -768,6 +768,17 @@ legend, .alert {
     }
 
     input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    input[type="password"].middle {
+        margin-bottom: -1px;
+        border-radius: 0;
+    }
+
+    input[name="password_confirmation"] {
         margin-bottom: 10px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;

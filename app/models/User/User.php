@@ -1,4 +1,4 @@
-<?php
+<?php namespace HMIF\Model\User;
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
@@ -11,12 +11,17 @@ class User extends Ardent implements UserInterface, RemindableInterface {
      *
      * @var string
      */
-    protected $table = 'tb_user';
+    protected $table = 'users';
     protected $primaryKey = 'id_user';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
+    public $autoPurgeRedundantAttributes = true;
+    
+    public static $passwordAttributes  = array('password');
+    public $autoHashPasswordAttributes = true;
 
+    protected $fillable = array('username', 'email', 'password_confirmation');
     protected $guarded = array('id_user', 'password');
 
     /**
@@ -32,6 +37,11 @@ class User extends Ardent implements UserInterface, RemindableInterface {
         'email'                 => 'required|email',
         'password'              => 'required|min:8|confirmed',
         'password_confirmation' => 'required|min:8',
+    );
+
+    public static $relationsData = array(
+        'identitas' => array(self::HAS_ONE, 'HMIF\Model\IFCenter\UserUmum', 'foreignKey' => 'id_user_umum'),
+        'anggota'   => array(self::HAS_ONE, 'HMIF\Model\Keanggotaan\Anggota', 'foreignKey' => 'id_anggota'),
     );
 
     /**
@@ -84,11 +94,11 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     */
 
     public function roles() {
-        return $this->belongsToMany('Role');
+        return $this->belongsToMany('HMIF\Model\User\Role');
     }
 
     public function permissions() {
-        return $this->hasMany('Permission');
+        return $this->hasMany('HMIF\Model\User\Permission');
     }
 
     public function hasRole($key) {
@@ -100,15 +110,4 @@ class User extends Ardent implements UserInterface, RemindableInterface {
         }
         return false;
     }
-
-    public function identitas()
-    {
-        return $this->belongsTo('UserUmum', 'id_user_umum');
-    }
-
-    public function anggota()
-    {
-        return $this->belongsTo('Anggota', 'id_anggota');
-    }
-
 }

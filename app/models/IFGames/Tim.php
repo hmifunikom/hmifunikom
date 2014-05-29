@@ -1,22 +1,25 @@
-<?php
+<?php namespace HMIF\Model\IFGames;
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
+use DB;
 
-class IFGTim extends Ardent implements UserInterface, RemindableInterface {
+class Tim extends Ardent {
     protected $table = 'tb_ifgames_tim';
     protected $primaryKey = 'id_tim';
 
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
 
-    protected $fillable = array('nama_tim', 'username');
-    protected $guarded = array('id_tim', 'password', 'bayar');
+    protected $fillable = array('nama_tim');
+    protected $guarded = array('id_tim', 'bayar');
 
     public static $rules = array(
-        'nama_tim'              => 'required',
-        'username'              => 'required',
+        'nama_tim' => 'required',
+    );
+
+    public static $relationsData = array(
+        'cabang'     => array(self::BELONGS_TO, 'HMIF\Model\IFGames\Cabang', 'foreignKey' => 'id_cabang'),
+        'anggotatim' => array(self::HAS_MANY, 'HMIF\Model\IFGames\AnggotaTim', 'foreignKey' => 'id_tim'),
     );
 
     public function newQuery($excludeDeleted = true)
@@ -26,61 +29,6 @@ class IFGTim extends Ardent implements UserInterface, RemindableInterface {
         $query->orderBy('id_tim', 'desc');
 
         return $query;
-    }
-
-    /**
-     * Get the unique identifier for the user.
-     *
-     * @return mixed
-     */
-    public function getAuthIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    /**
-     * Get the password for the user.
-     *
-     * @return string
-     */
-    public function getAuthPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Get the e-mail address where password reminders are sent.
-     *
-     * @return string
-     */
-    public function getReminderEmail()
-    {
-        return null;
-    }
-
-    public function getRememberToken()
-    {
-        return $this->remember_token;
-    }
-
-    public function setRememberToken($value)
-    {
-        $this->remember_token = $value;
-    }
-
-    public function getRememberTokenName()
-    {
-        return 'remember_token';
-    }
-
-    public function cabang()
-    {
-        return $this->belongsTo('IFGCabang', 'id_cabang');
-    }
-
-    public function anggotatim()
-    {
-        return $this->hasMany('IFGAnggotaTim', 'id_tim');
     }
 
     public function sisa_kuota_manager()

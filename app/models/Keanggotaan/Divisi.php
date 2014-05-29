@@ -1,9 +1,9 @@
-<?php 
+<?php namespace HMIF\Model\Keanggotaan;
 
 use LaravelBook\Ardent\Ardent;
 
 class Divisi extends Ardent {
-    protected $table = 'tb_divisi';
+    protected $table = 'tb_keanggotaan_divisi';
     protected $primaryKey = 'id_divisi';
 
     public $timestamps = false;
@@ -17,8 +17,7 @@ class Divisi extends Ardent {
         'divisi' => 'required',
     );
 
-    public function anggota()
-    {
-        return $this->hasMany('Anggota', 'id_divisi');
-    }
+    public static $relationsData = array(
+        'anggota'      => array(self::BELONGS_TO_MANY, 'HMIF\Model\Keanggotaan\Anggota', 'table' => 'tb_keanggotaan_jabatan', 'foreignKey' => 'id_divisi', 'otherKey' => 'id_anggota', 'pivotKeys' => array('tahun')),
+    );
 }

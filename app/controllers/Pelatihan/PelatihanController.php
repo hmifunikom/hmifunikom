@@ -1,5 +1,7 @@
 <?php 
 
+use HMIF\Model\Pelatihan\Anggota as Anggota;
+
 class PelatihanController extends BaseController {
 
 	/*
@@ -40,7 +42,7 @@ class PelatihanController extends BaseController {
 
 		if($validator->passes())
 		{
-			$anggota = new PelatihanAnggota();
+			$anggota = new Anggota();
 
 			if ($anggota->save()) {
 			    return View::make('pages.pelatihan.thanks')->with(array('pagetitle' => 'Terimakasih - Pelatihan Kompetisi'));;
