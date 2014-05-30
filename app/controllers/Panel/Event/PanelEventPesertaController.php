@@ -178,21 +178,50 @@ class PanelEventPesertaController extends BaseController {
 
 		$peserta = $acara->peserta()->orderBy('kode', 'asc');
 
-		$all = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->get());
-		$bayar = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
+		$all    = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->get());
+		$bayar  = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
 		$unikom = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'unikom')->get());
-		$umum = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
+		$umum   = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
 
-		Excel::create($filename)
-        ->sheet('Semua Peserta')
-            ->with($all)
-        ->sheet('Sudah Bayar')
-            ->with($bayar)
-        ->sheet('Unikom')
-            ->with($unikom)
-        ->sheet('Umum')
-            ->with($umum)
-        ->export('xls');
+        Excel::create($filename, function($excel) use($all, $bayar, $unikom, $umum) {
+
+        	$excel->sheet('Semua Peserta', function($sheet) use($all) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($all);
+        	});
+
+        	$excel->sheet('Sudah Bayar', function($sheet) use($bayar) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($bayar);
+        	});
+
+        	$excel->sheet('Unikom', function($sheet) use($unikom) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($unikom);
+        	});
+
+        	$excel->sheet('Umum', function($sheet) use($umum) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($umum);
+        	});
+
+		})->export('xls');
 	}
 
 	public function vcf($acara)
@@ -228,7 +257,8 @@ class PanelEventPesertaController extends BaseController {
 	{
 		foreach($data as $p)
 		{
-			$list[] = array($p->kode, $p->nama_peserta, $p->kategori, $p->nim, $p->no_hp, $p->bayar);
+			$bayar = ($p->bayar)? 'Sudah' : 'Belum';
+			$list[] = array(Helper::code($p->kode), $p->nama_peserta, $p->kategori, $p->nim, $p->no_hp, $bayar);
 		}
 
 		return $list;
