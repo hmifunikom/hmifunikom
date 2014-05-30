@@ -1,5 +1,5 @@
 <?php namespace HMIF\Model\User;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Role extends Ardent {}
