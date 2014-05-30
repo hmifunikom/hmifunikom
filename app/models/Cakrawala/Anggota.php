@@ -1,8 +1,8 @@
-<?php
+<?php namespace HMIF\Model\Cakrawala;
 
 use LaravelBook\Ardent\Ardent;
 
-class CakrawalaKompetisiAnggota extends Ardent {
+class Anggota extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_anggota';
     protected $primaryKey = 'id_anggota';
 

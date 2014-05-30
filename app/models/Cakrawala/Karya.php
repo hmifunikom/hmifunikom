@@ -1,8 +1,8 @@
-<?php
+<?php namespace HMIF\Model\Cakrawala;
 
 use LaravelBook\Ardent\Ardent;
 
-class CakrawalaKompetisiKarya extends Ardent {
+class Karya extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_karya';
     protected $primaryKey = 'id_karya';
 
@@ -20,6 +20,6 @@ class CakrawalaKompetisiKarya extends Ardent {
 
     public function tim()
     {
-        return $this->belongsTo('CakrawalaKompetisiTim', 'id_tim');
+        return $this->belongsTo('HMIF\Model\Cakrawala\Tim', 'id_tim');
     }
 }

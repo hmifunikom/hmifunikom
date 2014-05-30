@@ -1,13 +1,14 @@
 <?php
 
-use CakrawalaKompetisiTim as Tim;
-use CakrawalaUser as User;
+use HMIF\Model\Cakrawala\Tim;
+use HMIF\Model\Cakrawala\User;
+use HMIF\Repositories\Cakrawala\TimRepoInterface;
 
 class PanelCakrawalaKompetisiTimController extends BaseController {
 
 	private $tim;
 
-	public function __construct(CakrawalaKompetisiTimRepo $tim)
+	public function __construct(TimRepoInterface $tim)
 	{
 		$this->beforeFilter(function($route) {
 		    $param = $route->getParameter('kompetisi');

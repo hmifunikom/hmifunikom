@@ -45,11 +45,11 @@ class Repositories extends ServiceProvider {
     {
         $namespace = 'HMIF\\Repositories\\Cakrawala\\';
         $list = array(
-            'CakrawalaKompetisiAnggotaRepo'     =>  'EloquentCakrawalaKompetisiAnggotaRepo',
-            'CakrawalaKompetisiKaryaRepo'       =>  'EloquentCakrawalaKompetisiKaryaRepo',
-            'CakrawalaKompetisiTimRepo'         =>  'EloquentCakrawalaKompetisiTimRepo',
-            'CakrawalaKompetisiPersyaratanRepo' =>  'EloquentCakrawalaKompetisiPersyaratanRepo',
-            'CakrawalaUserRepo'                 =>  'EloquentCakrawalaUserRepo',
+            'AnggotaRepoInterface'     =>  'Eloquent\\AnggotaRepo',
+            'KaryaRepoInterface'       =>  'Eloquent\\KaryaRepo',
+            'TimRepoInterface'         =>  'Eloquent\\TimRepo',
+            'PersyaratanRepoInterface' =>  'Eloquent\\PersyaratanRepo',
+            'UserRepoInterface'        =>  'Eloquent\\UserRepo',
         );
 
         $this->_register($list, $namespace);

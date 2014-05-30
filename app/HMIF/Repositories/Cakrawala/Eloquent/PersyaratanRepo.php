@@ -1,8 +1,9 @@
-<?php namespace HMIF\Repositories\Cakrawala;
+<?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
-use CakrawalaKompetisiTim as Tim;
+use HMIF\Repositories\Cakrawala\KaryaRepoInterface;
+use HMIF\Model\Cakrawala\Persyaratan;
 
-class EloquentCakrawalaKompetisiTimRepo implements CakrawalaKompetisiTimRepo {
+class PersyaratanRepo implements KaryaRepoInterface {
 
     private $relations = array();
     private $per_page = 15;
@@ -10,26 +11,19 @@ class EloquentCakrawalaKompetisiTimRepo implements CakrawalaKompetisiTimRepo {
  
     public function findById($id)
     {
-        return Tim::with($this->relations)->find($id);
-    }
-
-    public function findByLomba($lomba)
-    {
-        return Tim::with($this->relations)
-               ->where('lomba', '=', $lomba)
-               ->paginate($this->per_page);
+        return Persyaratan::with($this->relations)->find($id);
     }
 
     public function findAll()
     {
-        return Tim::with($this->relations)
+        return Persyaratan::with($this->relations)
                ->orderBy('id_karya', 'desc')
                ->paginate($this->per_page);
     }
     
     public function store($data)
     {
-        $new_item = new Tim();
+        $new_item = new Persyaratan();
         if($new_item->save())
         {
             return TRUE;
@@ -78,7 +72,7 @@ class EloquentCakrawalaKompetisiTimRepo implements CakrawalaKompetisiTimRepo {
 
     public function instance()
     {
-        return new Tim();
+        return new Persyaratan();
     }
     
 }

@@ -1,8 +1,9 @@
-<?php namespace HMIF\Repositories\Cakrawala;
+<?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
-use CakrawalaKompetisiKarya as Karya;
+use HMIF\Repositories\Cakrawala\AnggotaRepoInterface;
+use HMIF\Model\Cakrawala\Anggota
 
-class EloquentCakrawalaKompetisiKaryaRepo implements CakrawalaKompetisiKaryaRepo {
+class AnggotaRepo implements AnggotaRepoInterface {
 
     private $relations = array();
     private $per_page = 15;
@@ -10,26 +11,26 @@ class EloquentCakrawalaKompetisiKaryaRepo implements CakrawalaKompetisiKaryaRepo
  
     public function findById($id)
     {
-        return Karya::with($this->relations)->find($id);
+        return Anggota::with($this->relations)->find($id);
     }
 
     public function findByTim($tim)
     {
-        return Karya::with($this->relations)
+        return Anggota::with($this->relations)
                ->where('id_tim', '=', $tim)
                ->get();
     }
 
     public function findAll()
     {
-        return Karya::with($this->relations)
-               ->orderBy('id_karya', 'desc')
+        return Anggota::with($this->relations)
+               ->orderBy('nama_anggota', 'asc')
                ->paginate($this->per_page);
     }
     
     public function store($data)
     {
-        $new_item = new Karya();
+        $new_item = new Anggota();
         if($new_item->save())
         {
             return TRUE;
@@ -78,7 +79,7 @@ class EloquentCakrawalaKompetisiKaryaRepo implements CakrawalaKompetisiKaryaRepo
 
     public function instance()
     {
-        return new Karya();
+        return new Anggota();
     }
     
 }

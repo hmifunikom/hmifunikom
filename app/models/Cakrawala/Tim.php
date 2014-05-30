@@ -1,8 +1,8 @@
-<?php
+<?php namespace HMIF\Model\Cakrawala;
 
 use LaravelBook\Ardent\Ardent;
 
-class CakrawalaKompetisiTim extends Ardent {
+class Tim extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_tim';
     protected $primaryKey = 'id_tim';
 
@@ -23,21 +23,21 @@ class CakrawalaKompetisiTim extends Ardent {
 
     public function anggota()
     {
-        return $this->hasMany('CakrawalaKompetisiAnggota', 'id_tim');
+        return $this->hasMany('HMIF\Model\Cakrawala\Anggota', 'id_tim');
     }
 
     public function karya()
     {
-        return $this->hasOne('CakrawalaKompetisiKarya', 'id_tim');
+        return $this->hasOne('HMIF\Model\Cakrawala\Karya', 'id_tim');
     }
 
     public function persyaratan()
     {
-        return $this->morphMany('CakrawalaPersyaratan', 'documentable');
+        return $this->morphOne('HMIF\Model\Cakrawala\Persyaratan', 'documentable');
     }
 
     public function user()
     {
-        return $this->morphMany('CakrawalaUser', 'userable');
+        return $this->morphOne('HMIF\Model\Cakrawala\User', 'userable');
     }    
 }

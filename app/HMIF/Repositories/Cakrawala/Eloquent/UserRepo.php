@@ -1,8 +1,9 @@
-<?php namespace HMIF\Repositories\Cakrawala;
+<?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
-use CakrawalaPersyaratan as Persyaratan;
+use HMIF\Repositories\Cakrawala\UserRepoInterface;
+use HMIF\Model\Cakrawala\User;
 
-class EloquentCakrawalaPersyaratanRepo implements CakrawalaPersyaratanRepo {
+class UserRepo implements UserRepoInterface {
 
     private $relations = array();
     private $per_page = 15;
@@ -10,19 +11,19 @@ class EloquentCakrawalaPersyaratanRepo implements CakrawalaPersyaratanRepo {
  
     public function findById($id)
     {
-        return Persyaratan::with($this->relations)->find($id);
+        return User::with($this->relations)->find($id);
     }
 
     public function findAll()
     {
-        return Persyaratan::with($this->relations)
+        return User::with($this->relations)
                ->orderBy('id_karya', 'desc')
                ->paginate($this->per_page);
     }
     
     public function store($data)
     {
-        $new_item = new Persyaratan();
+        $new_item = new User();
         if($new_item->save())
         {
             return TRUE;
@@ -71,7 +72,7 @@ class EloquentCakrawalaPersyaratanRepo implements CakrawalaPersyaratanRepo {
 
     public function instance()
     {
-        return new Persyaratan();
+        return new User();
     }
     
 }

@@ -1,8 +1,8 @@
-<?php
+<?php namespace HMIF\Model\Cakrawala;
 
 use LaravelBook\Ardent\Ardent;
 
-class CakrawalaPersyaratan extends Ardent {
+class Persyaratan extends Ardent {
     protected $table = 'tb_cakrawala_persyaratan';
     protected $primaryKey = 'id_dokumen';
 

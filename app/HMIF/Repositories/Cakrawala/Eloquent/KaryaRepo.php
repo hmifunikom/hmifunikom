@@ -1,8 +1,9 @@
-<?php namespace HMIF\Repositories\Cakrawala;
+<?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
-use CakrawalaUser as User;
+use HMIF\Repositories\Cakrawala\KaryaRepoInterface;
+use HMIF\Model\Cakrawala\Karya;
 
-class EloquentCakrawalaUserRepo implements CakrawalaUserRepo {
+class KaryaRepo implements KaryaRepoInterface {
 
     private $relations = array();
     private $per_page = 15;
@@ -10,19 +11,26 @@ class EloquentCakrawalaUserRepo implements CakrawalaUserRepo {
  
     public function findById($id)
     {
-        return User::with($this->relations)->find($id);
+        return Karya::with($this->relations)->find($id);
+    }
+
+    public function findByTim($tim)
+    {
+        return Karya::with($this->relations)
+               ->where('id_tim', '=', $tim)
+               ->get();
     }
 
     public function findAll()
     {
-        return User::with($this->relations)
+        return Karya::with($this->relations)
                ->orderBy('id_karya', 'desc')
                ->paginate($this->per_page);
     }
     
     public function store($data)
     {
-        $new_item = new User();
+        $new_item = new Karya();
         if($new_item->save())
         {
             return TRUE;
@@ -71,7 +79,7 @@ class EloquentCakrawalaUserRepo implements CakrawalaUserRepo {
 
     public function instance()
     {
-        return new User();
+        return new Karya();
     }
     
 }

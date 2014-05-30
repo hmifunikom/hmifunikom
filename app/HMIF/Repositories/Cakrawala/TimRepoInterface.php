@@ -1,6 +1,6 @@
 <?php namespace HMIF\Repositories\Cakrawala;
 
-interface CakrawalaKompetisiTimRepo {
+interface TimRepoInterface {
     public function findById($id);
     public function findByLomba($lomba);
     public function findAll();
