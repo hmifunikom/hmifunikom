@@ -38,7 +38,7 @@
             }}
             {{
                 ($method == 'edit')
-                ?   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($acara->tgl->toDateString()) 
+                ?   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($peserta->tgl_daftar->toDateString()) 
                 :   Former::text('tgl_daftar')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->value(Carbon::now()->toDateString())
             }}
             {{ Former::text('nim')->inlineHelp('Kosongkan jika kategori umum') }}

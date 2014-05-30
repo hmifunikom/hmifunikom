@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Keanggotaan;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Hp extends Ardent {
     protected $table = 'tb_keanggotaan_hp';

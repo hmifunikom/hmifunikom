@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFGames;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class AnggotaTim extends Ardent {
     protected $table = 'tb_ifgames_anggota';

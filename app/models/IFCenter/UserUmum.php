@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFCenter;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class UserUmum extends Ardent {
     protected $table = 'tb_user_umum';

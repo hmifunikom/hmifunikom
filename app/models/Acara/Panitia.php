@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Acara;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Panitia extends Ardent {
     protected $table = 'tb_acara_panitia';
