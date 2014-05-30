@@ -19,7 +19,7 @@
 		"endroid/qrcode": "1.*@dev",
 		"sabre/vobject": "3.2.*@dev",
 		"thujohn/pdf": "dev-master",
-		"maatwebsite/excel": "dev-master",
+		"maatwebsite/excel": "1.*",
 		"Chumper/Zipper": "dev-master",
 		"ollieread/multiauth": "dev-master",
 		"greggilbert/recaptcha": "dev-master",
@@ -27,7 +27,8 @@
 		"fitztrev/laravel-html-minify": "dev-master",
 		"vinicius73/seotools": "dev-master",
 		"davejamesmiller/laravel-aliases": "dev-master",
-		"graham-campbell/throttle": "0.2.*@alpha"
+		"graham-campbell/throttle": "0.2.*@alpha",
+		"frozennode/xssinput": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -40,7 +41,8 @@
 		],
 		"psr-0": {
             "HMIF\\": "app",
-            "Felixkiss\\SlugRoutes\\": "app/felixkiss/slug-routes/src"
+            "Felixkiss\\SlugRoutes\\": "app/felixkiss/slug-routes/src",
+            "Qwildz\\Ardent\\": "app/packages/qwildz/ardent/src"
         }
 	},
 	"scripts": {

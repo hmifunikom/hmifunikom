@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFGames;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
 
 class Cabang extends Ardent implements SluggableInterface {

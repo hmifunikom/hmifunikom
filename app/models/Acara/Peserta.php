@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Acara;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
 use DB;
 
@@ -21,7 +21,7 @@ class Peserta extends Ardent implements SluggableInterface {
         'kategori'     => 'required',
         'kd_acara'     => 'required',
         'tgl_daftar'   => 'required|date',
-        'nim'          => 'required_if:kategori,unikom|numeric|nim_if:kategori,unikom|unique_if:peserta,kd_acara,kategori,luar',
+        'nim'          => 'required_if:kategori,unikom|numeric|nim_if:kategori,unikom|unique_if:tb_acara_peserta,kd_acara,kategori,luar',
         'no_hp'        => 'required|numeric',
         'email'        => 'email',
     );
@@ -41,7 +41,7 @@ class Peserta extends Ardent implements SluggableInterface {
 
         if(! $exist)
         {
-            $result = DB::select('SELECT kode FROM peserta WHERE kd_acara = ? ORDER BY kode DESC LIMIT 1', array($this->kd_acara));
+            $result = DB::select('SELECT kode FROM tb_acara_peserta WHERE kd_acara = ? ORDER BY kode DESC LIMIT 1', array($this->kd_acara));
 
             if($result)
             {
