@@ -1,6 +1,7 @@
 <?php
 
-use HMIF\Model\IFGames\Tim as Tim;
+use HMIF\Model\IFGames\Cabang;
+use HMIF\Model\IFGames\Tim;
 
 class IFGamesController extends BaseController {
 
@@ -30,7 +31,7 @@ class IFGamesController extends BaseController {
 		if(Auth::ifgames()->check())
 			return Redirect::action('ifgames.anggota.index');
 
-		$cabang = new IFGCabang;
+		$cabang = new Cabang;
 		return View::make('pages.ifgames.cabang')->with(array('pagetitle' => 'Daftar Cabang - IF Games', 'cabang' => $cabang));
 	}
 

@@ -1,6 +1,6 @@
 <?php
 
-use HMIF\Model\IFGames\Cabang as Cabang;
+use HMIF\Model\IFGames\Cabang;
 
 class PanelIFGamesCabangController extends BaseController {
 
