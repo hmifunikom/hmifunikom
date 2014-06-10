@@ -1,6 +1,6 @@
 <?php
 
-class IFGamesSessionsController extends BaseController {
+class CakrawalaSessionsController extends BaseController {
 
   /**
    * Show the form for creating a new session.
@@ -38,7 +38,7 @@ class IFGamesSessionsController extends BaseController {
       $rules = array(
           'username'  => 'Required',
           'password'  => 'Required',
-          //'recaptcha_response_field' => 'required|recaptcha',
+          'recaptcha_response_field' => 'required|recaptcha',
       );
 
       // Validate the inputs.

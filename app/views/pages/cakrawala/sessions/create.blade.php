@@ -30,7 +30,7 @@
                     : Former::password('password')->placeholder('Password')
                 }}
 
-                
+                {{ Form::captcha() }}
 
                 @if(isset($errors))
                 <div class="errors text-danger">

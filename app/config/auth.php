@@ -66,17 +66,17 @@ return array(
         'ifgames' => array(
 			'driver' => 'eloquent',
 			'model'  => 'HMIF\Model\User\User'
+        ),
+        'cakrawala' => array(
+			'driver' => 'eloquent',
+			'model'  => 'HMIF\Model\Cakrawala\User'
         )
     ),
 
 	'reminder' => array(
-
 		'email' => 'emails.auth.reminder',
-
 		'table' => 'password_reminders',
-
 		'expire' => 60,
-
 	),
 
 );
