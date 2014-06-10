@@ -1,5 +1,5 @@
-<div class="section kompetisi-debat" id="kompetisi-debat" style="background-image: url(paper.jpg); background-size: cover; color: #333">
-    <img src="mic.png" height="550px" class="mic" />
+<div class="section kompetisi-debat" id="kompetisi-debat">
+    <img src="{{ asset('assets/images/cakrawala/mic.png') }}" height="550px" class="mic" />
     <div class="info-box">
         <h2>Lomba Debat IT</h2>
 
