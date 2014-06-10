@@ -24,7 +24,6 @@ body {
   -moz-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   background-image: url('../images/cakrawala/logo.png');
   background-repeat: no-repeat;
   background-position: -231px 0;
@@ -51,7 +50,10 @@ body {
   opacity: 1;
 }
 .kompetisi-debat {
-  position: relative;
+  background-image: url('../images/cakrawala/paper.jpg');
+  background-size: cover;
+  color: #333
+    position: relative;
 }
 .kompetisi-debat .mic {
   position: absolute;
@@ -141,7 +143,6 @@ body {
   -moz-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   position: absolute;
   left: 0;
   top: 0;
@@ -168,7 +169,6 @@ body {
   -moz-transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   height: 300px;
   padding: 50px 30px;
 }
@@ -295,7 +295,6 @@ body {
   -moz-transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   background-image: url('../images/cakrawala/lkti-title.png');
   background-repeat: no-repeat;
   width: 40px;
