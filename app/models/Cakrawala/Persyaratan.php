@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Persyaratan extends Ardent {
     protected $table = 'tb_cakrawala_persyaratan';

@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Karya extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_karya';

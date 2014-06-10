@@ -1,12 +1,13 @@
 <?php
 
-use IFGAnggotaTim as AnggotaTim;
+use HMIF\Model\Cakrawala\Anggota;
+use HMIF\Repositories\Cakrawala\AnggotaRepoInterface;
 
 class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	
 	private $anggota;
 
-	public function __construct(AnggotaTimRepo $anggota)
+	public function __construct(AnggotaRepoInterface $anggota)
 	{
 		$this->anggota = $anggota;
 	}
@@ -16,21 +17,11 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index($cabang, $tim)
+	public function index($lomba, $tim)
 	{
-		if($cabang->manager > 0)
-			$manager = $this->anggota->findManagerByTim($tim->id_tim);
-		else
-			$manager = new AnggotaTim;
+		$anggota = $this->anggota->findByTim($tim->id_tim);
 
-		if($cabang->official > 0)
-			$official = $this->anggota->findOfficialByTim($tim->id_tim);
-		else
-			$official = new AnggotaTim;
-
-		$anggota = $this->anggota->findAnggotaByTim($tim->id_tim);
-
-		return View::make('panel.pages.ifgames.anggota.index')->with(array('cabang' => $cabang, 'tim' => $tim, 'manager' => $manager, 'official' => $official, 'listanggota' => $anggota));
+		return View::make('panel.pages.cakrawala.kompetisi.anggota.index')->with(array('lomba' => $lomba, 'tim' => $tim, 'listanggota' => $anggota));
 	}
 
 	/**
@@ -38,35 +29,13 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create($cabang, $tim)
+	public function create($lomba, $tim)
 	{
-		$jabatan = Input::get('jabatan');
-		if(! in_array($jabatan, array('manager', 'official', 'anggota')) || ! Input::has('jabatan'))
-			return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
-
-		if($tim->cabang->{$jabatan} < 1) 
-			return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
-
-		switch($jabatan)
-		{
-			case 'manager':
-				if($tim->sisa_kuota_manager() < 1)
-					return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
-				break;
-
-			case 'official':
-				if($tim->sisa_kuota_official() < 1)
-					return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
-				break;
-
-			case 'anggota':
-				if($tim->sisa_kuota_anggota() < 1)
-					return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
-				break;
-		}
-
-		$anggota = new AnggotaTim;
-		return View::make('panel.pages.ifgames.anggota.form')->with(array('method' => 'create', 'cabang' => $cabang, 'tim' => $tim, 'anggota' => $anggota));
+		if($tim->sisa_kuota_anggota() < 1)
+			return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim));
+		
+		$anggota = new Anggota;
+		return View::make('panel.pages.cakrawala.kompetisi.anggota.form')->with(array('method' => 'create', 'lomba' => $lomba, 'tim' => $tim, 'anggota' => $anggota));
 	}
 
 	/**
@@ -76,41 +45,41 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 * 
 	 * @return Response
 	 */
-	public function store($cabang, $tim)
+	public function store($lomba, $tim)
 	{
 		$jabatan = Input::get('jabatan');
 		if(! in_array($jabatan, array('manager', 'official', 'anggota')) || ! Input::has('jabatan'))
-			return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
+			return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim));
 
-		if($tim->cabang->{$jabatan} < 1) 
-			return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
+		if($tim->lomba->{$jabatan} < 1) 
+			return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim));
 
 		switch($jabatan)
 		{
 			case 'manager':
 				if($tim->sisa_kuota_manager() < 1)
-					return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
+					return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim));
 				break;
 
 			case 'official':
 				if($tim->sisa_kuota_official() < 1)
-					return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
+					return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim));
 				break;
 
 			case 'anggota':
 				if($tim->sisa_kuota_anggota() < 1)
-					return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim));
+					return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim));
 				break;
 		}
 
 		$messages = array(
-			'unique' => 'Nim sudah terdaftar pada tim di cabang yang sama.',
+			'unique' => 'Nim sudah terdaftar pada tim di lomba yang sama.',
 			'max'    => 'Foto tidak boleh lebih dari 2MB.'
 		);
 		$validator = Validator::make(
 			Input::all(),
 			array(
-				'nim'   => 'required|numeric|nim|unique:tb_ifgames_anggota,nim,NULL,id_anggota,id_cabang,'.$tim->cabang->id_cabang,
+				'nim'   => 'required|numeric|nim|unique:tb_cakrawala.kompetisi_anggota,nim,NULL,id_anggota,id_lomba,'.$tim->lomba,
 		        'nama'  => 'required',
 		        'no_hp' => 'required|numeric',
 		        'foto_anggota'  => 'required|image|max:2048',
@@ -119,8 +88,8 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 
 		if($validator->passes())
 		{
-			$anggota = new AnggotaTim();
-			$anggota->id_cabang = $tim->cabang->id_cabang;
+			$anggota = new Tim();
+			$anggota = $tim->lomba;
 
 			$filename = str_random(20);
 			$img = new ImageManipulation('foto_anggota', $filename);
@@ -130,18 +99,18 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 				$img->thumb(76, 114);
 				$anggota->foto = $img->getFileName();
 
-				if ($tim->anggotatim()->save($anggota)) {
-	            	return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim))->with('success', 'Anggota berhasil ditambah!');
+				if ($tim->Tim()->save($anggota)) {
+	            	return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim))->with('success', 'Anggota berhasil ditambah!');
 		        } else {
-		            return Redirect::action('panel.ifgames.tim.anggota.create', array($tim->cabang->id_cabang, $tim->id_tim, 'jabatan' => $jabatan))->withErrors($anggota->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
+		            return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.create', array($tim->lomba, $tim->id_tim, 'jabatan' => $jabatan))->withErrors($anggota->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 		        }
 	        } else {
-	            return Redirect::action('panel.ifgames.tim.anggota.create', array($tim->cabang->id_cabang, $tim->id_tim, 'jabatan' => $jabatan))->withErrors($validator)->with('danger', 'Poster gagal diunggah!')->withInput();
+	            return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.create', array($tim->lomba, $tim->id_tim, 'jabatan' => $jabatan))->withErrors($validator)->with('danger', 'Poster gagal diunggah!')->withInput();
 	        }
 	    }
 	    else
 	    {
-	    	return Redirect::action('panel.ifgames.tim.anggota.create', array($tim->cabang->id_cabang, $tim->id_tim, 'jabatan' => $jabatan))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+	    	return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.create', array($tim->lomba, $tim->id_tim, 'jabatan' => $jabatan))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 	    }
 	}
 
@@ -151,9 +120,9 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($cabang, $tim, $anggota)
+	public function show($lomba, $tim, $anggota)
 	{
-		return Redirect::action('panel.ifgames.tim.anggota.index', array($cabang->id_cabang, $tim->id_tim));
+		return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($lomba, $tim->id_tim));
 	}
 
 	/**
@@ -162,9 +131,9 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($cabang, $tim, $anggota)
+	public function edit($lomba, $tim, $anggota)
 	{
-		return View::make('panel.pages.ifgames.anggota.form')->with(array('method' => 'edit', 'cabang' => $cabang, 'tim' => $tim, 'anggota' => $anggota));
+		return View::make('panel.pages.cakrawala.kompetisi.anggota.form')->with(array('method' => 'edit', 'lomba' => $lomba, 'tim' => $tim, 'anggota' => $anggota));
 	}
 
 	/**
@@ -173,18 +142,20 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($cabang, $tim, $anggota)
+	public function update($lomba, $tim, $anggota)
 	{
 		$messages = array(
-			'unique' => 'Nim sudah terdaftar pada tim di cabang yang sama.',
+			'unique' => 'Nim sudah terdaftar pada tim di lomba yang sama.',
 			'max'    => 'Foto tidak boleh lebih dari 2MB.'
 		);
 		$validator = Validator::make(
 			Input::all(),
 			array(
-				'nim'   => 'required|numeric|nim|unique:tb_ifgames_anggota,nim,'.$anggota->id_anggota.',id_anggota,id_cabang,'.$tim->cabang->id_cabang,
-		        'nama'  => 'required',
-		        'no_hp' => 'required|numeric',
+				'nama_anggota'  => 'required',
+		        'tempat_lahir'  => 'required',
+		        'tanggal_lahir' => 'required|date',
+		        'alamat'        => 'required',
+		        'no_telp'       => 'required|numeric',
 		        'foto_anggota'  => 'image|max:2048',
 			), $messages
 		);
@@ -207,20 +178,20 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 
 					$anggota->foto = $img->getFileName();
 				} else {
-		            return Redirect::action('panel.ifgames.tim.anggota.edit', array($tim->cabang->id_cabang, $tim->id_tim, $anggota->id_anggota))->withErrors($validator)->with('danger', 'Foto gagal diunggah!')->withInput();
+		            return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.edit', array($tim->lomba, $tim->id_tim, $anggota->id_anggota))->withErrors($validator)->with('danger', 'Foto gagal diunggah!')->withInput();
 		        }
 		    }
 
 			if ($anggota->updateUniques()) {
-            	return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim))->with('success', 'Anggota berhasil diubah	!');
+            	return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim))->with('success', 'Anggota berhasil diubah	!');
 	        } else {
-	            return Redirect::action('panel.ifgames.tim.anggota.edit', array($tim->cabang->id_cabang, $tim->id_tim, $anggota->id_anggota))->withErrors($anggota->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
+	            return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.edit', array($tim->lomba, $tim->id_tim, $anggota->id_anggota))->withErrors($anggota->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 	        }
 	        
 	    }
 	    else
 	    {
-	    	return Redirect::action('panel.ifgames.tim.anggota.edit', array($tim->cabang->id_cabang, $tim->id_tim, $anggota->id_anggota))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+	    	return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.edit', array($tim->lomba, $tim->id_tim, $anggota->id_anggota))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 	    }
 	}
 
@@ -230,7 +201,7 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($cabang, $tim, $anggota)
+	public function destroy($lomba, $tim, $anggota)
 	{
 		if(! Input::get('safe-action')) return Redirect::back();
 
@@ -240,10 +211,10 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
 		}
 
 		$anggota->delete();
-		return Redirect::action('panel.ifgames.tim.anggota.index', array($tim->cabang->id_cabang, $tim->id_tim))->with('success', 'Anggota berhasil dihapus!');
+		return Redirect::action('panel.cakrawala.kompetisi.tim.anggota.index', array($tim->lomba, $tim->id_tim))->with('success', 'Anggota berhasil dihapus!');
 	}
 
-	public function ska($cabang, $tim, $anggota)
+	public function ska($lomba, $tim, $anggota)
 	{
 		if($anggota->ska == 0)
 		{
@@ -264,7 +235,7 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
         }
 	}
 
-	public function ktm($cabang, $tim, $anggota)
+	public function ktm($lomba, $tim, $anggota)
 	{
 		if($anggota->ktm == 0)
 		{
@@ -285,19 +256,19 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
         }
 	}
 
-	public function xls($cabang, $tim)
+	public function xls($lomba, $tim)
 	{
-		$filename = Str::slug('Daftar AnggotaTim '. $cabang->nama_cabang);
+		$filename = Str::slug('Daftar Tim '. $lomba->nama_lomba);
 
-		$anggota = $cabang->anggota()->orderBy('kode', 'asc');
+		$anggota = $lomba->anggota()->orderBy('kode', 'asc');
 
-		$all = $this->_generateArray($cabang->anggota()->orderBy('kode', 'asc')->get());
-		$bayar = $this->_generateArray($cabang->anggota()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
-		$unikom = $this->_generateArray($cabang->anggota()->orderBy('kode', 'asc')->where('kategori', '=', 'unikom')->get());
-		$umum = $this->_generateArray($cabang->anggota()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
+		$all = $this->_generateArray($lomba->anggota()->orderBy('kode', 'asc')->get());
+		$bayar = $this->_generateArray($lomba->anggota()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
+		$unikom = $this->_generateArray($lomba->anggota()->orderBy('kode', 'asc')->where('kategori', '=', 'unikom')->get());
+		$umum = $this->_generateArray($lomba->anggota()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
 
 		Excel::create($filename)
-        ->sheet('Semua AnggotaTim')
+        ->sheet('Semua Tim')
             ->with($all)
         ->sheet('Sudah Bayar')
             ->with($bayar)
@@ -308,17 +279,17 @@ class PanelCakrawalaKompetisiAnggotaController extends BaseController {
         ->export('xls');
 	}
 
-	public function vcf($cabang)
+	public function vcf($lomba)
 	{
-		$dir = public_path().'/media/vcf/'.Str::slug($cabang->nama_cabang);
+		$dir = public_path().'/media/vcf/'.Str::slug($lomba->nama_lomba);
 
 		if(! File::isDirectory($dir))
 			File::makeDirectory($dir, 755, true);
 
-		foreach($cabang->anggota()->get() as $p)
+		foreach($lomba->anggota()->get() as $p)
 		{
 			$vcard = new VObject\Component\VCard([
-			    'FN'  => $cabang->nama_cabang.''.$p->kode.''.$p->nama_anggota,
+			    'FN'  => $lomba->nama_lomba.''.$p->kode.''.$p->nama_anggota,
 			    'TEL' => $p->no_hp,
 			]);
 

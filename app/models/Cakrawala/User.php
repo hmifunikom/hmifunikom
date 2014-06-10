@@ -1,8 +1,8 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Qwildz\Ardent\Ardent;
 
 class User extends Ardent implements UserInterface, RemindableInterface {
     protected $table = 'tb_cakrawala_user';

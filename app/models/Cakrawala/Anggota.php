@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Anggota extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_anggota';
@@ -24,6 +24,6 @@ class Anggota extends Ardent {
 
     public function tim()
     {
-        return $this->belongsTo('CakrawalaKompetisiTim', 'id_tim');
+        return $this->belongsTo('HMIF\Model\Cakrawala\Tim', 'id_tim');
     }
 }

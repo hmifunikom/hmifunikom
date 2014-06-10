@@ -1,7 +1,7 @@
 <?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
 use HMIF\Repositories\Cakrawala\AnggotaRepoInterface;
-use HMIF\Model\Cakrawala\Anggota
+use HMIF\Model\Cakrawala\Anggota;
 
 class AnggotaRepo implements AnggotaRepoInterface {
 

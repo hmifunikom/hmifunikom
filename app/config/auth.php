@@ -69,7 +69,7 @@ return array(
         ),
         'cakrawala' => array(
 			'driver' => 'eloquent',
-			'model'  => 'CakrawalaUser'
+			'model'  => 'HMIF\Model\Cakrawala\User'
         )
     ),
 

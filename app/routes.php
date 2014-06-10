@@ -105,6 +105,36 @@ Route::group(array('domain' => 'library'.$domain), function()
     Route::get('{perpustakaan}', array('uses' => 'PerpustakaanController@show', 'as' => 'perpustakaan.show'));
 });
 
+// Pelatihan 
+
+Route::group(array('domain' => 'pelatihan'.$domain), function()
+{
+    Route::get('/', array('uses' => 'PelatihanController@index', 'as' => 'pelatihan.index'));
+    Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));
+});
+
+// Cakrawala 
+
+Route::group(array('domain' => 'cakrawala'.$domain), function()
+{
+    // Route::model('cabang', 'IFGCabang');
+    // Route::model('anggota', 'IFGAnggotaTim');
+
+    Route::get('/', array('uses' => 'CakrawalaController@index', 'as' => 'cakrawala.index'));    
+    Route::get('pendaftaran', array('uses' => 'CakrawalaController@pendaftaran', 'as' => 'cakrawala.pendaftaran'));
+    //route_resource('anggota', 'IFGamesAnggota', 'ifgames');
+
+//    Route::get('kuitansi', array('uses' => 'IFGamesAnggota@download', 'as' => 'ifgames.anggota.download'));
+
+    // Route::get('register', array('uses' => 'IFGamesController@cabang', 'as' => 'ifgames.cabang'));
+    // Route::get('register/{cabang}', array('uses' => 'IFGamesController@create', 'as' => 'ifgames.create'));
+    // Route::post('register/{cabang}', array('uses' => 'IFGamesController@store', 'as' => 'ifgames.store'));
+
+    Route::get('login', array('uses' => 'IFGamesSessionsController@create', 'as' => 'ifgames.sessions.create'));
+    Route::post('login', array('uses' => 'IFGamesSessionsController@store', 'as' => 'ifgames.sessions.store'));
+    Route::get('logout', array('uses' => 'IFGamesSessionsController@destroy', 'as' => 'ifgames.sessions.destroy'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Panel Controller
@@ -165,7 +195,10 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
 
     if (Request::is('cakrawala/*'))
     {
-        Route::model('tim', 'CakrawalaKompetisiTim');
+        Route::model('tim', 'HMIF\Model\Cakrawala\Tim');
+        Route::model('anggota', 'HMIF\Model\Cakrawala\Anggota');
+        Route::model('karya', 'HMIF\Model\Cakrawala\Karya');
+        Route::model('persyaratan', 'HMIF\Model\Cakrawala\Persyaratan');
     }    
 
     Route::get('/', function()
@@ -236,19 +269,6 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     
     route_resource('user', 'PanelUserController', 'panel');
 
-});
-
-Route::group(array('domain' => 'pelatihan'.$domain), function()
-{
-    Route::get('/', array('uses' => 'PelatihanController@index', 'as' => 'pelatihan.index'));
-    Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));
-});
-
-
-Route::group(array('domain' => 'cakrawala'.$domain), function()
-{
-    Route::get('/', array('uses' => 'PelatihanController@index', 'as' => 'pelatihan.index'));
-    Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));
 });
 
 Route::when('*', 'csrf', array('post', 'put', 'patch'));

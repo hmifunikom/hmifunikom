@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\Ardent\Ardent;
 
 class Tim extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_tim';
@@ -40,4 +40,9 @@ class Tim extends Ardent {
     {
         return $this->morphOne('HMIF\Model\Cakrawala\User', 'userable');
     }    
+
+    public function sisa_kuota_anggota()
+    {
+        return 3 - $this->anggota()->count();
+    }
 }
