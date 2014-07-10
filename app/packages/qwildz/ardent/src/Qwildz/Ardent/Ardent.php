@@ -10,7 +10,9 @@
  */
 
 use LaravelBook\Ardent\Ardent as RealArdent;
+use LaravelBook\Ardent\InvalidModelException;
 use Frozennode\XssInput\XssInput as Input;
+use Illuminate\Support\MessageBag;
 
 /**
  * Ardent - Self-validating Eloquent model base class

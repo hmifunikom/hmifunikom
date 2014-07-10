@@ -1,9 +1,13 @@
 <?php namespace HMIF\Model\Acara;
 
 use Qwildz\Ardent\Ardent;
-use Felixkiss\SlugRoutes\SluggableInterface;
+use Felixkiss\SlugRoutes\SluggableInterface as SluggableRouter;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Acara extends Ardent implements SluggableInterface {
+class Acara extends Ardent implements SluggableInterface, SluggableRouter {
+    use SluggableTrait;
+
     protected $table = 'tb_acara';
     protected $primaryKey = 'kd_acara';
 
@@ -27,8 +31,8 @@ class Acara extends Ardent implements SluggableInterface {
 
     protected $dates = array('tgl', 'tgl_selesai_LPJ');
 
-    public static $sluggable = array(
-        'build_from' => 'nama_acara'
+    protected $sluggable = array(
+        'build_from' => 'nama_acara',
     );
 
     public static $relationsData = array(
