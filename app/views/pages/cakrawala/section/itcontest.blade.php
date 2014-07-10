@@ -15,33 +15,57 @@
         <div class="box green slide"  id="persyaratan" data-anchor="persyaratan">
             <div class="icon note"></div>
             <div class="text">
-                <table>
-                            <tr>
-                                <td>■&nbsp;&nbsp;Pendaftaran</td><td>&nbsp;:&nbsp;</td><td>19 - 30 Juni 2014</td>
-                            </tr>
-                            <tr>
-                                <td>■&nbsp;&nbsp;Terakhir Pengumpulan Persyaratan</td><td>&nbsp;:&nbsp;</td><td>10 Agustus 2014</td>
-                            </tr>
-                            <tr>
-                                <td>■&nbsp;&nbsp;Pengumuman Seleksi Tahap I</td><td>&nbsp;:&nbsp;</td><td>28 Agustus 2014</td>
-                            </tr>
-                            <tr>
-                                <td>■&nbsp;&nbsp;Technical Meeting</td><td>&nbsp;:&nbsp;</td><td>30 Agustus 2014</td>
-                            </tr>
-                            <tr>
-                                <td>■&nbsp;&nbsp;Seleksi Final</td><td>&nbsp;:&nbsp;</td><td>15 September 2014</td>
-                            </tr>
-                            <tr>
-                                <td>■&nbsp;&nbsp;   Pemberian Hadiah</td><td>&nbsp;:&nbsp;</td><td>20 September 2014</td>
-                            </tr>
-                        </table>
+                <div class="scroll">
+<ol>
+<li>Peserta harus mengisi formulir pendaftaran dengan lengkap dan memberikan informasi yang bisa dipertanggungjawabkan. 
+</li><li>Melakukan pendaftaran secara on line dengan mengisi Formulir pendaftaran secara lengkap. Atau dating langsung ke Gedung unikom lantai dasar Universitas komputer Indonesia Ruang Sekretariat HMIF Fakultas Teknik Informatika
+</li><li>Peserta IT CONTEST merupakan mahasiswa/ i dan siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.
+</li><li>1 tim terdiri dari 3 orang.
+</li><li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.
+</li><li>Peserta bersedia mengikuti setiap ketentuan yang ada.
+</li><li>Web hasil karya asli/bukan tiruan.
+</li><li>Web belum pernah dipublikasikan atau di ikutkan dalam lomba serupa
+</li><li>Penggunaan bahasa pemrograman bebas karena tidak termasuk penilaian.
+</li><li>Hasil karya yang sudah dikirim tidak boleh diubah lagi. Jika ditemukan perubahan pada hasil karaya yang telah dikirim, panitia berhak mendiskualifikasi peserta.
+</li><li>Keputusan juri tidak dapat diganggu gugat.</li>
+</ol>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
 
         <div class="box red slide"  id="teknis" data-anchor="teknis">
             <div class="icon computer"></div>
-            <div class="text">Lorem Ipsum Dolor</div>
+            <div class="text">
+                <div class="scroll">
+                    <p><strong>Tema Kegiatan :</strong> Cinta Budaya Indonesia</p>
+
+<p><strong>Babak Penyisihan:</strong></p>
+<ol>
+<li>Membuat aplikasi / website / game berbasis desktop atau mobile dengan tema “Cinta Budaya Indonesia”.
+</li><li>Pada babak ini :
+<ul>
+    </li><li>Penilaian meliputi Tampilan, Kesesuaian Tema, Ide dan Fungsionalitas Hasil Karya yang dibuat.
+    </li><li>Peserta mengumpulkan hasil karya yang sudah jadi atau prototype nya saja via online atau langsung ke HIMA IF UNIKOM sesuai tanggal yg sudah ditentukan. File yang dikumpulkan berisi :
+    <ol>
+        <li>Video karya peserta(web, aplikasi,game),  
+        </li><li>Screenshot karya peserta
+        </li><li>Dokumen berektensi doc/PDF ( berisi Tema, Latar Belakang, Batasan Masalah, Tujuan, Deskripsi hasil karya yang dibuat)</li>
+    </ol>
+    </li><li>Di dalam kompetisi dibedakan jadi 2 kategori/tingkatan, yaitu Tingkat  Mahasiswa dan tingkat Pelajar jadi Peserta akan tersaring menjadi 10 Tim Tingkat Pelajar dan 10 Tim Tingkat Mahasiswa terbaik
+    </li><li>Team yang lolos akan bertanding pada tahap Final adalah 10 tim terbaik, yaitu 5 tim dari siswa dan 5 tim dari mahasiswa, dimana pengumuman peserta yang lolos akan diumumkan di website HMIF dan kemudian akan mengikuti lomba di Universitas Komputer Indonesia.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Babak Final:</strong></p>
+<ol>
+</li><li>Sebelum ke Babak Final, akan diadakannya TechMeet dengan peserta untuk menjelaskan keterangan lebih lanjut mengenai apa saja yang dipersiapkan pada babak final.
+</li><li>Presentasi hasil karyanya yang telah dibuat di depan juri dan beberapa penonton.
+</li><li>Tanya Jawab dengan Juri</li>
+</ol>
+
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>
 

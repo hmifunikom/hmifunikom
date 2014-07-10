@@ -23,7 +23,23 @@
                 </div>
                 <div id="persyaratan" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        a
+                        <div class="scroll">
+                            <ol>
+<li>Peserta harus mengisi formulir pendaftaran dengan lengkap dan memberikan informasi yang bisa dipertanggungjawabkan.</li>
+<li>Melakukan pendaftaran secara on line dengan mengisi Formulir pendaftaran secara lengkap. Atau dating langsung ke Gedung unikom lantai dasar Universitas komputer Indonesia Ruang Sekretariat HMIF Fakultas Teknik Informatika.</li>
+<li>Peserta DEBAT IT merupakan siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.</li>
+<li>1 tim terdiri dari 3 orang.</li>
+<li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.</li>
+<li>Peserta bersedia mengikuti setiap ketentuan yang ada.</li>
+<li>Pergantian tim diperkenankan jika salah satu anggota tim berhalangan hadir dan selama tidak melanggar ketentuan dari persyaratan peserta.</li>
+<li>Pergantian tim saat hari H lomba tidak diperkenankan.</li>
+<li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.</li>
+<li>Peserta bersedia mengikuti setiap ketentuan yang ada.</li>
+<li>Wajib membuat Essai Penyisihan Tahap 1 dengan tema umum.</li>
+<li>Jika peserta audisi lolos di seleksi presentasi “Essai”, selanjutnya peserta wajib mengikuti babak 8 besar.</li>
+<li>Peserta wajib menyerahkan pas Foto uk.4x6 pada saat pendaftaran ulang.</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,7 +53,27 @@
                 </div>
                 <div id="teknis" class="panel-collapse collapse">
                     <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                        <div class="scroll">
+                            <p><strong>Tema Kegiatan :</strong> Dampak Teknologi terhadap Budaya Tradisional</p>
+<ol>
+<li>Debat diselenggarakan dengan mempertemukan dua tim yang berbeda dan saling berhadapan (Pro dan kontra) pada setiap sesi lomba. Ketentuan pilihan Pro dan Kontra diperoleh secara acak. Dalam setiap lomba dilakukan dalam dua babak :
+</li><li>PembicaraI dari regu pro menyampaikan argumentasi pembuka
+(Pemahaman topic, permasalahan, analisis) secara umum yang menjukan posisi Pro terhadap suatu topic yang disampaikan.
+</li><li>Pembicara II dari regu Kontramenyampaikan argumentasi pembuka
+(Pemahaman topic, permasalahan, analisis) secara umum yang menjukan posisi Kontra terhadap suatu topic yang disampaikan
+</li><li>Intrupsi tidak diperkanankan pada Pembicara I
+</li><li>Peserta II dari regu Promenyampaikan dan memperkuat argument yang disampaikan pembicara Io
+</li><li>Peserta II dari regu Kontramenyampaikan dan memperkuat argument yang disampaikan pembicara I
+</li><li>Peserta III dari regu Promenyampaikan dan memperkuat argument yang disampaikan pembicara I dan II sekaligus menyampaikan kesimpulan
+terhadap topic yang disampaikan.
+</li><li>Peserta III dari regu Kontra menyampaikan dan memperkuat argument yang disampaikan pembicara I dan II sekaligus menyampaikan kesimpulan terhadap topic yang disampaikan.
+</li><li>Tim Lawan dapat melakukan bidasan atau interupsi dimulai pada Pembicara II, 2 menit setelah pembicara memaparkan argumen. Dengan maksimal 2 kali interupsi &amp; waktu 30 detik pada 1 kali interupsi.Interupsi dilarang pada 1 menit terakhir
+</li><li>Pemberian interupsi harus atas seizin moderator
+</li><li>Waktu yang diberikan tiap tiap regu adalah maksimal lima menit</li>
+</ol>
+
+
+                        </div>
                     </div>
                 </div>
             </div>

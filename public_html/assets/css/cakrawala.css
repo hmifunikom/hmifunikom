@@ -117,6 +117,9 @@ body {
 .kompetisi-debat .info-debat .panel .panel-body {
   border-top-color: #FFF !important;
 }
+.kompetisi-debat .info-debat .panel .panel-body .scroll {
+  max-height: 220px;
+}
 .kompetisi-debat .info-debat .panel + .panel {
   margin-top: 0;
 }
@@ -216,6 +219,9 @@ body {
   color: #fff;
   width: 480px;
 }
+.kompetisi-it .info-box .box .text .scroll {
+  max-height: 205px;
+}
 .kompetisi-it .controlArrow {
   display: none;
 }
@@ -310,7 +316,10 @@ body {
 .accordion-v .panel-v .panel-content {
   padding: 15px 15px 15px 55px;
   height: 240px;
-  width: 778px;
+  width: 850px;
+}
+.accordion-v .panel-v .panel-content .scroll {
+  max-height: 235px;
 }
 footer {
   position: absolute;
