@@ -77,7 +77,7 @@ class SessionsController extends BaseController {
             else
             {
                 // Redirect to the login page.
-                return Redirect::route('sessions.create')->withErrors(array('password' => 'Password salah'))->withInput(Input::except('password'));
+                return Redirect::route('sessions.create')->withErrors(array('password' => 'Username atau Password salah'))->withInput(Input::except('password'));
             }
         }
 
