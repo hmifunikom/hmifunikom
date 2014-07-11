@@ -1,6 +1,6 @@
 <?php
 
-use HMIF\Model\User\User as User;
+use HMIF\Model\User\User;
 
 class PanelUserController extends BaseController {
 

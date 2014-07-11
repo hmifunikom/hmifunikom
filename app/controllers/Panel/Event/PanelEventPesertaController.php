@@ -255,6 +255,7 @@ class PanelEventPesertaController extends BaseController {
 
 	private function _generateArray($data)
 	{
+		$list = [];
 		foreach($data as $p)
 		{
 			$bayar = ($p->bayar)? 'Sudah' : 'Belum';

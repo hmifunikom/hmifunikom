@@ -1,6 +1,6 @@
 <?php
 
-use HMIF\Model\IFGames\Tim as Tim;
+use HMIF\Model\IFGames\Tim;
 
 class PanelIFGamesTimController extends BaseController {
 

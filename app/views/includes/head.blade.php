@@ -4,6 +4,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="shortcut icon" href="{{ asset('favicon.ico?v1.0') }}">
+<link href="https://plus.google.com/111681065704894169638" rel="publisher" />
 
 @if(isset($pagetitle))
 <title>{{ $pagetitle }} - HMIF Unikom</title>

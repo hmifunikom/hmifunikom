@@ -17,6 +17,7 @@
                 <div class="link">
                     <div class="facebook"><a href="http://fb.me/hmifunikom" title="Facebook Page HMIF Unikom"><span class="name">fb.me/hmifunikom</span><span class="fa fa-facebook-square"></span></a></div>
                     <div class="twitter"><a href="http://twitter.com/hmifunikom" title="Twitter HMIF Unikom"><span class="name">@hmifunikom</span><span class="fa fa-twitter-square"></span></a></div>
+                    <div class="gplus"><a href="https://plus.google.com/111681065704894169638" rel="publisher" title="Google+ Page HMIF Unikom"><span class="name">Google+</span><span class="fa fa-google-plus-square"></span></a></div>
                 </div>
             </div>
         </div>

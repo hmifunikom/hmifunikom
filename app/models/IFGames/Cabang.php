@@ -1,9 +1,13 @@
 <?php namespace HMIF\Model\IFGames;
 
 use Qwildz\Ardent\Ardent;
-use Felixkiss\SlugRoutes\SluggableInterface;
+use Felixkiss\SlugRoutes\SluggableInterface as SluggableRouter;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Cabang extends Ardent implements SluggableInterface {
+class Cabang extends Ardent implements SluggableInterface, SluggableRouter {
+    use SluggableTrait;
+
     protected $table = 'tb_ifgames_cabang';
     protected $primaryKey = 'id_cabang';
 
@@ -24,7 +28,7 @@ class Cabang extends Ardent implements SluggableInterface {
         'anggota'     => 'required|numeric',
     );
 
-    public static $sluggable = array(
+    protected $sluggable = array(
         'build_from' => 'nama_cabang',
     );
 

@@ -168,7 +168,7 @@
     background-image: -o-linear-gradient(left, @startColor, @endColor);
 }
 
-.animation (@name, @duration: 300ms, @delay: 0, @ease: ease) {
+.animation (@name, @duration: 300ms, @delay: 0s, @ease: ease) {
     -webkit-animation: @name @duration @delay @ease;
     -moz-animation:    @name @duration @delay @ease;
     -ms-animation:     @name @duration @delay @ease;
@@ -179,6 +179,7 @@
     -moz-transition:    @property @transition;
     -ms-transition:     @property @transition; 
     -o-transition:      @property @transition;  
+    transition:      @property @transition;  
 }
 
 .transition (@property) {
