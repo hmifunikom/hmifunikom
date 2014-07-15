@@ -14,6 +14,13 @@ body {
 .section.table {
   margin-bottom: 0;
 }
+.square-list {
+  list-style-type: square;
+}
+.list-tanggal li {
+  list-style-type: square;
+  margin-bottom: 10px;
+}
 .navbar .navbar-brand {
   position: relative;
   padding-left: 95px;
@@ -24,6 +31,7 @@ body {
   -moz-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   background-image: url('../images/cakrawala/logo.png');
   background-repeat: no-repeat;
   background-position: -231px 0;
@@ -117,6 +125,9 @@ body {
 .kompetisi-debat .info-debat .panel .panel-body {
   border-top-color: #FFF !important;
 }
+.kompetisi-debat .info-debat .panel .panel-body .scroll {
+  max-height: 220px;
+}
 .kompetisi-debat .info-debat .panel + .panel {
   margin-top: 0;
 }
@@ -143,6 +154,7 @@ body {
   -moz-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  transition: opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   position: absolute;
   left: 0;
   top: 0;
@@ -169,6 +181,7 @@ body {
   -moz-transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  transition: background 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   height: 300px;
   padding: 50px 30px;
 }
@@ -215,6 +228,9 @@ body {
   float: left;
   color: #fff;
   width: 480px;
+}
+.kompetisi-it .info-box .box .text .scroll {
+  max-height: 205px;
 }
 .kompetisi-it .controlArrow {
   display: none;
@@ -295,6 +311,7 @@ body {
   -moz-transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -ms-transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   -o-transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
   background-image: url('../images/cakrawala/lkti-title.png');
   background-repeat: no-repeat;
   width: 40px;
@@ -310,7 +327,10 @@ body {
 .accordion-v .panel-v .panel-content {
   padding: 15px 15px 15px 55px;
   height: 240px;
-  width: 778px;
+  width: 850px;
+}
+.accordion-v .panel-v .panel-content .scroll {
+  max-height: 235px;
 }
 footer {
   position: absolute;

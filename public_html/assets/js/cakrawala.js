@@ -112,4 +112,64 @@ $(document).ready(function() {
             $.fn.fullpage.moveSlideRight();
         }
     });
+
+    $('.scroll').slimScroll({
+        size: '10px',
+        railVisible: true,
+        alwaysVisible: true
+    });
 });
+
+function createSlimScrolling(element){
+    //needed to make `scrollHeight` work under Opera 12
+    element.css('overflow', 'hidden');
+    
+    //in case element is a slide
+    var section = element.closest('.section');
+    var scrollable = element.find('.scrollable');
+
+    //if there was scroll, the contentHeight will be the one in the scrollable section
+    if(scrollable.length){
+        var contentHeight = element.find('.scrollable').get(0).scrollHeight;
+    }else{
+        var contentHeight = element.get(0).scrollHeight;
+        if(true){
+            contentHeight = element.find('.tableCell').get(0).scrollHeight;
+        }
+    }
+
+    var scrollHeight = windowsHeight - parseInt(section.css('padding-bottom')) - parseInt(section.css('padding-top'));
+
+    //needs scroll?
+    if ( contentHeight > scrollHeight) {
+        //was there already an scroll ? Updating it
+        if(scrollable.length){
+            scrollable.css('height', scrollHeight + 'px').parent().css('height', scrollHeight + 'px');
+        }
+        //creating the scrolling
+        else{                   
+            if(true){
+                element.find('.tableCell').wrapInner('<div class="scrollable" />');
+            }else{
+                element.wrapInner('<div class="scrollable" />');
+            }
+            
+
+            element.find('.scrollable').slimScroll({
+                height: scrollHeight + 'px',
+                size: '10px',
+                alwaysVisible: true
+            });
+        }
+    }
+    
+    //removing the scrolling when it is not necessary anymore
+    else{               
+        element.find('.scrollable').children().first().unwrap().unwrap();
+        element.find('.slimScrollBar').remove();
+        element.find('.slimScrollRail').remove();
+    }
+    
+    //undo 
+    element.css('overflow', '');
+}
