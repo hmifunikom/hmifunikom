@@ -23,11 +23,12 @@
 </li><li>1 tim terdiri dari 3 orang.
 </li><li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.
 </li><li>Peserta bersedia mengikuti setiap ketentuan yang ada.
-</li><li>Web hasil karya asli/bukan tiruan.
-</li><li>Web belum pernah dipublikasikan atau di ikutkan dalam lomba serupa
+</li><li>Hasil karya asli/ bukan tiruan.
+</li><li>Hasil Karya belum pernah dipublikasikan atau di ikutkan dalam lomba serupa
 </li><li>Penggunaan bahasa pemrograman bebas karena tidak termasuk penilaian.
-</li><li>Hasil karya yang sudah dikirim tidak boleh diubah lagi. Jika ditemukan perubahan pada hasil karaya yang telah dikirim, panitia berhak mendiskualifikasi peserta.
-</li><li>Keputusan juri tidak dapat diganggu gugat.</li>
+</li><li>Hasil karya yang sudah dikirim tidak boleh diubah lagi. Jika ditemukan perubahan pada hasil karya yang telah dikirim, panitia berhak mendiskualifikasi peserta.
+</li><li>Keputusan juri tidak dapat diganggu gugat.
+</li>
 </ol>
                 </div>
             </div>
@@ -49,10 +50,8 @@
     </li><li>Peserta mengumpulkan hasil karya yang sudah jadi atau prototype nya saja via online atau langsung ke HIMA IF UNIKOM sesuai tanggal yg sudah ditentukan. File yang dikumpulkan berisi :
     <ol>
         <li>Video karya peserta(web, aplikasi,game),  
-        </li><li>Screenshot karya peserta
         </li><li>Dokumen berektensi doc/PDF ( berisi Tema, Latar Belakang, Batasan Masalah, Tujuan, Deskripsi hasil karya yang dibuat)</li>
     </ol>
-    </li><li>Di dalam kompetisi dibedakan jadi 2 kategori/tingkatan, yaitu Tingkat  Mahasiswa dan tingkat Pelajar jadi Peserta akan tersaring menjadi 10 Tim Tingkat Pelajar dan 10 Tim Tingkat Mahasiswa terbaik
     </li><li>Team yang lolos akan bertanding pada tahap Final adalah 10 tim terbaik, yaitu 5 tim dari siswa dan 5 tim dari mahasiswa, dimana pengumuman peserta yang lolos akan diumumkan di website HMIF dan kemudian akan mengikuti lomba di Universitas Komputer Indonesia.</li>
 </ul>
 </li>
@@ -71,13 +70,24 @@
 
         <div class="box blue slide"  id="tanggal" data-anchor="tanggal">
             <div class="icon list"></div>
-            <div class="text">Lorem Ipsum Dolor</div>
+            <div class="text">
+                <div class="scroll">
+<ul class="list-tanggal">
+    <li>15 Juli 2014 – 17 Agustus 2014 : Pendaftaran peserta
+    </li><li>31 Agustus 2014 : Pengumpulan Karya masing-masing tim
+    </li><li>8 – 10 September 2014 : Pengumuman 10 besar
+    </li><li>12 -14 September 2014 : Technical Meeting untuk tim yang masuk 10 besar
+    </li><li>17 September 2014 : Babak Final (Presentasi karya) dan pengumuman pemenang
+    </li>
+</ul>
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>        
 
         <div class="box navy slide"  id="hadiah" data-anchor="hadiah">
             <div class="icon trophy"></div>
-            <div class="text">Lorem Ipsum Dolor</div>
+            <div class="text"></div>
             <div class="clearfix"></div>
         </div>
 

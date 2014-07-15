@@ -30,20 +30,29 @@
           <div class="panel-content">
             <div class="">
                 <p><strong>Tema Kegiatan :</strong> Berbudaya dengan Teknologi</p>
-                {{ Button::link_lg('https://www.dropbox.com/s/579i0t7cmavb60d/Teknik%20LKTI.pdf', Helper::fa('download').' Download Mekanisme Lomba') }}
+                {{ Button::link_lg('https://www.dropbox.com/s/z4h4r1hcli3smy5/Teknik%20LKTI.pdf', Helper::fa('download').' Download Mekanisme Lomba') }}
             </div>
           </div>
         </div>
         <div class="panel-v waktu">
           <div class="panel-title"><a href="#LKTI/waktu" data-anchor="waktu"></a></div>
-          <div class="panel-content"> <strong>Section 3 Header</strong><br/>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis volutpat quam, non suscipit arcu accumsan at. Aliquam pellentesque.
+          <div class="panel-content">
+            <div class="">
+<ul class="list-tanggal">
+    <li>15 Juli 2014 – 17 Agustus 2014 : Pendaftaran peserta
+    </li><li>31 Agustus 2014 : Pengumpulan Karya masing-masing tim
+    </li><li>8 – 10 September 2014 : Pengumuman 10 besar
+    </li><li>12 -14 September 2014 : Technical Meeting untuk tim yang masuk 10 besar
+    </li><li>15 September 2014 : Babak Final (Presentasi karya) dan pengumuman pemenang
+    </li>
+</ul>
+            </div>
           </div>
         </div>
         <div class="panel-v hadiah">
           <div class="panel-title"><a href="#LKTI/hadiah" data-anchor="hadiah"></a></div>
-          <div class="panel-content"> <strong>Section 4 Header</strong><br/>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis volutpat quam, non suscipit arcu accumsan at. Aliquam pellentesque.
+          <div class="panel-content">
+            
           </div>
         </div>
     </div>
