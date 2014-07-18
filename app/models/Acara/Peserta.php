@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Acara;
 
-use Qwildz\Ardent\Ardent;
+use LaravelBook\Ardent\Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
 use DB;
 
