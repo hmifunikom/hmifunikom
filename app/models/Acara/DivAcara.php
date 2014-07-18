@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Acara;
 
-use Qwildz\Ardent\Ardent;
+use LaravelBook\Ardent\Ardent;
 
 class DivAcara extends Ardent {
     protected $table = 'tb_acara_divisi';

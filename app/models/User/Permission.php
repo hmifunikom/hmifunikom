@@ -1,5 +1,5 @@
 <?php namespace HMIF\Model\User;
 
-use Qwildz\Ardent\Ardent;
+use LaravelBook\Ardent\Ardent;
 
 class Permission extends Ardent {}
