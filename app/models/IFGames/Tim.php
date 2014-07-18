@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFGames;
 
-use Qwildz\Ardent\Ardent;
+use LaravelBook\Ardent\Ardent;
 use DB;
 
 class Tim extends Ardent {
