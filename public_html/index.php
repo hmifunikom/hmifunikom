@@ -32,6 +32,8 @@ require __DIR__.'/../bootstrap/autoload.php';
 |
 */
 
+Illuminate\Foundation\Application::requestClass('Qwildz\Http\Request');
+
 $app = require_once __DIR__.'/../bootstrap/start.php';
 
 /*
