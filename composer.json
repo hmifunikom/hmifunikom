@@ -27,7 +27,8 @@
 		"fitztrev/laravel-html-minify": "dev-master",
 		"vinicius73/seotools": "dev-master",
 		"davejamesmiller/laravel-aliases": "dev-master",
-		"graham-campbell/throttle": "0.2.*@alpha"
+		"graham-campbell/throttle": "0.2.*@alpha",
+		"embed/embed": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

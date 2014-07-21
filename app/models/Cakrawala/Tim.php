@@ -45,4 +45,9 @@ class Tim extends Ardent {
     {
         return 3 - $this->anggota()->count();
     }
+
+    public function anggota_lengkap()
+    {
+        return $this->sisa_kuota_anggota() < 1;
+    }
 }

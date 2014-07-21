@@ -259,6 +259,10 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
         route_resource('kompetisi.tim', 'PanelCakrawalaKompetisiTimController', 'panel.cakrawala');
         Route::get('kompetisi/{kompetisi}/tim/{tim}/pay', array('uses' => 'PanelCakrawalaKompetisiTimController@pay', 'as' => 'panel.cakrawala.kompetisi.tim.pay'));
         route_resource('kompetisi.tim.anggota', 'PanelCakrawalaKompetisiAnggotaController', 'panel.cakrawala');
+        route_resource('kompetisi.tim.persyaratan', 'PanelCakrawalaKompetisiPersyaratanController', 'panel.cakrawala');
+        Route::get('kompetisi/{kompetisi}/tim/{tim}/persyaratan/{persyaratan}/download', array('uses' => 'PanelCakrawalaKompetisiPersyaratanController@download', 'as' => 'panel.cakrawala.kompetisi.tim.persyaratan.download'));
+        route_resource('kompetisi.tim.karya', 'PanelCakrawalaKompetisiKaryaController', 'panel.cakrawala');
+        Route::get('kompetisi/{kompetisi}/tim/{tim}/karya/{karya}/download', array('uses' => 'PanelCakrawalaKompetisiKaryaController@download', 'as' => 'panel.cakrawala.kompetisi.tim.karya.download'));
     });
 
     // Arsip

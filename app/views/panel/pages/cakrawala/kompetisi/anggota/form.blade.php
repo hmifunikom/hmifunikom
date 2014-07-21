@@ -27,12 +27,11 @@
         {{
             ($method == 'edit')
             ?   Former::text('tanggal_lahir')->class('form-control datepick')->data_date_format("yyyy-mm-dd")->forceValue($anggota->tanggal_lahir->toDateString())
-            :   NULL
+            :   Former::text('tanggal_lahir')->class('form-control datepick')->data_date_format("yyyy-mm-dd")
         }}
         {{ Former::text('alamat') }}
         {{ Former::text('no_telp') }}
         {{ Former::file('foto_anggota')->accept('image')->inlineHelp('Maksimal 2MB. Foto close up 2x3 cm') }}
-        {{ Former::hidden('jabatan')}}
 
         {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
     {{ Former::close() }}

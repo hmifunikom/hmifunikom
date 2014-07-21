@@ -38,7 +38,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	public function create($lomba)
 	{
 		$tim = new Tim;
-		return View::make('panel.pages.cakrawala.kompetisi.tim.form')->with(array('method' => 'create', 'lomba' => $lomba, 'tim' => $tim));
+		return View::make('panel.pages.cakrawala.kompetisi.tim.form')->with(array('method' => 'create', 'lomba' => $lomba, 'tim' => $tim->load('user')));
 	}
 
 	/**
@@ -52,8 +52,9 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 			Input::all(),
 			array(
 				'username'              => 'required|unique:tb_cakrawala_user',
-				"password"				=> "required|min:4|confirmed",
-				"password_confirmation"	=> "required|same:password",
+				'email'                 => 'required|email',
+				"password"				=> "required|min:8|confirmed",
+				"password_confirmation"	=> "same:password",
 				
 				'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,NULL,id_tim,lomba,'.$lomba,
 				'kategori'				=> 'required',
@@ -69,15 +70,18 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 			$tim->lomba = $lomba;
 			if($lomba == 'LKTI') $tim->kategori = 'SMA';
 			$user = new User();
-			$user->password = Hash::make(Input::get('password'));
+			$user->password = Input::get('password');
 			if ($tim->save()) {
-				$user->save();
 				if($tim->user()->save($user))
 				{
-            		return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Peserta berhasil ditambah!');
+            		return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Tim berhasil ditambah!');
+            	}
+            	else
+            	{
+            		$tim->delete();
+            		return Redirect::action('panel.cakrawala.kompetisi.tim.create', $lomba)->withErrors($user->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
             	}
 	        } else {
-	        	
 	            return Redirect::action('panel.cakrawala.kompetisi.tim.create', $lomba)->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 	        }
 		}
@@ -106,7 +110,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	 */
 	public function edit($lomba, $tim)
 	{
-		return View::make('panel.pages.cakrawala.kompetisi.tim.form')->with(array('method' => 'edit', 'lomba' => $lomba, 'tim' => $tim));
+		return View::make('panel.pages.cakrawala.kompetisi.tim.form')->with(array('method' => 'edit', 'lomba' => $lomba, 'tim' => $tim->load('user')));
 	}
 
 	/**
@@ -123,7 +127,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 				Input::all(),
 				array(
 					'username'              => 'required|unique:tb_cakrawala_kompetisi_tim,username,'.$tim->id_tim.',id_tim',
-					"password"				=> "required|min:4|confirmed",
+					"password"				=> "required|min:8|confirmed",
 					"password_confirmation"	=> "same:password",
 
 					'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,

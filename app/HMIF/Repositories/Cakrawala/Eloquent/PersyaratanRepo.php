@@ -1,9 +1,10 @@
 <?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
-use HMIF\Repositories\Cakrawala\KaryaRepoInterface;
+use HMIF\Repositories\Cakrawala\PersyaratanRepoInterface;
 use HMIF\Model\Cakrawala\Persyaratan;
+use HMIF\Model\Cakrawala\Tim;
 
-class PersyaratanRepo implements KaryaRepoInterface {
+class PersyaratanRepo implements PersyaratanRepoInterface {
 
     private $relations = array();
     private $per_page = 15;
@@ -12,6 +13,11 @@ class PersyaratanRepo implements KaryaRepoInterface {
     public function findById($id)
     {
         return Persyaratan::with($this->relations)->find($id);
+    }
+
+    public function findByTim($tim)
+    {
+        return Tim::find($tim)->persyaratan()->get();
     }
 
     public function findAll()
