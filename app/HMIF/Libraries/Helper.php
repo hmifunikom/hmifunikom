@@ -123,6 +123,18 @@ class Helper {
     | Media Helper
     |--------------------------------------------------------------------------
     */
+   
+    public static function pathFile($filename, $safe)
+    {
+        if($safe)
+        {
+            return storage_path().'/files/'.$filename;
+        }
+        else
+        {
+            return public_path().'/media/datas/'.$filename;
+        }
+    }
 
     public static function createQR($text)
     {
@@ -138,4 +150,23 @@ class Helper {
         \File::delete(public_path().'/media/images/'.$file);
         \File::delete(public_path().'/media/thumbs/'.$file);
     }
+
+    public static function deleteFile($file, $safe = TRUE)
+    {
+        \File::delete(static::pathFile($file, $safe));
+    }
+
+    public static function formatBytes($bytes, $precision = 2) { 
+        $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+
+        $bytes = max($bytes, 0); 
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+        $pow = min($pow, count($units) - 1); 
+
+        // Uncomment one of the following alternatives
+        // $bytes /= pow(1024, $pow);
+        $bytes /= (1 << (10 * $pow)); 
+
+        return round($bytes, $precision) . ' ' . $units[$pow]; 
+    } 
 }

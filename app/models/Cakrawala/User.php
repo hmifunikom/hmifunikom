@@ -21,10 +21,10 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     protected $hidden = array('password');
 
 	public static $rules = array(
-        'username'              => 'required|between:4,16',
+        'username'              => 'required|unique:tb_cakrawala_user',
         'email'                 => 'required|email',
-        'password'              => 'required|min:8|confirmed',
-        'password_confirmation' => 'required|min:8',
+        "password"              => "required|min:8|confirmed",
+        "password_confirmation" => "same:password",
     );
 
     public function userable()

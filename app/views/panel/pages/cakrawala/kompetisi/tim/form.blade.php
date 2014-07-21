@@ -18,7 +18,7 @@
     {{
         ($method == 'edit')
         ?   Former::open()
-            ->route('panel.cakrawala.kompetisi.tim.update', array($lomba, $tim->id_tim))
+            ->route('panel.cakrawala.kompetisi.tim.update', array($lomba, $tim->id_tim, 'type' => Input::get('type')))
         :   Former::open()
             ->route('panel.cakrawala.kompetisi.tim.store', $lomba)
     }}
@@ -40,19 +40,28 @@
         {{ Former::text('asal')->inlineHelp('Asal sekolah atau perguruan tinggi') }}
         {{ Former::text('alamat')->inlineHelp('Alamat sekolah atau perguruan tinggi') }}
         @else
+        {{ Former::hidden('kategori')->value('SMA') }}
         {{ Former::text('asal')->inlineHelp('Asal sekolah') }}
         {{ Former::text('alamat')->inlineHelp('Alamat sekolah') }}
         @endif
-        
+    
         {{ Former::text('nama_pembimbing') }}
 
+    
         {{ Former::legend('Login Tim') }}
 
-        {{ Former::text('username') }}
+        {{ Former::text('user.username')->name('username') }}
+
+        @if($method == 'edit')
+        {{ Former::password('password')->inlineHelp('Kosongkan jika tidak ingin merubah password') }}
+        {{ Former::password('password_confirmation')->inlineHelp('Kosongkan jika tidak ingin merubah password') }}
+        @else
         {{ Former::password('password') }}
         {{ Former::password('password_confirmation') }}
-        {{ Former::text('email')->inlineHelp('Email aktif untuk registrasi akun') }}
+        @endif
 
+        {{ Former::text('user.email')->name('email')->inlineHelp('Email aktif untuk registrasi akun') }}
+        
         {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
     {{ Former::close() }}
 @stop

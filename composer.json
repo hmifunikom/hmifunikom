@@ -11,7 +11,7 @@
 		"patricktalmadge/bootstrapper": "dev-develop",
 		"thomaswelton/laravel-gravatar": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "dev-master",
-		"intervention/imagecache": "dev-master",
+		"intervention/image": "1.*",
 		"kmd/logviewer": "1.1.*",
 		"machuga/authority-l4": "2.1.*@dev",
 		"cviebrock/eloquent-sluggable": "dev-develop",
@@ -27,7 +27,8 @@
 		"fitztrev/laravel-html-minify": "dev-master",
 		"vinicius73/seotools": "dev-master",
 		"davejamesmiller/laravel-aliases": "dev-master",
-		"graham-campbell/throttle": "0.2.*@alpha"
+		"graham-campbell/throttle": "0.2.*@alpha",
+		"embed/embed": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

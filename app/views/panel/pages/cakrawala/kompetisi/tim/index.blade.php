@@ -27,6 +27,14 @@
                 <td>{{ $tim->nama_tim }}</td>
                 
                 <td>
+                    @if($tim->anggota_lengkap())
+                    {{ Helper::fa('check') }} Lengkap
+                    @else
+                    {{ Helper::fa('times') }} Belum
+                    @endif
+                </td>
+
+                <td>
                     @if($tim->persyaratan()->count())
                     {{ Helper::fa('check') }} Lengkap
                     @else
@@ -49,9 +57,11 @@
                         @else
                         {{ Button::success_link(action('panel.cakrawala.kompetisi.tim.pay', array($lomba, $tim->id_tim)), Helper::fa('money'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set belum bayar")) }}
                         @endif
-                        {{ Button::primary_link(action('panel.cakrawala.kompetisi.tim.anggota.index', array($lomba, $tim->id_tim)), Helper::fa('group')) }}
-                        {{ Button::link(action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim)), Helper::fa('pencil')) }}
-                        {{ Button::danger_submit(Helper::fa('trash-o'))}}
+                        {{ Button::primary_link(action('panel.cakrawala.kompetisi.tim.anggota.index', array($lomba, $tim->id_tim)), Helper::fa('paste'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Data tim")) }}
+
+                        {{ Button::link(action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim)), Helper::fa('pencil'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Edit tim")) }}
+
+                        {{ Button::danger_submit(Helper::fa('trash-o'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Hapus tim"))}}
                     {{ Former::close() }}
                 </td>
             </tr>

@@ -2,6 +2,7 @@
 
 use HMIF\Repositories\Cakrawala\KaryaRepoInterface;
 use HMIF\Model\Cakrawala\Karya;
+use HMIF\Model\Cakrawala\Tim;
 
 class KaryaRepo implements KaryaRepoInterface {
 
@@ -16,9 +17,7 @@ class KaryaRepo implements KaryaRepoInterface {
 
     public function findByTim($tim)
     {
-        return Karya::with($this->relations)
-               ->where('id_tim', '=', $tim)
-               ->get();
+        return Tim::find($tim)->karya()->get();
     }
 
     public function findAll()
