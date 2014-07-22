@@ -23,8 +23,6 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	public static $rules = array(
         'username'              => 'required|unique:tb_cakrawala_user',
         'email'                 => 'required|email',
-        "password"              => "required|min:8|confirmed",
-        "password_confirmation" => "same:password",
     );
 
     public function userable()

@@ -121,12 +121,15 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	 */
 	public function update($lomba, $tim)
 	{
+		$user = $tim->user;
+
 		if(Input::has('password'))
 		{
 			$validator = Validator::make(
 				Input::all(),
 				array(
-					'username'              => 'required|unique:tb_cakrawala_kompetisi_tim,username,'.$tim->id_tim.',id_tim',
+					'username'              => 'required|unique:tb_cakrawala_user,username,'.$tim->user->id_user.',id_user',
+					'email'                 => 'required|email',
 					"password"				=> "required|min:8|confirmed",
 					"password_confirmation"	=> "same:password",
 
@@ -141,7 +144,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 
 			if($passes)
 			{
-				$tim->password = Hash::make(Input::get('password'));
+				$user->password = Input::get('password');
 			}
 		}
 		else
@@ -149,31 +152,45 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 			$validator = Validator::make(
 				Input::all(),
 				array(
-					'username' => 'required|unique:tb_cakrawala_kompetisi_tim,username,'.$tim->id_tim.',id_tim',
+					'username'        => 'required|unique:tb_cakrawala_user,username,'.$tim->user->id_user.',id_user',
+					'email'                 => 'required|email',
 					
-					'nama_tim' => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
-					'kategori'				=> 'required',
-					'asal'					=> 'required',
-					'nama_pembimbing'		=> 'required',
+					'nama_tim'        => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
+					'kategori'        => 'required',
+					'asal'            => 'required',
+					'nama_pembimbing' => 'required',
 				)
 			);
 			
 			$passes = $validator->passes();
 		}
 
-		if ($passes)
+        if($passes)
 		{
-			if($tim->updateUniques())
+			if($lomba == 'LKTI') $tim->kategori = 'SMA';
+
+			$save_tim = $tim->updateUniques();
+			$save_user = $user->updateUniques();
+
+			if(! $save_tim)
 			{
-	        	return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Tim berhasil diubah!');	
+	        	return Redirect::action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim))->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');	
+
+			}
+			else if(! $save_user)
+			{
+	        	return Redirect::action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim))->withErrors($user->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');	
+	        	
 			}
 			else
 			{
-				return Redirect::action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim))->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');	
+				return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Tim berhasil diubah!');	
 			}
-        } else {
-            return Redirect::action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
-        }
+		}
+		else
+		{
+			return Redirect::action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+		}
 	}
 
 	/**
