@@ -4,29 +4,10 @@
     <div class="big-container">
         <div class="container">
             <h2 class="center">Panduan Pendaftaran</h2>
-            {{ Alert::info('Pendaftaran sudah berakhir.') }}
+            {{-- Alert::info('Pendaftaran sudah berakhir.') --}}
             <div class="well well-lg">
                 <ol>
-                    <li>Setiap peserta atau perwakilan (jika grup), mendaftarkan diri di bit.ly/IFGames2014</li>
-                    <li>Setelah mendaftarkan diri, penuhi administrasi ke Hima IF dengan membawa perlengkapan berikut:
-                        <ul>
-                            <li>Username ketika mendaftar di web</li>
-                            <li>Uang administrasi</li>
-                            <li>Surat Aktif (seluruh anggota jika grup)</li>
-                            <li>Fotocopy KTM (seluruh anggota jika grup)</li>
-                        </ul>
-                    </li>
-                    <li>Jika perlengkapan sudah terpenuhi, maka peserta mengisikan seluruh data anggotanya sesuai dengan surat aktif dan fotocopy KTM yang diberikan ke pihak panitia IF GAMES 2014 di bit.ly/IFGames2014 (berupa Foto, NIM, Nama, dan Nomor HP) Dengan melakukan login terlebih dahulu sesuai dengan username dan password yang telah didaftarkan sebelumnya.</li>
-                    <li>Setelah pengisian data anggota sudah lengkap, lalu save dan download kwitansi sebagai bukti.</li>
-                    <li>Uang Administrasi :
-                        <ol type="a">
-                            <li>Futsal ( Rp.200.000,- )</li>
-                            <li>Basket 3 on 3 ( Rp.60.000,- )</li>
-                            <li>Catur ( Rp.40.000,- )</li>
-                            <li>Bulu Tangkis Single ( Rp.50.000,- )</li>
-                            <li>Bulu Tangkis Ganda Campuran ( Rp.75.000,- )</li>
-                        </ol>
-                    </li>
+                    
                 </ol>
             </div>
         </div>
