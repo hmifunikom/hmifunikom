@@ -19,6 +19,59 @@ body {
     }   
 }
 
+.spinner-bounce-circle-container {
+    position: absolute;
+    left: 0; bottom: 100px; right: 0;
+}
+
+.page-down
+{
+    background-image: url('../images/cakrawala/pagedown.png');
+    width: 120px;
+    height: 60px;   
+    position: relative;
+    margin: 0 auto;
+}
+
+.spinner-bounce-circle
+{
+    width: 60px;
+    height: 60px;
+
+    position: relative;
+    margin: 0 auto;
+}
+
+.spinner-bounce-circle div
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: circlebounce 2.0s infinite ease-in-out;
+    animation: circlebounce 2.0s infinite ease-in-out;
+}
+
+.spinner-bounce-circle div:nth-child(1) {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes circlebounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes circlebounce {
+    0%, 100% { transform: scale(0.0); }
+    50% { transform: scale(1.0); }
+}
+
 .navbar {
     .navbar-brand {
         position: relative;
@@ -62,6 +115,30 @@ body {
 
     .navbar-btn {
         margin-left: 30px;
+    }
+}
+
+.preloader {
+    background:#fff;
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:9999;
+
+    .logo {
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+    }
+}
+
+.main {
+    text-align: center;
+
+    .logo {
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
     }
 }
 

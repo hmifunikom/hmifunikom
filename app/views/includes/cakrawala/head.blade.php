@@ -4,6 +4,7 @@
 <meta name="description" content="Cakrawala HMIF UNIKOM adalah salah satu acara terbesar yang pernah diadakan oleh Himpunan Mahasiswa Teknik Informatika Universitas Komputer Indonesia">
 <meta name="keywords"  content="Cakrawala, HMIF UNIKOM, Himpunan Teknik Informatika Bandung, Unikom Bandung, Universitas Komputer Indonesia" />
 <link rel="shortcut icon" href="{{ asset('favicon.ico?v1.0') }}">
+<link href="https://plus.google.com/111681065704894169638" rel="publisher" />
 
 @if(isset($pagetitle))
 <title>{{ $pagetitle }} - Cakrawala - HMIF Unikom</title>

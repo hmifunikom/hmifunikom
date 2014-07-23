@@ -4,11 +4,14 @@
 <meta name="description" content="Cakrawala HMIF UNIKOM adalah salah satu acara terbesar yang pernah diadakan oleh Himpunan Mahasiswa Teknik Informatika Universitas Komputer Indonesia">
 <meta name="keywords"  content="Cakrawala, HMIF UNIKOM, Himpunan Teknik Informatika Bandung, Unikom Bandung, Universitas Komputer Indonesia" />
 <link rel="shortcut icon" href="{{ asset('favicon.ico?v1.0') }}">
-
 @if(isset($pagetitle))
 <title>{{ $pagetitle }} - Cakrawala - HMIF Unikom</title>
 @else
 <title>Cakrawala - HMIF Unikom</title>
+@endif
+
+@if(Auth::cakrawala()->check())
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 @endif
 
 <!-- Bootstrap core CSS -->
@@ -24,8 +27,8 @@
 @endif
 
 <link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.2.8') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/cakrawala.min.css?v1.0') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/cakrawala-page.min.css?v1.0') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/cakrawala.min.css?v1.2') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/cakrawala-page.min.css?v1.2') }}" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

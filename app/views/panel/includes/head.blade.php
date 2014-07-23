@@ -11,6 +11,8 @@
 <title>HMIF Unikom</title>
 @endif
 
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
 <!-- Bootstrap core CSS -->
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/bootstrap.full.min.css') }}" rel="stylesheet">
