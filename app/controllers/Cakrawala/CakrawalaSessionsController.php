@@ -13,11 +13,11 @@ class CakrawalaSessionsController extends BaseController {
       if (Auth::cakrawala()->check())
       {
         // Redirect to homepage
-        return Redirect::intended('anggota')->with('success', 'Anda sudah masuk sebelumnya.');
+        return Redirect::route('cakrawala.anggota.index')->with('success', 'Anda sudah masuk sebelumnya.');
       }
 
       // Show the login page
-      return View::make('pages.cakrawala.sessions.create')->with(array('pagetitle' => 'Login Peserta - IF Games'));
+      return View::make('pages.cakrawala.sessions.create')->with(array('pagetitle' => 'Login Peserta'));
   }
 
   /**
@@ -50,7 +50,7 @@ class CakrawalaSessionsController extends BaseController {
           // Try to log the user in.
           if (Auth::cakrawala()->attempt($userdata))
           {
-              return Redirect::intended('anggota')->with('success', 'Anda berhasil masuk!');
+              return Redirect::route('cakrawala.anggota.index')->with('success', 'Anda berhasil masuk!');
           }
           else
           {

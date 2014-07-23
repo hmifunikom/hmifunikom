@@ -27,6 +27,13 @@ class CakrawalaController extends BaseController {
 
 	public function pendaftaran()
 	{
+		// Check if we already logged in
+		if (Auth::cakrawala()->check())
+		{
+		// Redirect to homepage
+		return Redirect::route('cakrawala.anggota.index')->with('success', 'Anda sudah masuk sebelumnya.');
+		}
+
 		return View::make('pages.cakrawala.pendaftaran')->with(array('pagetitle' => 'Panduan Pendaftaran'));
 	}
 	
