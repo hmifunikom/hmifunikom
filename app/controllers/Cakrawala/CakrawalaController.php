@@ -91,7 +91,7 @@ class CakrawalaController extends BaseController {
 				{
             		Auth::cakrawala()->login($user);
 
-	            	return Redirect::action('cakrawala.detail.index')->with('success', 'Berhasil mendaftarkan tim!');
+	            	return Redirect::action('cakrawala.anggota.index')->with('success', 'Berhasil mendaftarkan tim!');
             	}
             	else
             	{
