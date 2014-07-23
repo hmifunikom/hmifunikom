@@ -600,9 +600,6 @@ legend,
   -moz-box-shadow: 0 0 2px #f0efe7;
   box-shadow: 0 0 2px #f0efe7;
 }
-.team-member.big {
-  width: 970px !important;
-}
 .team-member.big h1,
 .team-member.big h2,
 .team-member.big h3,

@@ -168,15 +168,15 @@ class PanelCakrawalaKompetisiKaryaController extends BaseController {
 				if ($karya->updateUniques()) {
 	            	return Redirect::action('panel.cakrawala.kompetisi.tim.karya.index', array($tim->lomba, $tim->id_tim))->with('success', 'Karya karya berhasil diganti!');
 		        } else {
-		            return Redirect::action('panel.cakrawala.kompetisi.tim.karya.create', array($tim->lomba, $tim->id_tim))->withErrors($karya->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
+		            return Redirect::action('panel.cakrawala.kompetisi.tim.karya.edit', array($tim->lomba, $tim->id_tim, $karya->id_karya))->withErrors($karya->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 		        }
 	        } else {
-	            return Redirect::action('panel.cakrawala.kompetisi.tim.karya.create', array($tim->lomba, $tim->id_tim))->withErrors($validator)->with('danger', 'Karya gagal diupload!')->withInput();
+	            return Redirect::action('panel.cakrawala.kompetisi.tim.karya.edit', array($tim->lomba, $tim->id_tim, $karya->id_karya))->withErrors($validator)->with('danger', 'Karya gagal diupload!')->withInput();
 	        }
 	    }
 	    else
 	    {
-	    	return Redirect::action('panel.cakrawala.kompetisi.tim.karya.create', array($tim->lomba, $tim->id_tim))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+	    	return Redirect::action('panel.cakrawala.kompetisi.tim.karya.edit', array($tim->lomba, $tim->id_tim, $karya->id_karya))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 	    }
 	}
 

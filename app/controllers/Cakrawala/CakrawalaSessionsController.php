@@ -10,14 +10,14 @@ class CakrawalaSessionsController extends BaseController {
   public function create()
   {
       // Check if we already logged in
-      if (Auth::ifgames()->check())
+      if (Auth::cakrawala()->check())
       {
         // Redirect to homepage
-        return Redirect::intended('ifgames/anggota')->with('success', 'Anda sudah masuk sebelumnya.');
+        return Redirect::intended('anggota')->with('success', 'Anda sudah masuk sebelumnya.');
       }
 
       // Show the login page
-      return View::make('pages.ifgames.sessions.create')->with(array('pagetitle' => 'Login Peserta - IF Games'));
+      return View::make('pages.cakrawala.sessions.create')->with(array('pagetitle' => 'Login Peserta - IF Games'));
   }
 
   /**
@@ -48,19 +48,19 @@ class CakrawalaSessionsController extends BaseController {
       if ($validator->passes())
       {
           // Try to log the user in.
-          if (Auth::ifgames()->attempt($userdata))
+          if (Auth::cakrawala()->attempt($userdata))
           {
-              return Redirect::intended('ifgames/anggota')->with('success', 'Anda berhasil masuk!');
+              return Redirect::intended('anggota')->with('success', 'Anda berhasil masuk!');
           }
           else
           {
               // Redirect to the login page.
-              return Redirect::route('ifgames.sessions.create')->withErrors(array('password' => 'Password salah'))->withInput(Input::except('password'));
+              return Redirect::route('cakrawala.sessions.create')->withErrors(array('password' => 'Username atau Password salah'));
           }
       }
 
       // Something went wrong.
-      return Redirect::route('ifgames.sessions.create')->withErrors($validator)->withInput(Input::except('password'));
+      return Redirect::route('cakrawala.sessions.create')->withErrors($validator);
   }
 
   /**
@@ -72,10 +72,10 @@ class CakrawalaSessionsController extends BaseController {
   public function destroy()
   {
       // Log out
-      Auth::ifgames()->logout();
+      Auth::cakrawala()->logout();
 
       // Redirect to homepage
-      return Redirect::to('ifgames')->with('success', 'Anda telah keluar!');
+      return Redirect::route('cakrawala.sessions.create')->with('success', 'Anda telah keluar!');
   }
 
 }

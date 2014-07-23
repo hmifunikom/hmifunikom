@@ -1,4 +1,4 @@
-@extends(((Request::ajax()) ? 'layouts.ajax' : 'layouts.ifgames'))
+@extends(((Request::ajax()) ? 'layouts.ajax' : 'layouts.cakrawala.page'))
 
 @section('content') 
     <div class="big-container">
@@ -12,22 +12,21 @@
                     ->class('form-signin')
                     ->role('form')
                     ->rules(['username' => 'required', 'password' => 'required'])
-                    ->action(route('ifgames.sessions.store'))
+                    ->action(route('cakrawala.sessions.store'))
                     ->method('POST')
             }}
                 <center>
                     <img src="{{ asset('assets/images/logo.png') }}" >
-                    <h2 class="form-signin-heading">Login Peserta IF Games</h2>
+                    <h2 class="form-signin-heading">Login Peserta Cakrawala</h2>
                 </center>
+
+                @include('includes.alert')
+
                 {{
-                    ($errors->first('username'))
-                    ? Former::text('username')->placeholder('Username')->state('has-error')
-                    : Former::text('username')->placeholder('Username')
+                    Former::text('username')->placeholder('Username')
                 }}
                 {{
-                    ($errors->first('password'))
-                    ? Former::password('password')->placeholder('Password')->state('has-error')
-                    : Former::password('password')->placeholder('Password')
+                    Former::password('password')->placeholder('Password')
                 }}
 
                 {{ Form::captcha() }}

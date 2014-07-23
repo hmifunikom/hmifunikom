@@ -19,43 +19,49 @@ body {
     }   
 }
 
-.navbar .navbar-brand {
-    position: relative;
-    padding-left: 95px;
-    padding-top: 14px;
+.navbar {
+    .navbar-brand {
+        position: relative;
+        padding-left: 95px;
+        padding-top: 14px;
 
-    .cakrawala-logo {
-        .transition(opacity);
+        .cakrawala-logo {
+            .transition(opacity);
 
-        background-image: url('../images/cakrawala/logo.png');
-        background-repeat: no-repeat;
-        background-position: -231px 0;
-        position: absolute;
-        left: 0;
-        top: -2px;
-        width:77px;
-        height: 78px;
-        opacity:0;
-
-        &.green {
-            background-position: 0 0;
-        }
-
-        &.blue {
-            background-position: -77px 0;
-        }
-
-        &.red {
-            background-position: -154px 0;
-        }
-
-        &.black {
+            background-image: url('../images/cakrawala/logo.png');
+            background-repeat: no-repeat;
             background-position: -231px 0;
-        }
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width:77px;
+            height: 78px;
+            opacity:0;
 
-        &.active {
-            opacity:1;
+            &.green {
+                background-position: 0 0;
+            }
+
+            &.blue {
+                background-position: -77px 0;
+            }
+
+            &.red {
+                background-position: -154px 0;
+            }
+
+            &.black {
+                background-position: -231px 0;
+            }
+
+            &.active {
+                opacity:1;
+            }
         }
+    }
+
+    .navbar-btn {
+        margin-left: 30px;
     }
 }
 
@@ -140,7 +146,7 @@ body {
             border-top-color: #FFF !important;
 
             .scroll {
-                max-height: 220px;
+                max-height: 200px;
             }
         }
 
