@@ -9,7 +9,7 @@ class Tim extends Ardent {
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
 
-    protected $fillable = array('lomba', 'nama_tim', 'kategori', 'asal', 'nama_pembimbing', 'alamat');
+    protected $fillable = array('lomba', 'nama_tim', 'kategori', 'asal', 'nama_pembimbing', 'alamat', 'no_telp');
 	protected $guarded = array('id_tim', 'bayar');
 
 	public static $rules = array(
@@ -17,8 +17,9 @@ class Tim extends Ardent {
         'nama_tim'        => 'required',
         'kategori'        => 'required',
         'asal'            => 'required',
-        'nama_pembimbing' => 'required_if:kategori,SMA',
         'alamat'          => 'required',
+        'no_telp'         => 'required|numeric',
+        'nama_pembimbing' => 'required_if:kategori,SMA',
     );
 
     public function anggota()

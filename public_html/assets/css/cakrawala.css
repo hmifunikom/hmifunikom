@@ -57,6 +57,9 @@ body {
 .navbar .navbar-brand .cakrawala-logo.active {
   opacity: 1;
 }
+.navbar .navbar-btn {
+  margin-left: 30px;
+}
 .kompetisi-debat {
   background-image: url('../images/cakrawala/paper.jpg');
   background-size: cover;
@@ -126,7 +129,7 @@ body {
   border-top-color: #FFF !important;
 }
 .kompetisi-debat .info-debat .panel .panel-body .scroll {
-  max-height: 220px;
+  max-height: 200px;
 }
 .kompetisi-debat .info-debat .panel + .panel {
   margin-top: 0;

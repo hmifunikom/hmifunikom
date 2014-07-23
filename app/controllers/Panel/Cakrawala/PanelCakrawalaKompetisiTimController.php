@@ -60,6 +60,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 				'kategori'				=> 'required',
 				'asal'					=> 'required',
 				'alamat'				=> 'required',
+				'no_telp'      			=> 'required|numeric',
 				'nama_pembimbing'		=> 'required',
 			)
 		);
@@ -136,6 +137,8 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 					'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
 					'kategori'				=> 'required',
 					'asal'					=> 'required',
+					'alamat'				=> 'required',
+					'no_telp'      			=> 'required|numeric',
 					'nama_pembimbing'		=> 'required',
 				)
 			);
@@ -158,6 +161,8 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 					'nama_tim'        => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
 					'kategori'        => 'required',
 					'asal'            => 'required',
+					'alamat'		  => 'required',
+					'no_telp'      	  => 'required|numeric',
 					'nama_pembimbing' => 'required',
 				)
 			);

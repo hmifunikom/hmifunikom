@@ -1,13 +1,18 @@
 <?php
 
-use HMIF\Model\IFGames\Cabang;
-use HMIF\Model\IFGames\Tim;
+use HMIF\Model\Cakrawala\Cabang;
+use HMIF\Model\Cakrawala\Tim;
+use HMIF\Model\Cakrawala\User;
 
 class CakrawalaController extends BaseController {
 
 	public function __construct()
 	{
-		
+		$this->beforeFilter(function($route) {
+		    $param = $route->getParameter('lomba');
+		    $lomba = array('IT Contest', 'Debat', 'LKTI');
+		    if(! in_array($param, $lomba) && isset($param)) App::abort(404);
+		});
 	}
 
 	/**
@@ -22,94 +27,78 @@ class CakrawalaController extends BaseController {
 
 	public function pendaftaran()
 	{
-		return View::make('pages.ifgames.pendaftaran')->with(array('pagetitle' => 'Panduan Pendaftaran - IF Games'));
+		return View::make('pages.cakrawala.pendaftaran')->with(array('pagetitle' => 'Panduan Pendaftaran'));
 	}
 	
-	public function cabang()
+	public function lomba()
 	{
 		//return Redirect::back();
-		if(Auth::ifgames()->check())
-			return Redirect::action('ifgames.anggota.index');
+		if(Auth::cakrawala()->check())
+			return Redirect::action('cakrawala.anggota.index');
 
-		$cabang = new Cabang;
-		return View::make('pages.ifgames.cabang')->with(array('pagetitle' => 'Daftar Cabang - IF Games', 'cabang' => $cabang));
+		return View::make('pages.cakrawala.lomba')->with(array('pagetitle' => 'Daftar Lomba'));
 	}
 
-	public function create($cabang)
+	public function create($lomba)
 	{
 		//return Redirect::back();
-		if(Auth::ifgames()->check())
-			return Redirect::action('ifgames.anggota.index');
-
-		if($cabang->sisa_kuota() < 1)
-			return Redirect::action('ifgames.cabang')->with('warning', 'Kuota telah habis.');		
+		if(Auth::cakrawala()->check())
+			return Redirect::action('cakrawala.anggota.index');
 
 		$tim = new Tim;
-		return View::make('pages.ifgames.form')->with(array('pagetitle' => 'Formulir Pendaftaran - IF Games', 'cabang' => $cabang, 'tim' => $tim));
+		return View::make('pages.cakrawala.form')->with(array('pagetitle' => 'Formulir Pendaftaran', 'lomba' => $lomba, 'tim' => $tim));
 	}
 
-	public function store($cabang)
+	public function store($lomba)
 	{
 		//return Redirect::back();
-		if(Auth::ifgames()->check())
-			return Redirect::action('ifgames.anggota.index');
+		if(Auth::cakrawala()->check())
+			return Redirect::action('cakrawala.anggota.index');
 
-		if($cabang->sisa_kuota() < 1)
-			return Redirect::action('ifgames.cabang')->with('warning', 'Kuota telah habis.');		
-
-		$messages = array(
-			
+		$validator = Validator::make(
+			Input::all(),
+			array(
+				'username'              => 'required|unique:tb_cakrawala_user',
+				'email'                 => 'required|email',
+				"password"				=> "required|min:8|confirmed",
+				"password_confirmation"	=> "same:password",
+				
+				'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,NULL,id_tim,lomba,'.$lomba,
+				'kategori'				=> 'required',
+				'asal'					=> 'required',
+				'alamat'				=> 'required',
+				'no_telp'      	  		=> 'required|numeric',
+				'nama_pembimbing'		=> 'required',
+			)
 		);
-
-		if($cabang->anggota < 2)
-		{
-			$validator = Validator::make(
-				Input::all(),
-				array(
-					'username'              => 'required|unique:tb_ifgames_tim',
-					"password"				=> "required|min:4|confirmed",
-					"password_confirmation"	=> "same:password",
-					'nama_peserta'              => 'required|unique:tb_ifgames_tim,nama_tim,NULL,id_tim,id_cabang,'.$cabang->id_cabang,
-					'recaptcha_response_field' => 'required|recaptcha',
-				), 
-				$messages
-			);
-		}
-		else
-		{
-			$validator = Validator::make(
-				Input::all(),
-				array(
-					'username'              => 'required|unique:tb_ifgames_tim',
-					"password"				=> "required|min:4|confirmed",
-					"password_confirmation"	=> "same:password",
-					'nama_tim'              => 'required|unique:tb_ifgames_tim,nama_tim,NULL,id_tim,id_cabang,'.$cabang->id_cabang,
-					'recaptcha_response_field' => 'required|recaptcha',
-				),
-				$messages
-			);
-		}
-
+	
 		if($validator->passes())
 		{
 			$tim = new Tim();
-			if($cabang->anggota < 2) $tim->nama_tim = Input::get('nama_peserta');
-			$tim->password = Hash::make(Input::get('password'));
-			if ($cabang->tim()->save($tim)) {
-				
-				Auth::ifgames()->login($tim);
+			$tim->lomba = $lomba;
+			if($lomba == 'LKTI') $tim->kategori = 'SMA';
+			$user = new User();
+			$user->password = Input::get('password');
+			if ($tim->save()) {
+				if($tim->user()->save($user))
+				{
+            		Auth::cakrawala()->login($user);
 
-				if($cabang->anggota < 2)
-	            	return Redirect::action('ifgames.anggota.index')->with('success', 'Berhasil mendaftarkan tim!');
-	            else
-	            	return Redirect::action('ifgames.anggota.index')->with('success', 'Berhasil mendaftarkan peserta!');
+	            	return Redirect::action('cakrawala.detail.index')->with('success', 'Berhasil mendaftarkan tim!');
+            	}
+            	else
+            	{
+            		$tim->delete();
+            		return Redirect::action('cakrawala.create', $lomba)->withErrors($user->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+            	}
 	        } else {
-	            return Redirect::action('ifgames.create', $cabang->slug)->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
+	            return Redirect::action('cakrawala.create', $lomba)->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 	        }
 		}
 		else
 		{
-			return Redirect::action('ifgames.create', $cabang->slug)->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+			return Redirect::action('cakrawala.create', $lomba)->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 		}
+
 	}
 }

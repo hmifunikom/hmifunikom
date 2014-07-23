@@ -64,8 +64,8 @@ Route::group(array('domain' => 'event'.$domain), function()
 {
     Route::group(array('prefix' => 'ifgames'), function()
    {
-        Route::model('cabang', 'IFGCabang');
-        Route::model('anggota', 'IFGAnggotaTim');
+        Route::model('cabang', 'HMIF\Model\IFGames\Cabang');
+        Route::model('anggota', 'HMIF\Model\IFGames\AnggotaTim');
 
         Route::get('/', array('uses' => 'IFGamesController@index', 'as' => 'ifgames.index'));    
         Route::get('pendaftaran', array('uses' => 'IFGamesController@pendaftaran', 'as' => 'ifgames.pendaftaran'));
@@ -117,22 +117,27 @@ Route::group(array('domain' => 'pelatihan'.$domain), function()
 
 Route::group(array('domain' => 'cakrawala'.$domain), function()
 {
-    // Route::model('cabang', 'IFGCabang');
-    // Route::model('anggota', 'IFGAnggotaTim');
+    Route::model('anggota', 'HMIF\Model\Cakrawala\Anggota');
+    Route::model('persyaratan', 'HMIF\Model\Cakrawala\Persyaratan');
+    Route::model('karya', 'HMIF\Model\Cakrawala\Karya');
 
     Route::get('/', array('uses' => 'CakrawalaController@index', 'as' => 'cakrawala.index'));    
     Route::get('pendaftaran', array('uses' => 'CakrawalaController@pendaftaran', 'as' => 'cakrawala.pendaftaran'));
-    //route_resource('anggota', 'IFGamesAnggota', 'ifgames');
 
-//    Route::get('kuitansi', array('uses' => 'IFGamesAnggota@download', 'as' => 'ifgames.anggota.download'));
+    route_resource('anggota', 'CakrawalaAnggotaController', 'cakrawala');
+    route_resource('persyaratan', 'CakrawalaPersyaratanController', 'cakrawala');
+    Route::get('persyaratan/{persyaratan}/download', array('uses' => 'CakrawalaPersyaratanController@download', 'as' => 'cakrawala.persyaratan.download'));
+    route_resource('karya', 'CakrawalaKaryaController', 'cakrawala');
+    Route::get('karya/{karya}/download', array('uses' => 'CakrawalaKaryaController@download', 'as' => 'cakrawala.karya.download'));
+    //Route::get('kuitansi', array('uses' => 'IFGamesAnggota@download', 'as' => 'ifgames.anggota.download'));
 
-    // Route::get('register', array('uses' => 'IFGamesController@cabang', 'as' => 'ifgames.cabang'));
-    // Route::get('register/{cabang}', array('uses' => 'IFGamesController@create', 'as' => 'ifgames.create'));
-    // Route::post('register/{cabang}', array('uses' => 'IFGamesController@store', 'as' => 'ifgames.store'));
+    Route::get('register', array('uses' => 'CakrawalaController@lomba', 'as' => 'cakrawala.lomba'));
+    Route::get('register/{lomba}', array('uses' => 'CakrawalaController@create', 'as' => 'cakrawala.create'));
+    Route::post('register/{lomba}', array('uses' => 'CakrawalaController@store', 'as' => 'cakrawala.store'));
 
-    Route::get('login', array('uses' => 'IFGamesSessionsController@create', 'as' => 'ifgames.sessions.create'));
-    Route::post('login', array('uses' => 'IFGamesSessionsController@store', 'as' => 'ifgames.sessions.store'));
-    Route::get('logout', array('uses' => 'IFGamesSessionsController@destroy', 'as' => 'ifgames.sessions.destroy'));
+    Route::get('login', array('uses' => 'CakrawalaSessionsController@create', 'as' => 'cakrawala.sessions.create'));
+    Route::post('login', array('uses' => 'CakrawalaSessionsController@store', 'as' => 'cakrawala.sessions.store'));
+    Route::get('logout', array('uses' => 'CakrawalaSessionsController@destroy', 'as' => 'cakrawala.sessions.destroy'));
 });
 
 /*

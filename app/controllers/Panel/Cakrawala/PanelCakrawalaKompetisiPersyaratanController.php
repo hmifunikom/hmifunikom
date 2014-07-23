@@ -134,15 +134,15 @@ class PanelCakrawalaKompetisiPersyaratanController extends BaseController {
 				if ($persyaratan->updateUniques()) {
 	            	return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.index', array($tim->lomba, $tim->id_tim))->with('success', 'Dokumen persyaratan berhasil diganti!');
 		        } else {
-		            return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.create', array($tim->lomba, $tim->id_tim))->withErrors($persyaratan->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
+		            return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.edit', array($tim->lomba, $tim->id_tim, $persyaratan->id_dokumen))->withErrors($persyaratan->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 		        }
 	        } else {
-	            return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.create', array($tim->lomba, $tim->id_tim))->withErrors($validator)->with('danger', 'Dokumen gagal diupload!')->withInput();
+	            return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.edit', array($tim->lomba, $tim->id_tim, $persyaratan->id_dokumen))->withErrors($validator)->with('danger', 'Dokumen gagal diupload!')->withInput();
 	        }
 	    }
 	    else
 	    {
-	    	return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.create', array($tim->lomba, $tim->id_tim))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+	    	return Redirect::action('panel.cakrawala.kompetisi.tim.persyaratan.edit', array($tim->lomba, $tim->id_tim, $persyaratan->id_dokumen))->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 	    }
 	}
 

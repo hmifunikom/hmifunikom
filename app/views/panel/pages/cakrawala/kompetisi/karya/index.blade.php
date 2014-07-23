@@ -53,7 +53,11 @@
                         $info = Embed\Embed::create($tim->karya->link_video_demo, $options);
                     ?>
                     <div class="center">
+                        @if($info)
                         {{ $info->code }}
+                        @else
+                        
+                        @endif
                     </div>
                 </div>
                 @endif
