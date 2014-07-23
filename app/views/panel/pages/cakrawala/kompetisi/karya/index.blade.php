@@ -55,9 +55,8 @@
                     <div class="center">
                         @if($info)
                         {{ $info->code }}
-                        @else
-                        
                         @endif
+                        <br><a href="{{ $tim->karya->link_video_demo }}">{{ $tim->karya->link_video_demo }}</a>
                     </div>
                 </div>
                 @endif
