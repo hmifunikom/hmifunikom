@@ -20,8 +20,9 @@
                     <ul class="dropdown-menu">
                         <li {{ Helper::active('cakrawala.anggota.index') }}><a href="{{action('cakrawala.anggota.index')}}">{{Helper::fa(
                             'group')}} Form Anggota</a></li>
-                        <li {{ Helper::active('cakrawala.persyaratan.index') }}><a href="{{action('cakrawala.persyaratan.index')}}">{{Helper::fa('files-o')}} Form Anggota</a></li>
-                        <li {{ Helper::active('cakrawala.karya.index') }}><a href="{{action('cakrawala.karya.index')}}">{{Helper::fa('star')}} Form Anggota</a></li>
+                        <li {{ Helper::active('cakrawala.persyaratan.index') }}><a href="{{action('cakrawala.persyaratan.index')}}">{{Helper::fa('files-o')}} Form Persyaratan</a></li>
+                        <li {{ Helper::active('cakrawala.karya.index') }}><a href="{{action('cakrawala.karya.index')}}">{{Helper::fa('star')}} Form Karya</a></li>
+                        <li class="divider"></li>
                         <li><a href="{{action('cakrawala.sessions.destroy')}}">{{Helper::fa('sign-out')}} Keluar</a></li>
                     </ul>
                 </li>

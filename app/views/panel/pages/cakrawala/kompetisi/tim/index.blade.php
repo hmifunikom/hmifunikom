@@ -57,7 +57,7 @@
                         @else
                         {{ Button::success_link(action('panel.cakrawala.kompetisi.tim.pay', array($lomba, $tim->id_tim)), Helper::fa('money'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set belum bayar")) }}
                         @endif
-                        {{ Button::primary_link(action('panel.cakrawala.kompetisi.tim.anggota.index', array($lomba, $tim->id_tim)), Helper::fa('paste'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Data tim")) }}
+                        {{ Button::primary_link(action('panel.cakrawala.kompetisi.tim.show', array($lomba, $tim->id_tim)), Helper::fa('paste'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Data tim")) }}
 
                         {{ Button::link(action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim)), Helper::fa('pencil'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Edit tim")) }}
 

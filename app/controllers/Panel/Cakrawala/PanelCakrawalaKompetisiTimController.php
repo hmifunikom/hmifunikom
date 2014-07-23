@@ -100,7 +100,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	 */
 	public function show($lomba, $tim)
 	{
-		//
+		return View::make('panel.pages.cakrawala.kompetisi.tim.show')->with(array('lomba' => $lomba, 'tim' => $tim));
 	}
 
 	/**
