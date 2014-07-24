@@ -79,7 +79,5 @@ $(function(){
             return true;
         }
         e.preventDefault();
-    });
-
-    makeCalendar();
+    }); 
 });

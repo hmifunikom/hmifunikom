@@ -19,10 +19,12 @@
 <link href="{{ asset('assets/css/bootstrap.full.min.css') }}" rel="stylesheet">
 
 @if(App::environment('production'))
+<link href="//cdn.jsdelivr.net/bootstrap.datepicker/0.1/css/datepicker.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 @else
+<link href="{{ asset('assets/css/datepicker.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
 @endif
 
