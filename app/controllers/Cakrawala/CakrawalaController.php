@@ -59,7 +59,7 @@ class CakrawalaController extends BaseController {
 
 	public function store($lomba)
 	{
-		$lomba = ($lomba != "ITContest") ?: "IT Contest";
+		$lomba = ($lomba != "ITContest") ? $lomba : "IT Contest";
 		//return Redirect::back();
 		if(Auth::cakrawala()->check())
 			return Redirect::action('cakrawala.anggota.index');
