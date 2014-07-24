@@ -1,126 +1,130 @@
 $(document).ready(function() {
     $(window).load(function() {
-        $(".preloader").fadeOut();
-        $('#fullpage').fullpage({
-            resize: false,
-            verticalCentered: false,
-            anchors: ['Main', 'DebatIT', 'ITContest', 'LKTI', 'Contact'],
-            slidesColor: ['#fff', '#333', '#fff', '#008cd6', '#fff'],
-            autoScrolling: true,
-            paddingTop: '50px',
-            css3:true,
-            scrollingSpeed:100,
+        if($('#fullpage').length) {
+            $(".preloader").fadeOut();
+            $('#fullpage').fullpage({
+                resize: false,
+                verticalCentered: false,
+                anchors: ['Main', 'DebatIT', 'ITContest', 'LKTI', 'Contact'],
+                slidesColor: ['#fff', '#333', '#fff', '#008cd6', '#fff'],
+                autoScrolling: true,
+                paddingTop: '50px',
+                css3:true,
+                scrollingSpeed:100,
 
-            afterLoad: function(anchorLink, index){
-                $('.cakrawala-logo.green').toggleClass('active', (anchorLink == 'ITContest'));
-                $('.cakrawala-logo.red').toggleClass('active', (anchorLink == 'DebatIT'));
-                // $('.cakrawala-logo.blue').toggleClass('active', (anchorLink == 'ITContest' ));
-                $('.cakrawala-logo.black').toggleClass('active', (anchorLink == 'LKTI'));
+                afterLoad: function(anchorLink, index){
+                    $('.cakrawala-logo.green').toggleClass('active', (anchorLink == 'ITContest'));
+                    $('.cakrawala-logo.red').toggleClass('active', (anchorLink == 'DebatIT'));
+                    // $('.cakrawala-logo.blue').toggleClass('active', (anchorLink == 'ITContest' ));
+                    $('.cakrawala-logo.black').toggleClass('active', (anchorLink == 'LKTI'));
 
-                $('.nav .debat').toggleClass('active', (anchorLink == 'DebatIT'));
-                $('.nav .itcontest').toggleClass('active', (anchorLink == 'ITContest'));
-                $('.nav .lkti').toggleClass('active', (anchorLink == 'LKTI'));
-                $('.nav .contact').toggleClass('active', (anchorLink == 'Contact'));
-            },
+                    $('.nav .debat').toggleClass('active', (anchorLink == 'DebatIT'));
+                    $('.nav .itcontest').toggleClass('active', (anchorLink == 'ITContest'));
+                    $('.nav .lkti').toggleClass('active', (anchorLink == 'LKTI'));
+                    $('.nav .contact').toggleClass('active', (anchorLink == 'Contact'));
+                },
 
-            onLeave: function(index, nextIndex, direction){
-                
-            },
+                onLeave: function(index, nextIndex, direction){
+                    
+                },
 
-            afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex) {
+                afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex) {
 
-                if(anchorLink == 'DebatIT') {
-                    switch(slideIndex) {
-                        case 0:
-                            if(! $('#persyaratan').hasClass('in')) {
-                                $('.coll-persyaratan').click();
-                            }
-                        break;
+                    if(anchorLink == 'DebatIT') {
+                        switch(slideIndex) {
+                            case 0:
+                                if(! $('#persyaratan').hasClass('in')) {
+                                    $('.coll-persyaratan').click();
+                                }
+                            break;
 
-                        case 1:
-                            if(! $('#teknis').hasClass('in')) {
-                                $('.coll-teknis').click();
-                            }
-                        break;
+                            case 1:
+                                if(! $('#teknis').hasClass('in')) {
+                                    $('.coll-teknis').click();
+                                }
+                            break;
 
-                        case 2:
-                            if(! $('#tanggal').hasClass('in')) {
-                                $('.coll-tanggal').click();
-                            }
-                        break;
+                            case 2:
+                                if(! $('#tanggal').hasClass('in')) {
+                                    $('.coll-tanggal').click();
+                                }
+                            break;
 
-                        case 3:
-                            if(! $('#hadiah').hasClass('in')) {
-                                $('.coll-hadiah').click();
-                            }
-                        break;
+                            case 3:
+                                if(! $('#hadiah').hasClass('in')) {
+                                    $('.coll-hadiah').click();
+                                }
+                            break;
+                        }
                     }
-                }
 
-                if(anchorLink == 'ITContest') {
-                    $('.info-title.persyaratan').toggleClass('active', (slideAnchor == 'persyaratan'));
-                    $('.info-title.tanggal').toggleClass('active', (slideAnchor == 'tanggal'));
-                    $('.info-title.teknis').toggleClass('active', (slideAnchor == 'teknis'));
-                    $('.info-title.hadiah').toggleClass('active', (slideAnchor == 'hadiah'));
-                }
-
-                if(anchorLink == 'LKTI') {
-                    switch(slideIndex) {
-                        case 0:
-                            $('.panel-v.persyaratan .panel-title a').click();
-                        break;
-
-                        case 1:
-                            $('.panel-v.teknis .panel-title a').click();
-                        break;
-
-                        case 2:
-                            $('.panel-v.waktu .panel-title a').click();
-                        break;
-
-                        case 3:
-                            $('.panel-v.hadiah .panel-title a').click();
-                        break;
+                    if(anchorLink == 'ITContest') {
+                        $('.info-title.persyaratan').toggleClass('active', (slideAnchor == 'persyaratan'));
+                        $('.info-title.tanggal').toggleClass('active', (slideAnchor == 'tanggal'));
+                        $('.info-title.teknis').toggleClass('active', (slideAnchor == 'teknis'));
+                        $('.info-title.hadiah').toggleClass('active', (slideAnchor == 'hadiah'));
                     }
+
+                    if(anchorLink == 'LKTI') {
+                        switch(slideIndex) {
+                            case 0:
+                                $('.panel-v.persyaratan .panel-title a').click();
+                            break;
+
+                            case 1:
+                                $('.panel-v.teknis .panel-title a').click();
+                            break;
+
+                            case 2:
+                                $('.panel-v.waktu .panel-title a').click();
+                            break;
+
+                            case 3:
+                                $('.panel-v.hadiah .panel-title a').click();
+                            break;
+                        }
+                    }
+                },
+
+                onSlideLeave: function( anchorLink, index, slideIndex, direction){
+
                 }
-            },
 
-            onSlideLeave: function( anchorLink, index, slideIndex, direction){
+            });
 
-            }
+            activePanel = $("#accordion2 div.panel-v:first");
+            $(activePanel).addClass('active');
 
-        });
-    });
+            $('.panel-v .panel-title a').on('click', function(e){
+                var target = $(this).data('anchor');
+                target =  $('.panel-v.' + target);
 
-    activePanel = $("#accordion2 div.panel-v:first");
-    $(activePanel).addClass('active');
+                if( ! target.is('.active') ){
+                    $(activePanel).animate({width: "40px"}, 300);
+                    target.animate({width: "852px"}, 300);
+                    $('#accordion2 .panel-v').removeClass('active');
+                    target.addClass('active');
+                    activePanel = target;
+                }
+            });
 
-    $('.panel-v .panel-title a').on('click', function(e){
-        var target = $(this).data('anchor');
-        target =  $('.panel-v.' + target);
+            $('.arrow').on('click', function() {
+                if ($(this).hasClass('arrowLeft')) {
+                    $.fn.fullpage.moveSlideLeft();
+                } else {
+                    $.fn.fullpage.moveSlideRight();
+                }
+            });
 
-        if( ! target.is('.active') ){
-            $(activePanel).animate({width: "40px"}, 300);
-            target.animate({width: "852px"}, 300);
-            $('#accordion2 .panel-v').removeClass('active');
-            target.addClass('active');
-            activePanel = target;
+            $('.scroll').slimScroll({
+                size: '10px',
+                railVisible: true,
+                alwaysVisible: true
+            });
         }
     });
 
-    $('.arrow').on('click', function() {
-        if ($(this).hasClass('arrowLeft')) {
-            $.fn.fullpage.moveSlideLeft();
-        } else {
-            $.fn.fullpage.moveSlideRight();
-        }
-    });
-
-    $('.scroll').slimScroll({
-        size: '10px',
-        railVisible: true,
-        alwaysVisible: true
-    });
+    $('.datepick').datepicker();
 });
 
 function createSlimScrolling(element){
@@ -131,11 +135,12 @@ function createSlimScrolling(element){
     var section = element.closest('.section');
     var scrollable = element.find('.scrollable');
 
+    var contentHeight;
     //if there was scroll, the contentHeight will be the one in the scrollable section
     if(scrollable.length){
-        var contentHeight = element.find('.scrollable').get(0).scrollHeight;
+        contentHeight = element.find('.scrollable').get(0).scrollHeight;
     }else{
-        var contentHeight = element.get(0).scrollHeight;
+        contentHeight = element.get(0).scrollHeight;
         if(true){
             contentHeight = element.find('.tableCell').get(0).scrollHeight;
         }
@@ -144,13 +149,13 @@ function createSlimScrolling(element){
     var scrollHeight = windowsHeight - parseInt(section.css('padding-bottom')) - parseInt(section.css('padding-top'));
 
     //needs scroll?
-    if ( contentHeight > scrollHeight) {
+    if (contentHeight > scrollHeight) {
         //was there already an scroll ? Updating it
         if(scrollable.length){
             scrollable.css('height', scrollHeight + 'px').parent().css('height', scrollHeight + 'px');
         }
         //creating the scrolling
-        else{                   
+        else{
             if(true){
                 element.find('.tableCell').wrapInner('<div class="scrollable" />');
             }else{
@@ -167,7 +172,7 @@ function createSlimScrolling(element){
     }
     
     //removing the scrolling when it is not necessary anymore
-    else{               
+    else{
         element.find('.scrollable').children().first().unwrap().unwrap();
         element.find('.slimScrollBar').remove();
         element.find('.slimScrollRail').remove();
