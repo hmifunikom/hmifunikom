@@ -10,7 +10,7 @@ class CakrawalaController extends BaseController {
 	{
 		$this->beforeFilter(function($route) {
 		    $param = $route->getParameter('lomba');
-		    $lomba = array('IT Contest', 'Debat', 'LKTI');
+		    $lomba = array('ITContest', 'Debat', 'LKTI');
 		    if(! in_array($param, $lomba) && isset($param)) App::abort(404);
 		});
 	}
@@ -48,6 +48,7 @@ class CakrawalaController extends BaseController {
 
 	public function create($lomba)
 	{
+		$lomba = ($lomba != "ITContest") ? $lomba : "IT Contest";
 		//return Redirect::back();
 		if(Auth::cakrawala()->check())
 			return Redirect::action('cakrawala.anggota.index');
@@ -58,6 +59,7 @@ class CakrawalaController extends BaseController {
 
 	public function store($lomba)
 	{
+		$lomba = ($lomba != "ITContest") ?: "IT Contest";
 		//return Redirect::back();
 		if(Auth::cakrawala()->check())
 			return Redirect::action('cakrawala.anggota.index');

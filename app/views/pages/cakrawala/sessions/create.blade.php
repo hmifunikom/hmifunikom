@@ -40,6 +40,8 @@
                 @endif
 
                 {{ Button::lg_primary_submit('Masuk')->block() }}
+                
+                <a href="{{ URL::route('cakrawala.lomba') }}">Belum mendaftar? Daftar disini.</a>
 
             {{ Former::close() }}
         </div>

@@ -13,6 +13,9 @@
                 Button::lg_link(URL::route('cakrawala.pendaftaran'), '&laquo Kembali')
             }}
 
+            <div class="clear"></div>
+            <a href="{{ URL::route('cakrawala.sessions.create') }}">Sudah mendaftar? Login disini.</a>
+
             @include('includes.alert')
 
             <div class="row cabang">
@@ -24,7 +27,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div style="background:#009B4C;" class="col-xs-12">
-                    <a href="{{ URL::route('cakrawala.create', 'IT Contest') }}">
+                    <a href="{{ URL::route('cakrawala.create', 'ITContest') }}">
                         <span class="big-title">IT Contest</span>
                         {{ Helper::fa('chevron-right') }}
                     </a>

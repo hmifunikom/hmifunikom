@@ -45,7 +45,7 @@
                                         Typography::dl(
                                             array(
                                                 'Nama' => $anggota->nama_anggota,
-                                                'TTL' => $anggota->tempat_lahir.', '.$anggota->tanggal_lahir->toDateString(),
+                                                'Tanggal Lahir' => $anggota->tempat_lahir.', '.$anggota->tanggal_lahir->toDateString(),
                                                 'Alamat' => $anggota->alamat,
                                                 'No. Hp' => $anggota->no_telp,
                                             ),
