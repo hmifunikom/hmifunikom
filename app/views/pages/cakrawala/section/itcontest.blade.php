@@ -19,7 +19,7 @@
 <ol>
 <li>Peserta harus mengisi formulir pendaftaran dengan lengkap dan memberikan informasi yang bisa dipertanggungjawabkan. 
 </li><li>Melakukan pendaftaran secara on line dengan mengisi Formulir pendaftaran secara lengkap. Atau dating langsung ke Gedung unikom lantai dasar Universitas komputer Indonesia Ruang Sekretariat HMIF Fakultas Teknik Informatika
-</li><li>Peserta IT CONTEST merupakan mahasiswa/ i dan siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.
+</li><li>Peserta IT CONTEST merupakan siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.
 </li><li>1 tim terdiri dari 3 orang.
 </li><li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.
 </li><li>Peserta bersedia mengikuti setiap ketentuan yang ada.
@@ -43,7 +43,7 @@
 
 <p><strong>Babak Penyisihan:</strong></p>
 <ol>
-<li>Membuat aplikasi / website / game berbasis desktop atau mobile dengan tema “Cinta Budaya Indonesia”.
+<li>Membuat aplikasi / website / game berbasis desktop atau mobile dengan tema "Cinta Budaya Indonesia".
 </li><li>Pada babak ini :
 <ul>
     </li><li>Penilaian meliputi Tampilan, Kesesuaian Tema, Ide dan Fungsionalitas Hasil Karya yang dibuat.
@@ -52,7 +52,7 @@
         <li>Video karya peserta(web, aplikasi,game),  
         </li><li>Dokumen berektensi doc/PDF ( berisi Tema, Latar Belakang, Batasan Masalah, Tujuan, Deskripsi hasil karya yang dibuat)</li>
     </ol>
-    </li><li>Team yang lolos akan bertanding pada tahap Final adalah 10 tim terbaik, yaitu 5 tim dari siswa dan 5 tim dari mahasiswa, dimana pengumuman peserta yang lolos akan diumumkan di website HMIF dan kemudian akan mengikuti lomba di Universitas Komputer Indonesia.</li>
+    </li><li>Team yang lolos akan bertanding pada tahap Final adalah 10 tim terbaik, dimana pengumuman peserta yang lolos akan diumumkan di website HMIF dan kemudian akan mengikuti lomba di Universitas Komputer Indonesia.</li>
 </ul>
 </li>
 </ol>
