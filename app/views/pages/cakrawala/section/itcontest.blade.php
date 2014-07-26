@@ -87,7 +87,14 @@
 
         <div class="box navy slide"  id="hadiah" data-anchor="hadiah">
             <div class="icon trophy"></div>
-            <div class="text"></div>
+            <div class="text">
+<ul class="list-tanggal">
+    <li>Juara 1 : Rp 1.500.000 + Trophy
+        </li><li>juara 2 : Rp 1.000.000 + Trophy</li>
+        <li>juara 3 : Rp 750.000 + Trophy
+    </li>
+</ul>
+            </div>
             <div class="clearfix"></div>
         </div>
 
