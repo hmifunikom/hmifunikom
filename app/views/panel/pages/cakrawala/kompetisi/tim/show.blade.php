@@ -21,7 +21,6 @@
                 Typography::horizontal_dl(
                     array(
                         'Nama tim' => $tim->nama_tim,
-                        'Kategori' => $tim->kategori,
                         'Asal' => $tim->asal,
                         'Alamat' => $tim->alamat,
                         'No. Telp' => $tim->no_telp,
