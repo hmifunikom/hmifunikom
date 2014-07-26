@@ -7,7 +7,13 @@
             {{-- Alert::info('Pendaftaran sudah berakhir.') --}}
             <div class="well well-lg">
                 <ol>
-                    
+                    <li>Peserta tim mendaftar akun pada situs Cakrawala.</li>
+                    <li>Setelah mendaftar akun, peserta akan mendapatkan prosedur pembayaran melalui email yang telah didaftarkan pada saat pembuatan akun.</li>
+                    <li>Peserta melakukan pembayaran biaya pendaftaran. <strong>Harap simpan bukti transfer.</strong></li>
+                    <li>Setelah melakukan pembayaran, peserta login pada situs Cakrawala untuk mengupload bukti tranfer.</li>
+                    <li>Peserta akan mendapatkan pemberitahuan akun telah aktif melalui email setelah verifikasi pembayaran.</li>
+                    <li>Setelah aktif, Peserta melengkapi formulir anggota, hasil karya dan persyaratan.</li>
+                    </li>
                 </ol>
             </div>
         </div>
