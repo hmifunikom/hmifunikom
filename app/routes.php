@@ -263,6 +263,7 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
         Route::get('kompetisi', array('uses' => 'PanelCakrawalaKompetisiController@index', 'as' => 'panel.cakrawala.kompetisi.index'));
         route_resource('kompetisi.tim', 'PanelCakrawalaKompetisiTimController', 'panel.cakrawala');
         Route::get('kompetisi/{kompetisi}/download', array('uses' => 'PanelCakrawalaKompetisiTimController@xls', 'as' => 'panel.cakrawala.kompetisi.xls'));
+        Route::get('kompetisi/{kompetisi}/data', array('uses' => 'PanelCakrawalaKompetisiTimController@zip', 'as' => 'panel.cakrawala.kompetisi.zip'));
         Route::get('kompetisi/{kompetisi}/contact', array('uses' => 'PanelCakrawalaKompetisiTimController@vcf', 'as' => 'panel.cakrawala.kompetisi.vcf'));
         Route::get('kompetisi/{kompetisi}/tim/{tim}/pay', array('uses' => 'PanelCakrawalaKompetisiTimController@pay', 'as' => 'panel.cakrawala.kompetisi.tim.pay'));
         route_resource('kompetisi.tim.anggota', 'PanelCakrawalaKompetisiAnggotaController', 'panel.cakrawala');

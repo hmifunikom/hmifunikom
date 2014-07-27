@@ -234,6 +234,58 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
         }
 	}
 
+	public function xls($lomba)
+	{
+		$filename = Str::slug('Daftar Tim '. $lomba);
+
+		$peserta = Tim::where('lomba', '=', $lomba);
+
+		$all    = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->get());
+		$bayar  = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
+		$unikom = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'unikom')->get());
+		$umum   = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
+
+        Excel::create($filename, function($excel) use($all, $bayar, $unikom, $umum) {
+
+        	$excel->sheet('Semua Peserta', function($sheet) use($all) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($all);
+        	});
+
+        	$excel->sheet('Sudah Bayar', function($sheet) use($bayar) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($bayar);
+        	});
+
+        	$excel->sheet('Unikom', function($sheet) use($unikom) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($unikom);
+        	});
+
+        	$excel->sheet('Umum', function($sheet) use($umum) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($umum);
+        	});
+
+		})->export('xls');
+	}
+
 	public function vcf($lomba)
 	{
 		$dir = public_path().'/media/vcf/'.Str::slug($lomba);
@@ -241,7 +293,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 		if(! File::isDirectory($dir))
 			File::makeDirectory($dir, 755, true);
 
-		$tim = $this->tim->findByLomba($lomba);
+		$tim = Tim::where('lomba', '=', $lomba)->get();
 
 		foreach($tim as $p)
 		{
@@ -265,6 +317,45 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 		File::deleteDirectory($dir);
 
 		return Response::download($dir.'-contact.zip');
+	}
+
+	public function zip($lomba)
+	{
+		$file = Helper::pathFile(Str::slug($lomba).'-data.zip', false);
+
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($file);
+
+		$tim = Tim::with(array('karya', 'persyaratan'))->where('lomba', '=', $lomba)->get();
+
+		foreach($tim as $p)
+		{
+			$zip_path = $lomba."/".$p->nama_tim."/";
+			$real_path_persyaratan = Helper::pathFile($p->persyaratan->persyaratan, true);
+			$real_path_karya = Helper::pathFile($p->karya->karya, true);
+
+
+			$zip->addLargeFile($real_path_persyaratan, $zip_path."persyaratan.zip");
+			$zip->addLargeFile($real_path_karya, $zip_path."karya.zip");
+			$zip->addFile($p->karya->judul_karya, $zip_path."judul.txt");
+			$zip->addFile($p->karya->link_video_demo, $zip_path."link_video.txt");
+		}
+		
+		$zip->finalize();
+
+		return Response::download($file);
+	}
+
+	private function _generateArray($data)
+	{
+		$list = [];
+		foreach($data as $p)
+		{
+			$bayar = ($p->bayar)? 'Sudah' : 'Belum';
+			$list[] = array($p->nama_tim, $p->kategori, $p->nim, $p->no_hp, $bayar);
+		}
+
+		return $list;
 	}
 
 }

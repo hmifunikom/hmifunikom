@@ -19,7 +19,7 @@
     <div class="table-tool row">
         <div class="col-lg-8">
             <a class="btn btn-default" href="{{ action('panel.cakrawala.kompetisi.xls', array($lomba)) }}">{{ Helper::fa('download') }} Unduh List Tim</a>
-            <a class="btn btn-default" href="{{ action('panel.event.peserta.vcf', array($lomba)) }}">{{ Helper::fa('clipboard') }} Unduh Persyaratan & Karya</a>
+            <a class="btn btn-default" href="{{ action('panel.cakrawala.kompetisi.zip', array($lomba)) }}">{{ Helper::fa('clipboard') }} Unduh Persyaratan & Karya</a>
             <a class="btn btn-default" href="{{ action('panel.cakrawala.kompetisi.vcf', array($lomba)) }}">{{ Helper::fa('phone') }} Unduh Kontak (VCF)</a>
         </div>
         <div class="col-lg-4">
