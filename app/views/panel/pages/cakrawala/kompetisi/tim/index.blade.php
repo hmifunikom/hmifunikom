@@ -16,6 +16,29 @@
 
     @include('includes.alert')
 
+    <div class="table-tool row">
+        <div class="col-lg-8">
+            <a class="btn btn-default" href="{{ action('panel.cakrawala.kompetisi.xls', array($lomba)) }}">{{ Helper::fa('download') }} Unduh List Tim</a>
+            <a class="btn btn-default" href="{{ action('panel.event.peserta.vcf', array($lomba)) }}">{{ Helper::fa('clipboard') }} Unduh Persyaratan & Karya</a>
+            <a class="btn btn-default" href="{{ action('panel.cakrawala.kompetisi.vcf', array($lomba)) }}">{{ Helper::fa('phone') }} Unduh Kontak (VCF)</a>
+        </div>
+        <div class="col-lg-4">
+            {{ 
+                Former::open()
+                ->route('panel.cakrawala.kompetisi.tim.index', array($lomba))
+            }}
+            <div class="input-group">
+                <input type="text" class="form-control" value="{{ Input::get('s') }}" name="s">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">{{ Helper::fa('search') }}</button>
+                </span>
+            </div><!-- /input-group -->
+            {{
+                Former::close()
+            }}
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
     @if($listtim->count())
         {{ Table::striped_open(array('class' => 'table-hover')) }}
         {{ Table::headers('#', 'Nama tim', 'Anggota', 'Dokumen', 'Karya', '') }}

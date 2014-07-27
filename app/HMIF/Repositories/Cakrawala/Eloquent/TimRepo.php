@@ -21,6 +21,16 @@ class TimRepo implements TimRepoInterface {
                ->paginate($this->per_page);
     }
 
+    public function findByLombaSearch($lomba, $search)
+    {
+        return Tim::with($this->relations)
+               ->where('lomba', '=', $lomba)
+               ->where('nama_tim', 'LIKE', '%'.$search.'%')
+               ->orwhere('asal', 'LIKE', '%'.$search.'%')
+               ->orderBy('id_tim', 'desc')
+               ->paginate($this->per_page);
+    }
+
     public function findAll()
     {
         return Tim::with($this->relations)

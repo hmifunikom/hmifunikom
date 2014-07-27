@@ -2,7 +2,9 @@
 
 use HMIF\Model\Cakrawala\Tim;
 use HMIF\Model\Cakrawala\User;
+use Sabre\VObject\Component\VCard;
 use HMIF\Repositories\Cakrawala\TimRepoInterface;
+use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
 
 class PanelCakrawalaKompetisiTimController extends BaseController {
 
@@ -26,7 +28,11 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	 */
 	public function index($lomba)
 	{
-		$tim = $this->tim->findByLomba($lomba);
+		if(Input::has('s'))
+			$tim = $this->tim->findByLombaSearch($lomba, Input::get('s'));
+		else
+			$tim = $this->tim->findByLomba($lomba);
+		
 		return View::make('panel.pages.cakrawala.kompetisi.tim.index')->with(array('lomba' => $lomba, 'listtim' => $tim));
 	}
 
@@ -226,6 +232,39 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
         } else {
             return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
         }
+	}
+
+	public function vcf($lomba)
+	{
+		$dir = public_path().'/media/vcf/'.Str::slug($lomba);
+
+		if(! File::isDirectory($dir))
+			File::makeDirectory($dir, 755, true);
+
+		$tim = $this->tim->findByLomba($lomba);
+
+		foreach($tim as $p)
+		{
+			$vcard = new VCard([
+			    'FN'  => $lomba.'-'.$p->nama_tim,
+			    'TEL' => $p->no_telp,
+			]);
+
+			$data =  $vcard->serialize();
+			File::put($dir.'/'.Str::slug($p->nama_tim).'.vcf', $data);
+		}
+
+		if(! File::isDirectory($dir))
+			File::delete($dir.'-contact.zip');
+
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($dir.'-contact.zip');
+		$zip->addDirectoryContent($dir, $lomba);
+		$zip->finalize();
+
+		File::deleteDirectory($dir);
+
+		return Response::download($dir.'-contact.zip');
 	}
 
 }

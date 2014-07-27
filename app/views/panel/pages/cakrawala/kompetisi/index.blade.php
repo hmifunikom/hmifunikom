@@ -19,7 +19,7 @@
     <tbody>
     <?php 
         $i = 1; 
-        $listlomba = array('IT Contest', 'Debat', 'LKTI')
+        $listlomba = array('Debat', 'IT Contest', 'LKTI')
     ?>
     @foreach($listlomba as $lomba)
         <tr>

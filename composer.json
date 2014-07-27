@@ -43,6 +43,9 @@
             "HMIF\\": "app",
             "Felixkiss\\SlugRoutes\\": "app/felixkiss/slug-routes/src",
             "Qwildz": "app/packages/qwildz/core/src"
+        },
+		"psr-4": {
+            "PHPZip\\Zip\\": "app/packages/phpzip/phpzip/src/Zip"
         }
 	},
 	"scripts": {
