@@ -33,6 +33,9 @@ class CakrawalaKaryaController extends BaseController {
 	 */
 	public function index()
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		$karya = $this->tim->karya;
 
 		return View::make('pages.cakrawala.karya.index')->with(array('pagetitle' => 'Form Karya', 'lomba' => $this->lomba, 'tim' => $this->tim, 'karya' => $karya));
@@ -46,8 +49,8 @@ class CakrawalaKaryaController extends BaseController {
 	public function create()
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.karya.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($this->tim->karya)
 			return Redirect::action('cakrawala.karya.index');
 
@@ -65,8 +68,8 @@ class CakrawalaKaryaController extends BaseController {
 	public function store()
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.karya.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($this->tim->karya)
 			return Redirect::action('cakrawala.karya.index');
 
@@ -132,6 +135,9 @@ class CakrawalaKaryaController extends BaseController {
 	 */
 	public function show($karya)
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		return Redirect::action('cakrawala.karya.index');
 	}
 
@@ -144,8 +150,8 @@ class CakrawalaKaryaController extends BaseController {
 	public function edit($karya)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.karya.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($karya->tim->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.karya.index');
 
@@ -161,8 +167,8 @@ class CakrawalaKaryaController extends BaseController {
 	public function update($karya)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.karya.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($karya->tim->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.karya.index');
 
@@ -228,24 +234,16 @@ class CakrawalaKaryaController extends BaseController {
 	public function destroy($karya)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.karya.index');
-
-		if($karya->tim->id_tim != $this->tim->id_tim) 
-			return Redirect::action('cakrawala.karya.index');
-
-		if(! Input::get('safe-action')) return Redirect::back();
-
-		if($karya->foto)
-		{
-			Helper::deleteMedia($karya->foto);
-		}
-
-		$karya->delete();
-		return Redirect::action('cakrawala.karya.index')->with('success', 'Karya berhasil dihapus!');
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
+		return Redirect::action('cakrawala.karya.index');
 	}
 
 	public function download($karya)
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($karya->tim->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.karya.index');
 

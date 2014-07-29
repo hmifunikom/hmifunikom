@@ -10,7 +10,7 @@ class Tim extends Ardent {
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
 
     protected $fillable = array('lomba', 'nama_tim', 'asal', 'nama_pembimbing', 'alamat', 'no_telp');
-	protected $guarded = array('id_tim', 'bayar');
+	protected $guarded = array('id_tim');
 
 	public static $rules = array(
         'lomba'           => 'required',
@@ -20,6 +20,8 @@ class Tim extends Ardent {
         'no_telp'         => 'required|numeric',
         'nama_pembimbing' => 'required',
     );
+
+    protected $appends = array('bayar');
 
     public function anggota()
     {
@@ -41,6 +43,11 @@ class Tim extends Ardent {
         return $this->morphOne('HMIF\Model\Cakrawala\User', 'userable');
     }    
 
+    public function pembayaran()
+    {
+        return $this->morphOne('HMIF\Model\Cakrawala\Pembayaran', 'payment');
+    }    
+
     public function sisa_kuota_anggota()
     {
         return 3 - $this->anggota()->count();
@@ -49,5 +56,14 @@ class Tim extends Ardent {
     public function anggota_lengkap()
     {
         return $this->sisa_kuota_anggota() < 1;
+    }
+
+    public function getBayarAttribute()
+    {
+        $pembayaran = $this->pembayaran;
+        if($pembayaran)
+            return $this->pembayaran->isVerified == true;
+        else 
+            return false;
     }
 }

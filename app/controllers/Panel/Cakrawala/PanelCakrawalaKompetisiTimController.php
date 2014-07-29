@@ -3,6 +3,7 @@
 use HMIF\Model\Cakrawala\Tim;
 use HMIF\Model\Cakrawala\User;
 use Sabre\VObject\Component\VCard;
+use HMIF\Model\Cakrawala\Pembayaran;
 use HMIF\Repositories\Cakrawala\TimRepoInterface;
 use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
 
@@ -79,6 +80,10 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 			if ($tim->save()) {
 				if($tim->user()->save($user))
 				{
+					$pembayaran = new Pembayaran();
+					$pembayaran->setNotVerifying();
+					$tim->pembayaran()->save($pembayaran);
+
             		return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Tim berhasil ditambah!');
             	}
             	else

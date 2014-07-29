@@ -24,6 +24,8 @@ class CakrawalaAnggotaController extends BaseController {
 			$this->tim = $this->user->userable;
 			$this->lomba = $this->tim->lomba;
 		}
+
+		if($this->tim->bayar != 1) return Redirect::action('cakrawala.pembayaran.edit');
 	}
 
 	/**
@@ -33,6 +35,9 @@ class CakrawalaAnggotaController extends BaseController {
 	 */
 	public function index()
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		$anggota = $this->tim->anggota;
 
 		return View::make('pages.cakrawala.anggota.index')->with(array('pagetitle' => 'Form Anggota', 'lomba' => $this->lomba, 'tim' => $this->tim, 'listanggota' => $anggota));
@@ -40,11 +45,13 @@ class CakrawalaAnggotaController extends BaseController {
 
 	public function download()
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if(! $this->tim->anggota_lengkap() || ! $this->tim->dokumen_lengkap())
 		{
 			return Redirect::back()->with('danger', 'Tim belum melengkapi anggota dan dokumen persyaratan!');
 		}
-		
 
 		Helper::createQR($this->tim->id_tim.$this->tim->username.$this->tim->nama_tim);
 		$html =  View::make('pages.cakrawala.anggota.kuitansi')->with(array('lomba' => $this->lomba, 'tim' => $this->tim))->render();
@@ -60,8 +67,8 @@ class CakrawalaAnggotaController extends BaseController {
 	public function create()
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.anggota.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($this->tim->sisa_kuota_anggota() < 1)
 			return Redirect::action('cakrawala.anggota.index');
 
@@ -79,8 +86,8 @@ class CakrawalaAnggotaController extends BaseController {
 	public function store()
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.anggota.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($this->tim->sisa_kuota_anggota() < 1)
 			return Redirect::action('cakrawala.anggota.index');
 
@@ -136,6 +143,9 @@ class CakrawalaAnggotaController extends BaseController {
 	 */
 	public function show($anggota)
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		return Redirect::action('cakrawala.anggota.index');
 	}
 
@@ -148,8 +158,8 @@ class CakrawalaAnggotaController extends BaseController {
 	public function edit($anggota)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.anggota.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($anggota->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.anggota.index');
 
@@ -165,8 +175,8 @@ class CakrawalaAnggotaController extends BaseController {
 	public function update($anggota)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.anggota.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($anggota->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.anggota.index');
 
@@ -230,8 +240,8 @@ class CakrawalaAnggotaController extends BaseController {
 	public function destroy($anggota)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.anggota.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($anggota->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.anggota.index');
 

@@ -1,8 +1,8 @@
 <?php
 
-use HMIF\Model\Cakrawala\Cabang;
 use HMIF\Model\Cakrawala\Tim;
 use HMIF\Model\Cakrawala\User;
+use HMIF\Model\Cakrawala\Pembayaran;
 
 class CakrawalaController extends BaseController {
 
@@ -89,6 +89,10 @@ class CakrawalaController extends BaseController {
 			if ($tim->save()) {
 				if($tim->user()->save($user))
 				{
+					$pembayaran = new Pembayaran();
+					$pembayaran->setNotVerifying();
+					$tim->pembayaran()->save($pembayaran);
+
             		Auth::cakrawala()->login($user);
 
 	            	return Redirect::action('cakrawala.anggota.index')->with('success', 'Berhasil mendaftarkan tim!');
@@ -107,5 +111,68 @@ class CakrawalaController extends BaseController {
 			return Redirect::action('cakrawala.create', $lomba)->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 		}
 
+	}
+
+	public function pembayaran()
+	{
+		if (Auth::cakrawala()->guest()) return Redirect::guest('login'); 
+
+		$user = Auth::cakrawala()->user();
+		$tim = $user->userable;
+
+		return View::make('pages.cakrawala.pembayaran')->with(array('pagetitle' => 'Pembayaran', 'lomba' => $tim->lomba, 'tim' => $tim));
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function store_pembayaran()
+	{
+		if (Auth::cakrawala()->guest()) return Redirect::guest('login'); 
+
+		$user = Auth::cakrawala()->user();
+		$tim = $user->userable;
+		$pembayaran = $tim->pembayaran;
+
+		$messages = array(
+			'max'    => 'Bukti pembayaran tidak boleh lebih dari 2MB.',
+		);
+
+	
+		$validator = Validator::make(
+			Input::all(),
+			array(
+				'file_bukti_pembayaran'  => 'required|mimes:zip,jpeg,png|max:2048',
+			), $messages
+		);
+
+		if($validator->passes())
+		{
+			$filename = Str::slug($tim->lomba.'_p_'.$tim->id_tim.'_'.$tim->nama_tim);
+			$file = new FileManipulation('file_bukti_pembayaran', $filename);
+			
+			if($file->isUploaded())
+			{
+				Helper::deleteFile($pembayaran->bukti_bayar);
+
+				$pembayaran->bukti_bayar = $file->getFileName();
+				$pembayaran->setWaitVerifying();
+
+				if ($pembayaran->updateUniques()) {
+	            	return Redirect::action('cakrawala.pembayaran.edit')->with('success', 'Bukti pembayaran berhasil diupload!');
+		        } else {
+		            return Redirect::action('cakrawala.pembayaran.edit')->withErrors($pembayaran->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
+		        }
+	        } else {
+	            return Redirect::action('cakrawala.pembayaran.edit')->withErrors($validator)->with('danger', 'Bukti pembayaran gagal diupload!')->withInput();
+	        }
+	    }
+	    else
+	    {
+	    	return Redirect::action('cakrawala.pembayaran.edit')->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
+	    }
 	}
 }

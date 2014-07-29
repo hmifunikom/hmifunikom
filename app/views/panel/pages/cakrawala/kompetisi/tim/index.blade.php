@@ -41,7 +41,7 @@
 
     @if($listtim->count())
         {{ Table::striped_open(array('class' => 'table-hover')) }}
-        {{ Table::headers('#', 'Nama tim', 'Anggota', 'Dokumen', 'Karya', '') }}
+        {{ Table::headers('#', 'Nama tim', 'Anggota', 'Dokumen', 'Karya', 'Pembayaran', '') }}
         <tbody>
         <?php $i = $listtim->getFrom(); ?>
         @foreach($listtim as $tim)
@@ -72,14 +72,17 @@
                     {{ Helper::fa('times') }} Belum
                     @endif
                 </td>
+
+                <td>
+                    @if($tim->bayar)
+                    {{ Helper::fa('check') }} Sudah
+                    @else
+                    {{ Helper::fa('times') }} Belum
+                    @endif
+                </td>
                 
                 <td class="right">
                     {{ Former::inline_open()->route('panel.cakrawala.kompetisi.tim.destroy', array($lomba, $tim->id_tim))->class('confirm-delete')->data_confirm('tim lomba') }}
-                        @if($tim->bayar == 0)
-                        {{ Button::warning_link(action('panel.cakrawala.kompetisi.tim.pay', array($lomba, $tim->id_tim)), Helper::fa('money'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set sudah bayar")) }}
-                        @else
-                        {{ Button::success_link(action('panel.cakrawala.kompetisi.tim.pay', array($lomba, $tim->id_tim)), Helper::fa('money'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set belum bayar")) }}
-                        @endif
                         {{ Button::primary_link(action('panel.cakrawala.kompetisi.tim.show', array($lomba, $tim->id_tim)), Helper::fa('paste'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Data tim")) }}
 
                         {{ Button::link(action('panel.cakrawala.kompetisi.tim.edit', array($lomba, $tim->id_tim)), Helper::fa('pencil'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Edit tim")) }}
