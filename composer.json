@@ -5,30 +5,34 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-		"way/generators": "dev-master",
+		
+		"machuga/authority-l4": "2.1.*@dev",
+		"ollieread/multiauth": "dev-master",
+
 		"laravelbook/ardent": "dev-master",
+		"fitztrev/laravel-html-minify": "dev-master",
+		"cviebrock/eloquent-sluggable": "dev-develop",
+		"davejamesmiller/laravel-aliases": "dev-master",
+
+		"kmd/logviewer": "1.1.*",
+
 		"anahkiasen/former": "dev-master",
 		"patricktalmadge/bootstrapper": "dev-develop",
-		"thomaswelton/laravel-gravatar": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "dev-master",
-		"intervention/image": "1.6.2",
-		"kmd/logviewer": "1.1.*",
-		"machuga/authority-l4": "2.1.*@dev",
-		"cviebrock/eloquent-sluggable": "dev-develop",
-		"erusev/parsedown": "dev-master",
-		"endroid/qrcode": "1.*@dev",
-		"sabre/vobject": "3.2.*@dev",
-		"thujohn/pdf": "dev-master",
+		
 		"maatwebsite/excel": "1.*",
-		"Chumper/Zipper": "dev-master",
-		"ollieread/multiauth": "dev-master",
-		"greggilbert/recaptcha": "dev-master",
-		"diego1araujo/titleasy": "dev-master",
-		"fitztrev/laravel-html-minify": "dev-master",
+		"endroid/qrcode": "1.*@dev",
+		"thujohn/pdf": "dev-master",
+		"sabre/vobject": "3.2.*@dev",
+		"intervention/image": "1.6.2",
+		"erusev/parsedown": "dev-master",
+
 		"vinicius73/seotools": "dev-master",
-		"davejamesmiller/laravel-aliases": "dev-master",
-		"graham-campbell/throttle": "0.2.*@alpha",
-		"embed/embed": "dev-master"
+		"diego1araujo/titleasy": "dev-master",
+		
+		"embed/embed": "dev-master",
+		"greggilbert/recaptcha": "dev-master",
+		"thomaswelton/laravel-gravatar": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
