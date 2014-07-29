@@ -124,7 +124,7 @@ class Helper {
     |--------------------------------------------------------------------------
     */
    
-    public static function pathFile($filename, $safe)
+    public static function pathFile($filename, $safe = TRUE)
     {
         if($safe)
         {

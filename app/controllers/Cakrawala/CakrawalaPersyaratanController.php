@@ -33,6 +33,9 @@ class CakrawalaPersyaratanController extends BaseController {
 	 */
 	public function index()
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+
 		$persyaratan = $this->tim->persyaratan;
 
 		return View::make('pages.cakrawala.persyaratan.index')->with(array('pagetitle' => 'Form Persyaratan', 'lomba' => $this->lomba, 'tim' => $this->tim, 'persyaratan' => $persyaratan));
@@ -46,7 +49,7 @@ class CakrawalaPersyaratanController extends BaseController {
 	public function create()
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.persyaratan.index');
+			return Redirect::action('cakrawala.pembayaran.edit');
 
 		if($this->tim->persyaratan)
 			return Redirect::action('cakrawala.persyaratan.index');
@@ -65,7 +68,7 @@ class CakrawalaPersyaratanController extends BaseController {
 	public function store()
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.persyaratan.index');
+			return Redirect::action('cakrawala.pembayaran.edit');
 
 		if($this->tim->persyaratan)
 			return Redirect::action('cakrawala.persyaratan.index');
@@ -115,6 +118,9 @@ class CakrawalaPersyaratanController extends BaseController {
 	 */
 	public function show($persyaratan)
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		return Redirect::action('cakrawala.persyaratan.index');
 	}
 
@@ -127,8 +133,8 @@ class CakrawalaPersyaratanController extends BaseController {
 	public function edit($persyaratan)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.persyaratan.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($persyaratan->documentable->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.persyaratan.index');
 
@@ -144,8 +150,8 @@ class CakrawalaPersyaratanController extends BaseController {
 	public function update($persyaratan)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.persyaratan.index');
-
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($persyaratan->documentable->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.persyaratan.index');
 
@@ -194,24 +200,16 @@ class CakrawalaPersyaratanController extends BaseController {
 	public function destroy($persyaratan)
 	{
 		if($this->tim->bayar != 1)
-			return Redirect::action('cakrawala.persyaratan.index');
-
-		if($persyaratan->documentable->id_tim != $this->tim->id_tim) 
-			return Redirect::action('cakrawala.persyaratan.index');
-
-		if(! Input::get('safe-action')) return Redirect::back();
-
-		if($persyaratan->foto)
-		{
-			Helper::deleteMedia($persyaratan->foto);
-		}
-
-		$persyaratan->delete();
-		return Redirect::action('cakrawala.persyaratan.index')->with('success', 'Persyaratan berhasil dihapus!');
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
+		return Redirect::action('cakrawala.persyaratan.index');
 	}
 
 	public function download($persyaratan)
 	{
+		if($this->tim->bayar != 1)
+			return Redirect::action('cakrawala.pembayaran.edit');
+		
 		if($persyaratan->documentable->id_tim != $this->tim->id_tim) 
 			return Redirect::action('cakrawala.persyaratan.index');
 

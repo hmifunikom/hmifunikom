@@ -109,7 +109,12 @@ terhadap topic yang disampaikan.
                 </div>
                 <div id="hadiah" class="panel-collapse collapse">
                     <div class="panel-body">
-                        
+<ul class="list-tanggal">
+    <li>Juara 1 : Rp 1.500.000 + Trophy
+        </li><li>juara 2 : Rp 1.000.000 + Trophy</li>
+        <li>juara 3 : Rp 750.000 + Trophy
+    </li>
+</ul>
                     </div>
                 </div>
             </div>

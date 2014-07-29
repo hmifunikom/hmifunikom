@@ -2,7 +2,10 @@
 
 use HMIF\Model\Cakrawala\Tim;
 use HMIF\Model\Cakrawala\User;
+use Sabre\VObject\Component\VCard;
+use HMIF\Model\Cakrawala\Pembayaran;
 use HMIF\Repositories\Cakrawala\TimRepoInterface;
+use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
 
 class PanelCakrawalaKompetisiTimController extends BaseController {
 
@@ -26,7 +29,11 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	 */
 	public function index($lomba)
 	{
-		$tim = $this->tim->findByLomba($lomba);
+		if(Input::has('s'))
+			$tim = $this->tim->findByLombaSearch($lomba, Input::get('s'));
+		else
+			$tim = $this->tim->findByLomba($lomba);
+		
 		return View::make('panel.pages.cakrawala.kompetisi.tim.index')->with(array('lomba' => $lomba, 'listtim' => $tim));
 	}
 
@@ -57,7 +64,6 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 				"password_confirmation"	=> "same:password",
 				
 				'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,NULL,id_tim,lomba,'.$lomba,
-				'kategori'				=> 'required',
 				'asal'					=> 'required',
 				'alamat'				=> 'required',
 				'no_telp'      			=> 'required|numeric',
@@ -69,12 +75,15 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 		{
 			$tim = new Tim();
 			$tim->lomba = $lomba;
-			if($lomba == 'LKTI') $tim->kategori = 'SMA';
 			$user = new User();
 			$user->password = Input::get('password');
 			if ($tim->save()) {
 				if($tim->user()->save($user))
 				{
+					$pembayaran = new Pembayaran();
+					$pembayaran->setNotVerifying();
+					$tim->pembayaran()->save($pembayaran);
+
             		return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Tim berhasil ditambah!');
             	}
             	else
@@ -135,7 +144,6 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 					"password_confirmation"	=> "same:password",
 
 					'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
-					'kategori'				=> 'required',
 					'asal'					=> 'required',
 					'alamat'				=> 'required',
 					'no_telp'      			=> 'required|numeric',
@@ -159,7 +167,6 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 					'email'                 => 'required|email',
 					
 					'nama_tim'        => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
-					'kategori'        => 'required',
 					'asal'            => 'required',
 					'alamat'		  => 'required',
 					'no_telp'      	  => 'required|numeric',
@@ -172,7 +179,6 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 
         if($passes)
 		{
-			if($lomba == 'LKTI') $tim->kategori = 'SMA';
 
 			$save_tim = $tim->updateUniques();
 			$save_user = $user->updateUniques();
@@ -231,6 +237,130 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
         } else {
             return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
         }
+	}
+
+	public function xls($lomba)
+	{
+		$filename = Str::slug('Daftar Tim '. $lomba);
+
+		$peserta = Tim::where('lomba', '=', $lomba);
+
+		$all    = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->get());
+		$bayar  = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('bayar', '=', 1)->get());
+		$unikom = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'unikom')->get());
+		$umum   = $this->_generateArray($acara->peserta()->orderBy('kode', 'asc')->where('kategori', '=', 'luar')->get());
+
+        Excel::create($filename, function($excel) use($all, $bayar, $unikom, $umum) {
+
+        	$excel->sheet('Semua Peserta', function($sheet) use($all) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($all);
+        	});
+
+        	$excel->sheet('Sudah Bayar', function($sheet) use($bayar) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($bayar);
+        	});
+
+        	$excel->sheet('Unikom', function($sheet) use($unikom) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($unikom);
+        	});
+
+        	$excel->sheet('Umum', function($sheet) use($umum) {
+        		$sheet->setColumnFormat(array(
+				    'A' => '@',
+				    'D' => '@',
+				    'E' => '@',
+				));
+        		$sheet->with($umum);
+        	});
+
+		})->export('xls');
+	}
+
+	public function vcf($lomba)
+	{
+		$dir = public_path().'/media/vcf/'.Str::slug($lomba);
+
+		if(! File::isDirectory($dir))
+			File::makeDirectory($dir, 755, true);
+
+		$tim = Tim::where('lomba', '=', $lomba)->get();
+
+		foreach($tim as $p)
+		{
+			$vcard = new VCard([
+			    'FN'  => $lomba.'-'.$p->nama_tim,
+			    'TEL' => $p->no_telp,
+			]);
+
+			$data =  $vcard->serialize();
+			File::put($dir.'/'.Str::slug($p->nama_tim).'.vcf', $data);
+		}
+
+		if(! File::isDirectory($dir))
+			File::delete($dir.'-contact.zip');
+
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($dir.'-contact.zip');
+		$zip->addDirectoryContent($dir, $lomba);
+		$zip->finalize();
+
+		File::deleteDirectory($dir);
+
+		return Response::download($dir.'-contact.zip');
+	}
+
+	public function zip($lomba)
+	{
+		$file = Helper::pathFile(Str::slug($lomba).'-data.zip', false);
+
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($file);
+
+		$tim = Tim::with(array('karya', 'persyaratan'))->where('lomba', '=', $lomba)->get();
+
+		foreach($tim as $p)
+		{
+			$zip_path = $lomba."/".$p->nama_tim."/";
+			$real_path_persyaratan = Helper::pathFile($p->persyaratan->persyaratan, true);
+			$real_path_karya = Helper::pathFile($p->karya->karya, true);
+
+
+			$zip->addLargeFile($real_path_persyaratan, $zip_path."persyaratan.zip");
+			$zip->addLargeFile($real_path_karya, $zip_path."karya.zip");
+			$zip->addFile($p->karya->judul_karya, $zip_path."judul.txt");
+			$zip->addFile($p->karya->link_video_demo, $zip_path."link_video.txt");
+		}
+		
+		$zip->finalize();
+
+		return Response::download($file);
+	}
+
+	private function _generateArray($data)
+	{
+		$list = [];
+		foreach($data as $p)
+		{
+			$bayar = ($p->bayar)? 'Sudah' : 'Belum';
+			$list[] = array($p->nama_tim, $p->kategori, $p->nim, $p->no_hp, $bayar);
+		}
+
+		return $list;
 	}
 
 }

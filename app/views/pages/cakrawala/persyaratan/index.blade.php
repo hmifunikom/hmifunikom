@@ -51,24 +51,6 @@
             @endif
         </div>
     </div>
-
-    @if($tim->bayar == 1)    
-    <div class="big-container white bg">
-        <div class="container">
-            @if($tim->anggota_lengkap() && $tim->karya()->count() && $tim->persyaratan()->count())
-            {{
-                Button::lg_primary_link_block(URL::route('ifgames.anggota.download'), Helper::fa('download').' Download kuitansi')
-            }}
-            @else
-                @if($tim->anggota_lengkap())
-                {{ Alert::warning('Download kuitansi belum aktif. Dokumen persyaratan belum diverifikasi.') }}
-                @else
-                {{ Alert::warning('Silahkan lengkapi anggota tim dan melengkapi dokumen persyaratan untuk mendownload kuitansi.') }}
-                @endif
-            @endif
-        </div>
-    </div>
-    @endif
 @stop
 
 @section('tagline')
