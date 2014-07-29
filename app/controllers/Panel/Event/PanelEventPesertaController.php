@@ -1,8 +1,8 @@
 <?php
 
 use HMIF\Model\Acara\Peserta;
-use Sabre\VObject;
-use Alchemy\Zippy\Zippy;
+use Sabre\VObject\Component\VCard;
+use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
 
 class PanelEventPesertaController extends BaseController {
 	
@@ -233,7 +233,7 @@ class PanelEventPesertaController extends BaseController {
 
 		foreach($acara->peserta()->get() as $p)
 		{
-			$vcard = new VObject\Component\VCard([
+			$vcard = new VCard([
 			    'FN'  => $acara->nama_acara.''.$p->kode.''.$p->nama_peserta,
 			    'TEL' => $p->no_hp,
 			]);
@@ -245,8 +245,10 @@ class PanelEventPesertaController extends BaseController {
 		if(! File::isDirectory($dir))
 			File::delete($dir.'-contact.zip');
 
-		$zipper = new \Chumper\Zipper\Zipper;
-		$zipper->make($dir.'-contact.zip')->add($dir)->close();
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($dir.'-contact.zip');
+		$zip->addDirectoryContent($dir, $acara->nama_acara);
+		$zip->finalize();
 
 		File::deleteDirectory($dir);
 
