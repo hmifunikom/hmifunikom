@@ -15,7 +15,11 @@
 
             @include('includes.alert')
 
+            @if($lomba == "IT Contest")
+            {{ Former::open()->route('cakrawala.store', 'ITContest') }}
+            @else
             {{ Former::open()->route('cakrawala.store', $lomba) }}
+            @endif
                 
                 {{ Former::legend('Identitas Tim') }}  
 
