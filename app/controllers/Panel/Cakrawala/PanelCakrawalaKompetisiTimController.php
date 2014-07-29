@@ -219,26 +219,6 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 		return Redirect::action('panel.cakrawala.kompetisi.tim.index', $lomba)->with('success', 'Tim berhasil dihapus!');
 	}
 
-	public function pay($lomba, $tim)
-	{
-		if($tim->bayar == 0)
-		{
-			$tim->bayar = 1;
-			$status = "sudah";
-		}
-		else
-		{
-			$tim->bayar = 0;
-			$status = "belum";
-		}
-
-		if ($tim->updateUniques()) {
-        	return Redirect::back()->with('success', 'Tim '.$status.' membayar!');
-        } else {
-            return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
-        }
-	}
-
 	public function xls($lomba)
 	{
 		$filename = Str::slug('Daftar Tim '. $lomba);
@@ -295,8 +275,8 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	{
 		$dir = public_path().'/media/vcf/'.Str::slug($lomba);
 
-		if(! File::isDirectory($dir))
-			File::makeDirectory($dir, 755, true);
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($dir.'-contact.zip');
 
 		$tim = Tim::where('lomba', '=', $lomba)->get();
 
@@ -308,18 +288,11 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 			]);
 
 			$data =  $vcard->serialize();
-			File::put($dir.'/'.Str::slug($p->nama_tim).'.vcf', $data);
+
+			$zip->addFile($data, $lomba.'/'.Str::slug($p->nama_tim).'.vcf');
 		}
 
-		if(! File::isDirectory($dir))
-			File::delete($dir.'-contact.zip');
-
-		$zip = new ZipArchiveFile();
-		$zip->setZipFile($dir.'-contact.zip');
-		$zip->addDirectoryContent($dir, $lomba);
 		$zip->finalize();
-
-		File::deleteDirectory($dir);
 
 		return Response::download($dir.'-contact.zip');
 	}

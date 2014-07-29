@@ -228,8 +228,8 @@ class PanelEventPesertaController extends BaseController {
 	{
 		$dir = public_path().'/media/vcf/'.Str::slug($acara->nama_acara);
 
-		if(! File::isDirectory($dir))
-			File::makeDirectory($dir, 755, true);
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($dir.'-contact.zip');
 
 		foreach($acara->peserta()->get() as $p)
 		{
@@ -239,18 +239,11 @@ class PanelEventPesertaController extends BaseController {
 			]);
 
 			$data =  $vcard->serialize();
-			File::put($dir.'/'.Str::slug($p->kode.''.$p->nama_peserta).'.vcf', $data);
+			
+			$zip->addFile($data, $acara->nama_acara.'/'.Str::slug($p->kode.''.$p->nama_peserta).'.vcf');
 		}
-
-		if(! File::isDirectory($dir))
-			File::delete($dir.'-contact.zip');
-
-		$zip = new ZipArchiveFile();
-		$zip->setZipFile($dir.'-contact.zip');
-		$zip->addDirectoryContent($dir, $acara->nama_acara);
+		
 		$zip->finalize();
-
-		File::deleteDirectory($dir);
 
 		return Response::download($dir.'-contact.zip');
 	}
