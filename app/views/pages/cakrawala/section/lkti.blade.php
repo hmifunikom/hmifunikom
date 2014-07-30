@@ -53,9 +53,8 @@
           <div class="panel-title"><a href="#LKTI/hadiah" data-anchor="hadiah"></a></div>
           <div class="panel-content">
 <ul class="list-tanggal">
-    <li>Juara 1 : Rp 1.500.000 + Trophy
-        </li><li>juara 2 : Rp 1.000.000 + Trophy</li>
-        <li>juara 3 : Rp 750.000 + Trophy
+    <li>Juara 1 : Rp 1.250.000 + Trophy
+        </li><li>juara 2 : Rp 500.000 + Trophy
     </li>
 </ul>
           </div>

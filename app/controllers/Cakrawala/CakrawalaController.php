@@ -73,6 +73,7 @@ class CakrawalaController extends BaseController {
 				"password_confirmation"	=> "same:password",
 				
 				'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,NULL,id_tim,lomba,'.$lomba,
+				'kategori'				=> 'required',
 				'asal'					=> 'required',
 				'alamat'				=> 'required',
 				'no_telp'      	  		=> 'required|numeric',
@@ -84,6 +85,7 @@ class CakrawalaController extends BaseController {
 		{
 			$tim = new Tim();
 			$tim->lomba = $lomba;
+			if($lomba == 'LKTI' || $lomba == 'Debat') $tim->kategori = 'SMA';
 			$user = new User();
 			$user->password = Input::get('password');
 			if ($tim->save()) {

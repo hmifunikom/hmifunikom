@@ -64,6 +64,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 				"password_confirmation"	=> "same:password",
 				
 				'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,NULL,id_tim,lomba,'.$lomba,
+				'kategori'				=> 'required',
 				'asal'					=> 'required',
 				'alamat'				=> 'required',
 				'no_telp'      			=> 'required|numeric',
@@ -75,6 +76,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 		{
 			$tim = new Tim();
 			$tim->lomba = $lomba;
+			if($lomba == 'LKTI' || $lomba == 'Debat') $tim->kategori = 'SMA';
 			$user = new User();
 			$user->password = Input::get('password');
 			if ($tim->save()) {
@@ -144,6 +146,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 					"password_confirmation"	=> "same:password",
 
 					'nama_tim'              => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
+					'kategori'				=> 'required',
 					'asal'					=> 'required',
 					'alamat'				=> 'required',
 					'no_telp'      			=> 'required|numeric',
@@ -167,6 +170,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 					'email'                 => 'required|email',
 					
 					'nama_tim'        => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
+					'kategori'		  => 'required',
 					'asal'            => 'required',
 					'alamat'		  => 'required',
 					'no_telp'      	  => 'required|numeric',
@@ -179,6 +183,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 
         if($passes)
 		{
+			if($lomba == 'LKTI' || $lomba == 'Debat') $tim->kategori = 'SMA';
 
 			$save_tim = $tim->updateUniques();
 			$save_user = $user->updateUniques();
