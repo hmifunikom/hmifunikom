@@ -1,8 +1,8 @@
 <?php
 
 use HMIF\Model\Acara\Peserta;
-use Sabre\VObject;
-use Alchemy\Zippy\Zippy;
+use Sabre\VObject\Component\VCard;
+use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
 
 class PanelEventPesertaController extends BaseController {
 	
@@ -228,27 +228,22 @@ class PanelEventPesertaController extends BaseController {
 	{
 		$dir = public_path().'/media/vcf/'.Str::slug($acara->nama_acara);
 
-		if(! File::isDirectory($dir))
-			File::makeDirectory($dir, 755, true);
+		$zip = new ZipArchiveFile();
+		$zip->setZipFile($dir.'-contact.zip');
 
 		foreach($acara->peserta()->get() as $p)
 		{
-			$vcard = new VObject\Component\VCard([
+			$vcard = new VCard([
 			    'FN'  => $acara->nama_acara.''.$p->kode.''.$p->nama_peserta,
 			    'TEL' => $p->no_hp,
 			]);
 
 			$data =  $vcard->serialize();
-			File::put($dir.'/'.Str::slug($p->kode.''.$p->nama_peserta).'.vcf', $data);
+			
+			$zip->addFile($data, $acara->nama_acara.'/'.Str::slug($p->kode.''.$p->nama_peserta).'.vcf');
 		}
-
-		if(! File::isDirectory($dir))
-			File::delete($dir.'-contact.zip');
-
-		$zipper = new \Chumper\Zipper\Zipper;
-		$zipper->make($dir.'-contact.zip')->add($dir)->close();
-
-		File::deleteDirectory($dir);
+		
+		$zip->finalize();
 
 		return Response::download($dir.'-contact.zip');
 	}

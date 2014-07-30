@@ -95,19 +95,22 @@ class CakrawalaController extends BaseController {
 
             		Auth::cakrawala()->login($user);
 
-	            	return Redirect::action('cakrawala.anggota.index')->with('success', 'Berhasil mendaftarkan tim!');
+	            	return Redirect::action('cakrawala.pembayaran.edit')->with('success', 'Berhasil mendaftarkan tim!');
             	}
             	else
             	{
             		$tim->delete();
+            		$lomba = ($lomba != "IT Contest") ? $lomba : "ITContest";
             		return Redirect::action('cakrawala.create', $lomba)->withErrors($user->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
             	}
 	        } else {
+	        	$lomba = ($lomba != "IT Contest") ? $lomba : "ITContest";
 	            return Redirect::action('cakrawala.create', $lomba)->withErrors($tim->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 	        }
 		}
 		else
 		{
+			$lomba = ($lomba != "IT Contest") ? $lomba : "ITContest";
 			return Redirect::action('cakrawala.create', $lomba)->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 		}
 
