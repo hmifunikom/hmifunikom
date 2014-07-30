@@ -19,7 +19,7 @@
 <ol>
 <li>Peserta harus mengisi formulir pendaftaran dengan lengkap dan memberikan informasi yang bisa dipertanggungjawabkan. 
 </li><li>Melakukan pendaftaran secara on line dengan mengisi Formulir pendaftaran secara lengkap. Atau dating langsung ke Gedung unikom lantai dasar Universitas komputer Indonesia Ruang Sekretariat HMIF Fakultas Teknik Informatika
-</li><li>Peserta IT CONTEST merupakan siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.
+</li><li>Peserta IT CONTEST merupakan mahasiswa/i atau siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.
 </li><li>1 tim terdiri dari 3 orang.
 </li><li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.
 </li><li>Peserta bersedia mengikuti setiap ketentuan yang ada.
@@ -89,9 +89,8 @@
             <div class="icon trophy"></div>
             <div class="text">
 <ul class="list-tanggal">
-    <li>Juara 1 : Rp 1.500.000 + Trophy
-        </li><li>juara 2 : Rp 1.000.000 + Trophy</li>
-        <li>juara 3 : Rp 750.000 + Trophy
+    <li>Juara 1 : Rp 1.250.000 + Trophy
+        </li><li>juara 2 : Rp 500.000 + Trophy
     </li>
 </ul>
             </div>
