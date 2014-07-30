@@ -27,9 +27,24 @@
         {{ Former::legend('Identitas Tim') }}  
 
         {{ Former::text('nama_tim') }}
-        
+        <?php
+            $kategori = array(
+                'SMA' => 'SMA/SMK Sederajat',
+                'Mahasiswa'   => 'Mahasiswa',
+            );
+        ?>
+        @if($lomba != 'LKTI' && $lomba != 'Debat')
+        {{ 
+            Former::select('kategori')->options($kategori)->label('Kategori')
+        }}
+        {{ Former::text('asal')->inlineHelp('Asal sekolah atau perguruan tinggi') }}
+        {{ Former::text('alamat')->inlineHelp('Alamat sekolah atau perguruan tinggi') }}
+        @else
+        {{ Former::hidden('kategori')->value('SMA') }}
+
         {{ Former::text('asal')->inlineHelp('Asal sekolah') }}
         {{ Former::text('alamat')->inlineHelp('Alamat sekolah') }}
+        @endif
         
         {{ Former::text('no_telp')->inlineHelp('Nomor telepon yang bisa dihubungi') }}
         {{ Former::text('nama_pembimbing') }}
