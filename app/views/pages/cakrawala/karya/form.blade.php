@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2>{{ ($method == 'edit') ? 'Ganti' : 'Upload' }} Dokumen Persyaratan</h2>
+                    <h2>{{ ($method == 'edit') ? 'Ganti' : 'Upload' }} Karya</h2>
                 </div>
             </div>
 
