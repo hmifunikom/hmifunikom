@@ -10,11 +10,7 @@
         </div>
     </div>
 
-    {{
-        ($method == 'edit')
-        ?   Breadcrumb::create(array('Home' => action('panel.index'), 'Acara' => action('panel.event.index'), $acara->nama_acara => action('panel.event.show', $acara->kd_acara)))
-        :   Breadcrumb::create(array('Home' => action('panel.index'), 'Acara' => action('panel.event.index')))
-    }}
+    {{ Breadcrumbs::render() }}
 
 
     @include('includes.alert')

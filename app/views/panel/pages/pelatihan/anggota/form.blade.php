@@ -7,9 +7,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Pelatihan', 'Anggota'))
-    }}
+    {{ Breadcrumbs::render() }}
 
 
     @include('includes.alert')

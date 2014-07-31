@@ -9,9 +9,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Acara' => action('panel.event.index'), $acara->nama_acara => action('panel.event.show', $acara->kd_acara), 'Peserta' => action('panel.event.peserta.show', $acara->kd_acara)))
-    }}
+    {{ Breadcrumbs::render() }}
 
     <div class="peserta">
         <div class="row">

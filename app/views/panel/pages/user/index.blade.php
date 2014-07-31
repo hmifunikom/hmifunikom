@@ -10,9 +10,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'User'))
-    }}
+    {{ Breadcrumbs::render() }}
 
     @include('includes.alert')
 

@@ -14,15 +14,7 @@
         </div>
     </div>
 
-    @if($cabang->anggota > 1)
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'IF Games' => action('panel.ifgames.index'), $cabang->nama_cabang, 'Tim'))
-    }}
-    @else
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'IF Games' => action('panel.ifgames.index'), $cabang->nama_cabang, 'Peserta'))
-    }}
-    @endif
+    {{ Breadcrumbs::render() }}
 
     @include('panel.pages.ifgames.tab')
 
