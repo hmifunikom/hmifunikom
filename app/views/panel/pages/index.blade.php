@@ -10,5 +10,5 @@
         </div>
     </div>
 
-{{Breadcrumb::create(array('Home' => action('panel.index'), 'Library' => '#', 'Data'))}}
+{{ Breadcrumbs::render() }}
 @stop

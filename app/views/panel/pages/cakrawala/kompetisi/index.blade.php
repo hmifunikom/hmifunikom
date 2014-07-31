@@ -10,9 +10,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Cakrawala' => action('panel.cakrawala.index'), 'Kompetisi'))
-    }}
+    {{ Breadcrumbs::render() }}
 
     {{ Table::striped_open(array('class' => 'table-hover')) }}
     {{ Table::headers('#', 'Lomba', '') }}
