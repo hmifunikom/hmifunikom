@@ -28,9 +28,9 @@
 <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
 @endif
 
-<link rel="stylesheet" href="{{ asset('assets/css/main.min.css?v1.2.8') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/cakrawala.min.css?v1.2') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/cakrawala-page.min.css?v1.2') }}" />
+<link rel="stylesheet" href="{{ asset(Helper::version('assets/css/main.min.css')) }}" />
+<link rel="stylesheet" href="{{ asset(Helper::version('assets/css/cakrawala.min.css')) }}" />
+<link rel="stylesheet" href="{{ asset(Helper::version('assets/css/cakrawala-page.min.css')) }}" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

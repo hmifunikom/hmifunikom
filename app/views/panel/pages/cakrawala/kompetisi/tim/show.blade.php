@@ -7,9 +7,7 @@
         </div>
     </div>
     
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Cakrawala' => action('panel.cakrawala.index'), 'Kompetisi' => action('panel.cakrawala.kompetisi.index'), $lomba => action('panel.cakrawala.kompetisi.tim.index', $lomba), 'Tim' => action('panel.cakrawala.kompetisi.tim.index', $lomba), $tim->nama_tim, 'Identitas Tim'))
-    }}
+    {{ Breadcrumbs::render() }}
 
     @include('panel.pages.cakrawala.kompetisi.tab')
 

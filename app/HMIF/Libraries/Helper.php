@@ -169,4 +169,18 @@ class Helper {
 
         return round($bytes, $precision) . ' ' . $units[$pow]; 
     } 
+
+    public static function version($path)
+    {
+        $file = public_path($path);
+
+        if(file_exists($file))
+        {
+            $parts = explode('.', $path);
+            $extension = array_pop($parts);
+            array_push($parts, filemtime($file), $extension);
+            $path = implode('.', $parts);
+            return $path;
+        }
+    }
 }

@@ -6,7 +6,7 @@
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.jcarousel.min.js') }}"></script>
 <script src="{{ asset('assets/js/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('assets/js/main.js?v1.2') }}"></script>
+<script src="{{ asset(Helper::version('assets/js/main.js')) }}"></script>
 <script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];

@@ -9,4 +9,4 @@
 <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('assets/js/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('assets/js/markdown.js') }}"></script>
-<script src="{{ asset('assets/js/panel.js?v1.2') }}"></script>
+<script src="{{ asset(Helper::version('assets/js/panel.js')) }}"></script>

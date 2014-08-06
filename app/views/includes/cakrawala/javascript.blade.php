@@ -6,7 +6,7 @@
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.fullPage.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
-<script src="{{ asset('assets/js/cakrawala.js?v1.0') }}"></script>
+<script src="{{ asset(Helper::version('assets/js/cakrawala.js')) }}"></script>
 <script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];

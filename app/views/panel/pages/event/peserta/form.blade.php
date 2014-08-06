@@ -9,9 +9,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Acara' => action('panel.event.index'), $acara->nama_acara => action('panel.event.show', $acara->kd_acara), 'Peserta' => action('panel.event.peserta.show', $acara->kd_acara)))
-    }}
+    {{ Breadcrumbs::render() }}
 
 
     @if(($acara->sisa_kuota_unikom() > 0 OR $acara->sisa_kuota_umum() > 0) OR $method == 'edit')

@@ -10,9 +10,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Cakrawala'))
-    }}
+    {{ Breadcrumbs::render() }}
 
     <div class="row placeholders">
         <div class="col-md-6 placeholder center">

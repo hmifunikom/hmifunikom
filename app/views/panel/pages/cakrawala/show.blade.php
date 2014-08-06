@@ -10,9 +10,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'Acara' => action('panel.event.index'), $cabang->nama_cabang))
-    }}
+    {{ Breadcrumbs::render() }}
     
     @include('panel.pages.ifgames.tab')
 

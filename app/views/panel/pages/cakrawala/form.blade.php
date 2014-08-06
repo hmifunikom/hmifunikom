@@ -10,9 +10,7 @@
         </div>
     </div>
 
-    {{
-        Breadcrumb::create(array('Home' => action('panel.index'), 'IF Games' => action('panel.ifgames.index'), 'Cabang' => action('panel.ifgames.index')))
-    }}
+    {{ Breadcrumbs::render() }}
 
 
     @include('includes.alert')
