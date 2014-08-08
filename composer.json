@@ -3,18 +3,25 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
+	"repositories": [
+        {
+            "url": "https://github.com/qwildz/slug-routes.git",
+            "type": "git"
+        }
+    ],
 	"require": {
-		"laravel/framework": "4.1.*",
+		"laravel/framework": "4.2.*",
 		
 		"machuga/authority-l4": "2.1.*@dev",
 		"ollieread/multiauth": "dev-master",
 
 		"laravelbook/ardent": "dev-master",
+		"felixkiss/slug-routes": "dev-master",
 		"fitztrev/laravel-html-minify": "dev-master",
 		"cviebrock/eloquent-sluggable": "dev-develop",
 		"davejamesmiller/laravel-aliases": "dev-master",
 
-		"kmd/logviewer": "1.1.*",
+		"kmd/logviewer": "1.2.0",
 
 		"anahkiasen/former": "dev-master",
 		"patricktalmadge/bootstrapper": "dev-develop",
@@ -24,8 +31,11 @@
 		"endroid/qrcode": "1.*@dev",
 		"thujohn/pdf": "dev-master",
 		"sabre/vobject": "3.2.*@dev",
+		"phpzip/phpzip": "dev-master",
 		"intervention/image": "1.6.2",
 		"erusev/parsedown": "dev-master",
+		"grandt/binstring": "0.2.0.*@dev",
+		"grandt/relativepath": "1.0.1.*@dev",
 
 		"vinicius73/seotools": "dev-master",
 		"diego1araujo/titleasy": "dev-master",
@@ -45,11 +55,7 @@
 		],
 		"psr-0": {
             "HMIF\\": "app",
-            "Felixkiss\\SlugRoutes\\": "app/felixkiss/slug-routes/src",
             "Qwildz": "app/packages/qwildz/core/src"
-        },
-		"psr-4": {
-            "PHPZip\\Zip\\": "app/packages/phpzip/phpzip/src/Zip"
         }
 	},
 	"scripts": {
