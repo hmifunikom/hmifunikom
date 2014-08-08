@@ -2,7 +2,7 @@
 
 use HMIF\Model\Acara\Peserta;
 use Sabre\VObject\Component\VCard;
-use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
+use PHPZip\Zip\File\Zip;
 
 class PanelEventPesertaController extends BaseController {
 	
@@ -228,7 +228,7 @@ class PanelEventPesertaController extends BaseController {
 	{
 		$dir = public_path().'/media/vcf/'.Str::slug($acara->nama_acara);
 
-		$zip = new ZipArchiveFile();
+		$zip = new Zip();
 		$zip->setZipFile($dir.'-contact.zip');
 
 		foreach($acara->peserta()->get() as $p)

@@ -5,7 +5,7 @@ use HMIF\Model\Cakrawala\User;
 use Sabre\VObject\Component\VCard;
 use HMIF\Model\Cakrawala\Pembayaran;
 use HMIF\Repositories\Cakrawala\TimRepoInterface;
-use PHPZip\Zip\File\ZipArchive as ZipArchiveFile;
+use PHPZip\Zip\File\Zip;
 
 class PanelCakrawalaKompetisiTimController extends BaseController {
 
@@ -280,7 +280,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	{
 		$dir = public_path().'/media/vcf/'.Str::slug($lomba);
 
-		$zip = new ZipArchiveFile();
+		$zip = new Zip();
 		$zip->setZipFile($dir.'-contact.zip');
 
 		$tim = Tim::where('lomba', '=', $lomba)->get();
@@ -306,7 +306,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 	{
 		$file = Helper::pathFile(Str::slug($lomba).'-data.zip', false);
 
-		$zip = new ZipArchiveFile();
+		$zip = new Zip();
 		$zip->setZipFile($file);
 
 		$tim = Tim::with(array('karya', 'persyaratan'))->where('lomba', '=', $lomba)->get();
