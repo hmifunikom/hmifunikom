@@ -17,6 +17,7 @@
 
 		"laravelbook/ardent": "dev-master",
 		"felixkiss/slug-routes": "dev-master",
+		"felixkiss/uniquewith-validator": "1.1.*",
 		"fitztrev/laravel-html-minify": "dev-master",
 		"cviebrock/eloquent-sluggable": "dev-develop",
 		"davejamesmiller/laravel-aliases": "dev-master",
