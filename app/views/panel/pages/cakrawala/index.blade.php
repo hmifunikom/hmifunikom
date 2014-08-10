@@ -19,7 +19,7 @@
             </a>
         </div>
         <div class="col-md-6 placeholder center">
-            <a href="#{{action('panel.cakrawala.kompetisi.index')}}">
+            <a href="{{action('panel.cakrawala.tcr.index')}}">
                 <img src="{{asset('assets/images/cakrawala-festival.jpg')}}" class="img-responsive" alt="Generic placeholder thumbnail">
             </a>
         </div>

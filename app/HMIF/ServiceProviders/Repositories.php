@@ -48,6 +48,7 @@ class Repositories extends ServiceProvider {
             'AnggotaRepoInterface'     =>  'Eloquent\\AnggotaRepo',
             'KaryaRepoInterface'       =>  'Eloquent\\KaryaRepo',
             'TimRepoInterface'         =>  'Eloquent\\TimRepo',
+            'TcrPesertaRepoInterface'  =>  'Eloquent\\TcrPesertaRepo',
             'PersyaratanRepoInterface' =>  'Eloquent\\PersyaratanRepo',
             'PembayaranRepoInterface'  =>  'Eloquent\\PembayaranRepo',
             'UserRepoInterface'        =>  'Eloquent\\UserRepo',

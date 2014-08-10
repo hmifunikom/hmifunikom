@@ -316,6 +316,30 @@ Breadcrumbs::register('panel.cakrawala.kompetisi.tim.karya.edit', function($brea
     $breadcrumbs->push('Ganti Karya');
 });
 
+
+// The Color Run
+
+Breadcrumbs::register('panel.cakrawala.tcr.index', function($breadcrumbs) {
+    $breadcrumbs->parent('panel.cakrawala.index');
+    $breadcrumbs->push('The Color Run', route('panel.cakrawala.tcr.index'));
+    $breadcrumbs->push('Peserta', route('panel.cakrawala.tcr.index'));
+});
+
+Breadcrumbs::register('panel.cakrawala.tcr.create', function($breadcrumbs) {
+    $breadcrumbs->parent('panel.cakrawala.tcr.index');
+    $breadcrumbs->push('Tambah Peserta');
+});
+
+Breadcrumbs::register('panel.cakrawala.tcr.show', function($breadcrumbs, $peserta) {
+    $breadcrumbs->parent('panel.cakrawala.tcr.index');
+    $breadcrumbs->push($peserta->nama_peserta, route('panel.cakrawala.tcr.show', array($peserta->id_peserta)));
+});
+
+Breadcrumbs::register('panel.cakrawala.tcr.edit', function($breadcrumbs) {
+    $breadcrumbs->parent('panel.cakrawala.tcr.index');
+    $breadcrumbs->push('Edit Peserta');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Arsip

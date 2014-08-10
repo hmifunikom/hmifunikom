@@ -26,7 +26,7 @@
                         <div class="scroll">
                             <ol>
 <li>Peserta harus mengisi formulir pendaftaran dengan lengkap dan memberikan informasi yang bisa dipertanggungjawabkan. 
-</li><li>Melakukan pendaftaran secara on line dengan mengisi Formulir pendaftaran secara lengkap. Atau dating langsung ke Gedung unikom lantai dasar Universitas komputer Indonesia Ruang Sekretariat HMIF Fakultas Teknik Informatika
+</li><li>Melakukan pendaftaran secara on line dengan mengisi Formulir pendaftaran secara lengkap. Atau datang langsung ke Gedung unikom lantai dasar Universitas komputer Indonesia Ruang Sekretariat HMIF Fakultas Teknik Informatika
 </li><li>Peserta Debat merupakan siswa/i SMA,SMK/MA sederajat se-Bandung dengan dibuktikan identitas diri.
 </li><li>1 tim terdiri dari 3 orang.
 </li><li>Setiap sekolah bisa mengirimkan lebih dari 1 tim.

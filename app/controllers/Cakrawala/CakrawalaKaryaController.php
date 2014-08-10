@@ -15,6 +15,7 @@ class CakrawalaKaryaController extends BaseController {
 		$this->beforeFilter(function()
         {
         	if (Auth::cakrawala()->guest()) return Redirect::guest('login'); 
+        	if (! (Auth::cakrawala()->user()->userable instanceof HMIF\Model\Cakrawala\Tim)) return Redirect::guest('logout');
         });
 
 		$this->karya = $karya;

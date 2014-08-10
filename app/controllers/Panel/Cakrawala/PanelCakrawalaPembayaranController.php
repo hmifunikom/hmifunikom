@@ -93,6 +93,26 @@ class PanelCakrawalaPembayaranController extends BaseController {
 		$pembayaran->setVerified();
 
 		if ($pembayaran->updateUniques()) {
+			$pembayar = $pembayaran->payment;
+			$email = $pembayar->user->email;
+
+			if($email)
+			{
+				if($pembayar instanceof HMIF\Model\Cakrawala\Tim)
+				{
+					Mail::send('emails.cakrawala.confirmation-success', array(), function($message) use ($email, $pembayar)
+					{
+					    $message->to($email, $pembayar->nama_tim)->subject('[CAKRAWALA] Status Pembayaran - HMIF Unikom');
+					});
+				}
+				else
+				{
+					Mail::send('emails.cakrawala.confirmation-success-tcr', array(), function($message) use ($email, $pembayar)
+					{
+					    $message->to($email, $pembayar->nama_peserta)->subject('[CAKRAWALA] Status Pembayaran - HMIF Unikom');
+					});
+				}
+			}
         	return Redirect::back()->with('success', 'Berhasil mengubah status pembayaran!');
         } else {
             return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');
@@ -104,6 +124,20 @@ class PanelCakrawalaPembayaranController extends BaseController {
 		$pembayaran->setInvalid();
 
 		if ($pembayaran->updateUniques()) {
+			$pembayar = $pembayaran->payment;
+			if($pembayar instanceof HMIF\Model\Cakrawala\Tim) 
+				$rcpt = $pembayar->nama_tim;
+			else
+				$rcpt = $pembayar->nama_peserta;
+
+			$email = $pembayar->user->email;
+
+			if($email) {
+				Mail::send('emails.cakrawala.confirmation-fail', array(), function($message) use ($email, $rcpt)
+				{
+				    $message->to($email, $rcpt)->subject('[CAKRAWALA] Status Pembayaran - HMIF Unikom');
+				});
+			}
         	return Redirect::back()->with('success', 'Berhasil mengubah status pembayaran!');
         } else {
             return Redirect::back()->with('success', 'Gagal mengubah status pembayaran!');

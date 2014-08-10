@@ -1,9 +1,9 @@
 <?php namespace HMIF\Repositories\Cakrawala\Eloquent;
 
-use HMIF\Repositories\Cakrawala\TimRepoInterface;
-use HMIF\Model\Cakrawala\Tim;
+use HMIF\Repositories\Cakrawala\TcrPesertaRepoInterface;
+use HMIF\Model\Cakrawala\TcrPeserta;
 
-class TimRepo implements TimRepoInterface {
+class TcrPesertaRepo implements TcrPesertaRepoInterface {
 
     private $relations = array();
     private $per_page = 15;
@@ -11,36 +11,29 @@ class TimRepo implements TimRepoInterface {
  
     public function findById($id)
     {
-        return Tim::with($this->relations)->find($id);
+        return TcrPeserta::with($this->relations)->find($id);
     }
 
-    public function findByLomba($lomba)
+    public function findAllSearch($search)
     {
-        return Tim::with($this->relations)
-               ->where('lomba', '=', $lomba)
-               ->paginate($this->per_page);
-    }
-
-    public function findByLombaSearch($lomba, $search)
-    {
-        return Tim::with($this->relations)
-               ->where('lomba', '=', $lomba)
-               ->where('nama_tim', 'LIKE', '%'.$search.'%')
-               ->orwhere('asal', 'LIKE', '%'.$search.'%')
-               ->orderBy('id_tim', 'desc')
+        return TcrPeserta::with($this->relations)
+               ->where('kode', '=', $search)
+               ->orwhere('nama_peserta', 'LIKE', '%'.$search.'%')
+               ->orwhere('alamat', 'LIKE', '%'.$search.'%')
+               ->orderBy('id_peserta', 'desc')
                ->paginate($this->per_page);
     }
 
     public function findAll()
     {
-        return Tim::with($this->relations)
-               ->orderBy('id_tim', 'desc')
+        return TcrPeserta::with($this->relations)
+               ->orderBy('id_peserta', 'desc')
                ->paginate($this->per_page);
     }
     
     public function store($data)
     {
-        $new_item = new Tim();
+        $new_item = new TcrPeserta();
         if($new_item->save())
         {
             return TRUE;
@@ -89,7 +82,7 @@ class TimRepo implements TimRepoInterface {
 
     public function instance()
     {
-        return new Tim();
+        return new TcrPeserta();
     }
     
 }
