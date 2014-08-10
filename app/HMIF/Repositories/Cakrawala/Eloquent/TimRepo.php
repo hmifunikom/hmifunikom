@@ -34,7 +34,7 @@ class TimRepo implements TimRepoInterface {
     public function findAll()
     {
         return Tim::with($this->relations)
-               ->orderBy('id_karya', 'desc')
+               ->orderBy('id_tim', 'desc')
                ->paginate($this->per_page);
     }
     
