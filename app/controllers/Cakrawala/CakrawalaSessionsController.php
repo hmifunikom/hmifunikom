@@ -38,7 +38,7 @@ class CakrawalaSessionsController extends BaseController {
         $rules = array(
             'username'  => 'required',
             'password'  => 'required',
-          //'recaptcha_response_field' => 'required|recaptcha',
+            'recaptcha_response_field' => 'required|recaptcha',
           );
 
         // Validate the inputs.

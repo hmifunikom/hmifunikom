@@ -21,6 +21,17 @@ class TcrPeserta extends Ardent {
 
     protected $appends = array('bayar');
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($peserta)
+        {
+            $peserta->user()->delete();
+            $peserta->pembayaran()->delete();
+        });
+    }
+
     public function user()
     {
         return $this->morphOne('HMIF\Model\Cakrawala\User', 'userable');

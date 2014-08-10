@@ -23,6 +23,18 @@ class Tim extends Ardent {
 
     protected $appends = array('bayar');
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($tim)
+        {
+            $tim->persyaratan()->delete();
+            $tim->user()->delete();
+            $tim->pembayaran()->delete();
+        });
+    }
+
     public function anggota()
     {
         return $this->hasMany('HMIF\Model\Cakrawala\Anggota', 'id_tim');
