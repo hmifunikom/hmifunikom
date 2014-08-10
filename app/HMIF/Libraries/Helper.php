@@ -32,9 +32,9 @@ class Helper {
         return ($striptags) ? strip_tags($parsedown->parse($text)) : $parsedown->parse($text);
     }
 
-    public static function code($number, $digit = 3)
+    public static function code($number, $prefix = '', $digit = 3)
     {
-        return str_pad($number, $digit, 0, STR_PAD_LEFT);
+        return $prefix . str_pad($number, $digit, 0, STR_PAD_LEFT);
     }
 
     public static function rp($nominal)
