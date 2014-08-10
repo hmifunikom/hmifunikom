@@ -1,6 +1,6 @@
 <?php
 
-class HMIFValidator extends \Illuminate\Validation\Validator {
+class HMIFValidator extends Felixkiss\UniqueWithValidator\ValidatorExtension {
 
     public function validateNim($attribute, $value, $parameters)
     {
@@ -10,7 +10,6 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
             $prodi = $value[1] . '' . $value[2];
             $angkatan = (int) ($value[3] . '' . $value[4]);
             $urutan = (int) ($value[5] . '' . $value[6] . '' . $value[7]);
-            $valid = FALSE;
 
             switch($fakultas)
             {
@@ -29,8 +28,6 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
                                     '31', // ELEKTRO
                                     '40', // SI
                                 );
-                    if(in_array($prodi, $listprodi)) $valid = TRUE;
-
                     break;
 
                 case 2: // EKONOMI
@@ -43,18 +40,12 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
                                     '14', // MANPES D3
                                     '15', // KEUANGAN
                                 );
-
-                    if(in_array($prodi, $listprodi)) $valid = TRUE;
-
                     break;
 
                 case 3: // HUKUM
                     $listprodi = array(
                                     '16', // HUKUM
                                 );
-
-                    if(in_array($prodi, $listprodi)) $valid = TRUE;
-
                     break;
 
                 case 4: // SOSPOL
@@ -64,9 +55,6 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
                                     '17', // ILMUPEMERINTAHAN
                                     '33', // PUBLIC RELATION
                                 );
-
-                    if(in_array($prodi, $listprodi)) $valid = TRUE;
-
                     break;
 
                 case 5: // DESAIN
@@ -75,9 +63,6 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
                                     '20', // INTERIOR
                                     '21', // DKV D3
                                 );
-
-                    if(in_array($prodi, $listprodi)) $valid = TRUE;
-
                     break;
 
                 case 6: // SASTRA
@@ -85,22 +70,19 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
                                     '37', // ING
                                     '38', // JPG
                                 );
-
-                    if(in_array($prodi, $listprodi)) $valid = TRUE;
-
                     break;
             }
 
-            if(! $valid) return FALSE;
+            if(! in_array($prodi, $listprodi)) return false;
 
             $tahun = (int) date('y');
 
-            if($angkatan > $tahun) return FALSE;
+            if($angkatan > $tahun) return false;
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     public function validateNimIf($attribute, $value, $parameters)
@@ -110,7 +92,7 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
             return $this->validateNim($attribute, $value, $parameters);
         }
 
-        return TRUE;
+        return true;
     }
 
     public function validateUniqueIf($attribute, $value, $parameters)
@@ -122,7 +104,7 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
 
         if ($field_value == array_get($this->data, $field_name))
         {
-            return TRUE;
+            return true;
         }
         else
         {
@@ -130,11 +112,11 @@ class HMIFValidator extends \Illuminate\Validation\Validator {
 
             if($result)
             {
-                return FALSE;
+                return false;
             }
             else
             {
-                return TRUE;
+                return true;
             }       
         }
     }
