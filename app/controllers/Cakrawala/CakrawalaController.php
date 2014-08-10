@@ -194,7 +194,8 @@ class CakrawalaController extends BaseController {
 
 		$user = Auth::cakrawala()->user();
 
-		if($tim = $user->userable instanceof TcrPeserta) return $this->pembayaranTcr();
+		$tim = $user->userable;
+		if($tim instanceof TcrPeserta) return $this->pembayaranTcr();
 
 		return View::make('pages.cakrawala.pembayaran')->with(array('pagetitle' => 'Pembayaran', 'lomba' => $tim->lomba, 'tim' => $tim));
 	}
@@ -219,8 +220,8 @@ class CakrawalaController extends BaseController {
 
 		$user = Auth::cakrawala()->user();
 
-
-		if($tim = $user->userable instanceof TcrPeserta) return $this->storePembayaranTcr();
+		$tim = $user->userable;
+		if($tim instanceof TcrPeserta) return $this->storePembayaranTcr();
 		
 		$pembayaran = $tim->pembayaran;
 
