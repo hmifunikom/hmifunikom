@@ -59,7 +59,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 			Input::all(),
 			array(
 				'username'              => 'required|unique:tb_cakrawala_user',
-				'email'                 => 'required|email',
+				'email'                 => 'required|email|unique:tb_cakrawala_user',
 				"password"				=> "required|min:8|confirmed",
 				"password_confirmation"	=> "same:password",
 				
@@ -141,7 +141,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 				Input::all(),
 				array(
 					'username'              => 'required|unique:tb_cakrawala_user,username,'.$tim->user->id_user.',id_user',
-					'email'                 => 'required|email',
+					'email'                 => 'required|email|unique:tb_cakrawala_user,email,'.$tim->user->id_user.',id_user',
 					"password"				=> "required|min:8|confirmed",
 					"password_confirmation"	=> "same:password",
 
@@ -167,7 +167,7 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 				Input::all(),
 				array(
 					'username'        => 'required|unique:tb_cakrawala_user,username,'.$tim->user->id_user.',id_user',
-					'email'                 => 'required|email',
+					'email'           => 'required|email|unique:tb_cakrawala_user,email,'.$tim->user->id_user.',id_user',
 					
 					'nama_tim'        => 'required|unique:tb_cakrawala_kompetisi_tim,nama_tim,'.$tim->id_tim.',id_tim,lomba,'.$lomba,
 					'kategori'		  => 'required',
