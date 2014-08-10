@@ -125,7 +125,7 @@ Route::group(array('domain' => 'cakrawala'.$domain), function()
     Route::get('pendaftaran', array('uses' => 'CakrawalaController@pendaftaran', 'as' => 'cakrawala.pendaftaran'));
 
     Route::get('pembayaran', array('uses' => 'CakrawalaController@pembayaran', 'as' => 'cakrawala.pembayaran.edit'));
-    Route::post('pembayaran', array('uses' => 'CakrawalaController@store_pembayaran', 'as' => 'cakrawala.pembayaran.update'));
+    Route::post('pembayaran', array('uses' => 'CakrawalaController@storePembayaran', 'as' => 'cakrawala.pembayaran.update'));
 
     route_resource('anggota', 'CakrawalaAnggotaController', 'cakrawala');
     route_resource('persyaratan', 'CakrawalaPersyaratanController', 'cakrawala');
@@ -208,6 +208,8 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
         Route::model('karya', 'HMIF\Model\Cakrawala\Karya');
         Route::model('persyaratan', 'HMIF\Model\Cakrawala\Persyaratan');
         Route::model('pembayaran', 'HMIF\Model\Cakrawala\Pembayaran');
+        Route::model('tcr', 'HMIF\Model\Cakrawala\TcrPeserta');
+        Route::pattern('tcr', '\d+');
     }    
 
     Route::get('/', function()
@@ -282,6 +284,10 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
         
         route_resource('kompetisi.tim.karya', 'PanelCakrawalaKompetisiKaryaController', 'panel.cakrawala');
         Route::get('kompetisi/{kompetisi}/tim/{tim}/karya/{karya}/download', array('uses' => 'PanelCakrawalaKompetisiKaryaController@download', 'as' => 'panel.cakrawala.kompetisi.tim.karya.download'));
+
+        route_resource('tcr', 'PanelCakrawalaTcrPesertaController', 'panel.cakrawala');
+        Route::get('tcr/download', array('uses' => 'PanelCakrawalaTcrPesertaController@xls', 'as' => 'panel.cakrawala.tcr.xls'));
+        Route::get('tcr/contact', array('uses' => 'PanelCakrawalaTcrPesertaController@vcf', 'as' => 'panel.cakrawala.tcr.vcf'));
     });
 
     // Arsip

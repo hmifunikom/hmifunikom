@@ -40,6 +40,13 @@
                     </a>
                     <div class="clearfix"></div>
                 </div>
+                <div style="background:#333333;" class="col-xs-12">
+                    <a href="{{ URL::route('cakrawala.create', 'TheColorRun') }}">
+                        <span class="big-title">The Color Run</span>
+                        {{ Helper::fa('chevron-right') }}
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
             </div>            
         </div>
     </div>

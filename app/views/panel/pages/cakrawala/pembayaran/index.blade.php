@@ -29,9 +29,13 @@
         @foreach($pembayaran as $p)
             <tr>
                 <td>{{ $i++ }}</td>
+                @if($p->payment instanceof HMIF\Model\Cakrawala\Tim)
                 <td>{{ $p->payment->nama_tim }}</td>
-
                 <td>{{ $p->payment->lomba }}</td>
+                @else
+                <td>{{ $p->payment->nama_peserta }}</td>
+                <td>The Color Run</td>
+                @endif
 
                 <td>
                 <?php
