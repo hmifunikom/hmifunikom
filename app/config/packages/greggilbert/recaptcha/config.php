@@ -10,8 +10,8 @@ return array(
 	| Set the public and private API keys as provided by reCAPTCHA.
 	|
 	*/
-	'public_key'	=> '6LftJPASAAAAABdWs23S6TA81FFS9V_d_yzvrD16',
-	'private_key'	=> '6LftJPASAAAAAPB-mU6sZQWMIXhc3KII-cF9cdr1',
+	'public_key'	=> $_ENV['CAPTCHA_PUB'],
+	'private_key'	=> $_ENV['CAPTCHA_PRI'],
 	
 	/*
 	|--------------------------------------------------------------------------
