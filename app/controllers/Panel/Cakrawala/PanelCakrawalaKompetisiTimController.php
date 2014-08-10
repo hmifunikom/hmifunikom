@@ -314,14 +314,20 @@ class PanelCakrawalaKompetisiTimController extends BaseController {
 		foreach($tim as $p)
 		{
 			$zip_path = $lomba."/".$p->nama_tim."/";
-			$real_path_persyaratan = Helper::pathFile($p->persyaratan->persyaratan, true);
-			$real_path_karya = Helper::pathFile($p->karya->karya, true);
 
+			if($p->persyaratan)
+			{
+				$real_path_persyaratan = Helper::pathFile($p->persyaratan->persyaratan, true);
+				$zip->addLargeFile($real_path_persyaratan, $zip_path."persyaratan.zip");
+			}
 
-			$zip->addLargeFile($real_path_persyaratan, $zip_path."persyaratan.zip");
-			$zip->addLargeFile($real_path_karya, $zip_path."karya.zip");
-			$zip->addFile($p->karya->judul_karya, $zip_path."judul.txt");
-			$zip->addFile($p->karya->link_video_demo, $zip_path."link_video.txt");
+			if($p->karya)
+			{
+				$real_path_karya = Helper::pathFile($p->karya->karya, true);
+				$zip->addLargeFile($real_path_karya, $zip_path."karya.zip");
+				$zip->addFile($p->karya->judul_karya, $zip_path."judul.txt");
+				$zip->addFile($p->karya->link_video_demo, $zip_path."link_video.txt");
+			}			
 		}
 		
 		$zip->finalize();
