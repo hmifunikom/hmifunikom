@@ -5,8 +5,8 @@ $(document).ready(function() {
             $('#fullpage').fullpage({
                 resize: false,
                 verticalCentered: false,
-                anchors: ['Main', 'DebatIT', 'ITContest', 'LKTI', 'Contact'],
-                slidesColor: ['#fff', '#333', '#fff', '#008cd6', '#fff'],
+                anchors: ['Main', 'DebatIT', 'ITContest', 'LKTI', 'TheColorRun', 'Contact'],
+                slidesColor: ['#fff', '#333', '#fff', '#008cd6', '#333', '#fff'],
                 autoScrolling: true,
                 paddingTop: '50px',
                 css3:true,
@@ -15,12 +15,13 @@ $(document).ready(function() {
                 afterLoad: function(anchorLink, index){
                     $('.cakrawala-logo.green').toggleClass('active', (anchorLink == 'ITContest'));
                     $('.cakrawala-logo.red').toggleClass('active', (anchorLink == 'DebatIT'));
-                    // $('.cakrawala-logo.blue').toggleClass('active', (anchorLink == 'ITContest' ));
+                    $('.cakrawala-logo.blue').toggleClass('active', (anchorLink == 'TheColorRun' ));
                     $('.cakrawala-logo.black').toggleClass('active', (anchorLink == 'LKTI'));
 
                     $('.nav .debat').toggleClass('active', (anchorLink == 'DebatIT'));
                     $('.nav .itcontest').toggleClass('active', (anchorLink == 'ITContest'));
                     $('.nav .lkti').toggleClass('active', (anchorLink == 'LKTI'));
+                    $('.nav .thecolorrun').toggleClass('active', (anchorLink == 'TheColorRun'));
                     $('.nav .contact').toggleClass('active', (anchorLink == 'Contact'));
                 },
 
@@ -81,6 +82,28 @@ $(document).ready(function() {
 
                             case 3:
                                 $('.panel-v.hadiah .panel-title a').click();
+                            break;
+                        }
+                    }
+
+                    if(anchorLink == 'TheColorRun') {
+                        switch(slideIndex) {
+                            case 0:
+                                if(! $('#pendaftaran').hasClass('in')) {
+                                    $('.coll-pendaftaran').click();
+                                }
+                            break;
+
+                            case 1:
+                                if(! $('#racepack').hasClass('in')) {
+                                    $('.coll-racepack').click();
+                                }
+                            break;
+
+                            case 2:
+                                if(! $('#raceday').hasClass('in')) {
+                                    $('.coll-raceday').click();
+                                }
                             break;
                         }
                     }
