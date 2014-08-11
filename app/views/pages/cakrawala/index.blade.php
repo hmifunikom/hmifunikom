@@ -15,6 +15,7 @@
         @include('pages.cakrawala.section.debat')
         @include('pages.cakrawala.section.itcontest')
         @include('pages.cakrawala.section.lkti')
+        @include('pages.cakrawala.section.thecolorrun')
         @include('pages.cakrawala.section.contact')
     </div>
 @stop

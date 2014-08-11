@@ -22,6 +22,7 @@
                 <li data-menuanchor="DebatIT" class="debat"><a href="#DebatIT">Debat IT</a></li>
                 <li data-menuanchor="ITContest" class="itcontest"><a href="#ITContest">IT Contest</a></li>
                 <li data-menuanchor="LKTI" class="lkti"><a href="#LKTI">LKTI</a></li>
+                <li data-menuanchor="TheColorRun" class="thecolorrun"><a href="#TheColorRun">The Color Run</a></li>
                 <li data-menuanchor="Contact" class="contact"><a href="#Contact">Contact</a></li>
                 
             </ul>

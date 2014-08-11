@@ -144,7 +144,7 @@ body {
 
 .kompetisi-debat {
     background-image: url('../images/cakrawala/paper.jpg');
-    background-size: cover; color: #333
+    background-size: cover; color: #333;
     position: relative;
 
     .mic {
@@ -468,6 +468,71 @@ body {
             .scroll {
                 max-height: 235px;
             }
+        }
+    }
+}
+
+.section.thecolorrun {
+    background-image: url('../images/cakrawala/pattern.jpg');
+    color: #fff;
+    position: relative;
+
+    .info-box {
+        h2 {
+            background-image: url('../images/cakrawala/thecolorrun.png');
+            text-indent: -9999px;
+            height: 120px;
+            background-repeat: no-repeat;
+            width:800px;
+            margin: 60px auto 0;
+        }
+    }
+
+    .info-tcr .panel {
+        width:800px;
+        margin:auto;
+        border: none;
+        border-radius: 0;
+        color:#fff;
+        background-color: #333;
+        &.pink {
+            .panel-heading {
+                background-color: #f9008d;
+            }
+        }
+
+        &.yellow {
+            .panel-heading {
+                background-color: #fff000;
+            }
+        }
+
+        &.blue {
+            .panel-heading {
+                background-color: #05a9ff;
+            }
+        }
+
+        .panel-heading {
+            border-radius: 0;
+            padding:15px;
+
+            .panel-title{
+                font-weight: bold;
+                color: #000;
+            }
+        }
+
+        .panel-body {
+            border-top-color: #fff !important;
+
+            .scroll {
+                max-height: 200px;
+            }
+        }
+
+        + .panel {
+            margin-top: 0;
         }
     }
 }
