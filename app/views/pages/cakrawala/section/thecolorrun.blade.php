@@ -23,7 +23,7 @@
                     <div class="panel-body">
                         <div class="scroll">
 <ul class="list-tanggal">
-    <li>Waktu Pendaftaran : 1 Juni - 17 Agustus 2014
+    <li>Waktu Pendaftaran : 1 Juni - 30 Agustus 2014
     </li><li>Biaya Pendaftaran : Rp. 40.000
     </li><li>Fasilitas:
         <ul>
