@@ -58,19 +58,11 @@
                 </td>
                 
                 <td class="right">
-                    @if($p->getPaymentStatus() > $p::PAYMENT_NULL)
                     {{ Button::primary_link(action('panel.cakrawala.pembayaran.show', array($p->id_pembayaran)), Helper::fa('eye'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Lihat bukti transfer")) }}
 
                     {{ Button::success_link('#', Helper::fa('check'), array('class' => 'js-tooltip confirm-action', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set terverifikasi", 'data-confirm' => 'set terverifikasi', 'data-href' => action('panel.cakrawala.pembayaran.verified', array($p->id_pembayaran)))) }}
 
                     {{ Button::danger_link('#', Helper::fa('times'), array('class' => 'js-tooltip confirm-action', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set tidak valid", 'data-confirm' => 'set tidak valid', 'data-href' => action('panel.cakrawala.pembayaran.invalid', array($p->id_pembayaran)))) }}
-                    @else
-                    {{ Button::disabled_primary_link(action('panel.cakrawala.pembayaran.show', array($p->id_pembayaran)), Helper::fa('eye'), array('target' => '_blank', 'class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Lihat bukti transfer")) }}
-
-                    {{ Button::disabled_success_link(action('panel.cakrawala.pembayaran.show', array($p->id_pembayaran)), Helper::fa('check'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set terverifikasi")) }}
-
-                    {{ Button::disabled_danger_link(action('panel.cakrawala.pembayaran.show', array($p->id_pembayaran)), Helper::fa('times'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set tidak valid")) }}
-                    @endif
                 </td>
             </tr>
         @endforeach
