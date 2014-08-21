@@ -43,7 +43,7 @@
         <?php $i = $listpeserta->getFrom(); ?>
         @foreach($listpeserta as $peserta)
             <tr>
-                <td>{{ $i++ }}</td>
+                <td>{{ $peserta->kode }}</td>
                 <td>{{ $peserta->nama_peserta }}</td>
                 <td>{{ $peserta->no_telp }}</td>
                 
