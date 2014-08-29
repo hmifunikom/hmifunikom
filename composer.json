@@ -30,7 +30,7 @@
 		
 		"maatwebsite/excel": "1.*",
 		"endroid/qrcode": "1.*@dev",
-		"thujohn/pdf": "dev-master",
+		"barryvdh/laravel-dompdf": "0.4.*",
 		"sabre/vobject": "3.2.*@dev",
 		"phpzip/phpzip": "dev-master",
 		"intervention/image": "1.6.2",
