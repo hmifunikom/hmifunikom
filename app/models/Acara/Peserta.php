@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Acara;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface;
 use DB;
 

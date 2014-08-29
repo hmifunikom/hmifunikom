@@ -20,10 +20,12 @@
 		"felixkiss/uniquewith-validator": "1.1.*",
 		"fitztrev/laravel-html-minify": "dev-master",
 		"cviebrock/eloquent-sluggable": "dev-develop",
+		"qwildz/localized-eloquent-date": "dev-master",
 		"davejamesmiller/laravel-aliases": "dev-master",
 
 		"kmd/logviewer": "1.2.0",
 
+		"jenssegers/date": "dev-master",
 		"anahkiasen/former": "dev-master",
 		"patricktalmadge/bootstrapper": "dev-develop",
 		"davejamesmiller/laravel-breadcrumbs": "dev-master",
@@ -56,7 +58,7 @@
 		],
 		"psr-0": {
             "HMIF\\": "app",
-            "Qwildz": "app/packages/qwildz/core/src"
+            "Qwildz\\Http": "app/packages/qwildz/core/src"
         }
 	},
 	"scripts": {

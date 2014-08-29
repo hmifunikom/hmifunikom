@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFGames;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 use Felixkiss\SlugRoutes\SluggableInterface as SluggableRouter;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;

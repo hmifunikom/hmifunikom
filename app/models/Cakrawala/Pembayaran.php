@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 
 class Pembayaran extends Ardent {
     const PAYMENT_NULL = 1;

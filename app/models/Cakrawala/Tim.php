@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 
 class Tim extends Ardent {
     protected $table = 'tb_cakrawala_kompetisi_tim';
