@@ -47,12 +47,18 @@
                                     break;
                             }
                         ?>
+
+                        @if($p->getPaymentStatus() == $p::PAYMENT_VERIFIED)
+                        {{ Button::link(action('cakrawala.pembayaran.kuitansi'), 'Download bukti pembayaran') }}
+                        @endif
                     </div>
                 </div>
 
+                @if($p->getPaymentStatus() != $p::PAYMENT_VERIFIED)
                 {{ Former::file('file_bukti_pembayaran')->accept('application/zip, image/*')->inlineHelp('Maksimal 2MB. Format file berupa gambar atau zip.') }}
 
                 {{ Former::actions( Button::primary_submit('Submit'), Button::reset('Reset') ) }}
+                @endif
             {{ Former::close() }}
         </div>
     </div>

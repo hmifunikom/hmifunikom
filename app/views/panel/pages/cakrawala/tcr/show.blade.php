@@ -16,6 +16,7 @@
             {{ 
                 Typography::horizontal_dl(
                     array(
+                        'Kode' => Helper::code($peserta->kode, 'TCR-', 3),
                         'Nama Peserta' => $peserta->nama_peserta,
                         'Alamat' => $peserta->alamat,
                         'No. Telp' => $peserta->no_telp,
@@ -23,6 +24,11 @@
                     )
                 )
             }}
+            <div class="center">
+            {{
+                Button::primary_link(URL::route('panel.cakrawala.pembayaran.kuitansi', array($peserta->id_peserta)), Helper::fa('download').' Download Kuitansi')
+            }}
+            </div>
         </div>
     </div>
 @stop
