@@ -144,6 +144,7 @@ return array(
         'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
         'Vinicius73\SEO\Providers\SEOServiceProvider',
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+        'Jenssegers\Date\DateServiceProvider',
     ),
 
     /*

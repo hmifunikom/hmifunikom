@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Arsip;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 
 class Dokumen extends Ardent {
     protected $table = 'tb_arsip_dokumen';

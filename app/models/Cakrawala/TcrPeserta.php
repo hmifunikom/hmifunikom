@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Cakrawala;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 use DB;
 
 class TcrPeserta extends Ardent {

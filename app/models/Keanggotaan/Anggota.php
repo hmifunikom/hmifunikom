@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\Keanggotaan;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 
 class Anggota extends Ardent {
     protected $table = 'tb_keanggotaan';

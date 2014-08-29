@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFGames;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 use DB;
 
 class Tim extends Ardent {

@@ -2,7 +2,7 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 
 class User extends Ardent implements UserInterface, RemindableInterface {
 

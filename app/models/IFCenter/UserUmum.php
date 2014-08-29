@@ -1,6 +1,6 @@
 <?php namespace HMIF\Model\IFCenter;
 
-use LaravelBook\Ardent\Ardent;
+use Qwildz\LocalizedEloquentDate\LocalizedArdent as Ardent;
 
 class UserUmum extends Ardent {
     protected $table = 'tb_user_umum';
