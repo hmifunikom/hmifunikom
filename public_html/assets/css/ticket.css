@@ -1,14 +1,16 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  font-size: 17px;
-  font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
 }
 
-table {
-  height: 100px;
+table td {
+    vertical-align: top;
+    border:5px solid #ccc;
 }
-td {
-  vertical-align: top;
+
+table.noborder td {
+    border:none;   
 }
 
 .center {
@@ -16,13 +18,13 @@ td {
 }
 
 .big-title {
-text-transform: uppercase;
-font-size: 24px;
-font-weight: bold;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 dl{margin-top:0;margin-bottom:20px}
-dt,dd{line-height:1.428571429}
+dt,dd{line-height:1.1}
 dt{font-weight:700}
 dd{margin-left:0}
 .dl-horizontal dt{float:left;width:145px;clear:left;text-align:left;overflow:hidden;text-overflow:ellipsis;}
