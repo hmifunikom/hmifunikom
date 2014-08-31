@@ -51,7 +51,7 @@
         @foreach($pembayaran as $p)
             <tr>
                 @if($p->payment instanceof HMIF\Model\Cakrawala\Tim)
-                <td>{{ $p->payment->id }}</td>
+                <td>{{ $p->payment->id_tim }}</td>
                 <td>{{ $p->payment->nama_tim }}</td>
                 <td>{{ $p->payment->lomba }}</td>
                 @else
@@ -81,7 +81,11 @@
                 </td>
                 
                 <td class="right">
+                    @if($p->payment->bukti_bayar)
                     {{ Button::primary_link(action('panel.cakrawala.pembayaran.show', array($p->id_pembayaran)), Helper::fa('eye'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Lihat bukti transfer")) }}
+                    @else
+                    {{ Button::disabled_primary_link(action('panel.cakrawala.pembayaran.show', array($p->id_pembayaran)), Helper::fa('eye'), array('class' => 'js-tooltip', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Lihat bukti transfer")) }}
+                    @endif
 
                     {{ Button::success_link('#', Helper::fa('check'), array('class' => 'js-tooltip confirm-action', 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "Set terverifikasi", 'data-confirm' => 'set terverifikasi', 'data-href' => action('panel.cakrawala.pembayaran.verified', array($p->id_pembayaran)))) }}
 
