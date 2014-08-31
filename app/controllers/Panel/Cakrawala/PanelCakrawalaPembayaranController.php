@@ -20,7 +20,35 @@ class PanelCakrawalaPembayaranController extends BaseController
 	 */
     public function index()
     {
-        $pembayaran = $this->pembayaran->findAll();
+        if(Input::has('bayar'))
+            $pembayaran = $this->pembayaran->findByBayar(Input::get('bayar'));
+        else
+            $pembayaran = $this->pembayaran->findAll();
+
+        if(Input::has('s'))
+        {
+            $newpembayaran = $pembayaran->filter(function($bayar)
+            {
+                $pembayar = $bayar->payment;
+                if($pembayar instanceof HMIF\Model\Cakrawala\Tim)
+                {
+                    if(str_contains(strtolower($pembayar->nama_tim), strtolower(Input::get('s')))){
+                        return true;
+                    }
+                }
+                else
+                {
+
+                    if(str_contains(strtolower($pembayar->nama_peserta), strtolower(Input::get('s')))){
+                        return true;
+                    }
+                }
+
+            });
+
+            $pembayaran = Paginator::make($newpembayaran->all(), $newpembayaran->count(), 15);
+        }
+
 
         return View::make('panel.pages.cakrawala.pembayaran.index')->with(array('pembayaran' => $pembayaran));
     }

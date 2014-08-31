@@ -16,8 +16,30 @@
 
     <div class="table-tool row">
         <div class="col-lg-8">
+            <div class="btn-group">
+                @if(Input::has('bayar'))
+                <a class="btn btn-default" href="{{ action('panel.cakrawala.pembayaran.index') }}">Semua</a>
+                @else
+                <a class="btn btn-default active }}" href="{{ action('panel.cakrawala.pembayaran.index') }}">Semua</a>
+                @endif
+                <a class="btn btn-default {{ Helper::active_qs('bayar', 1, false) }}" href="{{ action('panel.cakrawala.pembayaran.index', array('bayar' => 1)) }}">Bayar</a>
+                <a class="btn btn-default {{ Helper::active_qs('bayar', 0, false) }}" href="{{ action('panel.cakrawala.pembayaran.index', array('bayar' => 0)) }}">Belum</a>
+            </div>
         </div>
         <div class="col-lg-4">
+            {{ 
+                Former::open()
+                ->route('panel.cakrawala.pembayaran.index')
+            }}
+            <div class="input-group">
+                <input type="text" class="form-control" value="{{ Input::get('s') }}" name="s">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">{{ Helper::fa('search') }}</button>
+                </span>
+            </div><!-- /input-group -->
+            {{
+                Former::close()
+            }}
         </div><!-- /.col-lg-6 -->
     </div><!-- /.row -->
 
@@ -28,11 +50,12 @@
         <?php $i = $pembayaran->getFrom(); ?>
         @foreach($pembayaran as $p)
             <tr>
-                <td>{{ $i++ }}</td>
                 @if($p->payment instanceof HMIF\Model\Cakrawala\Tim)
+                <td>{{ $p->payment->id }}</td>
                 <td>{{ $p->payment->nama_tim }}</td>
                 <td>{{ $p->payment->lomba }}</td>
                 @else
+                <td>{{ Helper::code($p->payment->kode, 'TCR-', 3) }}</td>
                 <td>{{ $p->payment->nama_peserta }}</td>
                 <td>The Color Run</td>
                 @endif
@@ -68,10 +91,11 @@
         @endforeach
         </tbody>
         {{ Table::close() }}
-        {{ $pembayaran->links() }}
+        <?php $query = array_except( Input::query(), Paginator::getPageName() ); ?>
+        {{ $pembayaran->appends($query)->links() }}
     @else
           <div class="big-title center">
-            Tidak ada pembayaran
+            Tidak ada data
         </div>
     @endif
 

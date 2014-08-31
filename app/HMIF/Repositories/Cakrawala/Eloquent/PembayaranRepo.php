@@ -20,6 +20,25 @@ class PembayaranRepo implements PembayaranRepoInterface {
                ->orderBy('updated_at', 'desc')
                ->paginate($this->per_page);
     }
+
+    public function findByBayar($bayar)
+    {
+        if($bayar == 1)
+        {
+            return Pembayaran::with($this->relations)
+                   ->where('waiting', 1)
+                   ->where('status', 1)
+                   ->orderBy('updated_at', 'desc')
+                   ->paginate($this->per_page);
+        }
+        else
+        {
+            return Pembayaran::with($this->relations)
+                   ->where('status', '<', 1)
+                   ->orderBy('updated_at', 'desc')
+                   ->paginate($this->per_page);
+        }
+    }
     
     public function store($data)
     {
