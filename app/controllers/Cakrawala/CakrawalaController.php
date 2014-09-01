@@ -297,6 +297,8 @@ class CakrawalaController extends BaseController
 
     public function kuitansi()
     {
+        if (Auth::cakrawala()->guest()) return Redirect::guest('login');
+        
         $user = Auth::cakrawala()->user();
         $peserta = $user->userable;
 
