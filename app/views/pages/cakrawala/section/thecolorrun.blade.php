@@ -23,7 +23,7 @@
                     <div class="panel-body">
                         <div class="scroll">
 <ul class="list-tanggal">
-    <li>Waktu Pendaftaran : 1 Juni - 30 Agustus 2014
+    <li>Waktu Pendaftaran : 1 Juni - 13 September 2014
     </li><li>Biaya Pendaftaran : Rp. 40.000
     </li><li>Fasilitas:
         <ul>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <strong>Waktu</strong><br>
-                                    Senin - Sabtu, 8-12 September 2014<br>
+                                    15-17 September 2014<br>
                                     Jam: 10.00 - 13.00         
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                     <div class="panel-body">
                         <div class="scroll">
                             <strong>Tanggal</strong>: 20 September 2014<br>
-                            <strong>Lokasi</strong>: Area Parkir Universitas Komputer Indonesia<br>
+                            <strong>Lokasi</strong>: Babakan Siliwangi<br>
                             <strong>Flag-Off</strong>: 07.00 WIB<br>
                             <strong>Festival</strong>: Dibuka pada pukul 06.00 WIB<br>
                         </div>
