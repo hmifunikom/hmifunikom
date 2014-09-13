@@ -3,6 +3,8 @@
 @section('content')
     <div class="big-container">
         <div class="container">
+            {{ Alert::info('Pendaftaran Cakrawala sudah ditutup. Terimakasih atas partisipasinya.') }}
+
             <h2 class="center">Panduan Pendaftaran</h2>
             {{-- Alert::info('Pendaftaran sudah berakhir.') --}}
             <div class="well well-lg">

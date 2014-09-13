@@ -39,6 +39,8 @@ class CakrawalaController extends BaseController
 
     public function lomba()
     {
+        return Redirect::back();
+
         if(Auth::cakrawala()->check())
 
             return Redirect::action('cakrawala.anggota.index');
@@ -48,6 +50,8 @@ class CakrawalaController extends BaseController
 
     public function create($lomba)
     {
+        return Redirect::back();
+
         $lomba = ($lomba != "ITContest") ? $lomba : "IT Contest";
 
         if(Auth::cakrawala()->check())
@@ -63,6 +67,8 @@ class CakrawalaController extends BaseController
 
     public function createTcr($lomba)
     {
+        return Redirect::back();
+
         $peserta = new TcrPeserta();
 
         return View::make('pages.cakrawala.form-tcr')->with(array('pagetitle' => 'Formulir Pendaftaran', 'lomba' => $lomba, 'peserta' => $peserta));
@@ -70,6 +76,8 @@ class CakrawalaController extends BaseController
 
     public function store($lomba)
     {
+        return Redirect::back();
+
         $lomba = ($lomba != "ITContest") ? $lomba : "IT Contest";
 
         if(Auth::cakrawala()->check())
@@ -137,6 +145,8 @@ class CakrawalaController extends BaseController
 
     public function storeTcr($lomba)
     {
+        return Redirect::back();
+
         $validator = Validator::make(
             Input::all(),
             array(
