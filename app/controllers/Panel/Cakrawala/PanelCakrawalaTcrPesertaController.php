@@ -80,17 +80,14 @@ class PanelCakrawalaTcrPesertaController extends BaseController {
             	else
             	{
             		$peserta->delete();
-            		var_dump($user->errors());die();
             		return Redirect::action('panel.cakrawala.tcr.create')->withErrors($user->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
             	}
 	        } else {
-	        	var_dump($peserta->errors());die();
 	            return Redirect::action('panel.cakrawala.tcr.create')->withErrors($peserta->errors())->with('danger', 'Harap perbaiki kesalahan di bawah!');
 	        }
 		}
 		else
 		{
-			var_dump($validator);die();
 			return Redirect::action('panel.cakrawala.tcr.create')->withErrors($validator)->with('danger', 'Harap perbaiki kesalahan di bawah!')->withInput();
 		}
 	}
