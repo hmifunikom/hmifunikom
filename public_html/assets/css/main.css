@@ -140,6 +140,13 @@ legend,
 .jumbotron.keanggotaan {
   background: url('../images/keanggotaan-banner.jpg') #252525 center;
 }
+.jumbotron.lkmm {
+  background: url('../images/lkmm-banner.jpg') #252525 center;
+  color: #252525;
+}
+.jumbotron.lkmm span {
+  font-weight: bold;
+}
 .jumbotron .container {
   position: absolute;
   bottom: 30px;

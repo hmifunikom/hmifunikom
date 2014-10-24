@@ -131,6 +131,10 @@ Route::group(array('domain' => 'cakrawala'.$domain), function () {
     Route::get('logout', array('uses' => 'CakrawalaSessionsController@destroy', 'as' => 'cakrawala.sessions.destroy'));
 });
 
+Route::group(array('domain' => 'lkmm'.$domain), function () {
+    Route::get('/', array('uses' => 'LKMMController@index', 'as' => 'lkmm.index'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Panel Controller

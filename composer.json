@@ -19,7 +19,7 @@
 		"felixkiss/slug-routes": "dev-master",
 		"felixkiss/uniquewith-validator": "1.1.*",
 		"fitztrev/laravel-html-minify": "dev-master",
-		"cviebrock/eloquent-sluggable": "dev-develop",
+		"cviebrock/eloquent-sluggable": "dev-master",
 		"qwildz/localized-eloquent-date": "dev-master",
 		"davejamesmiller/laravel-aliases": "dev-master",
 
@@ -27,7 +27,7 @@
 
 		"jenssegers/date": "dev-master",
 		"anahkiasen/former": "dev-master",
-		"patricktalmadge/bootstrapper": "dev-develop",
+        "patricktalmadge/bootstrapper": "4.1.*",
 		"davejamesmiller/laravel-breadcrumbs": "dev-master",
 		
 		"maatwebsite/excel": "1.*",
