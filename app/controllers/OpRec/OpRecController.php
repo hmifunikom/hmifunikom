@@ -1,6 +1,6 @@
 <?php
 
-class LKMMController extends BaseController {
+class OpRecController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ class LKMMController extends BaseController {
 
 	public function index()
 	{
-		return View::make('pages.lkmm.index')->with(array('pagetitle' => 'LKMM HMIF UNIKOM'));
+		return View::make('pages.oprec.index')->with(array('pagetitle' => ' HMIF UNIKOM'));
 	}
 
 	public function store()
