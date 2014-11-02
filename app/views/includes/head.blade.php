@@ -18,12 +18,12 @@
 @if(App::environment('production'))
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="//cdn.jsdelivr.net/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 @else
 <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/fullcalendar.css') }}" rel="stylesheet">
 @endif
+<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 
 
 <link rel="stylesheet" href="{{ asset(Helper::version('assets/css/main.min.css')) }}" />
