@@ -39,7 +39,7 @@ LKMM HMIF Unikom
     <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
     <script type="text/javascript">
     $(function(){
-        $('.countdown').countdown("2014/11/03", function(event) {
+        $('.countdown').countdown("2014/11/03 09:00:00", function(event) {
             $(this).find('.hari').text(event.strftime('%D'));
             $(this).find('.jam').text(event.strftime('%H'));
             $(this).find('.menit').text(event.strftime('%M'));
