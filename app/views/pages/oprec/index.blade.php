@@ -1,7 +1,7 @@
 @extends(((Request::ajax()) ? 'layouts.ajax' : 'layouts.custom-big'))
 
 @section('title')
-LKMM HMIF Unikom
+Open Recruitment
 @stop
 
 @section('content')

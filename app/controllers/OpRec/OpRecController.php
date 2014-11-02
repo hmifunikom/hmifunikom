@@ -17,7 +17,7 @@ class OpRecController extends BaseController {
 
 	public function index()
 	{
-		return View::make('pages.oprec.index')->with(array('pagetitle' => ' HMIF UNIKOM'));
+		return View::make('pages.oprec.index')->with(array('pagetitle' => 'Open Recruitment'));
 	}
 
 	public function store()
