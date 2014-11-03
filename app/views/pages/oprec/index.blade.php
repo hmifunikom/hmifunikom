@@ -36,7 +36,7 @@ Open Recruitment
     </div>
     @endif
 
-    @if($sekarang < $target)
+    @if($sekarang >= $target)
     <div class="big-container">
         <div class="container">
             <img src="{{ asset('assets/images/oprec-banner.jpg') }}" width="100%" alt="Open Recruitment" />
