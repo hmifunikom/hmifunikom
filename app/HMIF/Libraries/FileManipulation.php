@@ -5,18 +5,19 @@ use File;
 
 class FileManipulation {
 
-    private $upload_field;
-
     private $file_object;
     private $filename;
     private $suffix;
+    private $need_suffix;
 
     private $file_path;
 
     private $_uploaded = false;
 
-    public function __construct($field, $filename, $safe = TRUE)
+    public function __construct($field, $filename, $safe = TRUE, $need_suffix = TRUE)
     {
+        $this->need_suffix = $need_suffix;
+
         if($safe)
         {
             $this->file_path = storage_path().'/files';
@@ -46,12 +47,20 @@ class FileManipulation {
 
     public function getFileName()
     {
-        return $this->filename.$this->suffix.'.'.$this->file_object->getClientOriginalExtension();
+        if($this->need_suffix) {
+            return $this->filename . $this->suffix . '.' . $this->file_object->getClientOriginalExtension();
+        } else {
+            return $this->filename . '.' . $this->file_object->getClientOriginalExtension();
+        }
     }
 
     private function _destination()
     {
-        return $this->file_path.'/'.$this->filename.$this->suffix.'.'.$this->file_object->getClientOriginalExtension();
+        if($this->need_suffix) {
+            return $this->file_path . '/' . $this->filename . $this->suffix . '.' . $this->file_object->getClientOriginalExtension();
+        } else {
+            return $this->file_path . '/' . $this->filename . '.' . $this->file_object->getClientOriginalExtension();
+        }
     }
 
     public function __destruct()

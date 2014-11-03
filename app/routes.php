@@ -133,6 +133,11 @@ Route::group(array('domain' => 'cakrawala'.$domain), function () {
 
 Route::group(array('domain' => 'oprec'.$domain), function () {
     Route::get('/', array('uses' => 'OpRecController@index', 'as' => 'oprec.index'));
+    Route::get('form', array('uses' => 'OpRecController@create', 'as' => 'oprec.create'));
+    Route::post('form', array('uses' => 'OpRecController@store', 'as' => 'oprec.store'));
+    Route::get('berkas', array('uses' => 'OpRecController@berkas', 'as' => 'oprec.berkas'));
+    Route::post('berkas', array('uses' => 'OpRecController@berkas_store', 'as' => 'oprec.berkas_store'));
+    Route::get('download', array('uses' => 'OpRecController@download', 'as' => 'oprec.download'));
 });
 
 /*
