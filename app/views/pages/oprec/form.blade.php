@@ -52,7 +52,7 @@ Open Recruitment
 
 
                 {{ Former::text('tempat_lahir') }}
-                {{ Former::text('tanggal_lahir')->inlineHelp('DD/MM/YYYY') }}
+                {{ Former::text('tanggal_lahir')->inlineHelp('YYYY/MM/DD') }}
 
                 {{
                     Former::select('agama')
