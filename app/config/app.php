@@ -145,6 +145,7 @@ return array(
         'Vinicius73\SEO\Providers\SEOServiceProvider',
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
+        'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
     ),
 
     /*
@@ -258,6 +259,8 @@ return array(
         'SEOMeta'        => 'Vinicius73\SEO\Facades\Meta',
         'SEOSitemap'     => 'Vinicius73\SEO\Facades\Sitemap',
         'OpenGraph'      => 'Vinicius73\SEO\Facades\OpenGraphHelper',
+
+        'Bugsnag' => 'Bugsnag\BugsnagLaravel\BugsnagFacade',
     ),
 
 );

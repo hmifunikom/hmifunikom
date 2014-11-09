@@ -23,6 +23,7 @@
 		"cviebrock/eloquent-sluggable": "dev-master",
 		"qwildz/localized-eloquent-date": "dev-master",
 		"davejamesmiller/laravel-aliases": "dev-master",
+		"guzzlehttp/guzzle": "~4.0",
 
 		"kmd/logviewer": "1.2.0",
 
@@ -46,7 +47,8 @@
 		
 		"embed/embed": "dev-master",
 		"greggilbert/recaptcha": "dev-master",
-		"thomaswelton/laravel-gravatar": "dev-master"
+		"thomaswelton/laravel-gravatar": "dev-master",
+		"bugsnag/bugsnag-laravel": "1.*"
 	},
 	"autoload": {
 		"classmap": [
