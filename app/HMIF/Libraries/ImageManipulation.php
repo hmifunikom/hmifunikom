@@ -44,7 +44,10 @@ class ImageManipulation {
     public function resize($size = 1024)
     {
         $img = Image::make($this->_source());
-        $img->resize(null, 1024, true, false);
+        $img->resize(null, 1024, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
         $this->_fix_orientation($img);
         $img->save($this->_destination_orig());
     }
@@ -54,9 +57,9 @@ class ImageManipulation {
         $img = Image::make($this->_source());
         
         if($height)
-            $img->grab($width, $height);
+            $img->fit($width, $height);
         else
-            $img->grab($width);
+            $img->fit($width);
     
         $this->_fix_orientation($img);
         $img->save($this->_destination_thumb());
@@ -90,24 +93,7 @@ class ImageManipulation {
     private function _fix_orientation($img)
     {
         if(! $this->_is_jpeg($img)) return;
-        $this->orientation = $img->exif('Orientation');
-        // http://forumsarchive.laravel.io/viewtopic.php?pid=59846#p59846
-        $orientation = $this->orientation;
-
-        if (!empty($orientation)) 
-        {
-            switch($orientation) {
-                case 8:
-                    $img->rotate(90);
-                    break;
-                case 3:
-                    $img->rotate(180);
-                    break;
-                case 6:
-                    $img->rotate(-90);
-                    break;
-            }
-        }
+        $img->orientate();
     }
 
     private function _is_jpeg($img)

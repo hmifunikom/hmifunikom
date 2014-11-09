@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e6d214319a9c9eba42d7bc284e3fb986",
+    "hash": "d4f9b70b4e2c028ce3d0607a355fd617",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -1233,33 +1233,35 @@
         },
         {
             "name": "intervention/image",
-            "version": "1.6.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "54f3701123d89bf1000e9ca2b822740b3e955f57"
+                "reference": "0c9db3220bfdf4de2b17fd85676d824cfdc908c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/54f3701123d89bf1000e9ca2b822740b3e955f57",
-                "reference": "54f3701123d89bf1000e9ca2b822740b3e955f57",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/0c9db3220bfdf4de2b17fd85676d824cfdc908c6",
+                "reference": "0c9db3220bfdf4de2b17fd85676d824cfdc908c6",
                 "shasum": ""
             },
             "require": {
-                "ext-gd": "*",
-                "illuminate/support": "4.*",
+                "ext-fileinfo": "*",
                 "php": ">=5.3.0"
             },
             "require-dev": {
+                "mockery/mockery": "~0.9.2",
                 "phpunit/phpunit": "3.*"
             },
             "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing.",
                 "intervention/imagecache": "Caching extension for the Intervention Image library"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Intervention\\Image": "src/"
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1273,16 +1275,17 @@
                     "homepage": "http://olivervogel.net/"
                 }
             ],
-            "description": "Image handling and manipulation library with support for Laravel 4 integration",
+            "description": "Image handling and manipulation library with support for Laravel integration",
             "homepage": "http://image.intervention.io/",
             "keywords": [
                 "gd",
                 "image",
+                "imagick",
                 "laravel",
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2014-04-03 15:08:53"
+            "time": "2014-11-09 11:54:16"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -3745,6 +3748,7 @@
         "endroid/qrcode": 20,
         "sabre/vobject": 20,
         "phpzip/phpzip": 20,
+        "intervention/image": 20,
         "erusev/parsedown": 20,
         "grandt/binstring": 20,
         "grandt/relativepath": 20,

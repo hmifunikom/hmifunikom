@@ -37,7 +37,7 @@
 		"barryvdh/laravel-dompdf": "0.4.*",
 		"sabre/vobject": "3.2.*@dev",
 		"phpzip/phpzip": "dev-master",
-		"intervention/image": "1.6.2",
+		"intervention/image": "dev-master",
 		"erusev/parsedown": "dev-master",
 		"grandt/binstring": "0.2.0.*@dev",
 		"grandt/relativepath": "1.0.1.*@dev",
