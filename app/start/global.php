@@ -54,6 +54,7 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+    Bugsnag::notifyException($exception);
 	
 	if (!Config::get('app.debug')) {
         	return Response::view('pages.errors.500', array('pagetitle' => 'Terjadi kesalahan pada sistem'), 500);

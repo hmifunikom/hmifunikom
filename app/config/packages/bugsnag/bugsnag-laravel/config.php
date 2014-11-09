@@ -9,5 +9,5 @@
      * Set which release stages should send notifications to Bugsnag
      * E.g: array('development', 'production')
      */
-    'notify_release_stages' => null,
+    'notify_release_stages' => array('production'),
 );
