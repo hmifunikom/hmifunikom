@@ -27,6 +27,9 @@
                 <li class="{{ Helper::active('panel.pelatihan.anggota.index', false) }}">
                     <a href="{{action('panel.pelatihan.anggota.index')}}">{{Helper::fa('keyboard-o')}} <span class="title">Pelatihan</span></a>
                 </li>
+                <li class="{{ Helper::active('panel.kbm.anggota.index', false) }}">
+                                    <a href="{{action('panel.kbm.anggota.index')}}">{{Helper::fa('keyboard-o')}} <span class="title">KBM</span></a>
+                                </li>
                 <li class="{{ Helper::active('panel.cakrawala.index', false) }}">
                     <a href="{{action('panel.cakrawala.index')}}">
                         @if(Helper::is_active('panel.cakrawala.index'))

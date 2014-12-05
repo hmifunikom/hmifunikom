@@ -102,6 +102,13 @@ Route::group(array('domain' => 'pelatihan'.$domain), function () {
     Route::post('/', array('uses' => 'PelatihanController@store', 'as' => 'pelatihan.store'));
 });
 
+// KBM
+
+Route::group(array('domain' => 'kbm'.$domain), function () {
+    Route::get('/', array('uses' => 'KBMController@index', 'as' => 'kbm.index'));
+    Route::post('/', array('uses' => 'KBMController@store', 'as' => 'kbm.store'));
+});
+
 // Cakrawala
 
 Route::group(array('domain' => 'cakrawala'.$domain), function () {
@@ -191,6 +198,10 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
         Route::model('pelatihananggota', 'HMIF\Model\Pelatihan\Anggota');
     }
 
+    if (Request::is('kbm/*')) {
+        Route::model('kbmanggota', 'HMIF\Model\KBM\Anggota');
+    }
+
     if (Request::is('cakrawala/*')) {
         Route::model('tim', 'HMIF\Model\Cakrawala\Tim');
         Route::model('anggota', 'HMIF\Model\Cakrawala\Anggota');
@@ -247,6 +258,15 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
     Route::get('pelatihan/anggota/{pelatihananggota}/edit', array('uses' => 'PanelPelatihanAnggotaController@edit', 'as' => 'panel.pelatihan.anggota.edit'));
     Route::put('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@update', 'as' => 'panel.pelatihan.anggota.update'));
     Route::delete('pelatihan/anggota/{pelatihananggota}', array('uses' => 'PanelPelatihanAnggotaController@destroy', 'as' => 'panel.pelatihan.anggota.destroy'));
+
+    // KBM
+
+    Route::get('kbm/anggota', array('uses' => 'PanelKBMAnggotaController@index', 'as' => 'panel.kbm.anggota.index'));
+    Route::get('kbm/anggota/create', array('uses' => 'PanelKBMAnggotaController@create', 'as' => 'panel.kbm.anggota.create'));
+    Route::post('kbm/anggota', array('uses' => 'PanelKBMAnggotaController@store', 'as' => 'panel.kbm.anggota.store'));
+    Route::get('kbm/anggota/{kbmanggota}/edit', array('uses' => 'PanelKBMAnggotaController@edit', 'as' => 'panel.kbm.anggota.edit'));
+    Route::put('kbm/anggota/{kbmanggota}', array('uses' => 'PanelKBMAnggotaController@update', 'as' => 'panel.kbm.anggota.update'));
+    Route::delete('kbm/anggota/{kbmanggota}', array('uses' => 'PanelKBMAnggotaController@destroy', 'as' => 'panel.kbm.anggota.destroy'));
 
     // Cakrawala
 

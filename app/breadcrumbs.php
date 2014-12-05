@@ -217,6 +217,30 @@ Breadcrumbs::register('panel.pelatihan.anggota.edit', function ($breadcrumbs) {
 
 /*
 |--------------------------------------------------------------------------
+| Pelatihan
+|--------------------------------------------------------------------------
+*/
+
+// Index
+
+Breadcrumbs::register('panel.kbm.anggota.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('panel.index');
+    $breadcrumbs->push('KBM', route('panel.kbm.anggota.index'));
+    $breadcrumbs->push('Anggota', route('panel.kbm.anggota.index'));
+});
+
+Breadcrumbs::register('panel.kbm.anggota.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('panel.kbm.anggota.index');
+    $breadcrumbs->push('Tambah Anggota');
+});
+
+Breadcrumbs::register('panel.kbm.anggota.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('panel.kbm.anggota.index');
+    $breadcrumbs->push('Edit Anggota');
+});
+
+/*
+|--------------------------------------------------------------------------
 | Cakrawala
 |--------------------------------------------------------------------------
 */
