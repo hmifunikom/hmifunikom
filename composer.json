@@ -47,6 +47,7 @@
 		
 		"embed/embed": "dev-master",
 		"greggilbert/recaptcha": "dev-master",
+        "fruitcakestudio/recaptcha": "dev-master",
 		"thomaswelton/laravel-gravatar": "dev-master",
 		"bugsnag/bugsnag-laravel": "1.*"
 	},

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4f9b70b4e2c028ce3d0607a355fd617",
+    "hash": "9995d30d87940a4b0095d7858385461d",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -920,6 +920,60 @@
                 "performance"
             ],
             "time": "2014-12-03 13:31:11"
+        },
+        {
+            "name": "fruitcakestudio/recaptcha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fruitcakestudio/php-recaptcha.git",
+                "reference": "9e6e6f81402277a47ca5ff55ce31d081db286ec2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fruitcakestudio/php-recaptcha/zipball/9e6e6f81402277a47ca5ff55ce31d081db286ec2",
+                "reference": "9e6e6f81402277a47ca5ff55ce31d081db286ec2",
+                "shasum": ""
+            },
+            "require-dev": {
+                "laravel/support": "~4.0",
+                "symfony/http-foundation": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FruitcakeStudio\\ReCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                },
+                {
+                    "name": "Fruitcake Studio",
+                    "homepage": "http://fruitcakestudio.com"
+                }
+            ],
+            "description": "reCAPTCHA library",
+            "keywords": [
+                "captcha",
+                "laravel",
+                "no captcha",
+                "nocaptcha",
+                "recaptcha",
+                "spam"
+            ],
+            "time": "2014-12-05 09:13:13"
         },
         {
             "name": "grandt/binstring",
@@ -3759,6 +3813,7 @@
         "diego1araujo/titleasy": 20,
         "embed/embed": 20,
         "greggilbert/recaptcha": 20,
+        "fruitcakestudio/recaptcha": 20,
         "thomaswelton/laravel-gravatar": 20
     },
     "prefer-stable": false,

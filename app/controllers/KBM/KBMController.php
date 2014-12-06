@@ -32,7 +32,7 @@ class KBMController extends BaseController {
 		        'angkatan' => 'required|numeric',
 		        'no_hp'    => 'required|numeric',
 		        'matkul'   => 'required',
-				'recaptcha_response_field' => 'required|recaptcha',
+                'g-recaptcha-response'     => 'required|recaptcha'
 			)
 		);
 

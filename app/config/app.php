@@ -139,13 +139,14 @@ return array(
         'Maatwebsite\Excel\ExcelServiceProvider',
         'Ollieread\Multiauth\MultiauthServiceProvider',
         'Ollieread\Multiauth\Reminders\ReminderServiceProvider',
-        'Greggilbert\Recaptcha\RecaptchaServiceProvider',
+        //'Greggilbert\Recaptcha\RecaptchaServiceProvider',
         'Diego1araujo\Titleasy\ServiceProvider',
         'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
         'Vinicius73\SEO\Providers\SEOServiceProvider',
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
         'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
+        'FruitcakeStudio\ReCaptcha\Support\Laravel\ServiceProvider',
     ),
 
     /*
@@ -259,6 +260,8 @@ return array(
         'SEOMeta'        => 'Vinicius73\SEO\Facades\Meta',
         'SEOSitemap'     => 'Vinicius73\SEO\Facades\Sitemap',
         'OpenGraph'      => 'Vinicius73\SEO\Facades\OpenGraphHelper',
+
+        'ReCaptcha' => 'FruitcakeStudio\ReCaptcha\Support\Laravel\Facade',
 
         'Bugsnag' => 'Bugsnag\BugsnagLaravel\BugsnagFacade',
     ),

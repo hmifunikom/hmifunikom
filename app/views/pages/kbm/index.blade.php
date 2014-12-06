@@ -39,7 +39,9 @@ HMIF Unikom
                     <label for="recaptcha_challenge_field" class="control-label col-lg-2 col-sm-4">Kode verifikasi</label>
 
                     <div class="col-lg-10 col-sm-8">
-                        {{ Form::captcha() }}
+                        {{ ReCaptcha::getScript(); }}
+                        {{ ReCaptcha::getWidget(); }}
+                        {{--{{ Form::captcha() }}--}}
 
                         @if(isset($errors))
                         <div class="errors text-danger">

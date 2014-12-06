@@ -14,7 +14,7 @@ class Anggota extends Ardent {
 
 	public static $rules = array(
         'nama'     => 'required',
-        'nim'      => 'required|numeric|unique:tb_pelatihan_anggota|nim',
+        'nim'      => 'required|numeric|unique:tb_kbm_anggota|nim',
         'angkatan' => 'required|numeric',
         'no_hp'    => 'required|numeric',
         'matkul'   => 'required',
