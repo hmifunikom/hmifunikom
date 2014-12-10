@@ -263,6 +263,8 @@ Route::group(array('domain' => 'panel'.$domain, 'before' => 'auth|norole:publik'
 
     Route::get('kbm/anggota', array('uses' => 'PanelKBMAnggotaController@index', 'as' => 'panel.kbm.anggota.index'));
     Route::get('kbm/anggota/create', array('uses' => 'PanelKBMAnggotaController@create', 'as' => 'panel.kbm.anggota.create'));
+    Route::get('kbm/anggota/download', array('uses' => 'PanelKBMAnggotaController@xls', 'as' => 'panel.kbm.anggota.xls'));
+    Route::get('kbm/anggota/contact', array('uses' => 'PanelKBMAnggotaController@vcf', 'as' => 'panel.kbm.anggota.vcf'));
     Route::post('kbm/anggota', array('uses' => 'PanelKBMAnggotaController@store', 'as' => 'panel.kbm.anggota.store'));
     Route::get('kbm/anggota/{kbmanggota}/edit', array('uses' => 'PanelKBMAnggotaController@edit', 'as' => 'panel.kbm.anggota.edit'));
     Route::put('kbm/anggota/{kbmanggota}', array('uses' => 'PanelKBMAnggotaController@update', 'as' => 'panel.kbm.anggota.update'));

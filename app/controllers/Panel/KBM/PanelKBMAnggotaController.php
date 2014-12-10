@@ -1,6 +1,8 @@
 <?php
 
 use HMIF\Model\KBM\Anggota;
+use Sabre\VObject\Component\VCard;
+use PHPZip\Zip\File\Zip;
 
 class PanelKBMAnggotaController extends BaseController {
 
@@ -143,5 +145,71 @@ class PanelKBMAnggotaController extends BaseController {
 
         $anggota->delete();
         return Redirect::action('panel.kbm.anggota.index')->with('success', 'Anggota berhasil dihapus!');
+    }
+
+    public function xls()
+    {
+        $filename = Str::slug('Daftar Peserta KBM');
+
+        $peserta = Anggota::all();
+
+        $all = $this->_generateArray($peserta);
+
+        Excel::create($filename, function($excel) use($all) {
+
+            $excel->sheet('Peserta', function($sheet) use($all) {
+                $sheet->setColumnFormat(array(
+                    'E' => '@',
+                ));
+                $sheet->with($all);
+            });
+
+        })->export('xls');
+    }
+
+    public function vcf()
+    {
+        $dir = public_path().'/media/vcf/kbm';
+
+        $zip = new Zip();
+        $zip->setZipFile($dir.'-contact.zip');
+
+        $peserta = Anggota::all();
+
+        foreach($peserta as $p)
+        {
+            $vcard = new VCard([
+                'FN'  => $p->nama,
+                'TEL' => $p->no_hp,
+            ]);
+
+            $data =  $vcard->serialize();
+
+            $zip->addFile($data, Str::slug($p->nama).'.vcf');
+        }
+
+        $zip->finalize();
+
+        return Response::download($dir.'-contact.zip');
+    }
+
+    private function _generateArray($data)
+    {
+        $list = [];
+        $i = 1;
+        foreach($data as $p)
+        {
+            $list[] = array(
+                'No'          => $i,
+                'Nama'        => $p->nama,
+                'NIM'         => $p->nim,
+                'Angkatan'    => $p->angkatan,
+                'No. HP'      => ' ' . $p->no_hp,
+                'Mata Kuliah' => $p->matkul
+            );
+            $i++;
+        }
+
+        return $list;
     }
 }

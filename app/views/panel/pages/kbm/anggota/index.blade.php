@@ -14,6 +14,15 @@
 
     @include('includes.alert')
 
+    <div class="table-tool row">
+        <div class="col-lg-8">
+            <a class="btn btn-default" href="{{ action('panel.kbm.anggota.xls') }}">{{ Helper::fa('download') }} Unduh List Peserta</a>
+            <a class="btn btn-default" href="{{ action('panel.kbm.anggota.vcf') }}">{{ Helper::fa('phone') }} Unduh Kontak (VCF)</a>
+        </div>
+        <div class="col-lg-4">
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
     {{ Table::striped_open(array('class' => 'table-hover')) }}
     {{ Table::headers('#', 'Nama', 'NIM', 'Angatan', 'No. HP', 'Mata Kuliah', '') }}
     <tbody>
